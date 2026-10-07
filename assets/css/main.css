@@ -317,7 +317,7 @@ html[data-theme="dark"] .nav-link.active { color: var(--brand-400); }
 html[data-theme="dark"] .md h4 { color: var(--brand-400); }
 .md h5, .md h6 { font-size: var(--fs-2); margin: var(--s4) 0 var(--s2); font-weight: 650; color: var(--ink-2); }
 
-.md p { margin: 0 0 var(--s4); }
+.md p { margin: 0 0 var(--s4); word-break: keep-all; overflow-wrap: break-word; }
 .md strong { font-weight: 680; color: var(--ink); }
 .md em { font-style: normal; background: linear-gradient(transparent 62%, var(--warn-200) 62%); padding: 0 1px; }
 
@@ -427,10 +427,15 @@ mjx-container {
   font-size: 1.045em !important;
   color: inherit;
 }
-/* 行内公式：与中文/数字正文基线对齐，避免偏高或偏低 */
+/* 行内公式：与中文/数字正文基线对齐，避免偏高或偏低；
+   同时保证公式内部（如 50\ \mathrm{Hz}、l<\lambda/10）不会被断行拆散，
+   且尽量不在公式与紧邻的标点/文字之间断行，保持视觉连贯 */
 mjx-container[jax="SVG"]:not([display="true"]) {
+  display: inline-block;
   vertical-align: -0.1ex;
   margin: 0 .08em;
+  white-space: nowrap;
+  max-width: 100%;
 }
 /* 块级（display）公式：横向可滚动，左侧强调条与 KaTeX 版式保持一致 */
 mjx-container[jax="SVG"][display="true"] {
