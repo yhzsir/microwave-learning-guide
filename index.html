@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>微波技术基础 · 在线学习指南 · 微波技术基础学习指南</title>
+<meta name="description" content="6 章 + 2 专题推导的完整学习指南：知识点、公式、例题、考点与讲解分析">
+<meta name="author" content="微波技术基础学习指南">
+<meta property="og:type" content="website">
+<meta property="og:title" content="微波技术基础 · 在线学习指南 · 微波技术基础学习指南">
+<meta property="og:description" content="6 章 + 2 专题推导的完整学习指南：知识点、公式、例题、考点与讲解分析">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6fdb'/%3E%3Cpath d='M4 21c3-8 5-8 8 0s5 8 8 0 5-8 8 0' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+(function(){try{var s=localStorage.getItem('mwguide-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-btn" id="menuBtn" aria-label="打开目录">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+  </button>
+  <a class="brand" href="index.html">
+    <span class="brand-mark">μ</span>
+    <span class="brand-text">
+      <span class="brand-title">微波技术基础</span>
+      <span class="brand-sub">LEARNING GUIDE</span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="search-wrap">
+    <svg class="sicon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="search" type="search" placeholder="搜索知识点、公式、例题…  (Ctrl K)" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="切换主题">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <span>深色</span>
+  </button>
+</header><div class="backdrop" id="backdrop"></div><aside class="sidebar" id="sidebar" aria-label="站点导航"><nav class="sidebar-nav" id="sidebarNav"><a class="nav-link active" href="index.html"><span class="nav-num">00</span><span class="nav-label">首页 · 学习总览</span></a><a class="nav-link" href="roadmap.html"><span class="nav-num">01</span><span class="nav-label">学习路线图</span></a><a class="nav-link" href="formulas.html"><span class="nav-num">02</span><span class="nav-label">公式速查手册</span></a><a class="nav-link" href="exam.html"><span class="nav-num">03</span><span class="nav-label">考点总纲</span></a><a class="nav-link" href="smith.html"><span class="nav-num">04</span><span class="nav-label">史密斯圆图交互工具</span></a><a class="nav-link" href="quiz.html"><span class="nav-num">05</span><span class="nav-label">综合自测题</span></a><a class="nav-link" href="resources.html"><span class="nav-num">06</span><span class="nav-label">课件与视频资源</span></a><div class="nav-group"><div class="nav-heading">章节目录</div><a class="nav-link" href="ch01.html"><span class="nav-num">1</span><span class="nav-label">绪论</span></a><a class="nav-link" href="ch02.html"><span class="nav-num">2</span><span class="nav-label">传输线理论</span></a><a class="nav-link" href="ch03.html"><span class="nav-num">3</span><span class="nav-label">金属波导</span></a><a class="nav-link" href="ch04.html"><span class="nav-num">4</span><span class="nav-label">传输线类型</span></a><a class="nav-link" href="ch05.html"><span class="nav-num">5</span><span class="nav-label">微波网络</span></a><a class="nav-link" href="ch06.html"><span class="nav-num">6</span><span class="nav-label">无源器件</span></a><a class="nav-link" href="ch07.html"><span class="nav-num">7</span><span class="nav-label">专题·Z 矩阵</span></a><a class="nav-link" href="ch08.html"><span class="nav-num">8</span><span class="nav-label">专题·S 矩阵</span></a></div></nav></aside><div class="shell"><main class="article loading" id="article"><div class="spinner" role="status" aria-label="加载中"></div><div id="chapterShell" hidden><div class="md" id="md"></div></div></main><aside class="toc" id="toc"><div class="toc-heading">本页目录</div><div class="toc-list" id="tocList"></div></aside></div><footer class="footer">
+  <div>《微波技术基础》在线学习指南 · 共 6 章 + 2 个专题推导</div>
+  <div>
+    <a href="formulas.html">公式速查</a> ·
+    <a href="exam.html">考点总纲</a> ·
+    <a href="resources.html">课件资源</a>
+  </div>
+</footer>
+<script src="assets/js/search-index.js"></script>
+<script id="chapterCfg" type="application/json">{"n":0,"file":"index","src":"content/index.md","title":"微波技术基础 · 在线学习指南"}</script>
+<script id="preContent" type="text/plain">---
+chapter: 0
+title: 微波技术基础 · 在线学习指南
+short: 首页
+desc: 6 章 + 2 专题推导的完整学习指南：知识点、公式、例题、考点与讲解分析
+minutes: 15
+---
+
+# 欢迎使用《微波技术基础》在线学习指南
+
+本指南依据大连理工大学赵楠教授《微波技术基础》（辽宁省一流线下课程，32 学时）的完整课件体系编写，覆盖**绪论、均匀传输线理论、规则金属波导、微波传输线、微波网络基础、微波无源器件**六章正文，外加**无耗网络 $[Z]$ 矩阵**与**网络对称性**两个专题推导。
+
+与课件不同，这里的每一节都补齐了课件因课时压缩而略去的**推导过程、物理图像与工程背景**：公式不仅给出结果，还说明它从哪来、为什么成立、什么时候不能用。
+
+<div class="hero">
+  <h1>从"路"到"场"再到"网络"<br>一条主线贯穿微波工程</h1>
+  <p>微波技术有三种分析方法，它们不是三门课，而是同一套麦克斯韦方程在不同抽象层次上的投影。本指南按这三种方法的交替推进来组织内容：先用路分析法建立直觉，再用场分析法求得严格解，最后用网络分析法把复杂结构抽象成端口上的矩阵。</p>
+  <div class="hero-tags">
+    <span class="hero-tag">8 个章节</span>
+    <span class="hero-tag">1500 分钟建议学时</span>
+    <span class="hero-tag">全部公式附成立条件</span>
+    <span class="hero-tag">每章自测题含详解</span>
+    <span class="hero-tag">交互式史密斯圆图</span>
+  </div>
+</div>
+
+## 三种分析方法：本指南的组织逻辑
+
+微波工程的困难在于：频率升高后，低频电路的两条基本假设——**元件是集中的**、**电压电流是全电路同一個值**——同时失效。于是必须分层处理。
+
+| 方法 | 出发方程 | 得到什么 | 优点 | 局限 | 对应章节 |
+|---|---|---|---|---|---|
+| **路分析法** | 传输线方程（电报方程） | 沿线电压 $U(z)$、电流 $I(z)$ | 简便、直观、工程实用 | 只在"单模传输 + 可定义 $U,I$"时有效 | 第 2 章 |
+| **场分析法** | 麦克斯韦方程组 + 边界条件 | 严格场解 $E(x,y,z)$、$H(x,y,z)$ | 严格、普适、可给出模式谱 | 推导繁琐，对复杂形状难以求解 | 第 3 章 |
+| **网络分析法** | 端口量与矩阵关系 | $[Z]$、$[Y]$、$[A]$、$[S]$ 矩阵 | 与内部结构无关，便于级联与测量 | 丢失内部场信息 | 第 5 章 |
+
+> **【核心概念】**
+> 这三者的关系是"**同一物理对象的三副面孔**"。第 4 章的各种实际传输线（同轴线、带状线、微带线）是"路"与"场"的桥梁：它们既有明确的 $Z_0$（路），又有具体的场分布（场）。第 6 章的各种器件则是"网络"的落地：每一个器件都用一组 $[S]$ 参数定义其全部外部行为。
+
+---
+
+## 章节目录
+
+<div class="grid-cards">
+
+<a class="card" href="ch01.html">
+  <div class="card-top"><span class="card-num">CHAPTER 01</span><span class="chip chip--brand">60 min</span></div>
+  <h3>绪论——微波与微波技术</h3>
+  <p>微波的频段与波长范围为什么是人为划定的？五大特点各自对应哪些工程事实？基尔霍夫定律究竟在什么条件下失效？三种分析方法如何分工？</p>
+  <div class="card-foot"><span>微波概念</span><span>·</span><span>五大特点</span><span>·</span><span>长线判据</span><span>·</span><span>发展里程碑</span></div>
+</a>
+
+<a class="card" href="ch02.html">
+  <div class="card-top"><span class="card-num">CHAPTER 02</span><span class="chip chip--warn">核心 · 300 min</span></div>
+  <h3>均匀传输线理论</h3>
+  <p>全课程分值最高的一章。从线元等效电路推出电报方程，得到 $Z_0$、$\gamma$、$v_p$；再由边界条件引出 $Z_{\mathrm{in}}$、$\Gamma$、$\rho$ 三大状态参量，完整分析行波、驻波、行驻波，最后落到史密斯圆图与阻抗匹配设计。</p>
+  <div class="card-foot"><span>电报方程</span><span>·</span><span>输入阻抗</span><span>·</span><span>驻波比</span><span>·</span><span>史密斯圆图</span><span>·</span><span>阻抗匹配</span></div>
+</a>
+
+<a class="card" href="ch03.html">
+  <div class="card-top"><span class="card-num">CHAPTER 03</span><span class="chip chip--warn">核心 · 300 min</span></div>
+  <h3>规则金属波导</h3>
+  <p>场分析法的主战场。由亥姆霍兹方程与金属壁边界条件解出 TE、TM 全部模式，得到截止波数与截止波长；重点解析矩形波导 TE$_{10}$ 主模的场结构、单模带宽与尺寸选择，并延伸到圆波导与激励耦合。</p>
+  <div class="card-foot"><span>TE/TM 模式</span><span>·</span><span>截止波长</span><span>·</span><span>TE₁₀ 主模</span><span>·</span><span>波导波长</span><span>·</span><span>圆波导</span></div>
+</a>
+
+<a class="card" href="ch04.html">
+  <div class="card-top"><span class="card-num">CHAPTER 04</span><span class="chip chip--accent">220 min</span></div>
+  <h3>微波传输线</h3>
+  <p>把"场"与"路"接起来：同轴线的 TEM 场与 $Z_0$、三个最佳 $b/a$ 值；带状线与微带线的准 TEM 分析、有效介电常数与特性阻抗设计公式；耦合微带线的奇偶模；介质波导与光纤。</p>
+  <div class="card-foot"><span>同轴线</span><span>·</span><span>带状线</span><span>·</span><span>微带线</span><span>·</span><span>耦合线</span><span>·</span><span>光纤</span></div>
+</a>
+
+<a class="card" href="ch05.html">
+  <div class="card-top"><span class="card-num">CHAPTER 05</span><span class="chip chip--purple">240 min</span></div>
+  <h3>微波网络基础</h3>
+  <p>把复杂结构抽象成端口上的矩阵。等效传输线与归一化、$[Z]$/$[Y]$/$[A]$/$[S]$ 四种矩阵的定义、测量条件、相互转换与级联规则，以及无耗↔幺正、互易↔对称这两组核心对应关系。</p>
+  <div class="card-foot"><span>等效传输线</span><span>·</span><span>ABCD 矩阵</span><span>·</span><span>散射矩阵</span><span>·</span><span>幺正性</span></div>
+</a>
+
+<a class="card" href="ch06.html">
+  <div class="card-top"><span class="card-num">CHAPTER 06</span><span class="chip chip--accent">200 min</span></div>
+  <h3>微波无源器件</h3>
+  <p>网络理论的落地。终端元件、连接元件、衰减器与相移器、螺钉调配器、阶梯阻抗变换器；重点是用 $[S]$ 矩阵严格分析 E-T、H-T、双 T 与魔 T 接头，并证明"三端口无耗互易网络不能同时匹配"这一关键结论。</p>
+  <div class="card-foot"><span>匹配负载</span><span>·</span><span>衰减器</span><span>·</span><span>螺钉调配器</span><span>·</span><span>E-T / H-T</span><span>·</span><span>魔 T</span></div>
+</a>
+
+<a class="card" href="ch07.html">
+  <div class="card-top"><span class="card-num">APPENDIX 07</span><span class="chip chip--good">专题推导</span></div>
+  <h3>专题一：无耗网络 $[Z]$ 矩阵的性质</h3>
+  <p>从"无耗网络平均功率为零"出发，分对角项与交叉项两步，严格证明 $[Z]^+=-[Z]$（反厄米矩阵）；并说明互易时 $[Z]$ 退化为纯虚对称矩阵。附带 $[Z]$、$[Y]$、$[A]$、$[S]$ 四种参数下无耗性的横向对照。</p>
+  <div class="card-foot"><span>反厄米矩阵</span><span>·</span><span>纯虚矩阵</span><span>·</span><span>证明题训练</span></div>
+</a>
+
+<a class="card" href="ch08.html">
+  <div class="card-top"><span class="card-num">APPENDIX 08</span><span class="chip chip--good">专题推导</span></div>
+  <h3>专题二：网络对称性与 $[S]$ 矩阵</h3>
+  <p>把 $[S]=([z]+[E])^{-1}([z]-[E])$ 在 $2\times2$ 情形下完整展开，得到四个 $S$ 元素的解析表达式，再代入对称条件 $z_{11}=z_{22}$，证明 $S_{11}=S_{22}$；并厘清"互易"与"对称"这对最容易混淆的概念。</p>
+  <div class="card-foot"><span>矩阵求逆</span><span>·</span><span>S₁₁ = S₂₂</span><span>·</span><span>互易 vs 对称</span></div>
+</a>
+
+</div>
+
+---
+
+## 速查与训练
+
+<div class="grid-cards">
+
+<a class="card" href="formulas.html">
+  <div class="card-top"><span class="card-num">REFERENCE</span><span class="chip chip--brand">速查</span></div>
+  <h3>公式速查手册</h3>
+  <p>全部核心公式按主题分组：基础波动关系、传输线参数、史密斯圆图、阻抗匹配、波导、微波传输线、微波网络、器件 $[S]$ 矩阵、常用常数。每条都标注成立条件、单位与易错提醒。</p>
+  <div class="card-foot"><span>考前速查</span><span>·</span><span>带成立条件</span></div>
+</a>
+
+<a class="card" href="exam.html">
+  <div class="card-top"><span class="card-num">REFERENCE</span><span class="chip chip--warn">考点</span></div>
+  <h3>考点总纲</h3>
+  <p>全课程考点的出现频率、难度分级与投入产出比排序；六类题型的解法模板；时间不够时的四档优先级；三周复习计划与考场策略。</p>
+  <div class="card-foot"><span>优先级排序</span><span>·</span><span>解题模板</span></div>
+</a>
+
+<a class="card" href="smith.html">
+  <div class="card-top"><span class="card-num">TOOL</span><span class="chip chip--accent">交互</span></div>
+  <h3>史密斯圆图交互工具</h3>
+  <p>在圆图上拖动即可同步读出归一化阻抗、导纳、反射系数、驻波比与波腹/波节值。理解这四个量如何被同一组公式锁定，是第二章与匹配设计的关键。</p>
+  <div class="card-foot"><span>拖动读数</span><span>·</span><span>等驻波比圆</span><span>·</span><span>阻抗↔导纳</span></div>
+</a>
+
+<a class="card" href="quiz.html">
+  <div class="card-top"><span class="card-num">PRACTICE</span><span class="chip chip--good">自测</span></div>
+  <h3>综合自测题</h3>
+  <p>覆盖八章的模拟题库：选择题、填空题、判断题、计算题与证明题，逐题附详解；另附一套 100 分制完整模拟卷与评分要点。</p>
+  <div class="card-foot"><span>逐题详解</span><span>·</span><span>模拟卷</span></div>
+</a>
+
+<a class="card" href="roadmap.html">
+  <div class="card-top"><span class="card-num">GUIDE</span><span class="chip chip--purple">路线</span></div>
+  <h3>学习路线图</h3>
+  <p>知识依赖关系图、三阶段学习方法切换、分阶段学时计划、8 周执行模板、每阶段目标自检清单，以及高频考点的投入产出分析。</p>
+  <div class="card-foot"><span>依赖关系</span><span>·</span><span>8 周计划</span></div>
+</a>
+
+<a class="card" href="resources.html">
+  <div class="card-top"><span class="card-num">MEDIA</span><span class="chip chip--brand">资源</span></div>
+  <h3>课件与视频资源</h3>
+  <p>课程附带的两个专题视频（高锟与光纤、同轴线）在线播放，以及六章课件 PDF 与两个专题推导 PDF 的内容对照索引。</p>
+  <div class="card-foot"><span>视频演示</span><span>·</span><span>课件对照</span></div>
+</a>
+
+</div>
+
+---
+
+## 建议使用方法
+
+> **【考点】推荐的四步学习闭环**
+> 1. **读章节页**：先通读一遍，不求全懂，重点是把每节的"物理图像"抓住——这一节在解决什么问题、结论是什么。
+> 2. **动笔推公式**：合上页面，在白纸上默写本节的核心公式并自己推一遍。推不出来的地方就是真正的薄弱点。
+> 3. **用公式速查手册复习**：隔一天再看速查手册，检验是否还记得每个公式的成立条件与单位。这一步能筛掉"记住了形式、忘了适用条件"的隐性错误。
+> 4. **做自测题并限时**：把自测题当作考试，限时闭卷完成后再对答案。错题要回到对应章节页重读该节。
+
+<div class="note-strip">
+  <div>
+    <b>关于公式的呈现方式。</b>
+    本指南中所有公式均以标准数学排版呈现，点击任一独立公式即可复制其 LaTeX 源码，方便你粘贴到笔记、Word 或 LaTeX 文档中继续加工。点击任意插图可放大查看。
+  </div>
+</div>
+
+---
+
+## 学习目标：学完本指南你应该能做到
+
+**计算能力**
+
+- 由 $Z_0$、$Z_l$、$f$、$z$ 求 $Z_{\mathrm{in}}(z)$，并由 $\Gamma_l$ 求 $\rho$ 与波腹/波节点位置
+- 在史密斯圆图上完成阻抗↔导纳换算、求 $Z_{\mathrm{in}}$、设计单枝节匹配
+- 由工作频率设计矩形波导尺寸并确定单模工作区
+- 计算 $\lambda_g$、$v_p$、$v_g$、$Z_{\mathrm{TE}}$、$Z_{\mathrm{TM}}$
+- 由同轴线或微带线的几何与介质参数求 $Z_0$（含 Hammerstad 公式）
+- 由 $[S]$ 判别网络的无耗性、互易性与对称性
+
+**推导能力**
+
+- 从线元等效电路推导电报方程
+- 证明空心单导体波导中不存在 TEM 波
+- 证明无耗网络 $[Z]^+=-[Z]$
+- 证明结构对称网络 $S_{11}=S_{22}$
+- 证明三端口无耗互易网络不能同时匹配
+
+**判断能力**
+
+- 判别微波传输线处于行波、驻波还是行驻波状态
+- 判别某模式在某频率下是传输还是截止
+- 判别网络是否有耗、是否互易、是否对称
+- 判断一个微波元件能否用集总参数描述
+
+---
+
+> **【小结】**
+> 微波技术的主线只有一条：**频率升高使波长与结构尺寸可比拟，于是"集中参数"退化为"分布参数"、"电路"退化为"场"、"元件"退化为"网络"**。第 2 章给你分布参数的语言，第 3 章给你场的严格解，第 5 章给你网络的黑箱工具，第 4、6 章则把三者落到真实器件上。抓住这条主线，各章的公式就不再是零散的公式表，而是同一套逻辑在不同层次上的表达。
+</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

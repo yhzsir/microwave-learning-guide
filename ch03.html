@@ -1,0 +1,2371 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>规则金属波导 · 微波技术基础学习指南</title>
+<meta name="description" content="导波原理、矩形波导的场解与传输特性、TE10主模、圆波导与激励耦合">
+<meta name="author" content="微波技术基础学习指南">
+<meta property="og:type" content="website">
+<meta property="og:title" content="规则金属波导 · 微波技术基础学习指南">
+<meta property="og:description" content="导波原理、矩形波导的场解与传输特性、TE10主模、圆波导与激励耦合">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6fdb'/%3E%3Cpath d='M4 21c3-8 5-8 8 0s5 8 8 0 5-8 8 0' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>
+(function(){try{var s=localStorage.getItem('mwguide-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-btn" id="menuBtn" aria-label="打开目录">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+  </button>
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">μ</span>
+    <span class="brand-text">
+      <span class="brand-title">微波技术基础</span>
+      <span class="brand-sub">LEARNING GUIDE</span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="search-wrap">
+    <svg class="sicon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="search" type="search" placeholder="搜索知识点、公式、例题…  (Ctrl K)" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="切换主题">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <span>深色</span>
+  </button>
+</header><div class="backdrop" id="backdrop"></div><aside class="sidebar" id="sidebar" aria-label="站点导航"><nav class="sidebar-nav" id="sidebarNav"><a class="nav-link" href="index.html"><span class="nav-num">00</span><span class="nav-label">首页 · 学习总览</span></a><a class="nav-link" href="roadmap.html"><span class="nav-num">01</span><span class="nav-label">学习路线图</span></a><a class="nav-link" href="formulas.html"><span class="nav-num">02</span><span class="nav-label">公式速查手册</span></a><a class="nav-link" href="exam.html"><span class="nav-num">03</span><span class="nav-label">考点总纲</span></a><a class="nav-link" href="smith.html"><span class="nav-num">04</span><span class="nav-label">史密斯圆图交互工具</span></a><a class="nav-link" href="quiz.html"><span class="nav-num">05</span><span class="nav-label">综合自测题</span></a><a class="nav-link" href="resources.html"><span class="nav-num">06</span><span class="nav-label">课件与视频资源</span></a><div class="nav-group"><div class="nav-heading">章节目录</div><a class="nav-link" href="ch01.html"><span class="nav-num">1</span><span class="nav-label">绪论</span></a><a class="nav-link" href="ch02.html"><span class="nav-num">2</span><span class="nav-label">传输线理论</span></a><a class="nav-link active" href="ch03.html"><span class="nav-num">3</span><span class="nav-label">金属波导</span></a><a class="nav-link" href="ch04.html"><span class="nav-num">4</span><span class="nav-label">传输线类型</span></a><a class="nav-link" href="ch05.html"><span class="nav-num">5</span><span class="nav-label">微波网络</span></a><a class="nav-link" href="ch06.html"><span class="nav-num">6</span><span class="nav-label">无源器件</span></a><a class="nav-link" href="ch07.html"><span class="nav-num">7</span><span class="nav-label">专题·Z 矩阵</span></a><a class="nav-link" href="ch08.html"><span class="nav-num">8</span><span class="nav-label">专题·S 矩阵</span></a></div></nav></aside><div class="shell"><main class="article loading" id="article"><div class="spinner" role="status" aria-label="加载中"></div><div id="chapterShell" hidden><div class="chapter-eyebrow" id="eyebrow">第 3 章</div><div class="md" id="md"></div><nav class="pager" id="pager" aria-label="章节导航"></nav></div></main><aside class="toc" id="toc"><div class="toc-heading">本页目录</div><div class="toc-list" id="tocList"></div></aside></div><footer class="footer">
+  <div>《微波技术基础》在线学习指南 · 共 6 章 + 2 个专题推导</div>
+  <div>
+    <a href="../formulas.html">公式速查</a> ·
+    <a href="../exam.html">考点总纲</a> ·
+    <a href="../resources.html">课件资源</a>
+  </div>
+</footer>
+<script src="../assets/js/search-index.js"></script>
+<script id="chapterCfg" type="application/json">{"n":3,"file":"ch03","src":"content/ch03.md","title":"规则金属波导"}</script>
+<script id="preContent" type="text/plain">---
+chapter: 3
+title: 规则金属波导
+short: 金属波导
+desc: 导波原理、矩形波导的场解与传输特性、TE10主模、圆波导与激励耦合
+minutes: 300
+---
+
+# 第三章 规则金属波导
+
+> **【核心概念】**
+> 第二章走的是**“路”**：把传输线看作分布参数电路，用电压 $U$、电流 $I$ 描述，简单、直观、工程上好用，但它是**近似**的——它假定横截面上的场是准 TEM 的，而且要知道 $L$、$C$ 这些分布参数。
+> 本章走的是**“场”**：直接从麦克斯韦方程组出发，结合导体边界条件，解出 $\mathbf{E}$、$\mathbf{H}$ 的**严格表达式**。这条路“严格但繁琐”，却是理解一切微波无源器件的唯一途径。
+> 一句话：**第二章解决“怎么算”，第三章解决“为什么是这样”。**
+
+---
+
+## 3.1 引言：从“路”到“场”
+
+### 3.1.1 为什么高频时必须要用波导
+
+微波频率很低的时候（比如几十兆赫），我们习惯用**双导体传输线**：平行双线、同轴线、带状线。它们的工作原理是：两根导体之间建立起横向的电场，导体上流动着纵向的电流，电场与磁场都**完全横在横截面上**，这种波叫作横电磁波（TEM 波）。TEM 波的好处是：没有截止频率，从直流到很高频率都能传；而且特性阻抗 $Z_0=\sqrt{L/C}$ 可以用路的方法算得清清楚楚。
+
+问题在于，当频率继续升高，进入厘米波、毫米波频段，双导体传输线就**全面溃败**了：
+
+1. **损耗剧增。** 导体损耗正比于 $\sqrt{f}$（趋肤效应使电流挤在导体表面很薄的一层里，电流密度增大、有效截面变小），介质损耗正比于 $f$。频率升高一个数量级，损耗就上升半个到一个数量级。长距离传输时，信号会被损耗吃得干干净净。
+2. **尺寸做不小。** 同轴线要维持 TEM 波，内导体半径 $a$、外导体半径 $b$ 必须远大于趋肤深度，同时为了不激起高次模，还要满足 $b+a< \lambda/\pi$ 之类的限制；在毫米波段 $\lambda$ 只有几毫米，内导体做到零点几毫米，**机械加工几乎不可能，功率容量也趋近于零。**
+3. **高次模问题。** 同轴线在频率升高时会激励出 TE、TM 型的高次模（波导模），这些模式和 TEM 模的相速不同，会互相耦合，造成色散和信号失真。一旦出现高次模，同轴线的“宽带”优势就没了。
+4. **辐射损耗。** 平行双线是开放结构，高频时向外辐射严重，而且容易受外界干扰。
+
+根本的出路是：**把双导体换成一根空心的金属管。** 一根管子（单导体）＋内部空气（或介质）就构成了**金属波导（waveguide）**。它没有内导体，加工简单；电场磁场被完全封闭在管内，没有辐射；铜壁很厚，趋肤深度只有微米量级，**损耗比同轴线小一个数量级**；横向尺寸只受“能不能装下半个驻波”的约束，在毫米波段也做得出。
+
+> **【核心概念】**
+> 波导的分类：
+> - 按**几何**：**规则波导**（横截面形状与尺寸沿轴向不变，本章研究的对象）与**非规则波导**（截面渐变、弯曲，如锥形波导）；
+> - 按**材料**：**金属波导**（矩形、圆形、脊波导、椭圆波导）、**介质波导**（介质棒、光纤、介质镜像线）、**表面波导**（在介质分界面上传播的表面波，如金属表面涂介质）；
+> - 按**是否封闭**：**封闭波导**（金属管，能量不外泄）与**开波导**（介质波导、光纤，能量靠全反射约束）。
+> 本章只讲最基础、最重要的**规则金属波导**：矩形与圆形。
+
+### 3.1.2 本章的方法论：场分析法
+
+| 对比项 | 路分析法（第二章） | 场分析法（本章） |
+|---|---|---|
+| 出发点 | 传输线方程（由麦克斯韦方程“路化”而来） | 麦克斯韦方程组（相量形式） |
+| 基本量 | 电压 $U(z)$、电流 $I(z)$ | 电场 $\mathbf{E}(x,y,z)$、磁场 $\mathbf{H}(x,y,z)$ |
+| 边界条件 | 终端负载 $Z_l$、源阻抗 $Z_g$ | 导体壁上的电磁边界条件 |
+| 结果形式 | $Z_{\mathrm{in}}$、$\Gamma$、$\rho$、$Z_0$ | 模式（模）的场表达式、$k_c$、$\lambda_c$、$\beta$、$Z_{\mathrm{TE/TM}}$ |
+| 优点 | 简便、直观、工程实用 | 严格、普适、能解释一切现象 |
+| 缺点 | 只适用于 TEM 或准 TEM 波，是近似 | 推导繁琐，数学工具要求高 |
+| 适用对象 | 同轴线、带状线、微带线 | 矩形波导、圆波导、谐振腔、几乎所有无源器件 |
+
+两条路线**不是互相排斥的**，而是互补的：分析波导中的**模式**用场分析法；一旦确定了某个模式的场分布，波导里“模式的传播”就可以等效成一根**传输线**（有 $Z_{\mathrm{TE}}$ 或 $Z_{\mathrm{TM}}$、有 $\beta$、有 $\lambda_g$），后面的阻抗匹配、网络参数全部可以用“路”的语言处理。**这就是为什么第三章讲完，第四、五章还能继续用圆图。**
+
+### 3.1.3 波导中的三类波型
+
+波沿 $+z$ 方向传播，我们把场分成**纵向分量**（$z$ 方向）与**横向分量**（$x$、$y$ 方向）。按纵向分量的有无，微波的波型分成三类：
+
+| 波型 | 别名 | 纵向电场 $E_z$ | 纵向磁场 $H_z$ | 是否存在 | 典型载体 |
+|---|---|---|---|---|---|
+| **TEM 波**（横电磁波） | — | $0$ | $0$ | 双导体系统有，**空心单导体波导无** | 同轴线、双线、带状线 |
+| **TE 波**（横电波） | H 波 | $0$ | $\neq 0$ | 有 | 矩形/圆波导、介质波导 |
+| **TM 波**（横磁波） | E 波 | $\neq 0$ | $0$ | 有 | 矩形/圆波导、谐振腔 |
+| **混合波** | HE/EH | $\neq 0$ | $\neq 0$ | 有 | 介质波导、光纤、微带线 |
+
+判定的关键只有一句：**电场的 $z$ 分量叫 $E_z$，磁场的 $z$ 分量叫 $H_z$。**
+
+> **【核心概念】**
+> - **TEM 波**：$E_z=H_z=0$，电场、磁场**都**完全在横截面内，$\mathbf{E}\perp\mathbf{H}\perp\hat z$，$\beta=k_0$，无截止频率，$Z_{\mathrm{TEM}}=\eta=\sqrt{\mu/\varepsilon}$。
+> - **TE 波**（又称 **H 波**）：$E_z=0$，但 $H_z\neq0$。电场完全横向，磁场有纵向分量。
+> - **TM 波**（又称 **E 波**）：$H_z=0$，但 $E_z\neq0$。磁场完全横向，电场有纵向分量。
+> - **混合波**（HE 模、EH 模）：$E_z$、$H_z$ 同时存在且都不为零，出现在介质波导、光纤、微带线中。
+> - 一句话记忆：**“横”字后面跟的那个字母，就是“等于零”的那个场。** TE＝横电＝电场是横的＝$E_z=0$；TM＝横磁＝磁场是横的＝$H_z=0$。
+
+<figure class="fig">
+<svg viewBox="0 0 900 430" role="img" aria-label="TEM、TE、TM 三类波型的场结构对比">
+  <defs>
+    <marker id="eT1" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--brand)"/></marker>
+    <marker id="hT1" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--accent)"/></marker>
+    <marker id="kT1" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/></marker>
+  </defs>
+  <\!-- TEM -->
+  <g>
+    <text x="150" y="28" text-anchor="middle" font-size="14" fill="var(--ink)" font-weight="700">TEM 波</text>
+    <circle cx="150" cy="130" r="58" fill="none" stroke="var(--line)"/>
+    <circle cx="150" cy="130" r="16" fill="none" stroke="var(--line)"/>
+    <line x1="150" y1="112" x2="150" y2="74" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <line x1="150" y1="148" x2="150" y2="186" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <line x1="104" y1="130" x2="134" y2="130" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <line x1="166" y1="130" x2="196" y2="130" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <circle cx="116" cy="96" r="7" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <line x1="112.4" y1="92.4" x2="119.6" y2="99.6" stroke="var(--accent)"/>
+    <circle cx="184" cy="96" r="7" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <line x1="180.4" y1="92.4" x2="187.6" y2="99.6" stroke="var(--accent)"/>
+    <circle cx="184" cy="164" r="7" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <line x1="180.4" y1="160.4" x2="187.6" y2="167.6" stroke="var(--accent)"/>
+    <line x1="150" y1="200" x2="150" y2="248" stroke="var(--warn)" stroke-width="2.6" marker-end="url(#kT1)"/>
+    <text x="160" y="240" font-size="13" fill="var(--warn)">k</text>
+    <text x="150" y="278" text-anchor="middle" font-size="13" fill="var(--ink-2)">Ez=Hz=0</text>
+  </g>
+  <\!-- TE -->
+  <g>
+    <text x="450" y="28" text-anchor="middle" font-size="14" fill="var(--ink)" font-weight="700">TE 波（H 波）</text>
+    <rect x="352" y="72" width="196" height="116" rx="3" fill="none" stroke="var(--line)"/>
+    <line x1="450" y1="72" x2="450" y2="188" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+    <text x="424" y="66" font-size="12" fill="var(--ink-2)">中心面（电壁）</text>
+    <line x1="410" y1="130" x2="410" y2="88" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <line x1="490" y1="130" x2="490" y2="88" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <line x1="410" y1="130" x2="410" y2="172" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <line x1="490" y1="130" x2="490" y2="172" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <circle cx="450" cy="105" r="7" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <circle cx="450" cy="105" r="2.6" fill="var(--accent)"/>
+    <circle cx="450" cy="155" r="7" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <line x1="446.4" y1="151.4" x2="453.6" y2="158.6" stroke="var(--accent)"/>
+    <line x1="450" y1="200" x2="450" y2="248" stroke="var(--warn)" stroke-width="2.6" marker-end="url(#kT1)"/>
+    <text x="460" y="240" font-size="13" fill="var(--warn)">k</text>
+    <text x="450" y="278" text-anchor="middle" font-size="13" fill="var(--ink-2)">Ez=0,Hz≠0</text>
+  </g>
+  <\!-- TM -->
+  <g>
+    <text x="750" y="28" text-anchor="middle" font-size="14" fill="var(--ink)" font-weight="700">TM 波（E 波）</text>
+    <rect x="652" y="72" width="196" height="116" rx="3" fill="none" stroke="var(--line)"/>
+    <line x1="652" y1="130" x2="848" y2="130" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+    <text x="714" y="66" font-size="12" fill="var(--ink-2)">中心面（磁壁）</text>
+    <line x1="710" y1="130" x2="710" y2="88" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <line x1="790" y1="130" x2="790" y2="88" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <line x1="710" y1="130" x2="710" y2="172" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <line x1="790" y1="130" x2="790" y2="172" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+    <circle cx="750" cy="105" r="7" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <circle cx="750" cy="105" r="2.6" fill="var(--accent)"/>
+    <circle cx="750" cy="155" r="7" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+    <circle cx="750" cy="155" r="2.6" fill="var(--accent)"/>
+    <line x1="750" y1="200" x2="750" y2="248" stroke="var(--warn)" stroke-width="2.6" marker-end="url(#kT1)"/>
+    <text x="760" y="240" font-size="13" fill="var(--warn)">k</text>
+    <text x="750" y="278" text-anchor="middle" font-size="13" fill="var(--ink-2)">Ez≠0,Hz=0</text>
+  </g>
+  <line x1="60" y1="308" x2="860" y2="308" stroke="var(--line)"/>
+  <text x="60" y="332" font-size="12.5" fill="var(--ink-2)">图例：</text>
+  <line x1="112" y1="328" x2="152" y2="328" stroke="var(--brand)" stroke-width="2" marker-end="url(#eT1)"/>
+  <text x="160" y="332" font-size="12.5" fill="var(--brand)">电场 E（实线箭头；指向纸面外 ⊙ / 指向纸面内 ⊗）</text>
+  <line x1="500" y1="328" x2="540" y2="328" stroke="var(--accent)" stroke-width="1.8" marker-end="url(#hT1)"/>
+  <text x="548" y="332" font-size="12.5" fill="var(--accent)">磁场 H（闭合磁力线）</text>
+  <text x="60" y="366" font-size="12.5" fill="var(--ink-2)">三类波型对比：TEM 的 E、H 全在横截面内且无截止；TE 的 E 无纵向分量、H 有；TM 的 H 无纵向分量、E 有。</text>
+  <text x="60" y="390" font-size="12.5" fill="var(--ink-2)">判定口诀：横电波看 Ez 是否为零，横磁波看 Hz 是否为零；两者都不为零即为混合波。空心金属波导中只存 TE 与 TM。</text>
+  <text x="60" y="414" font-size="12.5" fill="var(--warn)">注意：图中虚线是“对称面”，在 TE 模中等于电壁（Etext{切}=0），在 TM 模中等于磁壁（Htext{法}=0）。</text>
+</svg>
+<figcaption>图 3-1　TEM、TE、TM 三类波型的场结构与判定依据</figcaption>
+</figure>
+
+### 3.1.4 空心金属波导中不存在 TEM 波（本章第一个必考结论）
+
+这是本章最常考也最容易答错的一条结论。严格证明如下。
+
+> **【公式推导】空心单导体波导中不存在 TEM 波**
+>
+> **第一步：TEM 波的定义。** TEM 波要求 $E_z\equiv0$、$H_z\equiv0$，即电场、磁场**完全落在横截面内**：
+> $$\mathbf{E}=\mathbf{E}_t(x,y)e^{-\gamma z},\qquad \mathbf{H}=\mathbf{H}_t(x,y)e^{-\gamma z}$$
+>
+> **第二步：纵向电场满足拉普拉斯方程。** 相量形式的麦克斯韦方程中，$\nabla\times\mathbf{H}=j\omega\varepsilon\mathbf{E}$ 的 $z$ 分量为
+> $$\frac{\partial H_y}{\partial x}-\frac{\partial H_x}{\partial y}=j\omega\varepsilon E_z=0$$
+> 即横向磁场 $\mathbf{H}_t$ 的二维旋度为零。在**单连通**的横截面区域内，一个旋度为零的二维矢量场必可表示为一个标量势 $\varphi$ 的梯度：
+> $$\mathbf{H}_t=-\nabla_t\varphi,\qquad \nabla_t=\hat x\frac{\partial}{\partial x}+\hat y\frac{\partial}{\partial y}$$
+> 由 $\nabla\cdot\mathbf{H}=0$ 且 $\mathbf{H}$ 无 $z$ 分量，得 $\nabla_t\cdot\mathbf{H}_t=0$，代入上式：
+> $$\nabla_t^2\varphi=0$$
+> 也就是说，TEM 波的磁场（从而电场）横向分布必须满足**二维拉普拉斯方程**。同理，由 $\nabla\times\mathbf{E}=-j\omega\mu\mathbf{H}$ 的 $z$ 分量可得 $\mathbf{E}_t=-\nabla_t\psi$，$\nabla_t^2\psi=0$，且 $\varphi$、$\psi$ 互为共轭的调和函数。
+>
+> **第三步：金属壁上管壁是等势面。** 理想导体表面切向电场为零：$\hat n\times\mathbf{E}_t=0$，因此 $\mathbf{E}_t$ 必须**垂直于**导体表面，即金属壁是 $\psi$ 的等值面，可以取 $\psi|_{\text{壁}}=C$（常数）。
+>
+> **第四步：单导体边界下只有平凡解。** 考虑由**单一闭合导体壁**围成的区域 $\Sigma$。由格林公式
+> $$\oint_{\partial\Sigma}\psi\,\frac{\partial\psi}{\partial n}\,dl=\int_\Sigma\left(\psi\nabla_t^2\psi+|\nabla_t\psi|^2\right)dS$$
+> 由于 $\nabla_t^2\psi=0$ 且在边界上 $\psi$ 为常数（$\partial\psi/\partial n$ 分量在等值面上为切向，或等价地对 $\psi-C$ 作同样推导），上式左右两端给出 $\displaystyle\int_\Sigma|\nabla_t\psi|^2dS=0$，于是 $\nabla_t\psi\equiv0$，$\mathbf{E}_t\equiv0$。
+> 同理 $\nabla_t\varphi\equiv0$，$\mathbf{H}_t\equiv0$。
+>
+> **结论：** 场恒等于零，即**空心单导体金属波导中不存在 TEM 波**。
+>
+> **物理直觉：** TEM 波的能量要靠“一根导体带正电、另一根带负电”的横向静电场来维持，用电荷的来回流动形成横向电场。**只有一根管子，没有第二个电极**，无处安放“负电荷”，也就无法建立横向静电场。所以必须至少**两个相互绝缘的导体**才能传输 TEM 波。
+
+> **【考点】**
+> 结论一：**空心单导体金属波导中只能存在 TE 波与 TM 波，不存在 TEM 波。**
+> 结论二：**TEM 波必须由双导体（或多导体）系统传输**，同轴线、双线、带状线可以，矩形/圆波导不行。
+> 结论三：由此，**波导是“高通”器件**——每种模式都有一个截止频率，低于它就不能传输；而 TEM 传输线没有截止频率。
+> 常见错误：认为“波导里也有电场、也有磁场，所以也可以看成 TEM”。**不对**，波导中的 $E_z$ 或 $H_z$ 必然不为零，且必然存在截止。
+
+> **【思考】** 介质波导（如光纤）也是“单导体”（根本没有导体），为什么它能传输能量？提示：它传的是混合模（HE/EH），不是 TEM，靠的是全反射而不是导体约束。
+
+### 3.1.5 本节考点清单
+
+| 题型 | 常见设问 | 易错点 | 难度 |
+|---|---|---|---|
+| 概念选择 | 三类波型的定义与判定 | 把 TE 说成“电场是横的”却写成 $E_z\neq0$ | ★ |
+| 简答/证明 | 证明空心波导中无 TEM 波 | 只说“因为只有一根导体”不给方程论证；漏掉单连通条件 | ★★★ |
+| 概念辨析 | 单导体波导、双导体波导各能传什么波 | 误认为圆波导可传 TEM | ★★ |
+| 对比 | “路分析法”与“场分析法”的区别 | 把场分析法说成“更简单” | ★ |
+
+---
+
+## 3.2 导波原理
+
+本节把上一节的思想变成**可计算的框架**：先把场分解成横向与纵向，再证明只要知道了 $E_z$ 和 $H_z$，**所有**横向分量都能算出来。这一节是本章的“引擎”，后面矩形波导、圆波导都是它的具体实现。
+
+### 3.2.1 出发点：无源区的麦克斯韦方程组
+
+**基本假设（波导模型）：**
+
+1. **规则波导**：横截面形状与尺寸沿 $z$ 轴不变；
+2. 内部充填**均匀、线性、各向同性**的理想介质（一般是空气，$\mu_0$、$\varepsilon_0$；若填充介质则用 $\mu$、$\varepsilon$）；
+3. 波导内**无自由电荷、无传导电流**（无源区）：$\mathbf{J}=0$，$\rho=0$；
+4. 波导内是**时谐场**，用相量表示，且约定时间因子为 $e^{j\omega t}$，于是算符 $\partial/\partial t\to j\omega$；
+5. 波沿 $+z$ 方向传播，波导**无限长、无反射**；
+6. 四壁为**理想导体**（$\sigma\to\infty$），边界条件为
+$$\hat n\times\mathbf{E}=0\qquad(\text{电场垂直于导体表面})$$
+$$\hat n\cdot\mathbf{H}=0\qquad(\text{磁场平行于导体表面})$$
+
+无源区的麦克斯韦方程组（相量形式）为
+
+$$
+\begin{cases}
+\nabla\times\mathbf{H}=j\omega\varepsilon\mathbf{E}\\[2pt]
+\nabla\times\mathbf{E}=-j\omega\mu\mathbf{H}\\[2pt]
+\nabla\cdot\mathbf{E}=0\\[2pt]
+\nabla\cdot\mathbf{H}=0
+\end{cases}
+\tag{3-2-1}
+$$
+
+> **【核心概念】**
+> 四个方程的物理含义：
+> - $\nabla\times\mathbf{H}=j\omega\varepsilon\mathbf{E}$：**时变的电场由电流或变化的磁场产生**（安培环路定律）。在无源区，只有位移电流 $j\omega\varepsilon\mathbf{E}$ 这个“源”，它又来自时变磁场——所以**时变的 $\mathbf{E}$ 产生 $\mathbf{H}$**。
+> - $\nabla\times\mathbf{E}=-j\omega\mu\mathbf{H}$：**时变的磁场由时变电场产生的感生电场维持**（法拉第电磁感应定律）。所以**时变的 $\mathbf{H}$ 产生 $\mathbf{E}$**。
+> - 两条“旋度方程”互相耦合，形成一个自持的振荡系统——**这就是电磁波能够在真空中独立传播的原因**。
+> - $\nabla\cdot\mathbf{H}=0$：磁力线无头无尾，**永远闭合**。
+> - $\nabla\cdot\mathbf{E}=0$：无源区电场无散，电力线也**闭合成圈**（这是后面 TE/TM 模电力线形状的依据）。
+
+### 3.2.2 亥姆霍兹方程（波动方程）
+
+场方程组中的两个旋度方程相互耦合，我们需要把它们“解耦”，得到只含 $\mathbf{E}$ 或只含 $\mathbf{H}$ 的方程。
+
+> **【公式推导】从麦克斯韦方程到亥姆霍兹方程**
+>
+> 对 $\nabla\times\mathbf{E}=-j\omega\mu\mathbf{H}$ 两边取旋度：
+> $$\nabla\times\nabla\times\mathbf{E}=-j\omega\mu(\nabla\times\mathbf{H})=-j\omega\mu\cdot j\omega\varepsilon\mathbf{E}=\omega^2\mu\varepsilon\mathbf{E}$$
+> 利用**双旋度恒等式**（一定要记牢）
+> $$\nabla\times\nabla\times\mathbf{E}=\nabla(\nabla\cdot\mathbf{E})-\nabla^2\mathbf{E}$$
+> 在无源区 $\nabla\cdot\mathbf{E}=0$，于是
+> $$-\nabla^2\mathbf{E}=\omega^2\mu\varepsilon\mathbf{E}\ \Longrightarrow\ \nabla^2\mathbf{E}+\omega^2\mu\varepsilon\mathbf{E}=0$$
+> 令
+> $$k^2=\omega^2\mu\varepsilon$$
+> 得**亥姆霍兹方程（矢量波动方程）**
+> $$\nabla^2\mathbf{E}+k^2\mathbf{E}=0$$
+> 对 $\nabla\times\mathbf{H}=j\omega\varepsilon\mathbf{E}$ 作完全相同的操作（用 $\nabla\cdot\mathbf{H}=0$），得
+> $$\nabla^2\mathbf{H}+k^2\mathbf{H}=0$$
+>
+> **$k$ 的物理意义：** 称为**波数**（wave number），单位 $\mathrm{rad/m}$，$k=\omega\sqrt{\mu\varepsilon}=\omega/v=2\pi/\lambda$，表示单位长度上相位变化的弧度数。在真空中
+> $$k_0=\omega\sqrt{\mu_0\varepsilon_0}=\frac{\omega}{c}=\frac{2\pi}{\lambda_0}$$
+> 其中 $c=1/\sqrt{\mu_0\varepsilon_0}=2.998\times10^{8}\ \mathrm{m/s}$。
+
+
+$$
+\boxed{\ \nabla^2\mathbf{E}+k^2\mathbf{E}=0,\qquad \nabla^2\mathbf{H}+k^2\mathbf{H}=0,\qquad k^2=\omega^2\mu\varepsilon\ }
+\tag{3-2-2}
+$$
+
+> **【易错点】**
+> $k^2=\omega^2\mu\varepsilon$ 中，介质决定 $k$（$k$ 是**介质的固有属性**），而截止波数 $k_c$ 由**波导截面形状与尺寸**决定，二者来源完全不同，千万不要混。
+> 另外，亥姆霍兹方程是**矢量**方程，不能直接拆成三个标量方程（因为 $\nabla^2\mathbf{E}$ 的 $x$ 分量还牵扯 $\mathbf{E}$ 的其他分量）。但**在直角坐标系中**，$\nabla^2\mathbf{E}=\hat x\nabla^2E_x+\hat y\nabla^2E_y+\hat z\nabla^2E_z$ 成立，所以直角坐标下可以拆；这也是**矩形波导能顺利求解而圆波导要绕一圈（先解纵向分量）的原因之一**。
+
+### 3.2.3 纵向与横向分离，引入截止波数 $k_c$
+
+要把三维问题降成二维，我们分离出 $z$ 方向的传播因子。
+
+设波沿 $+z$ 传播，场的解写成分离变量形式
+
+$$
+\begin{aligned}
+\mathbf{E}(x,y,z)&=\mathbf{E}_t(x,y)e^{-\gamma z}+\hat zE_z(x,y)e^{-\gamma z}\\
+\mathbf{H}(x,y,z)&=\mathbf{H}_t(x,y)e^{-\gamma z}+\hat zH_z(x,y)e^{-\gamma z}
+\end{aligned}
+\tag{3-2-3}
+$$
+
+其中下标 $t$ 表示横向分量，$\gamma$ 是**传播常数**，一般 $\gamma=\alpha+j\beta$（$\alpha$ 为衰减常数，$\beta$ 为相移常数）。
+
+> **【核心概念】为什么是 $e^{-\gamma z}$？**
+> 1. 波沿 $+z$ 传播，相位应随 $z$ 增加而**滞后**，所以指数上带负号；若是沿 $-z$（反射）波，则写成 $e^{+\gamma z}$。
+> 2. $\gamma=\alpha+j\beta$ 时，$e^{-\gamma z}=e^{-\alpha z}e^{-j\beta z}$：**$e^{-j\beta z}$ 表示沿 $+z$ 的相位推进（行波），$e^{-\alpha z}$ 表示幅度沿 $+z$ 的衰减。**
+> 3. 把 $e^{-\gamma z}$ 代入后，$\partial/\partial z\to-\gamma$，三维问题就降成横截面上的二维问题；$\gamma$ 作为一个待定的常数出现，最后由波动方程与边界条件共同确定。
+> 4. 无耗时 $\alpha=0$，$\gamma=j\beta$，此时 $e^{-\gamma z}=e^{-j\beta z}$，与第二章传输线的 $e^{-j\beta z}$ 完全一致。**这就是两个章节的接口。**
+
+把 $\partial/\partial z\to-\gamma$ 与 $\nabla^2=\nabla_t^2+\partial^2/\partial z^2=\nabla_t^2+\gamma^2$ 代入亥姆霍兹方程，对 $E_z$ 分量得
+
+$$\left(\nabla_t^2+\gamma^2\right)E_z+k^2E_z=0$$
+
+即
+
+$$\nabla_t^2E_z+\left(k^2+\gamma^2\right)E_z=0$$
+
+令
+
+$$
+k_c^2=k^2+\gamma^2=\omega^2\mu\varepsilon+\gamma^2
+\tag{3-2-4}
+$$
+
+则纵向分量满足**二维亥姆霍兹方程（支配方程）**
+
+$$
+\nabla_t^2E_z+k_c^2E_z=0,\qquad
+\nabla_t^2H_z+k_c^2H_z=0
+\tag{3-2-5}
+$$
+
+其中横向拉普拉斯算符在直角坐标下为
+
+$$\nabla_t^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}$$
+
+$k_c$ 称为**截止波数**（cutoff wavenumber），单位 $\mathrm{rad/m}$。
+
+> **【核心概念】$k_c$ 到底是什么？**
+> $k_c^2=k^2+\gamma^2$ 是一条**约束条件**，它把三个量锁在一起：
+> - $k=\omega\sqrt{\mu\varepsilon}$：只与**工作频率和介质**有关，是自然给定的；
+> - $k_c$：只与**波导截面尺寸和模式序号**有关，是“几何给定 + 人为选择”的；
+> - $\gamma=\sqrt{k_c^2-k^2}$：由前两者决定，是**结果**。
+>
+> 于是立刻有三档结论：
+> - $k>k_c$（即 $f>f_c$）：$\gamma=j\beta$，纯虚数 → **传播**；
+> - $k<k_c$（即 $f<f_c$）：$\gamma=\alpha$，纯实数 → **截止（指数衰减）**；
+> - $k=k_c$（即 $f=f_c$）：$\gamma=0$ → **临界**，$\beta=0$、$\lambda_g\to\infty$、$v_p\to\infty$。
+>
+> **$k_c$ 的求解方法是本章的灵魂：把 $\nabla_t^2\Phi+k_c^2\Phi=0$ 加上导体边界条件，得到一个本征值问题（eigenvalue problem），本征值就是 $k_c^2$，本征函数就是模式的横向场分布。** 不同的截面形状给出不同的本征值序列，这正是矩形波导与圆波导差别之所在。
+
+### 3.2.4 横向分量用纵向分量表示（波导理论的枢纽）
+
+现在做本章最关键的一步：证明**只要解出 $E_z$ 和 $H_z$，所有横向分量都可以代数地求出**。这样就把 6 个未知分量的问题压缩成 2 个标量问题。
+
+> **【公式推导】横向—纵向关系式的来历**
+>
+> 把 $\nabla\times\mathbf{H}=j\omega\varepsilon\mathbf{E}$ 写成三个分量方程（直角坐标），并利用 $\partial/\partial z\to-\gamma$：
+> $$\begin{cases}
+> \dfrac{\partial H_z}{\partial y}+\gamma H_y=j\omega\varepsilon E_x &\text{(a)}\\[8pt]
+> -\gamma H_x-\dfrac{\partial H_z}{\partial x}=j\omega\varepsilon E_y &\text{(b)}\\[8pt]
+> \dfrac{\partial H_y}{\partial x}-\dfrac{\partial H_x}{\partial y}=j\omega\varepsilon E_z &\text{(c)}
+> \end{cases}$$
+> 对 $\nabla\times\mathbf{E}=-j\omega\mu\mathbf{H}$ 作同样处理：
+> $$\begin{cases}
+> \dfrac{\partial E_z}{\partial y}+\gamma E_y=-j\omega\mu H_x &\text{(d)}\\[8pt]
+> -\gamma E_x-\dfrac{\partial E_z}{\partial x}=-j\omega\mu H_y &\text{(e)}\\[8pt]
+> \dfrac{\partial E_y}{\partial x}-\dfrac{\partial E_x}{\partial y}=-j\omega\mu H_z &\text{(f)}
+> \end{cases}$$
+> 现在**只用 (a)(b)(d)(e) 四个方程**消元：
+> 由 (a) 解出 $H_y=\dfrac{1}{\gamma}\left(j\omega\varepsilon E_x-\dfrac{\partial H_z}{\partial y}\right)$，代入 (d)，整理得
+> $$\left(\gamma^2+\omega^2\mu\varepsilon\right)E_x=-\gamma\frac{\partial E_z}{\partial x}-j\omega\mu\frac{\partial H_z}{\partial y}$$
+> 注意到 $\gamma^2+k^2=k_c^2$，即得 $E_x$ 的表达式。其余三个分量同理。
+> 而 (c)(f) 两个方程**在解出横向分量之后自动满足**（可用 (e)(a) 求导验证），它们给出的是横向场的“无散”约束，不需要额外求解。
+> **这一步回答了“为什么方程组里的 (c)(f) 看起来没用”：它们不是多余的，而是被前面四个方程蕴含，属于恒等式。**
+
+最终得到**横向分量用纵向分量表示的完整关系式**：
+
+$$
+\begin{aligned}
+E_x&=-\frac{1}{k_c^2}\left(\gamma\frac{\partial E_z}{\partial x}+j\omega\mu\frac{\partial H_z}{\partial y}\right)\\[8pt]
+E_y&=-\frac{1}{k_c^2}\left(\gamma\frac{\partial E_z}{\partial y}-j\omega\mu\frac{\partial H_z}{\partial x}\right)\\[8pt]
+H_x&=\frac{1}{k_c^2}\left(j\omega\varepsilon\frac{\partial E_z}{\partial y}-\gamma\frac{\partial H_z}{\partial x}\right)\\[8pt]
+H_y&=-\frac{1}{k_c^2}\left(j\omega\varepsilon\frac{\partial E_z}{\partial x}+\gamma\frac{\partial H_z}{\partial y}\right)
+\end{aligned}
+\tag{3-2-6}
+$$
+
+> **【记忆技巧】**
+> 1. 四个式子**共用**前置因子 $-1/k_c^2$（注意 $H_x$ 在本书写法中把 $1/k_c^2$ 提出了括号，括号内首项为 $j\omega\varepsilon\,\partial E_z/\partial y$，符号为“正”）。
+> 2. 括号内永远是“**一项含 $\partial E_z$，一项含 $\partial H_z$**”；含 $E_z$ 的那项带 $\gamma$，含 $H_z$ 的那项带 $j\omega\mu$ 或 $j\omega\varepsilon$。
+> 3. **交叉**规律：$E_x$ 对 $H_z$ 求的是 $\partial y$（交叉），$E_y$ 对 $H_z$ 求的是 $\partial x$（同行）；$H_x$ 对 $E_z$ 求 $\partial y$（同行），$H_y$ 对 $E_z$ 求 $\partial x$（交叉）。可用“$x$ 配 $y$、$y$ 配 $x$”辅助。
+> 4. 记忆口诀：**“纵向解出来，横向代数算”。**
+>
+> **【易错点】**
+> - $\gamma$ 与 $j\beta$ 不可混用：一般在求解阶段保留 $\gamma$，最后令 $\gamma=j\beta$ 得到相量形式的传播解。
+> - 当 $k_c=0$（即 TEM 波）时，上式**分母为零而失效**！这正是 TEM 波必须单独处理的原因——TEM 波满足 $E_z=H_z=0$，$k_c^2=k^2+\gamma^2=0$ 要求 $\gamma^2=-k^2$，即 $\gamma=jk$，$\beta=k$，无截止。**公式 (3-2-6) 的适用范围是 $k_c\neq0$ 的 TE、TM 波。**
+
+### 3.2.5 三类波型的求解路线
+
+把上面的框架分别套到三类波型上：
+
+| 波型 | 前提 | 待解方程 | 使用的边界条件 | $k_c$ |
+|---|---|---|---|---|
+| **TEM** | $E_z=H_z=0$ | 横向场满足 $\nabla_t^2\varphi=0$（拉普拉斯方程，不是本征值问题） | 双导体壁上 $\varphi$ 为常数 | $k_c=0$，$\gamma=jk$，无截止 |
+| **TE（H 波）** | $E_z=0$，$H_z\neq0$ | $\nabla_t^2H_z+k_c^2H_z=0$ | $\left.\dfrac{\partial H_z}{\partial n}\right|_{\text{壁}}=0$（等效于 $H_n=0$） | 由边界条件定出本征值 |
+| **TM（E 波）** | $H_z=0$，$E_z\neq0$ | $\nabla_t^2E_z+k_c^2E_z=0$ | $\left.E_z\right|_{\text{壁}}=0$ | 由边界条件定出本征值 |
+
+> **【核心概念】TE 模的边界条件为什么是 $\partial H_z/\partial n=0$？**
+> 理想导体壁上法向磁场必须为零：$\hat n\cdot\mathbf{H}=0$。在波导侧壁上，法向就是横向 $\hat n$，所以横向磁场在壁上的法向分量 $H_n=0$。
+> 又由 (3-2-6) 中 $H$ 的表达式（TE 模 $E_z=0$）：在壁上 $H_n$ 正比于 $\partial H_z/\partial n$。既然 $H_n=0$，只能是
+> $$\left.\frac{\partial H_z}{\partial n}\right|_{\text{壁}}=0$$
+> 即 $H_z$ 在导体壁上**法向导数为零**，$H_z$ 分布在此处取极值。这就是所谓的**“磁壁”条件**。对矩形波导的两个侧壁（$x=0,a$）就有 $\partial H_z/\partial x=0$；对上下壁（$y=0,b$）有 $\partial H_z/\partial y=0$。
+
+### 3.2.6 本征模思想：为什么要求“通解”而不是“某个激励的解”
+
+> **【核心概念】本征模（eigenmode）的两条基本性质**
+> **完备性（completeness）**：波导中任何实际存在的微波场，**能且仅能**由全部 TE$_{mn}$ 模与 TM$_{mn}$ 模的线性叠加表示：
+> $$\mathbf{E}=\sum_{m,n}A_{mn}\mathbf{E}_{mn},\qquad \mathbf{H}=\sum_{m,n}B_{mn}\mathbf{H}_{mn}$$
+> **正交性（orthogonality）**：不同模式之间**没有能量交换、互不耦合**：
+> $$\int_\Sigma\mathbf{E}_i\times\mathbf{H}_j^*\cdot\hat z\,dS=0\qquad(i\neq j)$$
+>
+> 这两条性质使得波导成为一个**线性系统**，其“基”就是各个模式。“完备性”保证任何激励都能被表示，“正交性”保证各个模式各管各的、可以独立分析、独立设计。
+>
+> 打个比方：波导里的模式就像**傅里叶级数的各个谐波**、像**三维空间的一组基矢量**、像**乐曲中的七个音阶**。知道了全部基，就掌握了这个空间；知道了全部模式，就掌握了这根波导。
+
+因此本章的任务十分明确：**不惜篇幅求出所有模式（通解），而不是针对某一种激励去解一个偏微分方程的特解。** 有了通解，任何具体激励问题就退化成“求展开系数”的代数问题（用边界条件或模式匹配定系数）。这也是 3.5 节要回答的问题。
+
+### 3.2.7 本节考点清单
+
+| 题型 | 常见设问 | 易错点 | 难度 |
+|---|---|---|---|
+| 推导 | 由麦克斯韦方程推亥姆霍兹方程 | 忘记 $\nabla\cdot\mathbf{E}=0$，或写错双旋度恒等式 | ★★ |
+| 计算 | 已知 $f$、$\mu$、$\varepsilon$ 求 $k$ | 把 $k$ 与 $k_c$ 混为一谈 | ★ |
+| 简答 | 说明 $e^{-\gamma z}$ 的含义 | 把 $\gamma$ 说成纯实数 | ★ |
+| 推导 | 由 (a)(b)(d)(e) 导出横向—纵向关系式 | 符号搞错、漏掉约束条件 $k_c^2=k^2+\gamma^2$ | ★★★★ |
+| 简答 | 三类波型的支配方程与边界条件 | TE 模用 Dirichlet 条件、TM 模用 Neumann 条件（正好写反） | ★★★ |
+| 概念 | 完备性与正交性的意义 | 认为“模式之间可以随意转换” | ★★ |
+
+---
+
+## 3.3 矩形波导
+
+矩形波导是工程上用得最多的波导。它的截面是矩形，直角坐标下分离变量非常顺利，能得到**闭式的解析解**。本节要把所有模式解出来，再逐条讨论传输特性，最后落到“怎么选尺寸”。
+
+### 3.3.1 几何模型与边界条件
+
+设波导**宽边为 $a$（沿 $x$ 方向）、窄边为 $b$（沿 $y$ 方向）**，且 $a>b$；波沿 $+z$ 传播；内部介质为 $\mu$、$\varepsilon$（一般为空气）；四壁为理想导体。内壁位置为
+
+$$x=0,\quad x=a,\qquad y=0,\quad y=b$$
+
+<figure class="fig">
+<svg viewBox="0 0 998 400" role="img" aria-label="矩形波导的坐标系与几何尺寸">
+  <defs>
+    <marker id="ax1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-2)"/></marker>
+  </defs>
+  <\!-- 立体示意 -->
+  <polygon points="120,90 320,90 320,240 120,240" fill="none" stroke="var(--line)" stroke-width="1.6"/>
+  <polygon points="120,90 200,40 400,40 320,90" fill="none" stroke="var(--line)" stroke-width="1.6"/>
+  <polygon points="320,240 400,190 400,40 320,90" fill="none" stroke="var(--line)" stroke-width="1.6"/>
+  <line x1="120" y1="240" x2="200" y2="190" stroke="var(--line)" stroke-width="1.6"/>
+  <line x1="200" y1="190" x2="400" y2="190" stroke="var(--line)" stroke-width="1.6"/>
+  <\!-- 坐标轴 -->
+  <line x1="128" y1="232" x2="228" y2="232" stroke="var(--ink-2)" stroke-width="2" marker-end="url(#ax1)"/>
+  <text x="232" y="238" font-size="14" fill="var(--ink-2)">x</text>
+  <line x1="128" y1="232" x2="128" y2="132" stroke="var(--ink-2)" stroke-width="2" marker-end="url(#ax1)"/>
+  <text x="112" y="128" font-size="14" fill="var(--ink-2)">y</text>
+  <line x1="128" y1="232" x2="238" y2="172" stroke="var(--ink-2)" stroke-width="2" marker-end="url(#ax1)"/>
+  <text x="242" y="170" font-size="14" fill="var(--ink-2)">z</text>
+  <\!-- 尺寸标注 -->
+  <line x1="120" y1="262" x2="320" y2="262" stroke="var(--warn)" stroke-width="1.4"/>
+  <line x1="120" y1="256" x2="120" y2="268" stroke="var(--warn)"/>
+  <line x1="320" y1="256" x2="320" y2="268" stroke="var(--warn)"/>
+  <text x="212" y="282" font-size="14" fill="var(--warn)">a（宽边，x 方向）</text>
+  <line x1="96" y1="90" x2="96" y2="240" stroke="var(--accent)" stroke-width="1.4"/>
+  <line x1="90" y1="90" x2="102" y2="90" stroke="var(--accent)"/>
+  <line x1="90" y1="240" x2="102" y2="240" stroke="var(--accent)"/>
+  <text x="60" y="170" font-size="14" fill="var(--accent)" transform="rotate(-90 60,170)">b（窄边）</text>
+  <line x1="330" y1="100" x2="392" y2="52" stroke="var(--brand)" stroke-width="2" marker-end="url(#ax1)"/>
+  <text x="396" y="48" font-size="14" fill="var(--brand)">传播方向 +z</text>
+  <\!-- 右：横截面 -->
+  <rect x="540" y="80" width="220" height="130" fill="none" stroke="var(--line)" stroke-width="1.8"/>
+  <text x="650" y="66" text-anchor="middle" font-size="13.5" fill="var(--ink)">横截面（俯视，看向 +z）</text>
+  <line x1="540" y1="240" x2="760" y2="240" stroke="var(--warn)" stroke-width="1.4"/>
+  <line x1="540" y1="234" x2="540" y2="246" stroke="var(--warn)"/>
+  <line x1="760" y1="234" x2="760" y2="246" stroke="var(--warn)"/>
+  <text x="650" y="262" text-anchor="middle" font-size="13" fill="var(--warn)">a</text>
+  <line x1="784" y1="80" x2="784" y2="210" stroke="var(--accent)" stroke-width="1.4"/>
+  <line x1="778" y1="80" x2="790" y2="80" stroke="var(--accent)"/>
+  <line x1="778" y1="210" x2="790" y2="210" stroke="var(--accent)"/>
+  <text x="800" y="150" font-size="13" fill="var(--accent)">b</text>
+  <text x="548" y="102" font-size="12" fill="var(--ink-2)">x=0 壁</text>
+  <text x="716" y="102" font-size="12" fill="var(--ink-2)">x=a 壁</text>
+  <text x="548" y="200" font-size="12" fill="var(--ink-2)">y=0 壁</text>
+  <text x="716" y="200" font-size="12" fill="var(--ink-2)">y=b 壁</text>
+  <text x="546" y="300" font-size="12.5" fill="var(--ink-2)">习惯称 x=0、x=a 两面为“窄壁”（宽 b），y=0、y=b 两面为“宽壁”（宽 a）。</text>
+  <text x="546" y="322" font-size="12.5" fill="var(--ink-2)">边界条件：n^×E=0（E 必须垂直于导体壁），n^·H=0（H 必须平行于导体壁）。</text>
+  <text x="120" y="340" font-size="12.5" fill="var(--ink-2)">内充均匀、线性、各向同性介质（一般为空气），波导沿 z 无限长、无反射，截面尺寸沿 z 不变。</text>
+  <text x="120" y="362" font-size="12.5" fill="var(--ink-2)">工程意义：a&gt;b 使 TE₁₀ 模截止波长 2a 最长，从而最早“开闸”，成为主模。</text>
+</svg>
+<figcaption>图 3-2　矩形波导的坐标系、几何尺寸与边界条件</figcaption>
+</figure>
+
+### 3.3.2 TE 模（H 模）：解 $H_z$
+
+由 $E_z=0$、$H_z\neq0$，支配方程为 $\nabla_t^2H_z+k_c^2H_z=0$，在直角坐标下写全：
+
+
+$$
+\frac{\partial^2H_z}{\partial x^2}+\frac{\partial^2H_z}{\partial y^2}+k_c^2H_z=0
+\tag{3-3-1}
+$$
+
+设 $H_z(x,y,z)=H_{0z}(x,y)e^{-j\beta z}$（已假定无耗、沿 $+z$ 传播），并用**分离变量**令
+
+$$H_{0z}(x,y)=X(x)Y(y)$$
+
+代入并除以 $X(x)Y(y)$，得
+
+$$-\frac{1}{X}\frac{d^2X}{dx^2}-\frac{1}{Y}\frac{d^2Y}{dy^2}=k_c^2$$
+
+左端两项分别只与 $x$、$y$ 有关，右端是常数，故两项各自必为常数。令
+
+$$\frac{1}{X}\frac{d^2X}{dx^2}=-k_x^2,\qquad \frac{1}{Y}\frac{d^2Y}{dy^2}=-k_y^2$$
+
+得三个方程
+
+$$X''+k_x^2X=0,\qquad Y''+k_y^2Y=0,\qquad k_x^2+k_y^2=k_c^2$$
+
+通解为
+
+$$X(x)=A_1\cos k_xx+A_2\sin k_xx,\qquad Y(y)=B_1\cos k_yy+B_2\sin k_yy$$
+
+**代入边界条件定常数。** TE 模在壁上满足 $\partial H_z/\partial n=0$：
+
+- 在**窄壁** $x=0$、$x=a$ 上 $E_y=0$。由 TE 模公式 $E_y=\dfrac{j\omega\mu}{k_c^2}\dfrac{\partial H_z}{\partial x}$，得 $\left.\dfrac{\partial H_z}{\partial x}\right|_{x=0,a}=0$。
+
+  代入 $X'(x)=-A_1k_x\sin k_xx+A_2k_x\cos k_xx$：
+  - $x=0$：$X'(0)=A_2k_x=0\Rightarrow A_2=0$（取 $k_x\neq0$）；
+  - $x=a$：$X'(a)=-A_1k_x\sin k_xa=0\Rightarrow \sin k_xa=0\Rightarrow k_xa=m\pi$，即
+    $$k_x=\frac{m\pi}{a},\qquad m=0,1,2,\cdots$$
+
+- 在**宽壁** $y=0$、$y=b$ 上 $E_x=0$。由 $E_x=-\dfrac{j\omega\mu}{k_c^2}\dfrac{\partial H_z}{\partial y}$（无耗时 $\gamma=j\beta$），得 $\left.\dfrac{\partial H_z}{\partial y}\right|_{y=0,b}=0$：
+  - $y=0$：$B_2=0$；
+  - $y=b$：$\sin k_yb=0\Rightarrow k_y=\dfrac{n\pi}{b}$，$n=0,1,2,\cdots$
+
+于是矩形波导**TE 模的基本解（本征模）**为
+
+
+$$
+H_z=H_{mn}\cos\frac{m\pi x}{a}\cos\frac{n\pi y}{b}\,e^{-j\beta z}
+\tag{3-3-2}
+$$
+
+
+$$
+k_c^2=k_x^2+k_y^2=\left(\frac{m\pi}{a}\right)^2+\left(\frac{n\pi}{b}\right)^2
+\tag{3-3-3}
+$$
+
+> **【核心概念】$m$、$n$ 的物理意义**
+> - $m$ —— **沿 $x$ 方向（宽边）场变化的半波（驻波）个数**。$m=0$ 表示沿 $x$ 方向没有变化（场在宽边上均匀），$m=1$ 表示宽边上正好有半个驻波（场从 0 变到最大又回 0）。
+> - $n$ —— **沿 $y$ 方向（窄边）场变化的半波（驻波）个数**。
+> - 一组 $(m,n)$ 对应一种模式，记作 **TE$_{mn}$**；所有 TE$_{mn}$ 模的线性组合构成 TE 波的**通解**。
+
+**TE 模的全部横向分量**（把 (3-3-2) 代入 (3-2-6)，令 $\gamma=j\beta$）：
+
+$$
+\begin{aligned}
+E_x&=-\frac{j\omega\mu}{k_c^2}\frac{n\pi}{b}H_{mn}\cos\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\,e^{-j\beta z}\\[6pt]
+E_y&=\frac{j\omega\mu}{k_c^2}\frac{m\pi}{a}H_{mn}\sin\frac{m\pi x}{a}\cos\frac{n\pi y}{b}\,e^{-j\beta z}\\[6pt]
+E_z&=0\\[6pt]
+H_x&=\frac{j\beta}{k_c^2}\frac{m\pi}{a}H_{mn}\sin\frac{m\pi x}{a}\cos\frac{n\pi y}{b}\,e^{-j\beta z}\\[6pt]
+H_y&=\frac{j\beta}{k_c^2}\frac{n\pi}{b}H_{mn}\cos\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\,e^{-j\beta z}
+\end{aligned}
+\tag{3-3-4}
+$$
+
+> **【易错点】$m$、$n$ 不能同时为零。**
+> 若 $m=n=0$，则 $k_c=0$，且 (3-3-4) 中所有含 $m\pi/a$ 或 $n\pi/b$ 的项全为零：$E_x=E_y=H_x=H_y=0$，同时 $H_z=H_{00}$ 是常数，而由 $\nabla\times\mathbf{E}=-j\omega\mu\mathbf{H}$ 可得 $E_x=E_y=0$ 要求 $H_z=0$。于是**全部场分量为零**，是平凡解。
+> 物理上：$m=n=0$ 意味着场沿横向完全不变，这是 TEM 波的形态，而空心波导不支持 TEM 波。**所以 TE$_{mn}$ 模要求 $m+n\geq1$。**
+
+### 3.3.3 TM 模（E 模）：解 $E_z$
+
+由 $H_z=0$、$E_z\neq0$，支配方程为 $\nabla_t^2E_z+k_c^2E_z=0$。分离变量的过程与 TE 模**完全相同**（$k_x=m\pi/a$、$k_y=n\pi/b$ 的来历也一样），差别只在**边界条件**：
+
+TM 模在导体壁上要求切向电场为零，其中就包括 $E_z$：$\left.E_z\right|_{\text{壁}}=0$。于是
+
+- $x=0$：$X(0)=A_1=0\Rightarrow A_1=0$；
+- $x=a$：$X(a)=A_2\sin k_xa=0\Rightarrow k_x=\dfrac{m\pi}{a}$，$m=1,2,3,\cdots$
+- $y=0$：$B_1=0$；$y=b$：$k_y=\dfrac{n\pi}{b}$，$n=1,2,3,\cdots$
+
+得到 TM 模的**基本解**
+
+
+$$
+E_z=E_{mn}\sin\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\,e^{-j\beta z}
+\tag{3-3-5}
+$$
+
+
+$$
+k_c^2=\left(\frac{m\pi}{a}\right)^2+\left(\frac{n\pi}{b}\right)^2
+\tag{3-3-6}
+$$
+
+**TM 模的全部横向分量：**
+
+$$
+\begin{aligned}
+E_x&=-\frac{j\beta}{k_c^2}\frac{m\pi}{a}E_{mn}\cos\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\,e^{-j\beta z}\\[6pt]
+E_y&=-\frac{j\beta}{k_c^2}\frac{n\pi}{b}E_{mn}\sin\frac{m\pi x}{a}\cos\frac{n\pi y}{b}\,e^{-j\beta z}\\[6pt]
+E_z&=E_{mn}\sin\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\,e^{-j\beta z}\\[6pt]
+H_x&=\frac{j\omega\varepsilon}{k_c^2}\frac{n\pi}{b}E_{mn}\sin\frac{m\pi x}{a}\cos\frac{n\pi y}{b}\,e^{-j\beta z}\\[6pt]
+H_y&=-\frac{j\omega\varepsilon}{k_c^2}\frac{m\pi}{a}E_{mn}\cos\frac{m\pi x}{a}\sin\frac{n\pi y}{b}\,e^{-j\beta z}
+\end{aligned}
+\tag{3-3-7}
+$$
+
+> **【考点】TE 与 TM 的三个关键差异**
+> | 对比项 | TE 模 | TM 模 |
+> |---|---|---|
+> | 纵向分量 | $H_z$，沿横向按 **$\cos$** 变化 | $E_z$，沿横向按 **$\sin$** 变化 |
+> | 壁上条件 | $\partial H_z/\partial n=0$（Neumann） | $E_z=0$（Dirichlet） |
+> | 允许的 $(m,n)$ | $m,n=0,1,2,\cdots$ 但**不能同时为 0** | $m,n=1,2,3,\cdots$（**都不能为 0**） |
+> | 最低次模 | **TE$_{10}$**（当 $a>b$） | **TM$_{11}$** |
+> | $k_c$ 公式 | 完全相同：$\sqrt{(m\pi/a)^2+(n\pi/b)^2}$ | 完全相同 |
+>
+> **因此 $k_c$（以及 $\lambda_c$、$f_c$）只由 $(m,n)$ 和 $a$、$b$ 决定，与是 TE 还是 TM 无关。** 这就是**简并模**的来源：$\lambda_{c,\mathrm{TE}_{mn}}=\lambda_{c,\mathrm{TM}_{mn}}$（只要两者都存在）。
+
+> **【易错点】为什么 TM 模不能有 $m=0$ 或 $n=0$？**
+> 因为 $E_z=E_{mn}\sin(m\pi x/a)\sin(n\pi y/b)$，若 $m=0$ 或 $n=0$，则 $E_z\equiv0$，与 TM 模的前提 $E_z\neq0$ 矛盾；同时所有横向分量也随之为零，退化为零场。**所以 TM$_{10}$、TM$_{01}$、TM$_{00}$ 这些模式根本不存在**，这一点与 TE 模不同（TE$_{10}$、TE$_{01}$ 都存在）。
+
+<figure class="fig">
+<svg viewBox="0 0 900 380" role="img" aria-label="矩形波导 TE11 与 TM11 模的横截面场分布">
+  <defs>
+    <marker id="arE" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--brand)"/></marker>
+    <marker id="arEx" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--warn)"/></marker>
+    <marker id="arH" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--accent)"/></marker>
+  </defs>
+  <\!-- TE11 -->
+  <text x="220" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">TE₁₁ 模横截面</text>
+  <rect x="80" y="52" width="280" height="180" fill="none" stroke="var(--line)" stroke-width="1.8"/>
+  <line x1="220" y1="52" x2="220" y2="232" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+  <line x1="80" y1="142" x2="360" y2="142" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+  <text x="366" y="146" font-size="11.5" fill="var(--ink-2)">y=b/2</text>
+  <text x="224" y="48" font-size="11.5" fill="var(--ink-2)">x=a/2</text>
+  <line x1="150" y1="142" x2="150" y2="82" stroke="var(--brand)" stroke-width="2" marker-end="url(#arE)"/>
+  <line x1="220" y1="142" x2="220" y2="72" stroke="var(--brand)" stroke-width="2.4" marker-end="url(#arE)"/>
+  <line x1="290" y1="142" x2="290" y2="82" stroke="var(--brand)" stroke-width="2" marker-end="url(#arE)"/>
+  <line x1="150" y1="142" x2="150" y2="202" stroke="var(--brand)" stroke-width="2" marker-end="url(#arE)"/>
+  <line x1="220" y1="142" x2="220" y2="212" stroke="var(--brand)" stroke-width="2.4" marker-end="url(#arE)"/>
+  <line x1="290" y1="142" x2="290" y2="202" stroke="var(--brand)" stroke-width="2" marker-end="url(#arE)"/>
+  <ellipse cx="150" cy="107" rx="24" ry="14" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <ellipse cx="290" cy="107" rx="24" ry="14" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <ellipse cx="150" cy="177" rx="24" ry="14" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <ellipse cx="290" cy="177" rx="24" ry="14" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <text x="220" y="252" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">Eₓ∝cos(π x)/(a)sin(π y)/(b)，Ey∝sin(π x)/(a)cos(π y)/(b)</text>
+  <text x="220" y="272" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">电力线从一侧壁出发、终止于另一侧壁，四角附近场趋于零</text>
+  <text x="220" y="292" text-anchor="middle" font-size="12.5" fill="var(--accent)">磁力线为围绕纵向 Hz 的闭合回线</text>
+  <\!-- TM11 -->
+  <text x="680" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">TM₁₁ 模横截面</text>
+  <rect x="540" y="52" width="280" height="180" fill="none" stroke="var(--line)" stroke-width="1.8"/>
+  <line x1="680" y1="52" x2="680" y2="232" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+  <line x1="540" y1="142" x2="820" y2="142" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+  <line x1="610" y1="142" x2="610" y2="82" stroke="var(--warn)" stroke-width="2" marker-end="url(#arEx)"/>
+  <line x1="750" y1="142" x2="750" y2="82" stroke="var(--warn)" stroke-width="2" marker-end="url(#arEx)"/>
+  <line x1="610" y1="142" x2="610" y2="202" stroke="var(--warn)" stroke-width="2" marker-end="url(#arEx)"/>
+  <line x1="750" y1="142" x2="750" y2="202" stroke="var(--warn)" stroke-width="2" marker-end="url(#arEx)"/>
+  <circle cx="680" cy="142" r="14" fill="none" stroke="var(--warn)" stroke-width="2"/>
+  <circle cx="680" cy="142" r="4" fill="var(--warn)"/>
+  <text x="700" y="138" font-size="11.5" fill="var(--warn)">Ez（最强）</text>
+  <ellipse cx="680" cy="97" rx="86" ry="30" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <ellipse cx="680" cy="188" rx="86" ry="30" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <line x1="680" y1="67" x2="680" y2="86" stroke="var(--accent)" stroke-width="1.8" marker-end="url(#arH)"/>
+  <line x1="680" y1="218" x2="680" y2="199" stroke="var(--accent)" stroke-width="1.8" marker-end="url(#arH)"/>
+  <text x="680" y="252" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">Ez∝sin(π x)/(a)sin(π y)/(b)，中心处 Ez 最大</text>
+  <text x="680" y="272" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">横向 Eₓ、Ey 由 ∇ₜEz 派生；Hz=0，磁力线全在横截面内</text>
+  <text x="680" y="292" text-anchor="middle" font-size="12.5" fill="var(--warn)">在四个壁上 Ez=0，是 TM 模的标志</text>
+  <line x1="60" y1="322" x2="840" y2="322" stroke="var(--line)"/>
+  <text x="60" y="346" font-size="12.5" fill="var(--ink-2)">对比：TE₁₁ 的纵向场是 Hz（横向 coscos 型，中心最强），TM₁₁ 的纵向场是 Ez（横向 sinsin 型，中心最强但四壁为零）。</text>
+  <text x="60" y="368" font-size="12.5" fill="var(--ink-2)">两者 kc 相同（λc=2ab/√(a²+b²)），构成一对简并模，但场结构完全不同，激励方式也不同。</text>
+</svg>
+<figcaption>图 3-3　矩形波导 TE$_{11}$ 与 TM$_{11}$ 模的横截面场分布对比</figcaption>
+</figure>
+
+### 3.3.4 TE$_{10}$ 模：主模的完整场表达式
+
+TE$_{10}$ 模（$m=1$，$n=0$）是矩形波导中**唯一**最重要的模式，必须把它的场结构背到滚瓜烂熟。把 $m=1$、$n=0$ 代入 (3-3-4)，注意 $\sin(0)=0$、$\cos(0)=1$：
+
+- $E_x\propto n/b=0$，所以 $E_x=0$；
+- $H_y\propto n/b=0$，所以 $H_y=0$；
+- $E_z=0$（TE 模本身就没有）；
+- 只剩 $E_y$、$H_x$、$H_z$ 三个分量。
+
+$$k_c=\frac{\pi}{a}\ \Longrightarrow\ \lambda_{c,\mathrm{TE}_{10}}=2a,\qquad f_{c,\mathrm{TE}_{10}}=\frac{c}{2a}\ (\text{空气})$$
+
+**TE$_{10}$ 模的完整场表达式（相量形式）：**
+
+$$
+\boxed{
+\begin{aligned}
+E_y&=-j\frac{\omega\mu a}{\pi}H_{10}\sin\frac{\pi x}{a}\,e^{-j\beta z}\\[6pt]
+H_x&=j\frac{\beta a}{\pi}H_{10}\sin\frac{\pi x}{a}\,e^{-j\beta z}\\[6pt]
+H_z&=H_{10}\cos\frac{\pi x}{a}\,e^{-j\beta z}\\[6pt]
+E_x&=E_z=H_y=0
+\end{aligned}}
+\tag{3-3-8}
+$$
+
+若改用**电场振幅归一化**，令 $E_0=j\dfrac{\omega\mu a}{\pi}H_{10}$（即 $E_y$ 在 $x=a/2$ 处的振幅），则
+
+$$
+E_y=E_0\sin\frac{\pi x}{a}e^{-j\beta z},\qquad
+H_x=\frac{E_0}{Z_{\mathrm{TE}_{10}}}\sin\frac{\pi x}{a}e^{-j\beta z},\qquad
+H_z=j\frac{E_0}{\omega\mu a/\pi}\cos\frac{\pi x}{a}e^{-j\beta z}
+\tag{3-3-9}
+$$
+
+这组形式在做功率、阻抗计算时更方便，**考试中两种写法都常见，关键是把系数和符号弄对**。
+
+写成**瞬时值**（取实部，$H_{10}$ 取实数）：
+
+$$
+\begin{aligned}
+e_y(x,z,t)&=\frac{\omega\mu a}{\pi}H_{10}\sin\frac{\pi x}{a}\cos(\omega t-\beta z+\pi)\\
+h_x(x,z,t)&=\frac{\beta a}{\pi}H_{10}\sin\frac{\pi x}{a}\cos\left(\omega t-\beta z+\frac{\pi}{2}\right)\\
+h_z(x,z,t)&=H_{10}\cos\frac{\pi x}{a}\cos(\omega t-\beta z)
+\end{aligned}
+\tag{3-3-10}
+$$
+
+> **【核心概念】TE$_{10}$ 场的三条“铁律”**
+> 1. **与 $y$ 无关。** $n=0$ 使所有场分量都不随 $y$ 变化，即**沿窄边方向场是均匀的**。这一点非常重要：它意味着波导沿窄边的尺寸 $b$ 对 TE$_{10}$ 的**场分布形状**没有影响，只影响功率容量和衰减，从而给“扁波导”设计留出了自由度。
+> 2. **沿 $x$ 是驻波。** $\sin(\pi x/a)$ 在 $x=0$、$x=a$ 为零，在 $x=a/2$ 最大；$\cos(\pi x/a)$ 在 $x=0,a$ 为 $\pm1$，在 $x=a/2$ 为零。总体上横向是**半个驻波**。
+> 3. **沿 $z$ 是行波。** 所有分量都带 $e^{-j\beta z}$，等相位面沿 $+z$ 以 $v_p$ 推进。
+
+<figure class="fig">
+<svg viewBox="0 0 1106 460" role="img" aria-label="TE10 模的横截面与纵剖面场分布">
+  <defs>
+    <marker id="a1" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--brand)"/></marker>
+    <marker id="a2" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--accent)"/></marker>
+  </defs>
+  <\!-- (a) 横截面 -->
+  <text x="200" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">(a) 横截面（沿 +z 看）</text>
+  <rect x="70" y="46" width="260" height="170" fill="none" stroke="var(--line)" stroke-width="1.8"/>
+  <line x1="70" y1="131" x2="330" y2="131" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+  <line x1="200" y1="46" x2="200" y2="216" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+  <line x1="90" y1="131" x2="90" y2="196" stroke="var(--brand)" stroke-width="1.8" marker-end="url(#a1)"/>
+  <line x1="125" y1="131" x2="125" y2="191" stroke="var(--brand)" stroke-width="2.2" marker-end="url(#a1)"/>
+  <line x1="160" y1="131" x2="160" y2="176" stroke="var(--brand)" stroke-width="2.8" marker-end="url(#a1)"/>
+  <line x1="200" y1="126" x2="200" y2="66" stroke="var(--brand)" stroke-width="3.4" marker-end="url(#a1)"/>
+  <line x1="240" y1="131" x2="240" y2="176" stroke="var(--brand)" stroke-width="2.8" marker-end="url(#a1)"/>
+  <line x1="275" y1="131" x2="275" y2="191" stroke="var(--brand)" stroke-width="2.2" marker-end="url(#a1)"/>
+  <line x1="310" y1="131" x2="310" y2="196" stroke="var(--brand)" stroke-width="1.8" marker-end="url(#a1)"/>
+  <line x1="90" y1="131" x2="90" y2="66" stroke="var(--brand)" stroke-width="1.8" marker-end="url(#a1)"/>
+  <line x1="125" y1="131" x2="125" y2="71" stroke="var(--brand)" stroke-width="2.2" marker-end="url(#a1)"/>
+  <line x1="160" y1="131" x2="160" y2="86" stroke="var(--brand)" stroke-width="2.8" marker-end="url(#a1)"/>
+  <line x1="240" y1="131" x2="240" y2="86" stroke="var(--brand)" stroke-width="2.8" marker-end="url(#a1)"/>
+  <line x1="275" y1="131" x2="275" y2="71" stroke="var(--brand)" stroke-width="2.2" marker-end="url(#a1)"/>
+  <line x1="310" y1="131" x2="310" y2="66" stroke="var(--brand)" stroke-width="1.8" marker-end="url(#a1)"/>
+  <ellipse cx="110" cy="112" rx="22" ry="13" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <ellipse cx="290" cy="112" rx="22" ry="13" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <ellipse cx="110" cy="156" rx="22" ry="13" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <ellipse cx="290" cy="156" rx="22" ry="13" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <line x1="166" y1="76" x2="234" y2="76" stroke="var(--accent)" stroke-width="1.8" marker-end="url(#a2)"/>
+  <line x1="234" y1="190" x2="166" y2="190" stroke="var(--accent)" stroke-width="1.8" marker-end="url(#a2)"/>
+  <text x="240" y="240" font-size="12.5" fill="var(--brand)">Ey 最大在 x=a/2，壁上为零</text>
+  <text x="240" y="260" font-size="12.5" fill="var(--accent)">H 力线：在 x=a/2 处穿过横截面，两侧折回</text>
+  <text x="240" y="280" font-size="12.5" fill="var(--ink-2)">两侧半区 Ey 反向（x&lt;a/2 与 x&gt;a/2 极性相反）</text>
+  <\!-- (b) 纵剖面 y-z 面 -->
+  <text x="660" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">(b) 纵剖面 y–z 面（x=a/2 处切开）</text>
+  <rect x="470" y="60" width="380" height="140" fill="none" stroke="var(--line)" stroke-width="1.8"/>
+  <line x1="470" y1="130" x2="850" y2="130" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+  <path d="M470,130 C500,70 540,70 570,130 C600,190 640,190 670,130 C700,70 740,70 770,130 C800,190 830,190 850,130"
+        fill="none" stroke="var(--brand)" stroke-width="1.8"/>
+  <path d="M470,130 C500,190 540,190 570,130 C600,70 640,70 670,130 C700,190 740,190 770,130 C800,70 830,70 850,130"
+        fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-dasharray="7 5"/>
+  <line x1="520" y1="88" x2="520" y2="172" stroke="var(--accent)" stroke-width="1.8" marker-end="url(#a2)"/>
+  <line x1="670" y1="88" x2="670" y2="172" stroke="var(--accent)" stroke-width="1.8" marker-end="url(#a2)"/>
+  <line x1="820" y1="88" x2="820" y2="172" stroke="var(--accent)" stroke-width="1.8" marker-end="url(#a2)"/>
+  <text x="470" y="52" font-size="12" fill="var(--ink-2)">y=0 壁</text>
+  <text x="470" y="216" font-size="12" fill="var(--ink-2)">y=b 壁</text>
+  <line x1="470" y1="232" x2="570" y2="232" stroke="var(--warn)" stroke-width="1.6" marker-end="url(#a1)"/>
+  <line x1="570" y1="232" x2="670" y2="232" stroke="var(--warn)" stroke-width="1.6" marker-end="url(#a1)"/>
+  <text x="676" y="236" font-size="12.5" fill="var(--warn)">λg（波导波长）</text>
+  <text x="660" y="264" font-size="12.5" fill="var(--ink-2)">Ey 沿 y 不变（n=0），故在 y–z 面上看是一族“沿 z 平移”的曲线</text>
+  <text x="660" y="284" font-size="12.5" fill="var(--ink-2)">实线、虚线分别表示两个不同时刻（相位差 π）的场形，随时间整体向 +z 平移</text>
+  <\!-- (c) 纵剖面 x-z 面 -->
+  <text x="200" y="330" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">(c) 纵剖面 x–z 面（y=b/2 处切开）</text>
+  <rect x="60" y="352" width="280" height="86" fill="none" stroke="var(--line)" stroke-width="1.6"/>
+  <line x1="60" y1="395" x2="340" y2="395" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+  <line x1="60" y1="395" x2="60" y2="360" stroke="var(--ink-2)" stroke-width="1.2"/>
+  <line x1="340" y1="395" x2="340" y2="360" stroke="var(--ink-2)" stroke-width="1.2"/>
+  <text x="46" y="392" font-size="11.5" fill="var(--ink-2)" text-anchor="end">x=0</text>
+  <text x="346" y="392" font-size="11.5" fill="var(--ink-2)">x=a</text>
+  <path d="M60,395 C96,428 124,428 160,395 C196,362 224,362 260,395 C296,428 316,428 340,395"
+        fill="none" stroke="var(--brand)" stroke-width="1.8"/>
+  <path d="M60,395 C96,362 124,362 160,395 C196,428 224,428 260,395 C296,362 316,362 340,395"
+        fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-dasharray="7 5"/>
+  <circle cx="160" cy="395" r="3" fill="var(--warn)"/>
+  <circle cx="260" cy="395" r="3" fill="var(--warn)"/>
+  <text x="200" y="452" text-anchor="middle" font-size="12.5" fill="var(--warn)">零点在 x=0、x=a；极大在 x=a/2：宽边上恰好是半个驻波</text>
+  <text x="380" y="376" font-size="12.5" fill="var(--ink-2)">横向（x、y 方向）是驻波：场不随时间平移，只做振幅的周期性变化。</text>
+  <text x="380" y="398" font-size="12.5" fill="var(--ink-2)">纵向（z 方向）是行波：整个场形随时间沿 +z 匀速平移，速度为 vₚ。</text>
+  <text x="380" y="420" font-size="12.5" fill="var(--warn)">“横向驻波 + 纵向行波”是理解波导一切特性的钥匙。</text>
+  <text x="380" y="442" font-size="12.5" fill="var(--ink-2)">横向驻波要求宽边“装得下”λ₀/2：a&gt;λ₀/2 —— 这就是截止的几何含义。</text>
+</svg>
+<figcaption>图 3-4　TE$_{10}$ 模的横截面与纵剖面场分布</figcaption>
+</figure>
+
+> **【思考】为什么 $E_y$ 前面有个负号？**
+> 这是符号约定的问题，可以从三个层面理解：
+> 1. **确定符号的根本依据是麦克斯韦方程。** 由 $\nabla\times\mathbf{H}=j\omega\varepsilon\mathbf{E}$ 的 $x$ 分量：$\dfrac{\partial H_z}{\partial y}+\gamma H_y=j\omega\varepsilon E_x$，以及 $\nabla\times\mathbf{E}=-j\omega\mu\mathbf{H}$ 的分量式，联立解出 $E_y=-\dfrac{j\omega\mu}{k_c^2}\dfrac{\partial H_z}{\partial y}$ 与 $E_y=\dfrac{j\omega\mu}{k_c^2}\dfrac{\partial H_z}{\partial x}$。对 TE$_{10}$ 有 $\partial H_z/\partial x=-({\pi}/{a})H_{10}\sin(\pi x/a)$，代入就带出了负号。
+> 2. **物理上来自“右手螺旋法则”。** $E_y$、$H_x$、传播方向 $+z$ 构成右手系：$\mathbf{E}\times\mathbf{H}$ 必须指向 $+z$ 才能把能量送向 $+z$。取 $E_y>0$（沿 $+y$）、$H_x>0$（沿 $+x$），则 $\hat y\times\hat x=-\hat z$，能量流向 $-z$！所以为了让 $\mathbf{E}\times\mathbf{H}$ 指向 $+z$，$E_y$ 与 $H_x$ 必须是**符号相反**的一对（或者等价地，其中的相位差为 $180^\circ$）。由 (3-3-8) 可见 $E_y$ 含因子 $-j$，$H_x$ 含因子 $+j$，二者相位差为 $180^\circ$，正好让坡印廷矢量指向 $+z$。
+> 3. **换成 $E_0$ 归一化就“看不见”负号了。** 式 (3-3-9) 中把常数与 $-j$ 一起吸收进 $E_0$，$E_y=E_0\sin(\pi x/a)e^{-j\beta z}$ 而 $H_x=\dfrac{E_0}{Z_{\mathrm{TE}_{10}}}\sin\dfrac{\pi x}{a}e^{-j\beta z}$，符号由 $E_0$ 与 $Z_{\mathrm{TE}}$ 的实正性保证，形式上简洁。
+>
+> **结论：** 负号不是“物理上电场朝 $-y$”，而是**幅度常数 $H_{10}$ 的定义与相位约定共同造成的形式记号**。只要 $E_y$ 与 $H_x$ 的相位关系满足 $\mathbf{E}\times\mathbf{H}$ 指向 $+z$、且 $E_y/H_x$ 的模比等于 $Z_{\mathrm{TE}}$，符号取哪一种都是等价的表示。
+
+> **【思考】波沿 $+z$ 轴传输，那 $x$ 轴和 $y$ 轴呢？**
+> 答案是**横向不传输，只在原地振荡**——横截面上的场分布是**驻波**：
+> - 沿 $x$：$\sin(\pi x/a)$ 在 $x=0$、$x=a$ 恒为零（导体壁），在 $x=a/2$ 恒为极大。**任意固定 $x$ 处，场只是随时间做简谐振荡，不向 $x$ 方向传递能量**。因为在 $x=0$ 和 $x=a$ 两壁之间，向 $+x$ 传播的波与向 $-x$ 传播的波（被壁反射回来）幅度相等、相位相反，合成纯驻波。
+> - 沿 $y$：$n=0$ 使场沿 $y$ 完全均匀，谈不上“传”。
+> - 能量只沿 $+z$ 方向流动，由坡印廷矢量 $\mathbf{S}=\frac12\mathrm{Re}(\mathbf{E}\times\mathbf{H}^*)$ 的 $z$ 分量为正体现。
+> - 横向驻波的节点/腹点位置由波导尺寸与模式序号（$m$、$n$）决定；如果两端再封上金属壁，横向驻波就变成三个方向都是驻波——那正是**谐振腔**（第六章的主题）。
+>
+> 一句话：**横向是“驻波”，纵向是“行波”，这就是“导波”两个字的全部含义。**
+
+### 3.3.5 TE$_{10}$ 模的内壁电流
+
+导体壁上的面电流密度由边界条件给出：
+
+$$\mathbf{J}_s=\hat n\times\mathbf{H}\Big|_{\text{壁}}$$
+
+> **【公式推导】TE$_{10}$ 模的壁电流**
+> 记 $H_z=H_{10}\cos\dfrac{\pi x}{a}e^{-j\beta z}$，$H_x=j\dfrac{\beta a}{\pi}H_{10}\sin\dfrac{\pi x}{a}e^{-j\beta z}$，$E_y$ 如上。
+>
+> **上壁（$y=b$）与下壁（$y=0$）**：法向 $\hat n=\mp\hat y$（上壁为 $+\hat y$，下壁为 $-\hat y$）。壁上的切向磁场为 $\mathbf{H}_t=\hat xH_x+\hat zH_z$。
+> $$\mathbf{J}_s\Big|_{\text{上}}=\hat y\times(\hat xH_x+\hat zH_z)=-H_x\hat z+H_z\hat x$$
+> 即**上壁电流含纵向分量 $-H_x\hat z$ 与横向分量 $H_z\hat x$**；下壁 $\hat n=-\hat y$ 给出**相反**的电流方向。用 $E$ 归一化写出来：
+> $$\mathbf{J}_s\Big|_{y=0}=\hat x\frac{E_0}{Z_{\mathrm{TE}}}\sin\frac{\pi x}{a}\hat z\ \text{分量}+\cdots$$
+> 更直观地写成模值形式（取 $H_{10}$ 为实数幅值）：
+> $$J_{sz}\Big|_{y=0,b}=\mp\frac{E_0}{Z_{\mathrm{TE}_{10}}}\sin\frac{\pi x}{a},\qquad
+> J_{sx}\Big|_{y=0,b}=H_{10}\cos\frac{\pi x}{a}$$
+> 于是**在宽边中央 $x=a/2$：$\cos(\pi/2)=0\Rightarrow$ 纵向电流为零**，而且两侧半区的纵向电流方向相反（$x<a/2$ 与 $x>a/2$ 反号），两侧壁附近的纵向电流最强。
+>
+> **左右侧壁（$x=0$ 与 $x=a$）**：法向 $\hat n=\pm\hat x$，壁上 $\sin(0)=\sin(\pi)=0$，故 $H_x=0$，只剩 $H_z=H_{10}e^{-j\beta z}$（在 $x=0$ 处为 $+H_{10}$，在 $x=a$ 处为 $-H_{10}$）。
+> $$\mathbf{J}_s\Big|_{x=0}=\hat x\times\big(\hat zH_{10}\big)=-H_{10}\hat y\qquad(\text{沿}-y\text{方向})$$
+> $$\mathbf{J}_s\Big|_{x=a}=-\hat x\times\big(-\hat zH_{10}\big)=-H_{10}\hat y\qquad(\text{同向，沿}-y\text{方向})$$
+> 也就是说，两个侧壁上的电流**沿 $y$ 方向（横向）流动，而且方向相同**——这与宽壁上的纵向电流恰好首尾相连，构成一个**闭合的电流回路**（电流从下壁经过侧壁流到上壁，再沿上壁反方向流回）。
+
+> **【核心概念】TE$_{10}$ 模壁电流的两条工程结论**
+> 1. **宽边中央（$x=a/2$）没有纵向电流。** 因此**在宽边中央开一条纵向窄缝**（沿 $z$ 方向），不会切断任何电流线，也就几乎不引起辐射和反射——这正是**波导测量线**（开槽线）能够工作的原理：探针通过窄缝伸入波导采样电场，而不扰动场分布。
+> 2. **横向电流（沿 $x$ 方向，在宽边上）在中央最强。** 若在宽边中央开**横向（沿 $x$）缝隙**，就会切断电流线，缝隙被激励成辐射源——这就是**波导缝隙天线（裂缝天线）**的原理。**“不切割电流的开槽用于测量，切割电流的开槽用于辐射”**，一句话概括全部。
+
+<figure class="fig">
+<svg viewBox="0 0 900 400" role="img" aria-label="TE10 模的导体壁电流分布">
+  <defs>
+    <marker id="cj" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--accent)"/></marker>
+  </defs>
+  <\!-- 上宽壁 -->
+  <g>
+    <text x="450" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">(a) 上宽壁 y=b 上的电流（俯视）</text>
+    <rect x="130" y="40" width="640" height="62" fill="none" stroke="var(--line)" stroke-width="1.6"/>
+    <line x1="130" y1="71" x2="770" y2="71" stroke="var(--warn)" stroke-dasharray="6 5"/>
+    <text x="450" y="66" text-anchor="middle" font-size="11.5" fill="var(--warn)">x=a/2：无纵向电流</text>
+    <line x1="160" y1="85" x2="160" y2="52" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#cj)" opacity="0.35"/>
+    <line x1="220" y1="85" x2="220" y2="52" stroke="var(--accent)" stroke-width="2" marker-end="url(#cj)" opacity="0.6"/>
+    <line x1="285" y1="85" x2="285" y2="52" stroke="var(--accent)" stroke-width="2.4" marker-end="url(#cj)" opacity="0.85"/>
+    <line x1="350" y1="85" x2="350" y2="52" stroke="var(--accent)" stroke-width="2.6" marker-end="url(#cj)"/>
+    <line x1="415" y1="85" x2="415" y2="52" stroke="var(--accent)" stroke-width="2.6" marker-end="url(#cj)"/>
+    <line x1="455" y1="85" x2="455" y2="52" stroke="var(--accent)" stroke-width="2.4" marker-end="url(#cj)" opacity="0.5"/>
+    <line x1="485" y1="85" x2="485" y2="52" stroke="var(--accent)" stroke-width="2.6" marker-end="url(#cj)"/>
+    <line x1="550" y1="85" x2="550" y2="52" stroke="var(--accent)" stroke-width="2.6" marker-end="url(#cj)"/>
+    <line x1="615" y1="85" x2="615" y2="52" stroke="var(--accent)" stroke-width="2.4" marker-end="url(#cj)" opacity="0.85"/>
+    <line x1="680" y1="85" x2="680" y2="52" stroke="var(--accent)" stroke-width="2" marker-end="url(#cj)" opacity="0.6"/>
+    <line x1="740" y1="85" x2="740" y2="52" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#cj)" opacity="0.35"/>
+    <text x="130" y="120" font-size="12" fill="var(--ink-2)">x=0</text>
+    <text x="764" y="120" font-size="12" fill="var(--ink-2)">x=a</text>
+    <text x="450" y="142" text-anchor="middle" font-size="12.5" fill="var(--accent)">纵向电流 Jz∝cos(π x/a)：中央为零、两侧最强且方向相反</text>
+    <text x="450" y="162" text-anchor="middle" font-size="12.5" fill="var(--warn)">横向电流 Jₓ∝sin(π x/a)：中央最强、两侧为零</text>
+    <text x="450" y="182" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">下壁 y=0 上的电流方向与上壁完全相反，两者一起构成闭合回路</text>
+  </g>
+  <\!-- 侧壁 -->
+  <g>
+    <text x="450" y="216" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">(b) 侧壁 x=0、x=a 上的电流</text>
+    <rect x="220" y="234" width="120" height="120" fill="none" stroke="var(--line)" stroke-width="1.6"/>
+    <rect x="560" y="234" width="120" height="120" fill="none" stroke="var(--line)" stroke-width="1.6"/>
+    <text x="280" y="228" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">x=0 壁（宽 b）</text>
+    <text x="620" y="228" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">x=a 壁（宽 b）</text>
+    <line x1="280" y1="248" x2="280" y2="340" stroke="var(--accent)" stroke-width="2.6" marker-end="url(#cj)"/>
+    <line x1="620" y1="248" x2="620" y2="340" stroke="var(--accent)" stroke-width="2.6" marker-end="url(#cj)"/>
+    <text x="288" y="300" font-size="12" fill="var(--accent)">J∝-H₁₀</text>
+    <text x="628" y="300" font-size="12" fill="var(--accent)">J∝-H₁₀</text>
+    <text x="450" y="372" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">两侧壁电流均沿 -y 方向且大小相等：与宽壁纵向电流首尾相接，形成闭合的“电流圈”</text>
+    <text x="450" y="392" text-anchor="middle" font-size="12.5" fill="var(--warn)">工程结论：宽边中央开纵缝 → 不切电流 → 测量线；宽边中央开横缝 → 切电流 → 裂缝天线</text>
+    <text x="120" y="252" font-size="12.5" fill="var(--ink-2)">上（y=b）</text>
+    <text x="120" y="272" font-size="12.5" fill="var(--ink-2)">下（y=0）</text>
+  </g>
+</svg>
+<figcaption>图 3-5　TE$_{10}$ 模的导体壁电流分布</figcaption>
+</figure>
+
+### 3.3.6 矩形波导的传输特性
+
+#### （1）截止波数与截止波长
+
+由 $\gamma=\sqrt{k_c^2-k^2}$ 可知：只有当 $k>k_c$ 时 $\gamma$ 才是纯虚数，波才能传播。临界状态 $k=k_c$ 对应的频率即截止频率，对应的波长即截止波长。
+
+$$\gamma=\sqrt{k_c^2-k^2}=\begin{cases}
+j\beta=j\sqrt{k^2-k_c^2}, & k>k_c\ (\text{传播})\\[4pt]
+\alpha=\sqrt{k_c^2-k^2}, & k<k_c\ (\text{截止、指数衰减})
+\end{cases} \tag{3-3-11}$$
+
+$$
+k_{c,mn}=\sqrt{\left(\frac{m\pi}{a}\right)^2+\left(\frac{n\pi}{b}\right)^2}\ \mathrm{rad/m}
+\tag{3-3-12}
+$$
+
+$$
+\lambda_{c,mn}=\frac{2\pi}{k_{c,mn}}=\frac{2}{\sqrt{\left(\dfrac{m}{a}\right)^2+\left(\dfrac{n}{b}\right)^2}}\ \mathrm{m}
+\tag{3-3-13}
+$$
+
+$$f_{c,mn}=\frac{v}{\lambda_{c,mn}}=\frac{c}{2\sqrt{\mu_r\varepsilon_r}}\sqrt{\left(\frac{m}{a}\right)^2+\left(\frac{n}{b}\right)^2}\ \mathrm{Hz}
+\tag{3-3-14}$$
+
+> **【核心概念】三个量的单位与含义**
+> - $k_c$：截止波数，$\mathrm{rad/m}$，由**尺寸与模式**决定，是“几何量”；
+> - $\lambda_c$：截止波长，$\mathrm{m}$，由**尺寸与模式**决定，是**波导的固有属性**，一旦波导做好、模式确定，$\lambda_c$ 就固定了；
+> - $f_c=v/\lambda_c$：截止频率，$\mathrm{Hz}$，与**填充介质**有关（$v=c/\sqrt{\mu_r\varepsilon_r}$）。同一根波导中填充介质后 $f_c$ 下降到原来的 $1/\sqrt{\mu_r\varepsilon_r}$。
+>
+> **判据（必背）：**
+> $$\lambda<\lambda_c\ \Longleftrightarrow\ f>f_c\ \Longrightarrow\ \text{该模式可传输}$$
+> $$\lambda>\lambda_c\ \Longleftrightarrow\ f<f_c\ \Longrightarrow\ \text{该模式被截止}$$
+> 注意这里是**“波长短反而能传”**，与直觉相反，务必记牢：**波导像一个高通滤波器。**
+
+#### （2）几种波长、几种波数（Remark：必须理清的一组对应关系）
+
+| 物理角色 | 名称 | 符号 | 定义式 | 决定因素 |
+|---|---|---|---|---|
+| **波长** | 工作波长（自由空间波长） | $\lambda_0$ | $\lambda_0=v/f=c/(f\sqrt{\mu_r\varepsilon_r})$ | 频率、介质（自然给定） |
+| | **波导波长** | $\lambda_g$ | $\lambda_g=2\pi/\beta$ | 频率＋波导尺寸＋模式 |
+| | 截止波长 | $\lambda_c$ | $\lambda_c=2\pi/k_c$ | 波导尺寸＋模式（固有） |
+| **波数/相移常数** | 波数 | $k$ | $k=\omega\sqrt{\mu\varepsilon}=2\pi/\lambda_0$ | 频率、介质 |
+| | **相移常数** | $\beta$ | $\beta=2\pi/\lambda_g$ | 频率＋波导尺寸＋模式 |
+| | 截止波数 | $k_c$ | $k_c=2\pi/\lambda_c$ | 波导尺寸＋模式 |
+| **速度** | 波速（光速） | $v$ | $v=1/\sqrt{\mu\varepsilon}=c/\sqrt{\mu_r\varepsilon_r}$ | 介质 |
+| | 相速 | $v_p$ | $v_p=\omega/\beta$ | 频率＋波导尺寸＋模式 |
+| | 群速 | $v_g$ | $v_g=d\omega/d\beta$ | 频率＋波导尺寸＋模式 |
+
+三者之间由**同一个约束关系**串起来：
+
+
+$$
+k^2=k_c^2+\beta^2
+\tag{3-3-15}
+$$
+
+用波长表示即为
+
+$$\frac{1}{\lambda_0^2}=\frac{1}{\lambda_c^2}+\frac{1}{\lambda_g^2}
+\ \Longleftrightarrow\
+\lambda_g=\frac{\lambda_0}{\sqrt{1-\left(\dfrac{\lambda_0}{\lambda_c}\right)^2}}
+=\frac{\lambda_0}{\sqrt{1-\left(\dfrac{f_c}{f}\right)^2}}
+\tag{3-3-16}$$
+
+相移常数也可写成
+
+$$\beta=k\sqrt{1-\left(\frac{\lambda_0}{\lambda_c}\right)^2}
+=k_0\sqrt{1-\left(\frac{f_c}{f}\right)^2}
+=\sqrt{k^2-k_c^2}
+=\frac{2\pi}{\lambda_0}\sqrt{1-\left(\frac{\lambda_0}{\lambda_c}\right)^2}
+\tag{3-3-17}$$
+
+> **【核心概念】TEM 波：为什么第二章不需要区分这些波长？**
+> 不需要。TEM 波 $k_c=0$，于是 $\beta=k$，$k^2=k_c^2+\beta^2$ 退化为 $k=\beta$，三个“波长”完全合一：$\lambda_g=\lambda_0$，$v_p=v_g=v$，$Z_{\mathrm{TEM}}=\eta$。
+> 只有出现了截止波数 $k_c$（即 TE/TM 波），$\lambda_g\neq\lambda_0$、$v_p\neq v$、波阻抗不等于 $\eta$ 这些“新现象”才冒出来。**这就是第二章不用区分、第三章必须区分的原因。**
+>
+> | 对比项 | TEM（第二章） | TE/TM（本章） |
+> |---|---|---|
+> | $k_c$ | $0$ | $\neq0$ |
+> | 截止 | 无 | 有 |
+> | $\lambda_g$ | $=\lambda_0$ | $>\lambda_0$ |
+> | $v_p$ | $=v$ | $>v$ |
+> | $v_g$ | $=v$ | $<v$ |
+> | 波阻抗 | $\eta$（与频率无关） | $Z_{\mathrm{TE}}$ 或 $Z_{\mathrm{TM}}$（随频率变） |
+> | 色散 | 无（非色散） | 有（色散，因为 $v_p$ 随 $f$ 变） |
+
+#### （3）为什么叫“截止波长”？
+
+> **【核心概念】“截止”的物理图像**
+> **数学上：** 当 $\lambda_0>\lambda_c$ 时，$\left(\lambda_0/\lambda_c\right)^2>1$，$\beta=\dfrac{2\pi}{\lambda_0}\sqrt{1-(\lambda_0/\lambda_c)^2}$ 变成纯虚数，$\beta=\mp j\alpha$，于是
+> $$e^{-j\beta z}\ \longrightarrow\ e^{\mp\alpha z}$$
+> 沿 $+z$ 传播的**行波**退化成了**指数衰减的场**（取负号保证远离源之后衰减到零）。这就是“截止”两个字的全部数学含义。
+> **物理上：** 前面说过，波导横向是**驻波**，宽边上必须恰好装下 $m$ 个半波。要形成这个驻波，入射波与反射波的**横向波长分量** $\lambda_x=\lambda_0/\cos\theta$ 必须与尺寸匹配。当工作波长太长（$\lambda_0$ 太大）时，横向**根本“塞”不进半个驻波**——两壁之间连一个完整的“来回反射几何”都维持不了，波就无法稳定地沿轴向推进。
+>
+> **一句话记忆：** 截止 = **“波长太长，装不进去”**。
+>
+> **推论：** 波导中“总有一部分模式在传、无穷多个模式被截止”。实际的波导中，激励源附近的场包含大量截止模（称为**局部场**或**凋落场**），它们离开源后迅速衰减为零，只有在**尺寸突变、开孔、探针**周围才起作用。**波导中的微波 = 若干传导模 + 无穷多个截止模。**
+
+> **【易错点】**
+> - 不要把 $\lambda_c$ 与“波导能通过的最短波长”混为一谈，恰好相反：$\lambda_c$ 是能通过的**最长**波长。
+> - 不要把 $\lambda_g$ 当成“波导里的波长就变长了所以频率变了”。频率 $f$ 是不变的（由源决定），变的是波长和相速。
+> - 截止时 $\beta=0$、$\lambda_g\to\infty$、$v_p\to\infty$、$v_g\to0$；这四件事是**同时**发生的，考试常考其中两两组合的判断题。
+
+#### （4）相速、群速与波导波长
+
+由 $\beta=\sqrt{k^2-k_c^2}$ 出发：
+
+$$
+v_p=\frac{\omega}{\beta}=\frac{\omega}{\sqrt{k^2-k_c^2}}
+=\frac{v}{\sqrt{1-\left(\dfrac{\lambda_0}{\lambda_c}\right)^2}}
+=\frac{v}{\sqrt{1-\left(\dfrac{f_c}{f}\right)^2}}\ >v
+\tag{3-3-18}
+$$
+
+$$
+v_g=\frac{d\omega}{d\beta}=v\sqrt{1-\left(\frac{\lambda_0}{\lambda_c}\right)^2}=v\sqrt{1-\left(\frac{f_c}{f}\right)^2}\ <v
+\tag{3-3-19}
+$$
+
+$$
+v_p\,v_g=v^2\qquad(\text{真空中 }v_pv_g=c^2)
+\tag{3-3-20}
+$$
+
+> **【公式推导】$v_g=d\omega/d\beta$ 的直接计算**
+> 由 $\beta^2=\omega^2\mu\varepsilon-k_c^2$，对 $\omega$ 求导：$2\beta\dfrac{d\beta}{d\omega}=2\omega\mu\varepsilon$，故
+> $$v_g=\frac{d\omega}{d\beta}=\frac{\beta}{\omega\mu\varepsilon}=\frac{1}{\mu\varepsilon}\cdot\frac{\beta}{\omega}=\frac{\beta}{\omega\mu\varepsilon}$$
+> 又由 (3-3-18) $v_p=\omega/\beta$，于是 $v_pv_g=\dfrac{\omega}{\beta}\cdot\dfrac{\beta}{\omega\mu\varepsilon}=\dfrac{1}{\mu\varepsilon}=v^2$。证毕。
+> 也可以推广到有耗情形：**一般情况下 $v_pv_g=v^2$ 只在无耗、无介质的简单波导中严格成立**，更普适的关系是 $v_g=d\omega/d\beta$ 的定义式。
+
+> **【核心概念】相速 $v_p>c$ 违反相对论吗？**
+> **不违反。** 理由有三条：
+> 1. **相速不是速度，而是“相位图样的移动速率”。** $v_p$ 描述的是等相位面的推进速度，它不携带任何能量、信息或物质。相对论限制的是**能量和信息的传播速度**，那由**群速 $v_g$** 承担，而 $v_g=c\sqrt{1-(f_c/f)^2}<c$ 恒成立。
+> 2. **波导中的“相速”是几何投影造成的假象。** 在射线模型里，平面波在波导内沿斜线以光速 $c$ 前进（真实速度永远是 $c$），但它在轴向上的**投影**是 $c/\sin\theta>c$。就像一束光斜照在斜墙上，光斑的移动速度可以超过光速——那只是“光斑”在移动，不是光在移动。
+> 3. **色散关系本身是自洽的。** $v_pv_g=c^2$ 说明两者互补：一个快了，另一个必然慢，能量速度始终不超过 $c$。在截止频率处 $v_p\to\infty$、$v_g\to0$，此时波根本不传播能量，也就谈不上“超光速传信息”。
+>
+> 工程上的含义：$\lambda_g>\lambda_0$ 意味着**同样物理长度的波导里“装”的波长数变少了**，因此用它做谐振腔、做移相器时有效电长度变短，必须用 $\lambda_g$ 而不是 $\lambda_0$ 来换算电尺寸。
+
+#### （5）波阻抗
+
+波导中的“波阻抗”定义为**横向电场与横向磁场的比值**（要求 $E$、$H$ 的横向分量互相垂直，使 $\mathbf{E}_t\times\mathbf{H}_t$ 指向传播方向）：
+
+$$Z_{\mathrm{TE}}=\frac{E_t}{H_t},\qquad Z_{\mathrm{TM}}=\frac{E_t}{H_t}$$
+
+由 (3-2-6) 可以严格推得：
+
+$$
+Z_{\mathrm{TE}}=\frac{\omega\mu}{\beta}=\frac{k\eta}{\beta}
+=\frac{\eta}{\sqrt{1-\left(\dfrac{f_c}{f}\right)^2}}=\eta\frac{\lambda_g}{\lambda_0}
+\tag{3-3-21}
+$$
+
+$$
+Z_{\mathrm{TM}}=\frac{\beta}{\omega\varepsilon}=\frac{\beta\eta}{k}
+=\eta\sqrt{1-\left(\frac{f_c}{f}\right)^2}=\eta\frac{\lambda_0}{\lambda_g}
+\tag{3-3-22}
+$$
+
+其中
+$$\eta=\sqrt{\frac{\mu}{\varepsilon}}\qquad(\text{真空中 }\eta_0=120\pi\approx377\ \Omega)$$
+
+> **【公式推导】以 TE$_{10}$ 模为例验证 $Z_{\mathrm{TE}}$**
+> 由 (3-3-8)：$E_y=-j\dfrac{\omega\mu a}{\pi}H_{10}\sin\dfrac{\pi x}{a}e^{-j\beta z}$，$H_x=j\dfrac{\beta a}{\pi}H_{10}\sin\dfrac{\pi x}{a}e^{-j\beta z}$。两者相除，$\sin$ 因子与 $H_{10}$ 全部约去：
+> $$Z_{\mathrm{TE}_{10}}=\frac{E_y}{H_x}=\frac{-j\omega\mu a/\pi}{j\beta a/\pi}=\frac{-\omega\mu}{\beta}\cdot\frac{j}{j}=-\frac{\omega\mu}{\beta}$$
+> 出现了负号！原因正是前面讨论过的：这里 $E_y$ 与 $H_x$ 的**相位差为 $180^\circ$**，为让坡印廷矢量指向 $+z$，必须把 $Z$ 写成带负号的**阻抗约定**。工程上更常用的是取 $H_x$ 与 $E_y$ **同相**的写法（即把 TE$_{10}$ 的解重写为 $E_y=+j\dfrac{\omega\mu a}{\pi}H'_{10}\sin\dfrac{\pi x}{a}e^{-j\beta z}$、$H_x=+j\dfrac{\beta a}{\pi}H'_{10}\sin\dfrac{\pi x}{a}e^{-j\beta z}$，相当于对 $H_{10}$ 重新定义相位），此时
+> $$Z_{\mathrm{TE}_{10}}=\frac{E_y}{H_x}=\frac{\omega\mu}{\beta}=\frac{\eta}{\sqrt{1-(f_c/f)^2}}>0$$
+> **所以在使用波阻抗公式时，务必先确认自己的场表达式用的是哪一套相位约定**，符号不要打架；**其幅值恒为 $\omega\mu/\beta$**，这一点是确定的。
+
+> **【核心概念】三个波阻抗的大小关系**
+> - **TEM**：$Z_{\mathrm{TEM}}=\eta$，与频率无关；
+> - **TE 模**：$Z_{\mathrm{TE}}=\dfrac{\eta}{\sqrt{1-(f_c/f)^2}}>\eta$，**感性**（$E_t$ 超前 $H_t$）；截止时 $Z_{\mathrm{TE}}\to\infty$（相当于开路）；
+> - **TM 模**：$Z_{\mathrm{TM}}=\eta\sqrt{1-(f_c/f)^2}<\eta$，**容性**；截止时 $Z_{\mathrm{TM}}\to0$（相当于短路）。
+>
+> 记忆：**TE 的阻抗大于 $\eta$（“T” 在 “E” 前，往上走），TM 的阻抗小于 $\eta$；截止时 TE 开路、TM 短路。**
+> 一句话比较：**$Z_{\mathrm{TM}}<\eta<Z_{\mathrm{TE}}$。**
+
+#### （6）衰减常数
+
+实际波导的衰减有两个来源：
+
+- **导体衰减 $\alpha_c$**：管壁不是理想导体，表面电流在有限电导率的金属上产生焦耳热；
+- **介质衰减 $\alpha_d$**：填充介质不是理想介质，交变电场在介质中产生极化损耗。
+
+导体表面电阻（表面阻抗的实部）：
+
+$$R_s=\sqrt{\frac{\omega\mu}{2\sigma}}=\sqrt{\frac{\pi f\mu}{\sigma}}\ \Omega/\square
+\tag{3-3-23}$$
+
+> **【核心概念】表面电阻为什么正比于 $\sqrt f$？**
+> 趋肤深度 $\delta=\sqrt{\dfrac{2}{\omega\mu\sigma}}=\sqrt{\dfrac{1}{\pi f\mu\sigma}}$，与 $\sqrt f$ 成反比。电流被限制在厚度 $\delta$、宽度 1 的薄层里，其等效电阻为 $R_s=\dfrac{1}{\sigma\delta}=\sqrt{\dfrac{\omega\mu}{2\sigma}}$。频率越高，电流层越薄，等效电阻越大——**这就是“仅看 $f$ 时衰减随频率单调上升”的根源。**
+
+**TE$_{10}$ 模的导体衰减公式（本节必须给出的核心公式）：**
+
+$$
+\alpha_c\Big|_{\mathrm{TE}_{10}}
+=\frac{R_s}{b\,\eta\sqrt{1-\left(\dfrac{f_c}{f}\right)^2}}
+\left[1+\frac{2b}{a}\left(\frac{f_c}{f}\right)^2\right]
+\ \ \mathrm{Np/m}
+\tag{3-3-24}
+$$
+
+换算成工程单位：
+
+
+$$
+\alpha_c\Big|_{\mathrm{dB/m}}=8.686\,\alpha_c\Big|_{\mathrm{Np/m}}
+\tag{3-3-25}
+$$
+
+介质衰减（当波导内填充有耗介质时）：
+
+$$\alpha_d=\frac{k_0\tan\delta}{2\sqrt{1-\left(\dfrac{f_c}{f}\right)^2}}\ \ \mathrm{Np/m}
+\tag{3-3-26}$$
+
+其中 $\tan\delta=\dfrac{\sigma_d}{\omega\varepsilon}$ 为介质损耗角正切。
+
+> **【公式推导】TE$_{10}$ 衰减公式的物理来源**
+> 衰减常数可以由**能量守恒**直接写出：
+> $$\alpha_c=\frac{P_{\text{损耗}}}{2P_{\text{传输}}}\ \ (\mathrm{Np/m})$$
+> **分子（单位长度壁损耗）**：壁上 $|J_s|^2R_s/2$ 在两个宽壁与两个窄壁上积分。
+> - 宽壁：$|J_s|^2=|H_x|^2+|H_z|^2$，其中 $|H_x|^2\propto\sin^2$、$|H_z|^2\propto\cos^2$，沿 $x$ 积分给出因子 $\dfrac{a}{2}\left[1+\left(\dfrac{f_c}{f}\right)^2\right]$（因为 $\dfrac{\beta a}{\pi}=\dfrac{a\omega\mu}{\pi}\cdot\dfrac{\beta}{\omega\mu}=\dfrac{1}{1}\cdot\dfrac{Z_{\mathrm{TE}}}{\eta}\cdot\cdots$，最终比值 $|H_x|^2/|H_z|^2=(\beta a/\pi)^2/(\cdots)=(f_c/f)^{2}$）；
+> - 窄壁：只有 $|H_z|^2$，沿 $y$ 积分给出因子 $b$，故窄壁贡献 $2bH_0^2R_s/2$；
+> - 总的单位长度损耗功率 $P_L=\dfrac{R_sH_0^2}{2}\left\{a\left[1+\left(\dfrac{f_c}{f}\right)^2\right]+2b\right\}$。
+> **分母（传输功率）**：$P=\displaystyle\int_0^a\!\!\int_0^b\frac{|E_y|^2}{2Z_{\mathrm{TE}}}dxdy=\frac{abH_0^2Z_{\mathrm{TE}}^2}{4Z_{\mathrm{TE}}}=\frac{abH_0^2Z_{\mathrm{TE}}}{4}$。
+> 取比值并整理 $\dfrac{a}{2b}\cdot\dfrac{1}{Z_{\mathrm{TE}}}$ 中的 $Z_{\mathrm{TE}}=\dfrac{\eta}{\sqrt{1-(f_c/f)^2}}$，即可化为 (3-3-24) 的形式。**推导的关键是记住“分子数损耗、分母数功率、比值再除以 2”。**
+
+> **【思考】仅分析频率 $f$，衰减随着 $f$ 单调递减；为何实际曲线先下降后上升？**
+> 这是本章最精彩的思考题之一。把 (3-3-24) 中所有与 $f$ 有关的因子写清楚：
+> $$\alpha_c(f)=\frac{\sqrt{\pi f\mu/\sigma}}{b\eta\sqrt{1-(f_c/f)^2}}\left[1+\frac{2b}{a}\left(\frac{f_c}{f}\right)^2\right]$$
+> 它包含**三个互相竞争的因子**：
+> 1. **分子中的 $R_s\propto\sqrt f$**——频率升高，趋肤深度变浅，表面电阻增大，**推动衰减上升**；
+> 2. **分母中的 $\sqrt{1-(f_c/f)^2}$**——当 $f\to f_c^+$ 时该因子趋于零，**推动衰减急剧上升**（趋近截止时相速极大、单位长度上能量传输效率极低，壁电流却仍在损耗）；
+> 3. **括号中的 $\left[1+\dfrac{2b}{a}\left(\dfrac{f_c}{f}\right)^2\right]$**——频率升高时第二项**下降**，**推动衰减下降**（高频时壁电流更集中于横向，纵向电流分量相对减弱）。
+>
+> **竞争的结果：** 在靠近 $f_c$ 的**低频段**，因子 2（分母）占绝对优势，$\alpha_c$ 随 $f$ 上升而**迅速下降**；到了**高频段**，因子 2 趋于常数 1、因子 3 趋于常数 0（都不再是变量），只剩下 $R_s\propto\sqrt f$ 占主导，$\alpha_c$ 随 $f$ 上升而**缓慢上升**。因此 $\alpha_c(f)$ 总体呈现**先降后升**的“浴盆”形曲线，存在一个**衰减最小的频率**；但要注意（见下）：对扁波导，这个最低点可能落在单模工作带之外。
+>
+> **最佳频率的定量求解。** 令 $x=f/f_c$、$u=b/a$，把 (3-3-24) 中全部含 $f$ 的因子写成 $x$ 的函数：
+> $$\alpha_c(x)\propto\frac{\sqrt x\left(1+\dfrac{2u}{x^2}\right)}{\sqrt{1-\dfrac{1}{x^2}}}$$
+> 令 $d\alpha_c/dx=0$，整理后得到关于 $y=x^2$ 的二次方程
+> $$y^2-(u+1)y-u=0\ \Longrightarrow\
+> x_{\mathrm{opt}}=\sqrt{\frac{(u+1)+\sqrt{(u+1)^2+8u}}{2}}
+> \tag{3-3-24a}$$
+> 由此可得两条重要结论：
+> - **当 $u=b/a>1/2$ 时**（方形或高波导）存在**有限**的最佳工作频率，$\alpha_c$ 先升后降再升（$x=1$ 附近还有一个局部极大）；
+> - **当 $u=b/a<1/2$ 时**（扁波导，包括标准波导），最佳工作频率移到**单模带之外**（见下），在单模带内部 $\alpha_c$ **随频率单调下降**。
+>
+> **另一条常被引用的经典结论（务必注意其前提）：** 若把 $b/a$ 与频率**同时**作为自由变量联合优化，令 $\partial\alpha_c/\partial u=0$ 与 $\partial\alpha_c/\partial x=0$ 同时成立，联立解得
+> $$\frac{b}{a}=\frac12,\qquad x_{\mathrm{opt}}=\sqrt3\approx1.732$$
+> **这就是“$b=a/2$ 且 $f\approx1.73f_c$ 衰减最小”这一经典结论的真正来历。** 它回答的是“**设计**一根衰减最小的波导应该取什么尺寸、什么频率”，而不是“给定一根波导，衰减最小的频率是多少”。两者不是同一个问题，考试中要看清设问。
+>
+> **对标准波导（$b=a/2$）的精确结果：** 代入 $u=1/2$ 得 $x_{\mathrm{opt}}=\sqrt5\approx2.236$，即 $\alpha_c$ 在 $x=2.236$ 处取最小值。而对 WR-90（$u=0.444$）解 (3-3-24a) 得 $x_{\mathrm{opt}}=2.35$。**这两个数值都超过了单模上限 $x=2$！**
+>
+> **因此有极其重要的工程结论：**
+> - 在 $f_c<f<2f_c$ 的**单模工作带内**，标准矩形波导的导体衰减**随频率单调下降**，即**“能用高一点就用高一点”对降低损耗有利**；
+> - 但实用中上限定在 $f\approx1.9f_c$（而不是 $2f_c$），原因是：① 必须给高次模的截止留出安全裕度（波导的椭圆度、弯曲、接头都会使高次模提前被激起）；② 频率太靠近 $2f_c$ 时模式纯度难以保证；③ 还要兼顾功率容量与色散；
+> - **推荐工作范围 $1.25f_c\sim1.9f_c$ 是“低衰减、大功率容量、弱色散、单模纯度高”四项指标的综合折中**，而不是单看衰减得出的。
+> - 熟悉的数据：WR-90 的推荐频段 8.2–12.4 GHz，对应 $x=1.25\sim1.89$，正是这一折中的典型体现。
+> - **不要用得太靠近截止频率**：$f/f_c$ 太接近 1 时衰减急剧增大（$\to\infty$）、色散严重、功率容量也上不去。
+>
+> **补充：功率容量也存在最佳频率。** TE$_{10}$ 的 $P_{\max}\propto\sqrt{1-(\lambda_0/2a)^2}=\sqrt{1-1/x^2}$，对 $x$ 求导为零给出 $x=\sqrt2\approx1.414$。这与尺寸设计公式 $a\approx0.7\lambda$ 正相呼应（$a=0.707\lambda$ 时 $x=\lambda_c/\lambda_0=2a/\lambda_0=\sqrt2$）。**功率容量最大点（$1.41f_c$）与导体衰减最小点（$>2f_c$）并不重合，工程折中点落在 $1.4f_c\sim1.9f_c$ 之间。**
+
+#### （7）TE$_{10}$ 模的传输功率与功率容量
+
+把坡印廷矢量在横截面上积分，得 TE$_{10}$ 模的传输功率：
+
+$$
+P=\int_0^a\!\!\int_0^b\frac{|E_y|^2}{2Z_{\mathrm{TE}_{10}}}\,dx\,dy
+=\frac{ab\,|E_0|^2}{4Z_{\mathrm{TE}_{10}}}
+=\frac{abE_0^2}{4\eta}\sqrt{1-\left(\frac{f_c}{f}\right)^2}
+\tag{3-3-27}
+$$
+
+其中 $E_0$ 是 $x=a/2$ 处 $E_y$ 的**振幅**（峰值）。
+
+> **【公式推导】功率积分**
+> $E_y=E_0\sin\dfrac{\pi x}{a}e^{-j\beta z}$，
+> $$P=\frac{1}{2Z_{\mathrm{TE}}}\int_0^b\!\!\int_0^a E_0^2\sin^2\frac{\pi x}{a}\,dx\,dy
+> =\frac{E_0^2}{2Z_{\mathrm{TE}}}\cdot b\cdot\frac{a}{2}
+> =\frac{abE_0^2}{4Z_{\mathrm{TE}}}$$
+> 用到 $\displaystyle\int_0^a\sin^2\frac{\pi x}{a}dx=\frac{a}{2}$。这就是功率公式中那个“$4$”的来历，**很多同学会误写成 2**。
+
+**功率容量（最大可传输功率）：** 当 $E_0$ 达到介质的击穿场强 $E_{\mathrm{br}}$ 时功率达到上限。空气的击穿场强取 $E_{\mathrm{br}}=30\ \mathrm{kV/cm}=3\times10^{6}\ \mathrm{V/m}$，代入 (3-3-27) 即得常用工程公式（$a$、$b$ 以 **cm** 为单位，结果单位 **MW**）：
+
+$$P_{\max}=0.6\,ab\sqrt{1-\left(\frac{\lambda_0}{2a}\right)^2}\ \ \mathrm{MW}
+\tag{3-3-28}$$
+
+一般形式（$a$、$b$ 以 **m** 为单位，结果单位 **W**）：
+
+$$P_{\max}=\frac{ab\,E_{\mathrm{br}}^2}{4\eta_0}\sqrt{1-\left(\frac{\lambda_0}{2a}\right)^2}
+\approx6.63\times10^{5}\,ab\sqrt{1-\left(\frac{\lambda_0}{2a}\right)^2}\ \ \mathrm{W}
+\tag{3-3-29}$$
+
+其中归一化因子 $\sqrt{1-(\lambda_0/2a)^2}=\sqrt{1-(f_c/f)^2}=\sqrt{1-1/x^2}$（$x=f/f_c=\lambda_c/\lambda_0$）。
+
+> **【核心概念】功率容量的四条工程结论**
+> 1. **$P_{\max}\propto E_{\mathrm{br}}^2$**：提高功率容量的最有效手段是**提高击穿场强**——抽真空、充干燥空气或惰性气体（$SF_6$）、加高压。这就是大功率雷达波导系统要**充气加压**的原因。
+> 2. **$P_{\max}\propto ab=S$（横截面积）**：截面越大，功率容量越大。所以**高功率雷达工作频率要低**（波长长、波导粗）。
+> 3. **$P_{\max}$ 并不是频率的单调函数。** 因子 $\sqrt{1-1/x^2}$ 在 $x\to1$（趋近截止）时趋于 0，在 $x\to\infty$ 时趋于 1，而 $x$ 本身与频率成正比，于是 $P_{\max}$ 只在**某一最佳频率处取极大**。把 $P_{\max}\propto x\sqrt{1-1/x^2}$ 对 $x$ 求导并令其为零：
+> $$\frac{d}{dx}\left[x\sqrt{1-\frac{1}{x^2}}\right]=0\ \Longrightarrow\ x_{\mathrm{opt}}=\sqrt2\approx1.414$$
+> **即功率容量最大出现在 $f\approx1.41f_c$ 处**，此时 $\lambda_0/2a=1/\sqrt2$，即 $a\approx0.707\lambda_0$——这正好解释了尺寸设计公式 $a\approx0.7\lambda$ 的来历。**偏离该点两侧功率容量都会下降**：越靠近截止，$E_0$ 稍大就会击穿；频率过高则同样的 $E_0$ 对应的功率变小。
+> 4. 工程上还要留**安全裕度**（一般取理论值的 $1/3\sim1/4$），并且要注意**驻波**会因局部场强叠加而使实际击穿功率下降；此外波导内若有尖锐毛刺、灰尘、水汽，都会显著降低实际的 $P_{\max}$。
+
+### 3.3.7 矩形波导波型的场分布及其工作特性
+
+#### （1）模式谱与截止波长排序
+
+设 $a=2b$（标准波导），$\lambda_c$ 由大到小排列：
+
+| 模式 | $\lambda_c$ 表达式 | $a=2b$ 时的值 | $f_c$（空气，$a$ 单位 m） | 说明 |
+|---|---|---|---|---|
+| **TE$_{10}$** | $2a$ | $2a$ | $c/2a$ | **主模** |
+| TE$_{20}$ | $a$ | $a$ | $c/a$ | 第一个高次模 |
+| TE$_{01}$ | $2b$ | $a$ | $c/a$ | 与 TE$_{20}$ 简并 |
+| **TE$_{11}$/TM$_{11}$** | $\dfrac{2ab}{\sqrt{a^2+b^2}}$ | $\dfrac{2a}{\sqrt5}\approx0.894a$ | $\approx0.559\,c/a$ | 一对简并模 |
+| TE$_{30}$ | $2a/3$ | $0.667a$ | $1.5\,c/a$ | |
+| TE$_{21}$/TM$_{21}$ | $\dfrac{2ab}{\sqrt{4b^2+a^2}}$ | $\dfrac{a}{\sqrt2}\approx0.707a$ | $\approx0.707\,c/a$ | 简并 |
+| TE$_{02}$ | $b$ | $0.5a$ | $2c/a$ | |
+| TE$_{12}$/TM$_{12}$ | $\dfrac{2ab}{\sqrt{a^2+4b^2}}$ | $\dfrac{a}{\sqrt2}\approx0.707a$ | | 与 TE$_{21}$ 同值 |
+
+<figure class="fig">
+<svg viewBox="0 0 900 380" role="img" aria-label="矩形波导截止波长模式谱">
+  <defs>
+    <marker id="axs" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-2)"/></marker>
+  </defs>
+  <rect x="110" y="70" width="520" height="140" fill="var(--brand)" opacity="0.10" rx="4"/>
+  <text x="370" y="60" text-anchor="middle" font-size="13" fill="var(--brand)" font-weight="700">TE₁₀ 单模工作区（λc 介于 a 与 2a 之间）</text>
+  <text x="370" y="146" text-anchor="middle" font-size="13.5" fill="var(--ink)">只有 TE₁₀ 能传播</text>
+  <text x="370" y="170" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">所有高次模都被截止</text>
+  <line x1="110" y1="210" x2="820" y2="210" stroke="var(--ink-2)" stroke-width="2" marker-end="url(#axs)"/>
+  <text x="826" y="215" font-size="13" fill="var(--ink-2)">λc/a</text>
+  <g font-size="12.5" fill="var(--ink-2)" text-anchor="middle">
+    <line x1="110" y1="206" x2="110" y2="214" stroke="var(--ink-2)"/>
+    <text x="110" y="234">0</text>
+    <line x1="240" y1="206" x2="240" y2="214" stroke="var(--ink-2)"/>
+    <text x="240" y="234">0.5</text>
+    <line x1="370" y1="206" x2="370" y2="214" stroke="var(--ink-2)"/>
+    <text x="370" y="234">1.0</text>
+    <line x1="500" y1="206" x2="500" y2="214" stroke="var(--ink-2)"/>
+    <text x="500" y="234">1.5</text>
+    <line x1="630" y1="206" x2="630" y2="214" stroke="var(--ink-2)"/>
+    <text x="630" y="234">2.0</text>
+    <line x1="760" y1="206" x2="760" y2="214" stroke="var(--ink-2)"/>
+    <text x="760" y="234">2.5</text>
+  </g>
+  <\!-- 刻度线 -->
+  <line x1="760" y1="70" x2="760" y2="210" stroke="var(--brand)" stroke-width="2.6"/>
+  <text x="760" y="62" text-anchor="middle" font-size="12.5" fill="var(--brand)" font-weight="700">TE₁₀ 2.000</text>
+  <line x1="630" y1="90" x2="630" y2="210" stroke="var(--ink-2)" stroke-width="1.8"/>
+  <text x="634" y="86" font-size="12" fill="var(--ink-2)">TE₂₀、TE₀₁ 1.000</text>
+  <line x1="603" y1="100" x2="603" y2="210" stroke="var(--warn)" stroke-width="1.8" stroke-dasharray="5 4"/>
+  <text x="600" y="96" text-anchor="end" font-size="12" fill="var(--warn)">TE₁₁/TM₁₁ 0.894</text>
+  <line x1="546" y1="120" x2="546" y2="210" stroke="var(--ink-2)" stroke-width="1.6"/>
+  <text x="543" y="116" text-anchor="end" font-size="12" fill="var(--ink-2)">TE₂₁/TM₂₁、TE₁₂ 0.707</text>
+  <line x1="927" y1="130" x2="927" y2="210" stroke="var(--ink-2)" stroke-width="1.6" opacity="0"/>
+  <line x1="500" y1="130" x2="500" y2="210" stroke="var(--ink-2)" stroke-width="1.6"/>
+  <text x="497" y="126" text-anchor="end" font-size="12" fill="var(--ink-2)">TE₃₀ 0.667</text>
+  <line x1="370" y1="152" x2="370" y2="210" stroke="var(--ink-2)" stroke-width="1.6"/>
+  <text x="367" y="148" text-anchor="end" font-size="12" fill="var(--ink-2)">TE₀₂ 0.500</text>
+  <line x1="240" y1="176" x2="240" y2="210" stroke="var(--ink-2)" stroke-width="1.4"/>
+  <text x="237" y="172" text-anchor="end" font-size="12" fill="var(--ink-2)">TE₄₀ 0.400</text>
+  <\!-- 工作波长示意 -->
+  <line x1="145" y1="252" x2="145" y2="290" stroke="var(--warn)" stroke-width="2"/>
+  <text x="152" y="272" font-size="12.5" fill="var(--warn)">工作波长 λ₀</text>
+  <line x1="110" y1="300" x2="820" y2="300" stroke="var(--line)"/>
+  <text x="110" y="324" font-size="12.5" fill="var(--ink-2)">判据 λ₀&lt;λc（即工作波长落在该模式竖线左侧）时该模式可传输；竖线越靠右，λc 越长。</text>
+  <text x="110" y="348" font-size="12.5" fill="var(--brand)">主模 TE₁₀ 的 λc=2a 最长 → 截止频率最低 → 单模带宽最宽，这是 TE₁₀ 成为主模的第二条理由。</text>
+  <text x="110" y="370" font-size="12.5" fill="var(--warn)">例：若 λ₀=1.3a（落在 1.0 与 2.0 之间），只有 TE₁₀ 导通，其余全部截止。</text>
+</svg>
+<figcaption>图 3-6　矩形波导 TM/TE 模式的截止波长谱与单模工作区（$a=2b$）</figcaption>
+</figure>
+
+#### （2）TE$_{10}$ 模为什么是主模
+
+主模（dominant mode）是指在给定波导中**截止频率最低、最先能够传输**的那个模式。TE$_{10}$ 是矩形波导的主模，理由有五条，每一条都必须能说清：
+
+1. **截止波长最长（$\lambda_c=2a$），截止频率最低（$f_c=c/2a$）。** 因此在同样的工作频率下，它的尺寸要求最小；或者说在同样的尺寸下，它的单模工作带宽最宽。单模带宽比为
+   $$\frac{f_{\mathrm{TE}_{20}}}{f_{\mathrm{TE}_{10}}}=\frac{c/a}{c/2a}=2$$
+   即**理论上单模带宽可达 2:1**（实际上受 $TE_{01}$ 与 $TE_{11}$ 限制，取 $b<a/2$ 后略小于 2）。
+
+2. **场结构最简单。** $m=1$、$n=0$，只有 $E_y$、$H_x$、$H_z$ 三个分量，场沿 $x$ 只有半个正弦，沿 $y$ 完全均匀。这使得**激励最容易、耦合结构最简单**（一根探针、一个环就可以），也便于与其他器件（同轴、微带、天线）过渡。
+
+3. **宽边中央无纵向电流，便于开缝与测量。** 如上节所分析，$x=a/2$ 处 $J_z=0$，可以在这个位置开纵向窄缝而不破坏电流分布——**波导测量线、开槽天线**都基于此。
+
+4. **衰减相对较小。** 在标准比例 $b=a/2$ 附近，TE$_{10}$ 的导体衰减接近所有模式中的最小值；且最佳工作频率 $f_{\mathrm{opt}}\approx1.7f_c$ 位于单模带内，工作点好选。
+
+5. **单模传输可以避免模式色散与模式耦合。** 如果同时有多个模式在传输，它们的 $v_p$、$v_g$、$\lambda_g$ 都不同，信号会**分裂成多个以不同速度前进的分量**（模式色散），并在**不均匀处互相转换**（模式耦合），造成波形失真、方向图恶化。单模工作是所有微波传输系统的基本约定。
+
+> **【考点】高频考点组合**
+> - “TE$_{10}$ 的截止波长是多少？”→ $\lambda_c=2a$（**必须记住！**）
+> - “矩形波导的主模是什么？”→ TE$_{10}$（当 $a>b$ 时；若 $a<b$ 则是 TE$_{01}$）。
+> - “为什么单模带宽是 2:1？”→ 因为 $\lambda_{c,\mathrm{TE}_{20}}=a$、$\lambda_{c,\mathrm{TE}_{10}}=2a$。
+> - “波导测量线为什么在宽边中央开缝？”→ 该处无纵向电流，开缝不切电流。
+> - “裂缝天线为什么也在宽边？”→ 切口横向电流（该处横向电流最大）形成辐射。
+
+#### （3）微波在波导中“曲折传播”：射线（平面波）模型
+
+> **【核心概念】为什么用“曲折传播”来解释波导？**
+> 3.1 节证明了空心波导里不存在 TEM 波，因而“波沿直线走 $+z$、$E$、$H$ 全在横截面内”的图像是**错的**。但我们可以用另一个完全等价的图像：
+> **一束 TEM 平面波在波导两壁之间来回斜反射，以锯齿形（曲折）路径前进。**
+> - 入射波与反射波**叠加**，在横向（$x$ 方向）形成**驻波**，在纵向（$z$ 方向）形成**行波**——与严格解完全一致；
+> - 横向驻波要满足两壁处 $E_{\text{切}}=0$，这要求**横向的路径差恰好是半波长的整数倍**。当波长太长、这个条件无法满足时——**截止**。
+> - 由此可以“不严格但极直观”地看出 $\lambda_g>\lambda_0$、$v_p>c$、$v_g<c$ 三件事。
+
+<figure class="fig">
+<svg viewBox="0 0 900 430" role="img" aria-label="矩形波导中平面波斜入射形成的曲折传播模型">
+  <defs>
+    <marker id="ray" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--brand)"/></marker>
+    <marker id="rayv" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--warn)"/></marker>
+    <marker id="rayg" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--accent)"/></marker>
+  </defs>
+  <rect x="90" y="70" width="700" height="170" fill="none" stroke="var(--line)" stroke-width="2"/>
+  <text x="86" y="62" font-size="12.5" fill="var(--ink-2)">上壁</text>
+  <text x="86" y="262" font-size="12.5" fill="var(--ink-2)">下壁</text>
+  <text x="470" y="252" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">波导宽边截面（宽 a，沿 z 展开）</text>
+  <path d="M100,240 L190,70 L280,240 L370,70 L460,240 L550,70 L640,240 L730,70 L780,134"
+        fill="none" stroke="var(--brand)" stroke-width="1.9" marker-end="url(#ray)"/>
+  <path d="M100,240 L190,70" stroke="var(--accent)" stroke-width="0" />
+  <\!-- 垂直波面 -->
+  <line x1="190" y1="70" x2="248" y2="240" stroke="var(--ink-2)" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <line x1="550" y1="70" x2="608" y2="240" stroke="var(--ink-2)" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <\!-- 角度 -->
+  <path d="M190,70 L260,70" stroke="var(--ink-2)" stroke-width="1.1" stroke-dasharray="4 3"/>
+  <path d="M228,70 A38,38 0 0 0 214,104" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+  <text x="238" y="98" font-size="13" fill="var(--warn)">θ</text>
+  <\!-- 真实路径与投影 -->
+  <line x1="190" y1="70" x2="190" y2="240" stroke="var(--ink-2)" stroke-width="1.1" stroke-dasharray="3 3"/>
+  <line x1="280" y1="70" x2="280" y2="240" stroke="var(--ink-2)" stroke-width="1.1" stroke-dasharray="3 3"/>
+  <line x1="240" y1="266" x2="520" y2="266" stroke="var(--warn)" stroke-width="2" marker-end="url(#rayv)"/>
+  <text x="300" y="286" font-size="12.5" fill="var(--warn)">相速 vₚ=c/sinθ（“光斑”的移动速度，&gt;c）</text>
+  <line x1="240" y1="306" x2="440" y2="306" stroke="var(--accent)" stroke-width="2" marker-end="url(#rayg)"/>
+  <text x="300" y="326" font-size="12.5" fill="var(--accent)">群速 vg=csinθ（能量沿轴推进速度，&lt;c）</text>
+  <text x="90" y="352" font-size="12.5" fill="var(--ink-2)">真实射线速度永远是 c（位于波导内的斜线上）；沿 z 轴看去，相位图样“跑”得比 c 快，这是几何投影的假象。</text>
+  <text x="90" y="374" font-size="12.5" fill="var(--ink-2)">斜线在轴向的投影长度关系：λg=(λ₀)/(sinθ) ⟹ sinθ=(λ₀)/(λg)=√(1-((λ₀)/(λc))²)。</text>
+  <text x="90" y="396" font-size="12.5" fill="var(--brand)">横向：入射波与反射波叠加成驻波，两壁间必须容纳整数个半波长 → 这就是“截止”的几何来源。</text>
+  <text x="90" y="418" font-size="12.5" fill="var(--warn)">λ₀=λc 时 θ=0（射线垂直于轴来回弹，不前进）；λ₀→0 时 θ→90^circ（射线几乎沿轴，vg→ c）。</text>
+</svg>
+<figcaption>图 3-7　矩形波导中平面波斜入射形成的“曲折传播”射线模型</figcaption>
+</figure>
+
+由几何关系可以“心算”出三个关键结论：
+
+$$\sin\theta=\frac{\lambda_0}{\lambda_g}=\sqrt{1-\left(\frac{\lambda_0}{\lambda_c}\right)^2}
+\tag{3-3-30}$$
+
+$$\lambda_g=\frac{\lambda_0}{\sin\theta},\qquad
+v_p=\frac{c}{\sin\theta},\qquad
+v_g=c\sin\theta,\qquad
+v_pv_g=c^2
+\tag{3-3-31}$$
+
+> **【记忆技巧】“电钻打墙”类比**
+> 把波导中的斜射线想象成**螺纹钻头钻墙**：
+> - 钻头表面上螺旋纹的**前进速度**（相位速度）$=$ 转速 × 螺距 → 很快，对应 $v_p$；
+> - 钻头整体轴向前进的速度（能量速度）$=$ $v_p\times$（与轴的夹角正弦）→ 较慢，对应 $v_g$；
+> - 转速不变时螺距越大，螺旋纹前进越快，但钻头前进越慢 → **$v_p$ 与 $v_g$ 一个快一个慢，乘积恒定。**
+> 这个类比可以帮你记住 $v_pv_g=c^2$ 而非 $v_p+v_g$ 或 $v_p-v_g$。
+
+### 3.3.8 矩形波导尺寸选择原则
+
+> **【核心概念】设计要求**
+> 给定工作频率（或工作波长 $\lambda_0$）与工作带宽，选择 $a$、$b$。三条原则：**保证单模传输、满足功率容量、控制衰减**。
+
+#### 原则 1：保证单模（TE$_{10}$）传输
+
+要让 TE$_{10}$ 能传、所有高次模都截止，需要同时满足：
+
+$$\lambda<\lambda_{c,\mathrm{TE}_{10}}=2a\ \Longrightarrow\ a>\frac{\lambda}{2}$$
+
+$$\lambda>\lambda_{c,\mathrm{TE}_{20}}=a\ \Longrightarrow\ a<\lambda$$
+
+$$\lambda>\lambda_{c,\mathrm{TE}_{01}}=2b\ \Longrightarrow\ b<\frac{\lambda}{2}$$
+
+综合起来：
+
+$$
+\boxed{\ \frac{\lambda}{2}<a<\lambda,\qquad b<\frac{\lambda}{2}\ }
+\tag{3-3-32}
+$$
+
+工程上取
+
+$$a\approx0.7\lambda,\qquad b=(0.4\sim0.5)a\ (\text{常用 }b=a/2)
+\tag{3-3-33}$$
+
+> **【核心概念】为什么 $b=a/2$ 最常用？**
+> - $b$ 越大功率容量越大（$P_{\max}\propto ab$），衰减越小（$\alpha_c$ 与 $b$ 大致成反比）；
+> - 但 $b$ 越大会使 TE$_{01}$（$\lambda_c=2b$）的截止波长变长，从而**压缩单模带宽**（要求 $2b<a$，即 $b<a/2$）；
+> - 在“带宽”与“损耗/功率”的折中点上，$b=a/2$ 是一个漂亮的最优点：**单模带宽达到理论最大 2:1，同时截面不至于太扁、损耗增加有限，机械强度与加工也合适。**
+>
+> 因此工程上：
+> - $b=a/2$ → **标准波导**（最常用）；
+> - $b>a/2$ → **高波导**，提高功率容量、降低衰减，但单模带宽变窄；
+> - $b<a/2$ → **扁波导**，体积小、重量轻、弯曲容易，但功率容量与衰减变差。
+
+**带宽的量化表述：** 设 $\lambda_{\max}=2a$（下限由 TE$_{10}$ 决定）、$\lambda_{\min}=\min(2b,a)$（上限由 TE$_{01}$ 或 TE$_{20}$ 决定），则
+
+$$\Delta\lambda_c=\lambda_{\max}-\lambda_{\min}=2a-\min(2b,a)$$
+
+当 $b=a/2$ 时 $\Delta\lambda_c=2a-a=a$，带宽比约 $2{:}1$。
+
+#### 原则 2：功率容量
+
+由 (3-3-27) 与 (3-3-28)，$P_{\max}\propto ab$。因此
+
+- **给定 $a$（即给定最低工作频率）时，$b$ 越大功率容量越大**（近似线性增长）；
+- 但 $b$ 增大使单模带宽下降，必须折中；
+- 对于**高功率**应用（如远程警戒雷达），常采用**大 $b$（甚至 $b>a/2$ 的高波导）或充气加压**。
+
+#### 原则 3：衰减
+
+由 (3-3-24)，$\alpha_c$ 大致与 $b$ 成反比：
+
+- **$b$ 越大导体衰减小**，但同样受单模带宽约束；
+- **$a$ 越大，$f_c$ 越低**，在同一工作频率下 $f/f_c$ 越小，衰减越大（更靠近截止点），所以**“波导不是越大越好”**；
+- 综合衰减与带宽，**$b=a/2$ 附近是综合最优**。
+
+> **【工程应用】矩形波导的工程选择总结**
+> $$\boxed{\ \frac{\lambda}{2}<a<\lambda,\quad b<\frac{\lambda}{2},\quad a\approx0.7\lambda,\quad b=(0.4\sim0.5)a\ }$$
+> 具体应用：
+> - **低损耗长距离传输** → 取 $b$ 偏大、$f$ 取在 $1.5f_c\sim1.9f_c$；
+> - **高功率** → 取 $ab$ 大、充干燥空气或 $SF_6$、留足驻波裕度；
+> - **小体积、可弯曲** → 取扁波导（$b\ll a/2$）、甚至脊波导（脊波导把 $a$ 方向的场“挤压”，可展宽单模带宽到 3:1 以上）。
+
+### 3.3.9 本节例题
+
+> **【例题 3-1】判断哪些模式能传输**
+> 某矩形波导尺寸 $a=8\ \mathrm{cm}$、$b=4\ \mathrm{cm}$，工作频率 $f=3\ \mathrm{GHz}$。问该波导中能传输哪些模式？
+>
+> **解：**
+> **第一步：求工作波长。**
+> $$\lambda_0=\frac{c}{f}=\frac{3\times10^{8}}{3\times10^{9}}=0.1\ \mathrm{m}=10\ \mathrm{cm}$$
+> **第二步：逐个算 $\lambda_c$，用 $\lambda_0<\lambda_c$ 判断。**
+> $$\lambda_{c,\mathrm{TE}_{10}}=2a=2\times8=16\ \mathrm{cm}>10\ \mathrm{cm}\ \Rightarrow\ \text{能传}$$
+> $$\lambda_{c,\mathrm{TE}_{20}}=a=8\ \mathrm{cm}<10\ \mathrm{cm}\ \Rightarrow\ \text{截止}$$
+> $$\lambda_{c,\mathrm{TE}_{01}}=2b=2\times4=8\ \mathrm{cm}<10\ \mathrm{cm}\ \Rightarrow\ \text{截止}$$
+> $$\lambda_{c,\mathrm{TE}_{11}}=\lambda_{c,\mathrm{TM}_{11}}=\frac{2ab}{\sqrt{a^2+b^2}}=\frac{2\times8\times4}{\sqrt{8^2+4^2}}=\frac{64}{8.944}=7.155\ \mathrm{cm}<10\ \mathrm{cm}\ \Rightarrow\ \text{截止}$$
+> 由于 $\lambda_c(\mathrm{TE}_{20})=\lambda_c(\mathrm{TE}_{01})=8<10$ 已经是最小的几个，更高次模的 $\lambda_c$ 更短，全部截止。
+> **结论：该波导在 3 GHz 时只能传输 TE$_{10}$ 模式（单模工作）。**
+>
+> **讨论与拓展：**
+> - 该波导的单模工作区间为 $f_{c,\mathrm{TE}_{10}}=c/2a=1.875\ \mathrm{GHz}$ 到 $f_{c,\mathrm{TE}_{20}}=c/a=3.75\ \mathrm{GHz}$，工作点 3 GHz 位于该区间的中上部（$f/f_c=1.6$），**衰减与色散都比较合适**，是一个好的工作点。
+> - 若把 $b$ 改为 2 cm，则 $\lambda_{c,\mathrm{TE}_{01}}=4$ cm，单模范围变为 1.875–3.75 GHz 不变（因为上限由 TE$_{20}$ 决定），但功率容量会下降一半、衰减会上升一倍多。
+> - 若工作频率升到 4 GHz（$\lambda_0=7.5$ cm），则 TE$_{20}$（8 cm）和 TE$_{01}$（8 cm）都会导通，成为**多模传输**，必须避免。
+
+> **【例题 3-2】WR-90 标准波导的完整特性计算**
+> BJ-100（WR-90）标准矩形波导：$a=22.86\ \mathrm{mm}$，$b=10.16\ \mathrm{mm}$。工作频率 $f=10\ \mathrm{GHz}$，波导内为空气。求：(1) 各低阶模式的截止频率与截止波长；(2) 单模工作频率范围；(3) TE$_{10}$ 模的相移常数 $\beta$、波导波长 $\lambda_g$、相速 $v_p$、群速 $v_g$；(4) TE$_{10}$ 模的波阻抗 $Z_{\mathrm{TE}_{10}}$。
+>
+> **解：**
+>
+> **(1) 截止频率与截止波长**（$c=3\times10^{8}\ \mathrm{m/s}$）
+> $$f_{c,\mathrm{TE}_{10}}=\frac{c}{2a}=\frac{3\times10^8}{2\times0.02286}=6.557\ \mathrm{GHz},\qquad \lambda_{c,\mathrm{TE}_{10}}=2a=45.72\ \mathrm{mm}$$
+> $$f_{c,\mathrm{TE}_{20}}=\frac{c}{2a}\times2=\frac{c}{a}=13.114\ \mathrm{GHz},\qquad \lambda_{c,\mathrm{TE}_{20}}=a=22.86\ \mathrm{mm}$$
+> $$f_{c,\mathrm{TE}_{01}}=\frac{c}{2b}=14.754\ \mathrm{GHz},\qquad \lambda_{c,\mathrm{TE}_{01}}=2b=20.32\ \mathrm{mm}$$
+> $$f_{c,\mathrm{TE}_{11}}=f_{c,\mathrm{TM}_{11}}=\frac{c}{2}\sqrt{\left(\frac{1}{a}\right)^2+\left(\frac{1}{b}\right)^2}
+> =\frac{3\times10^8}{2}\sqrt{\left(\frac{1}{0.02286}\right)^2+\left(\frac{1}{0.01016}\right)^2}=16.15\ \mathrm{GHz}$$
+> $$\lambda_{c,\mathrm{TE}_{11}}=\frac{2ab}{\sqrt{a^2+b^2}}=\frac{2\times0.02286\times0.01016}{\sqrt{0.02286^2+0.01016^2}}=18.56\ \mathrm{mm}$$
+>
+> **(2) 单模工作范围**：下限由 TE$_{10}$ 决定，上限由**最早出现的高次模**决定。比较 $f_{c,\mathrm{TE}_{20}}=13.11\ \mathrm{GHz}$ 与 $f_{c,\mathrm{TE}_{01}}=14.75\ \mathrm{GHz}$，取小的：
+> $$6.557\ \mathrm{GHz}<f<13.114\ \mathrm{GHz}$$
+> 即约 **6.6–13.1 GHz**，带宽比 $13.114/6.557\approx2.0:1$。注意这里上限是 TE$_{20}$，因为 $b=a/2$ 使 $2b=a$，两者正好同值附近。
+> 10 GHz 落在区间中部靠上（$f/f_c=1.525$），是良好工作点。
+>
+> **(3) TE$_{10}$ 模的传播参数**
+> 自由空间波长 $\lambda_0=c/f=30\ \mathrm{mm}$，$f_c=6.557\ \mathrm{GHz}$，故
+> $$\sqrt{1-\left(\frac{f_c}{f}\right)^2}=\sqrt{1-\left(\frac{6.557}{10}\right)^2}=\sqrt{1-0.430}=0.7550$$
+> $$\beta=\frac{2\pi}{\lambda_0}\sqrt{1-\left(\frac{f_c}{f}\right)^2}=\frac{2\pi}{0.030}\times0.7550=158.1\ \mathrm{rad/m}$$
+> $$\lambda_g=\frac{2\pi}{\beta}=\frac{2\pi}{158.1}=0.0397\ \mathrm{m}=39.7\ \mathrm{mm}\ (>30.0\ \mathrm{mm}\ \checkmark)$$
+> $$v_p=\frac{\omega}{\beta}=\frac{2\pi\times10^{10}}{158.1}=3.97\times10^{8}\ \mathrm{m/s}\ (>c\ \checkmark)$$
+> $$v_g=\frac{c^2}{v_p}=\frac{(3\times10^{8})^2}{3.97\times10^{8}}=2.27\times10^{8}\ \mathrm{m/s}\ (<c\ \checkmark)$$
+> 或用公式直接算：$v_g=c\times0.7550=2.265\times10^{8}\ \mathrm{m/s}$，与上式一致。
+> 换算成等效介电常数视角：$\lambda_g/\lambda_0=39.7/30=1.323$，$v_p/c=1.323$，二者相等（因为 $v_p/c=\lambda_g/\lambda_0$）。
+>
+> **(4) 波阻抗**（取 $\eta_0=120\pi\approx376.99\ \Omega$）
+> $$Z_{\mathrm{TE}_{10}}=\frac{\eta_0}{\sqrt{1-(f_c/f)^2}}=\frac{376.99}{0.7550}=499.3\ \Omega$$
+> （若取 $\eta_0=377\ \Omega$，得 $499.3\ \Omega$，差别可忽略。）
+>
+> **讨论与拓展：**
+> - $Z_{\mathrm{TE}_{10}}=499\ \Omega$ 远大于同轴线的 $50\ \Omega$，这就是**同轴—波导转换器**必须做阻抗变换的原因。
+> - 若在波导内充满 $\varepsilon_r=2.25$（$\mu_r=1$）的介质，则 $v=c/1.5=2\times10^{8}\ \mathrm{m/s}$，所有 $f_c$ 下降到原来的 $1/1.5=0.667$ 倍：$f_{c,\mathrm{TE}_{10}}$ 降到 4.37 GHz，同时 $\lambda_g$、$Z_{\mathrm{TE}}$ 都随之改变（$Z_{\mathrm{TE}}$ 降到 $499.3/1.5=332.9\ \Omega$）。
+> - 该波导的标称工作频段为 8.2–12.4 GHz（X 波段），与计算的单模区 6.6–13.1 GHz 相比留了裕量，是因为实际使用要避开截止附近的强色散与大衰减，也要避开上限附近的高次模激励。
+
+> **【例题 3-3】波导尺寸设计**
+> 设计一根空气填充的矩形波导，要求工作频率 $f=1\ \mathrm{GHz}$ 时**单模传输 TE$_{10}$**，并尽可能使衰减较小。求 $a$、$b$ 的取值范围与推荐值。
+>
+> **解：**
+> **第一步：算工作波长。**
+> $$\lambda_0=\frac{3\times10^{8}}{1\times10^{9}}=0.3\ \mathrm{m}=30\ \mathrm{cm}$$
+> **第二步：由单模条件定 $a$。**
+> $$\frac{\lambda_0}{2}<a<\lambda_0\ \Longrightarrow\ 15\ \mathrm{cm}<a<30\ \mathrm{cm}$$
+> 工程上取 $a\approx0.7\lambda_0=21\ \mathrm{cm}$。取整**推荐 $a=22\ \mathrm{cm}$**（便于加工）。
+> **第三步：由单模条件定 $b$。**
+> $$b<\frac{\lambda_0}{2}=15\ \mathrm{cm}$$
+> 同时为兼顾功率容量与衰减，取 $b=(0.4\sim0.5)a$，即 $b=8.8\sim11\ \mathrm{cm}$。**推荐 $b=11\ \mathrm{cm}$（即 $b=a/2$）**，此时单模带宽最大。
+> **第四步：验算。**
+> $$f_{c,\mathrm{TE}_{10}}=\frac{3\times10^8}{2\times0.22}=0.682\ \mathrm{GHz},\qquad f_{c,\mathrm{TE}_{20}}=\frac{3\times10^8}{0.22}=1.364\ \mathrm{GHz}$$
+> $$f_{c,\mathrm{TE}_{01}}=\frac{3\times10^8}{2\times0.11}=1.364\ \mathrm{GHz}$$
+> 单模区间 $0.682\sim1.364\ \mathrm{GHz}$，工作点 1 GHz 位于其中（$f/f_c=1.47$），满足要求。且 $f_{c,\mathrm{TE}_{20}}=f_{c,\mathrm{TE}_{01}}$ 恰好相等，说明 $b=a/2$ 使单模带宽达到理论最大。
+>
+> **讨论与拓展：**
+> - **若工作带宽要求很宽**（例如 0.8–1.6 GHz），则单模区间 0.682–1.364 GHz 不够，需要改用**脊波导**（把 $a$ 方向的中心部分做成凸脊，等效降低 TE$_{10}$ 的 $f_c$、抬高 TE$_{20}$ 的 $f_c$，单模带宽可展宽到 $3{:}1$ 以上）或改用**加宽 $b$ 的高波导 + 模式滤波**。
+> - **若要求损耗最小**，应把工作点移到 $f\approx1.7f_c=1.16\ \mathrm{GHz}$ 附近，或适当加大 $b$。
+> - **若要求功率容量最大**，则应加大 $ab$（例如 $a=29\ \mathrm{cm}$、$b=14\ \mathrm{cm}$），但要核算 TE$_{01}$ 是否被激起（$b<\lambda/2$ 必须满足）。
+> - 实际选型时优先查**标准波导型号表**（WR/BJ 系列），例如 1 GHz 附近可用 WR-975 / BJ-9 一类的大尺寸波导，而不是自行设计非标尺寸。
+
+> **【例题 3-4】相速、群速与波长的综合计算**
+> 某矩形波导 $a=2.286\ \mathrm{cm}$、$b=1.016\ \mathrm{cm}$（即 WR-90），工作频率 $f=15\ \mathrm{GHz}$。求 TE$_{10}$ 模的 $\lambda_g$、$v_p$、$v_g$、$Z_{\mathrm{TE}_{10}}$，并判断是否仍单模工作。
+>
+> **解：**
+> **第一步：判断工作模式。**
+> $$\lambda_0=\frac{3\times10^{8}}{15\times10^{9}}=0.02\ \mathrm{m}=20\ \mathrm{mm}$$
+> $$\lambda_{c,\mathrm{TE}_{10}}=2a=45.72\ \mathrm{mm}>20\ \mathrm{mm}\ \Rightarrow\ \text{TE}_{10}\ \text{导通}$$
+> $$\lambda_{c,\mathrm{TE}_{20}}=a=22.86\ \mathrm{mm}>20\ \mathrm{mm}\ \Rightarrow\ \text{TE}_{20}\ \text{导通！}$$
+> $$\lambda_{c,\mathrm{TE}_{01}}=2b=20.32\ \mathrm{mm}>20\ \mathrm{mm}\ \Rightarrow\ \text{TE}_{01}\ \text{也导通！}$$
+> 因此 **15 GHz 已超出 WR-90 的单模区（上限 13.11 GHz），属于多模工作**，工程上不允许（除非刻意利用多模）。
+> **第二步：仍按 TE$_{10}$ 计算传播参数**（设波导在此频率下工作）
+> $$f_{c,\mathrm{TE}_{10}}=6.557\ \mathrm{GHz},\qquad \frac{f_c}{f}=\frac{6.557}{15}=0.4371$$
+> $$\sqrt{1-\left(\frac{f_c}{f}\right)^2}=\sqrt{1-0.1911}=0.8994$$
+> $$\beta=\frac{2\pi}{0.02}\times0.8994=282.6\ \mathrm{rad/m},\qquad
+> \lambda_g=\frac{2\pi}{282.6}=0.02223\ \mathrm{m}=22.23\ \mathrm{mm}$$
+> $$v_p=\frac{c}{\sqrt{1-(f_c/f)^2}}=\frac{3\times10^{8}}{0.8994}=3.34\times10^{8}\ \mathrm{m/s}$$
+> $$v_g=c\times0.8994=2.70\times10^{8}\ \mathrm{m/s}$$
+> 校验：$v_pv_g=3.34\times10^{8}\times2.70\times10^{8}=9.02\times10^{16}\approx c^2\ \checkmark$；且 $\lambda_g>\lambda_0$（22.23 mm > 20.00 mm）$\checkmark$。
+> $$Z_{\mathrm{TE}_{10}}=\frac{376.99}{0.8994}=419.2\ \Omega$$
+>
+> **讨论与拓展：**
+> - 与例题 3-2 相比：频率从 10 GHz 升到 15 GHz，$\beta$ 从 158.1 增到 282.6 rad/m（几乎翻倍，因为频率升了 1.5 倍而 $\lambda_g$ 从 39.7 mm 缩到 22.2 mm）；$v_p$ 从 $3.97\times10^8$ 降到 $3.34\times10^8\ \mathrm{m/s}$（**接近光速，说明远离截止**）；$Z_{\mathrm{TE}_{10}}$ 从 $499\ \Omega$ 降到 $419\ \Omega$（**趋向 $\eta_0$**）。
+> - **规律总结：** 频率升高（远离截止）时，TE 模越来越“像 TEM 波”：$\lambda_g\to\lambda_0$、$v_p\to c$、$v_g\to c$、$Z_{\mathrm{TE}}\to\eta$。反之靠近截止时一切“走极端”：$\lambda_g\to\infty$、$v_p\to\infty$、$v_g\to0$、$Z_{\mathrm{TE}}\to\infty$。**这四条极限行为是理解波导色散的最好抓手。**
+> - 若必须使用 15 GHz，应改用尺寸更小的波导，例如 WR-62（$a=15.8\ \mathrm{mm}$、$b=7.9\ \mathrm{mm}$），其 $f_{c,\mathrm{TE}_{10}}=9.49\ \mathrm{GHz}$、$f_{c,\mathrm{TE}_{20}}=18.97\ \mathrm{GHz}$，单模区 9.49–18.97 GHz 覆盖 15 GHz。
+
+> **【例题 3-5】衰减特性与最佳工作频率**
+> WR-90（$a=22.86\ \mathrm{mm}$、$b=10.16\ \mathrm{mm}$）铜波导（$\sigma=5.8\times10^{7}\ \mathrm{S/m}$），工作频率 10 GHz。求 TE$_{10}$ 模的导体衰减常数（分别以 Np/m 与 dB/m 表示），并求衰减最小时的最佳工作频率。
+>
+> **解：**
+> **第一步：算表面电阻。**
+> $$R_s=\sqrt{\frac{\pi f\mu_0}{\sigma}}
+> =\sqrt{\frac{\pi\times10^{10}\times4\pi\times10^{-7}}{5.8\times10^{7}}}
+> =\sqrt{\frac{3.948\times10^{4}}{5.8\times10^{7}}}=\sqrt{6.807\times10^{-4}}=0.02609\ \Omega$$
+> （常用近似：铜在 10 GHz 时 $R_s\approx0.026\ \Omega/\square$。）
+> **第二步：算括号项与分母。**
+> $$f_c=6.557\ \mathrm{GHz},\qquad \left(\frac{f_c}{f}\right)^2=0.4300$$
+> $$1+\frac{2b}{a}\left(\frac{f_c}{f}\right)^2=1+2\times\frac{10.16}{22.86}\times0.4300=1+0.3822=1.3822$$
+> $$\sqrt{1-\left(\frac{f_c}{f}\right)^2}=0.7550,\qquad \eta_0=376.99\ \Omega$$
+> $$b\eta_0\sqrt{1-(f_c/f)^2}=0.01016\times376.99\times0.7550=2.8919$$
+> **第三步：代入衰减公式。**
+> $$\alpha_c=\frac{0.02609\times1.3822}{2.8919}=0.01247\ \mathrm{Np/m}$$
+> 换算：$\alpha_c=8.686\times0.01247=0.1083\ \mathrm{dB/m}$。
+>
+> **第四步：求衰减最小时的最佳工作频率。** 令 $x=f/f_c$、$u=b/a=10.16/22.86=0.4444$，把 (3-3-24) 中全部含 $f$ 的因子写成 $x$ 的函数：
+> $$\alpha_c(x)\propto\frac{\sqrt x\left(1+\dfrac{2u}{x^2}\right)}{\sqrt{1-\dfrac{1}{x^2}}}$$
+> 取对数求导并令其为零，整理得
+> $$x^4-(u+1)x^2-u=0
+> \ \Longrightarrow\
+> x_{\mathrm{opt}}=\sqrt{\frac{(u+1)+\sqrt{(u+1)^2+8u}}{2}}$$
+> 代入 $u=0.4444$：
+> $$\sqrt{(1.4444)^2+8\times0.4444}=\sqrt{2.0863+3.5552}=\sqrt{5.6415}=2.3752$$
+> $$x_{\mathrm{opt}}=\sqrt{\frac{1.4444+2.3752}{2}}=\sqrt{1.9098}=1.382$$
+> 这个解的物理含义需要仔细辨析：**对 $u<1/2$ 的扁波导，$x=1.382$ 是 $\alpha_c(x)$ 的一个局部极值点（局部极大），而衰减的全局极小值出现在 $x=\sqrt5\approx2.236$ 处——已经超出单模带！** 换句话说：
+> - **在单模带 $1<x<2$ 内，标准矩形波导的导体衰减随频率单调下降**；
+> - 理论上的最低衰减点（$f\approx2.24f_c$，即 WR-90 的 14.7 GHz）**落在单模区之外**，实际工作中无法使用。
+>
+> **第五步：给出可用的结论。** 既然单模带内衰减单调下降、而带的上限由 TE$_{20}$ 决定（13.11 GHz），工程上就把工作点尽量取高，但留出裕度，通常取到 $f\approx1.9f_c$：
+> $$f_{\text{推荐}}=1.9\times6.557=12.46\ \mathrm{GHz}\ (\approx12.5\ \mathrm{GHz})$$
+> 此时
+> $$x=1.9,\qquad \left(\frac{f_c}{f}\right)^2=0.2770,\qquad \sqrt{1-(f_c/f)^2}=0.8503$$
+> $$R_s=\sqrt{\frac{\pi\times1.246\times10^{10}\times4\pi\times10^{-7}}{5.8\times10^{7}}}=0.02912\ \Omega$$
+> $$1+2\times0.4444\times0.2770=1+0.2462=1.2462$$
+> $$\alpha_c=\frac{0.02912\times1.2462}{0.01016\times376.99\times0.8503}=\frac{0.03629}{3.2571}=0.01114\ \mathrm{Np/m}$$
+> 即 $\alpha_c=8.686\times0.01114=0.0968\ \mathrm{dB/m}$。
+> 从 10 GHz 的 $0.1083\ \mathrm{dB/m}$ 降到 12.46 GHz 的 $0.0968\ \mathrm{dB/m}$，**降低约 11%**，与“单模带内衰减随频率单调下降”的结论一致。
+>
+> **讨论与拓展：**
+> - **为什么先降后升。** 三个竞争因子：$R_s\propto\sqrt f$（推升）、$1/\sqrt{1-(f_c/f)^2}$（$f\to f_c$ 时发散，推升）、$[1+(2b/a)(f_c/f)^2]$（随 $f$ 增大而下降，推降）。低频段第二、三因子主导 → 下降；高频段回归 $R_s\propto\sqrt f$ → 缓慢上升。极小点在 $x=\sqrt5\approx2.24$ 附近，**与单模带只有部分重叠**。
+> - **经典结论的前提要看清。** 如果把 $b/a$ 与频率**同时**作为自由变量联合优化，可解得 $b/a=1/2$、$f=\sqrt3f_c\approx1.73f_c$。那是“**设计一条衰减最小的波导该取什么尺寸和频率**”的答案；而本题问的是“**给定 WR-90（$b/a=0.444$）后，衰减最小的频率是多少**”，两者不是同一个问题，答案自然不同。**考试中务必读清设问。**
+> - **0.097～0.108 dB/m 意味着什么？** 每 100 m 衰减约 10 dB（损失约 90% 的功率）。所以长距离微波传输必须用**圆波导 TE$_{01}$ 模**（衰减随频率单调下降）或**过模波导 + 中继放大**。
+> - **降低损耗的手段：** ① 提高电导率（镀银，$\sigma$ 提高 5%，衰减下降约 2.5%）；② 加宽 $b$（高波导：把 $b/a$ 提高到 $1/2$ 以上，可使全局衰减小，代价是单模带宽变窄）；③ 把工作点选在单模带上端 $1.8f_c\sim1.9f_c$；④ 内壁抛光、镀金镀银降低表面粗糙度（实际波导因表面粗糙度，实测衰减常比理论值高 20%–50%）；⑤ 抽真空或充干燥气体避免水汽吸收。
+> - **注意区分“损耗最小”与“综合最优”。** 若还要兼顾功率容量，最佳点在 $f=\sqrt2f_c\approx1.41f_c$（此时 $P_{\max}$ 最大）；若还要兼顾色散与模式纯度，则不宜太靠近 $2f_c$。**综合折中给出工程推荐范围 $1.25f_c\sim1.9f_c$，WR-90 的推荐频段 8.2–12.4 GHz 正对应 $1.25f_c\sim1.89f_c$。**
+
+### 3.3.10 本节考点清单
+
+| 题型 | 常见设问 | 易错点 | 难度 |
+|---|---|---|---|
+| 填空/选择 | TE$_{10}$ 的 $\lambda_c$、$f_c$ | 把 $2a$ 写成 $a$；把 $b$ 用进去 | ★ |
+| 填空 | TE$_{mn}$/TM$_{mn}$ 的 $k_c$ 公式 | 漏掉平方；忘开根号 | ★ |
+| 判断 | 给定 $f$、$a$、$b$ 判断哪些模式能传 | 漏判 TE$_{01}$；忘记 TM$_{11}$ 与 TE$_{11}$ 简并 | ★★ |
+| 计算 | $\lambda_g$、$v_p$、$v_g$、$Z_{\mathrm{TE}}$ | $\lambda_g$ 与 $\lambda_0$ 写反；$v_p$、$v_g$ 大小关系记反 | ★★ |
+| 简答 | 为什么 TE$_{10}$ 是主模 | 只答“场结构简单”，漏掉带宽、无纵向电流等 | ★★★ |
+| 简答 | 衰减随频率为什么先降后升 | 只给公式不解释三个竞争因子的物理来源 | ★★★ |
+| 设计 | 给定 $f$ 设计 $a$、$b$ | 只写 $a>\lambda/2$ 忘了 $a<\lambda$ 和 $b<\lambda/2$ | ★★★ |
+| 推导 | TE 模边界条件为什么是 $\partial H_z/\partial n=0$ | 与 TM 的条件写反 | ★★★★ |
+| 计算 | 给定波导求衰减常数 $\alpha_c$（Np/m、dB/m 换算） | 忘记 $\times8.686$；$R_s$ 中漏掉 $\mu$ 或 $\sigma$ 开根号 | ★★★ |
+| 简答 | 衰减随频率为何先降后升；最佳工作频率是多少 | 把“给定波导的衰减最小点”与“联合优化尺寸后的 $\sqrt3f_c$”混为一谈 | ★★★★ |
+| 对比 | 衰减随频率的变化：矩形 TE$_{10}$ vs 圆波导 TE$_{01}$ | 误认为两者都是先降后升（TE$_{01}$ 是单调下降） | ★★★ |
+| 计算 | 功率容量与最佳功率频率 $f=\sqrt2f_c$ | 只答“$P_{\max}\propto ab$”，忽略频率因子 | ★★★ |
+
+---
+
+## 3.4 圆波导
+
+圆波导（circular waveguide）的横截面是圆形。它的**几何对称性**带来三项实用优点：
+
+- **可旋转**——雷达的**旋转关节**（rotary joint）需要天线与发射机之间做 $360^\circ$ 相对转动，只有圆波导（或同轴）能实现；
+- **易加工、误差小**——车削一个圆管比加工矩形精度高，尤其在大尺寸毫米波频段；
+- **低损耗**——TE$_{01}$ 模的衰减随频率升高而**单调下降**，是毫米波远距离传输的经典方案。
+
+但它的数学要复杂一些：柱坐标下的分离变量引出了**贝塞尔方程**，解是贝塞尔函数。本节给出完整推导与结论。
+
+### 3.4.1 柱坐标下的场方程与贝塞尔方程
+
+在柱坐标 $(\rho,\varphi,z)$ 中，横向拉普拉斯算符为
+
+$$\nabla_t^2=\frac{1}{\rho}\frac{\partial}{\partial\rho}\left(\rho\frac{\partial}{\partial\rho}\right)+\frac{1}{\rho^2}\frac{\partial^2}{\partial\varphi^2}
+\tag{3-4-1}$$
+
+纵向分量满足同样的支配方程 $\nabla_t^2\Phi+k_c^2\Phi=0$。
+
+#### （1）TE 模（$E_z=0$，解 $H_z$）
+
+设 $H_z(\rho,\varphi,z)=H_{0z}(\rho,\varphi)e^{-j\beta z}$，分离变量令
+
+$$H_{0z}(\rho,\varphi)=R(\rho)\Phi(\varphi)$$
+
+代入并整理：
+
+$$\frac{\rho}{R}\frac{d}{d\rho}\left(\rho\frac{dR}{d\rho}\right)+k_c^2\rho^2=-\frac{1}{\Phi}\frac{d^2\Phi}{d\varphi^2}$$
+
+左端只与 $\rho$ 有关，右端只与 $\varphi$ 有关，故两者都等于同一常数。令该常数为 $m^2$（取 $m^2$ 而非 $-m^2$，是因为必须保证 $\varphi$ 方向是**周期解**）：
+
+$$
+\frac{d^2\Phi}{d\varphi^2}+m^2\Phi=0
+\qquad\Longrightarrow\qquad
+\Phi(\varphi)=B_1\cos m\varphi+B_2\sin m\varphi
+\tag{3-4-2}
+$$
+
+$$
+\rho\frac{d}{d\rho}\left(\rho\frac{dR}{d\rho}\right)+\left(k_c^2\rho^2-m^2\right)R=0
+\tag{3-4-3}
+$$
+
+令 $x=k_c\rho$，(3-4-3) 化为**标准的 $m$ 阶贝塞尔方程**：
+
+$$x^2\frac{d^2R}{dx^2}+x\frac{dR}{dx}+\left(x^2-m^2\right)R=0
+\tag{3-4-4}$$
+
+其通解为
+
+$$R(\rho)=A_1J_m(k_c\rho)+A_2N_m(k_c\rho)
+\tag{3-4-5}$$
+
+其中 $J_m(x)$ 是**第一类 $m$ 阶贝塞尔函数**，$N_m(x)$ 是**第二类 $m$ 阶贝塞尔函数**（诺依曼函数）。
+
+> **【核心概念】为什么要舍去 $N_m$？**
+> 第二类贝塞尔函数在原点处发散：$N_m(x)\xrightarrow{x\to0}-\infty$（$m=0$ 时按 $\ln x$ 发散）。而**波导轴线 $\rho=0$ 处的场必须是有限值**（物理上场不可能无穷大），因此必须取 $A_2=0$。
+> 于是
+> $$R(\rho)=A_1J_m(k_c\rho)$$
+> 再考虑 $\varphi$ 方向的**周期条件** $f(\varphi)=f(\varphi+2\pi)$：由 (3-4-2)，$\cos m\varphi$、$\sin m\varphi$ 在 $\varphi$ 增加 $2\pi$ 后必须不变，故 $m$ 必须为**整数**：
+> $$m=0,1,2,3,\cdots$$
+> 至此圆波导 TE 模的纵向场一般形式为
+> $$H_z=A J_m(k_c\rho)\begin{Bmatrix}\cos m\varphi\\ \sin m\varphi\end{Bmatrix}e^{-j\beta z}
+> \tag{3-4-6}$$
+> 其中 $\cos$ 与 $\sin$ 两种角向分布**截止波长相同**（这正是一会儿要讲的**极化简并**）。
+
+> **【易错点】两个边界条件必须区分清楚：**
+> - **有限条件** $f(\rho\to0)$ 有限 → 舍去 $N_m$（$A_2=0$）。**这是“物理条件”，不是电磁边界条件。**
+> - **周期条件** $f(\varphi)=f(\varphi+2\pi)$ → $m$ 取整数。**这也是数学自洽条件。**
+> - **导体边界条件** $\rho=a$ 处 $E_{\text{切}}=0$ → 决定 $k_c$ 的**本征值**。**这才是真正的电磁边界条件，也是截止波长的来源。**
+
+#### （2）TE 模的截止波数与截止波长
+
+由 (3-2-6) 的柱坐标形式（或把直角坐标式换成柱坐标），TE 模在 $\rho=a$ 处的切向电场分量为
+
+$$E_\varphi=\frac{j\omega\mu}{k_c^2}\frac{\partial H_z}{\partial\rho}\Big|_{\rho=a}=0
+\ \Longrightarrow\
+J_m'(k_ca)=0
+\tag{3-4-7}$$
+
+其中 $J_m'(x)=dJ_m/dx$。于是
+
+$$k_{c,\mathrm{TE}_{mn}}=\frac{\nu_{mn}}{a},\qquad
+\lambda_{c,\mathrm{TE}_{mn}}=\frac{2\pi a}{\nu_{mn}}
+\tag{3-4-8}$$
+
+其中 $\nu_{mn}$ 是 **$J_m'(x)$ 的第 $n$ 个非零根**（$m$ 阶第一类贝塞尔函数**导数的第 $n$ 个零点**）。
+
+#### （3）TM 模（$H_z=0$，解 $E_z$）
+
+推导完全平行：$E_z=A J_m(k_c\rho)\begin{Bmatrix}\cos m\varphi\\ \sin m\varphi\end{Bmatrix}e^{-j\beta z}$，边界条件为 $\rho=a$ 处 $E_z=0$：
+
+$$J_m(k_ca)=0
+\ \Longrightarrow\
+k_{c,\mathrm{TM}_{mn}}=\frac{\mu_{mn}}{a},\qquad
+\lambda_{c,\mathrm{TM}_{mn}}=\frac{2\pi a}{\mu_{mn}}
+\tag{3-4-9}
+$$
+
+其中 $\mu_{mn}$ 是 **$J_m(x)$ 的第 $n$ 个非零根**。
+
+> **【核心概念】符号约定统一说明**
+> 本章约定（与主流教材一致）：
+> - $\mu_{mn}$ —— $J_m(x)$ 的第 $n$ 个根，用于 **TM 模**；
+> - $\nu_{mn}$ —— $J_m'(x)$ 的第 $n$ 个根，用于 **TE 模**；
+> - $n$ 从 1 开始编号，因为 $x=0$ 处的根没有物理意义（对应零场）。
+>
+> **贝塞尔函数的零点表（必背前几个）：**
+>
+> | 阶数 | $\mu_{m1}$ | $\mu_{m2}$ | $\mu_{m3}$ | | $\nu_{m1}$ | $\nu_{m2}$ | $\nu_{m3}$ |
+> |---|---|---|---|---|---|---|---|
+> | $m=0$ | **2.405** | 5.520 | 8.654 | | **3.832** | 7.016 | 10.173 |
+> | $m=1$ | **3.832** | 7.016 | 10.173 | | **1.841** | 5.331 | 8.536 |
+> | $m=2$ | **5.136** | 8.417 | 11.620 | | **3.054** | 6.706 | 9.970 |
+> | $m=3$ | **6.380** | 9.761 | 13.015 | | **4.201** | 8.015 | 11.346 |
+>
+> **一个极重要的恒等关系（必考）：**
+> $$J_0'(x)=-J_1(x)\qquad\Longrightarrow\qquad \nu_{0n}=\mu_{1n}
+> \tag{3-4-10}$$
+> 验证：$J_1$ 的第一个根 $3.832$ 恰好等于 $J_0'$ 的第一个根 $3.832$；$7.016=7.016$。**这就是圆波导中 TE$_{0n}$ 与 TM$_{1n}$ “模式简并”的根源。**
+
+<figure class="fig">
+<svg viewBox="0 0 900 400" role="img" aria-label="贝塞尔函数及其导数的零点位置">
+  <defs>
+    <marker id="axb" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-2)"/></marker>
+  </defs>
+  <line x1="70" y1="200" x2="840" y2="200" stroke="var(--ink-2)" stroke-width="1.6" marker-end="url(#axb)"/>
+  <text x="846" y="205" font-size="13" fill="var(--ink-2)">x</text>
+  <line x1="70" y1="30" x2="70" y2="330" stroke="var(--ink-2)" stroke-width="1.4"/>
+  <text x="60" y="40" font-size="12" fill="var(--ink-2)" text-anchor="end">J</text>
+  <\!-- 曲线 J0 -->
+  <path d="M70,60 C100,60 110,100 120,150 C140,240 170,300 200,300 C240,300 260,230 280,180 C300,130 320,90 350,90 C380,90 400,130 420,170 C440,215 460,255 490,255 C520,255 540,215 560,185 C580,155 600,130 630,130 C660,130 680,160 700,190 C720,220 740,245 770,245 C800,245 820,220 840,205"
+        fill="none" stroke="var(--brand)" stroke-width="2"/>
+  <text x="352" y="80" font-size="12.5" fill="var(--brand)">J₀(x)</text>
+  <\!-- 曲线 J1 -->
+  <path d="M70,200 C90,160 110,100 140,72 C165,52 190,60 220,95 C260,145 290,215 320,255 C350,292 380,300 410,290 C450,275 480,225 510,190 C540,158 570,142 600,145 C630,148 660,175 690,205 C715,230 740,250 770,255 C800,258 820,248 840,240"
+        fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="146" y="60" font-size="12.5" fill="var(--accent)">J₁(x)</text>
+  <\!-- 零点刻度 -->
+  <g stroke="var(--warn)" stroke-width="1.6">
+    <line x1="190" y1="196" x2="190" y2="204"/>
+    <line x1="398" y1="196" x2="398" y2="204"/>
+    <line x1="596" y1="196" x2="596" y2="204"/>
+  </g>
+  <g font-size="12.5" fill="var(--warn)" text-anchor="middle">
+    <text x="190" y="224">2.405</text>
+    <text x="398" y="224">5.520</text>
+    <text x="596" y="224">8.654</text>
+  </g>
+  <text x="392" y="248" text-anchor="middle" font-size="12.5" fill="var(--warn)">μ0n：J₀ 的零点 → TM0n</text>
+  <\!-- J1 零点 -->
+  <g stroke="var(--brand)" stroke-width="1.6">
+    <line x1="137" y1="196" x2="137" y2="204"/>
+    <line x1="310" y1="196" x2="310" y2="204"/>
+    <line x1="514" y1="196" x2="514" y2="204"/>
+  </g>
+  <g font-size="12.5" fill="var(--brand)" text-anchor="middle">
+    <text x="137" y="272">3.832</text>
+    <text x="310" y="272">7.016</text>
+    <text x="514" y="272">10.173</text>
+  </g>
+  <text x="330" y="296" text-anchor="middle" font-size="12.5" fill="var(--brand)">μ1n：J₁ 的零点 → TM1n；同时又是 J₀' 的零点 → TE0n（因为 J₀'=-J₁）</text>
+  <text x="330" y="322" text-anchor="middle" font-size="12.5" fill="var(--accent)">ν₁₁=1.841 是 J₁' 的最小零点，它给出圆波导中最长的截止波长 λc=3.413a → TE₁₁ 是主模</text>
+  <text x="70" y="360" font-size="12.5" fill="var(--ink-2)">注意：νmn 是 Jₘ' 的零点，一般不等于 μmn；唯一例外是 ν0n=μ1n（由 J₀'=-J₁ 保证）。</text>
+  <text x="70" y="382" font-size="12.5" fill="var(--ink-2)">贝塞尔函数的图形是“衰减振荡”型：随 x 增大振幅按 x^-1/2 衰减，零点间隔趋于 π。</text>
+</svg>
+<figcaption>图 3-8　贝塞尔函数 $J_0$、$J_1$ 的零点与圆波导模式截止波长的来源</figcaption>
+</figure>
+
+### 3.4.2 圆波导中几个常用模式的场结构
+
+把 $H_z$（或 $E_z$）代入横向—纵向关系式并换成柱坐标，可得常用模式的完整场表达式。
+
+**TE$_{11}$ 模**（$m=1$，$\nu_{11}=1.841$，$\lambda_c=3.413a$）：
+
+$$
+\begin{aligned}
+H_z&=H_{11}J_1\!\left(\frac{1.841}{a}\rho\right)\cos\varphi\,e^{-j\beta z}\\
+E_\rho&=-\frac{j\omega\mu}{k_c^2\rho}H_{11}J_1\!\left(\frac{1.841}{a}\rho\right)\sin\varphi\,e^{-j\beta z}\\
+E_\varphi&=-\frac{j\omega\mu}{k_c}H_{11}J_1'\!\left(\frac{1.841}{a}\rho\right)\cos\varphi\,e^{-j\beta z}\\
+E_z&=0
+\end{aligned}
+\tag{3-4-11}
+$$
+
+**TE$_{01}$ 模**（$m=0$，$\nu_{01}=3.832$，$\lambda_c=1.640a$，**圆对称**）：
+
+$$
+\begin{aligned}
+H_z&=H_{01}J_0\!\left(\frac{3.832}{a}\rho\right)e^{-j\beta z}\\
+E_\varphi&=-\frac{j\omega\mu}{k_c}H_{01}J_0'\!\left(\frac{3.832}{a}\rho\right)e^{-j\beta z}
+=\frac{j\omega\mu}{k_c}H_{01}J_1\!\left(\frac{3.832}{a}\rho\right)e^{-j\beta z}\\
+E_\rho&=0,\qquad E_z=0,\qquad H_\varphi=0
+\end{aligned}
+\tag{3-4-12}
+$$
+
+它的电力线是**一圈圈与管壁同心的闭合圆**，管内壁上**只有 $\varphi$ 方向的电流、完全没有纵向（$z$ 方向）电流**——这是它低损耗的根本原因。
+
+**TM$_{01}$ 模**（$m=0$，$\mu_{01}=2.405$，$\lambda_c=2.613a$，**圆对称**）：
+
+$$
+\begin{aligned}
+E_z&=E_{01}J_0\!\left(\frac{2.405}{a}\rho\right)e^{-j\beta z}\\
+E_\rho&=-\frac{j\beta}{k_c}E_{01}J_0'\!\left(\frac{2.405}{a}\rho\right)e^{-j\beta z}
+=\frac{j\beta}{k_c}E_{01}J_1\!\left(\frac{2.405}{a}\rho\right)e^{-j\beta z}\\
+H_\varphi&=\frac{j\omega\varepsilon}{k_c}E_{01}J_0'\!\left(\frac{2.405}{a}\rho\right)e^{-j\beta z}
+=-\frac{j\omega\varepsilon}{k_c}E_{01}J_1\!\left(\frac{2.405}{a}\rho\right)e^{-j\beta z}\\
+E_\varphi&=0,\qquad H_z=0,\qquad H_\rho=0
+\end{aligned}
+\tag{3-4-13}
+$$
+
+**TM$_{11}$ 模**（$m=1$，$\mu_{11}=3.832$，$\lambda_c=1.640a$）：与 TE$_{01}$ **简并**，场在横截面上呈“偏心”的双瓣结构。
+
+<figure class="fig">
+<svg viewBox="0 0 900 360" role="img" aria-label="圆波导 TE11、TE01、TM01 模的横截面场分布">
+  <defs>
+    <marker id="ce" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--brand)"/></marker>
+    <marker id="cm" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--accent)"/></marker>
+    <marker id="cw" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--warn)"/></marker>
+  </defs>
+  <\!-- TE11 -->
+  <text x="160" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">TE₁₁（主模）</text>
+  <circle cx="160" cy="180" r="110" fill="none" stroke="var(--line)" stroke-width="2"/>
+  <line x1="50" y1="180" x2="270" y2="180" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+  <g stroke="var(--brand)" stroke-width="2" marker-end="url(#ce)">
+    <line x1="72" y1="180" x2="94" y2="112"/>
+    <line x1="72" y1="180" x2="94" y2="248"/>
+    <line x1="118" y1="180" x2="118" y2="102"/>
+    <line x1="118" y1="180" x2="118" y2="258"/>
+    <line x1="160" y1="180" x2="160" y2="98"/>
+    <line x1="202" y1="180" x2="202" y2="102"/>
+    <line x1="202" y1="180" x2="202" y2="258"/>
+    <line x1="248" y1="180" x2="226" y2="112"/>
+    <line x1="248" y1="180" x2="226" y2="248"/>
+  </g>
+  <ellipse cx="70" cy="150" rx="16" ry="34" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+  <ellipse cx="250" cy="150" rx="16" ry="34" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+  <ellipse cx="70" cy="212" rx="16" ry="34" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+  <ellipse cx="250" cy="212" rx="16" ry="34" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="160" y="316" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">λc=3.413a　电场横贯直径</text>
+  <text x="160" y="336" text-anchor="middle" font-size="12.5" fill="var(--warn)">与矩形波导 TE₁₀ 最相似，可互转</text>
+  <\!-- TE01 -->
+  <text x="450" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">TE₀₁（低损耗）</text>
+  <circle cx="450" cy="180" r="110" fill="none" stroke="var(--line)" stroke-width="2"/>
+  <circle cx="450" cy="180" r="30" fill="none" stroke="var(--brand)" stroke-width="2"/>
+  <circle cx="450" cy="180" r="62" fill="none" stroke="var(--brand)" stroke-width="2"/>
+  <circle cx="450" cy="180" r="94" fill="none" stroke="var(--brand)" stroke-width="2"/>
+  <line x1="450" y1="150" x2="450" y2="120" stroke="var(--accent)" stroke-width="2" marker-end="url(#cm)"/>
+  <line x1="450" y1="210" x2="450" y2="240" stroke="var(--accent)" stroke-width="2" marker-end="url(#cm)"/>
+  <line x1="420" y1="180" x2="390" y2="180" stroke="var(--accent)" stroke-width="2" marker-end="url(#cm)"/>
+  <line x1="480" y1="180" x2="510" y2="180" stroke="var(--accent)" stroke-width="2" marker-end="url(#cm)"/>
+  <text x="450" y="316" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">λc=1.640a　圆对称（m=0）</text>
+  <text x="450" y="336" text-anchor="middle" font-size="12.5" fill="var(--warn)">E 只有 φ 分量，壁电流无纵向分量 → 衰减小</text>
+  <\!-- TM01 -->
+  <text x="740" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">TM₀₁（圆对称）</text>
+  <circle cx="740" cy="180" r="110" fill="none" stroke="var(--line)" stroke-width="2"/>
+  <circle cx="740" cy="180" r="18" fill="none" stroke="var(--warn)" stroke-width="2.2"/>
+  <circle cx="740" cy="180" r="5" fill="var(--warn)"/>
+  <line x1="740" y1="162" x2="740" y2="106" stroke="var(--warn)" stroke-width="2" marker-end="url(#cw)"/>
+  <line x1="740" y1="198" x2="740" y2="254" stroke="var(--warn)" stroke-width="2" marker-end="url(#cw)"/>
+  <line x1="722" y1="180" x2="666" y2="180" stroke="var(--warn)" stroke-width="2" marker-end="url(#cw)"/>
+  <line x1="758" y1="180" x2="814" y2="180" stroke="var(--warn)" stroke-width="2" marker-end="url(#cw)"/>
+  <ellipse cx="740" cy="180" rx="52" ry="52" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <ellipse cx="740" cy="180" rx="88" ry="88" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <text x="740" y="316" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">λc=2.613a　轴心处 Ez 最强</text>
+  <text x="740" y="336" text-anchor="middle" font-size="12.5" fill="var(--warn)">用于旋转关节、微波电子管、微波加热</text>
+</svg>
+<figcaption>图 3-9　圆波导三种常用模式的横截面场分布（TE$_{11}$、TE$_{01}$、TM$_{01}$）</figcaption>
+</figure>
+
+> **【思考】圆波导中 $m$ 和 $n$ 的意义？**
+> - **$m$ —— 角向模数，表示场沿圆周方向的变化。** 由 $\cos m\varphi$、$\sin m\varphi$ 决定：$m=0$ 时场沿 $\varphi$ **完全不变**，即**圆对称**（如 TE$_{01}$、TM$_{01}$）；$m=1$ 时场沿圆周变化一个整周期（一对“瓣”），如 TE$_{11}$；$m=2$ 时变化两个整周期（四瓣），如 TE$_{21}$。**教材里也说“场沿圆周分布的整波数”**——注意是“整波”而不是“半波”，因为 $\varphi$ 绕一圈必须回到原值，只能是整数个整周期。
+> - **$n$ —— 径向模数，表示场沿半径方向的变化。** $n$ 是贝塞尔函数（TM 模）或其导数（TE 模）的**第 $n$ 个零点序号**。$n$ 越大，沿半径方向场的“起伏”次数越多。教材里也说“场沿半径分布的最大值个数”或“零点个数”——两种说法在计数的起点上差一个，**核心意思是“沿径向第几个本征值”**。
+> - 注意：$n\neq0$ 才有意义（第 0 个根 $x=0$ 对应零场），所以 $n$ 从 1 开始。
+> - 综合记忆：**$m$ 管“绕圈”，$n$ 管“往里”**；$m=0$ 的模都是圆对称模。
+
+### 3.4.3 圆波导的传输特性
+
+#### （1）截止波长与模式谱
+
+由 (3-4-8) 与 (3-4-9)，圆波导各模式的截止波长为
+
+$$\lambda_{c,\mathrm{TE}_{mn}}=\frac{2\pi a}{\nu_{mn}},\qquad
+\lambda_{c,\mathrm{TM}_{mn}}=\frac{2\pi a}{\mu_{mn}}
+\tag{3-4-14}$$
+
+**圆波导截止波长排序表（按 $\lambda_c$ 由大到小，即按能“最先导通”排序）：**
+
+| 序 | 模式 | 系数（$\lambda_c/a$） | 数值 | 说明 |
+|---|---|---|---|---|
+| 1 | **TE$_{11}$** | $2\pi/1.841$ | **$3.413a$** | **主模**，极化简并 |
+| 2 | **TM$_{01}$** | $2\pi/2.405$ | **$2.613a$** | 圆对称，无极化简并 |
+| 3 | TE$_{21}$ | $2\pi/3.054$ | $2.057a$ | 极化简并 |
+| 4 | **TE$_{01}$ / TM$_{11}$** | $2\pi/3.832$ | **$1.640a$** | **简并**（$J_0'=-J_1$） |
+| 5 | TE$_{31}$ | $2\pi/4.201$ | $1.496a$ | |
+| 6 | TM$_{21}$ | $2\pi/5.136$ | $1.223a$ | |
+| 7 | TE$_{41}$ | $2\pi/5.318$ | $1.182a$ | |
+| 8 | TM$_{02}$ | $2\pi/5.520$ | $1.138a$ | 圆对称 |
+| 9 | TE$_{12}$ / TM$_{12}$ | $2\pi/7.016$ | $0.895a$ | 简并 |
+| 10 | TE$_{51}$ | $2\pi/6.416$ | $0.979a$ | |
+
+> **【核心概念】圆波导与矩形波导的单模带宽对比**
+> 圆波导主模 TE$_{11}$ 的 $\lambda_c=3.413a$，次低阶模 TM$_{01}$ 的 $\lambda_c=2.613a$，所以单模（只有 TE$_{11}$）条件是
+> $$2.613a<\lambda_0<3.413a$$
+> 单模带宽比 $\lambda_{\max}/\lambda_{\min}=3.413/2.613=1.306$，即约 **$1.3{:}1$**。
+> 而矩形波导（$b=a/2$）是 **$2{:}1$**。
+> **结论：矩形波导的单模带宽远优于圆波导，这就是矩形波导用得最多的原因；圆波导主要用在需要旋转、圆对称或超低损耗的特殊场合。**
+
+<figure class="fig">
+<svg viewBox="0 0 900 360" role="img" aria-label="圆波导截止波长谱">
+  <defs>
+    <marker id="axc" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--ink-2)"/></marker>
+  </defs>
+  <rect x="318" y="70" width="86" height="150" fill="var(--brand)" opacity="0.12" rx="4"/>
+  <text x="361" y="60" text-anchor="middle" font-size="13" fill="var(--brand)" font-weight="700">TE₁₁ 单模区</text>
+  <text x="361" y="150" text-anchor="middle" font-size="12.5" fill="var(--ink)">仅 TE₁₁</text>
+  <text x="361" y="170" text-anchor="middle" font-size="12" fill="var(--ink-2)">1.31:1</text>
+  <line x1="110" y1="220" x2="820" y2="220" stroke="var(--ink-2)" stroke-width="2" marker-end="url(#axc)"/>
+  <text x="826" y="225" font-size="13" fill="var(--ink-2)">λc/a</text>
+  <g font-size="12.5" fill="var(--ink-2)" text-anchor="middle">
+    <line x1="110" y1="216" x2="110" y2="224" stroke="var(--ink-2)"/>
+    <text x="110" y="244">0</text>
+    <line x1="318" y1="216" x2="318" y2="224" stroke="var(--ink-2)"/>
+    <text x="318" y="244">2.0</text>
+    <line x1="474" y1="216" x2="474" y2="224" stroke="var(--ink-2)"/>
+    <text x="474" y="244">3.0</text>
+    <line x1="630" y1="216" x2="630" y2="224" stroke="var(--ink-2)"/>
+    <text x="630" y="244">4.0</text>
+    <line x1="164" y1="216" x2="164" y2="224" stroke="var(--ink-2)"/>
+    <text x="164" y="244">1.0</text>
+  </g>
+  <\!-- 刻度 -->
+  <line x1="644" y1="70" x2="644" y2="220" stroke="var(--brand)" stroke-width="2.6"/>
+  <text x="646" y="64" font-size="12.5" fill="var(--brand)">TE₁₁ 3.413</text>
+  <line x1="516" y1="92" x2="516" y2="220" stroke="var(--warn)" stroke-width="2"/>
+  <text x="514" y="88" text-anchor="end" font-size="12.5" fill="var(--warn)">TM₀₁ 2.613</text>
+  <line x1="421" y1="112" x2="421" y2="220" stroke="var(--ink-2)" stroke-width="1.8"/>
+  <text x="419" y="108" text-anchor="end" font-size="12" fill="var(--ink-2)">TE₂₁ 2.057</text>
+  <line x1="356" y1="132" x2="356" y2="220" stroke="var(--ink-2)" stroke-width="1.8"/>
+  <text x="354" y="128" text-anchor="end" font-size="12" fill="var(--ink-2)">TE₀₁/TM₁₁ 1.640</text>
+  <line x1="331" y1="150" x2="331" y2="220" stroke="var(--ink-2)" stroke-width="1.5"/>
+  <text x="329" y="146" text-anchor="end" font-size="12" fill="var(--ink-2)">TE₃₁ 1.496</text>
+  <line x1="279" y1="168" x2="279" y2="220" stroke="var(--ink-2)" stroke-width="1.5"/>
+  <text x="277" y="164" text-anchor="end" font-size="12" fill="var(--ink-2)">TM₂₁ 1.223 / TE₄₁ 1.182 / TM₀₂ 1.138</text>
+  <line x1="110" y1="290" x2="820" y2="290" stroke="var(--line)"/>
+  <text x="110" y="312" font-size="12.5" fill="var(--ink-2)">主模 TE₁₁ 的 λc=3.413a 最长 → 截止频率最低，最先导通，是圆波导的主模。</text>
+  <text x="110" y="334" font-size="12.5" fill="var(--warn)">注意 TE₀₁ 与 TM₁₁ 的竖线重合：二者简并；λc 相同但场结构完全不同。</text>
+  <text x="110" y="354" font-size="12.5" fill="var(--brand)">单模工作条件：2.613a&lt;λ₀&lt;3.413a（即 0.293&lt;λ₀/(2a)&lt;0.383），带宽仅约 1.31:1。</text>
+</svg>
+<figcaption>图 3-10　圆波导的截止波长谱与主模单模工作区</figcaption>
+</figure>
+
+#### （2）简并模（重点 Remark）
+
+> **【核心概念】什么是简并模？**
+> **简并模 = 两个（或多个）不同的模式具有相同的截止波长（从而有相同的 $k_c$、相同的 $\beta$、相同的 $\lambda_g$、相同的 $v_p$）。**
+> 用一个通俗的比喻：**两个人声音很像**（听不出区别），或者**两个人长得很像**（看外表分不出）——某**一个**特性相同，但**其他**特性（唱什么歌、什么性格）并不相同。
+> 简并是**坏事**：它意味着两个模式“同速前进”，一旦在波导的不均匀处（弯曲、接头、变形）发生耦合，能量就会在两者之间来回转移，很难保持“单模传输”。
+
+圆波导中有**两种性质不同的简并**，必须严格区分。
+
+**（一）模式简并（mode degeneracy）—— 不同模式的 $k_c$ 相同**
+
+源于恒等式 $J_0'(x)=-J_1(x)$，导致 $\nu_{0n}=\mu_{1n}$，于是
+
+$$\lambda_{c,\mathrm{TE}_{0n}}=\frac{2\pi a}{\nu_{0n}}=\frac{2\pi a}{\mu_{1n}}=\lambda_{c,\mathrm{TM}_{1n}}
+\tag{3-4-15}$$
+
+即 **TE$_{0n}$ 与 TM$_{1n}$ 简并**：TE$_{01}$ 与 TM$_{11}$（$\lambda_c=1.640a$）、TE$_{02}$ 与 TM$_{12}$（$\lambda_c=0.895a$）等等。
+
+> **【思考】为什么 $\lambda_c(\mathrm{TE}_{01})=\lambda_c(\mathrm{TM}_{11})$？**
+> 因为 $J_0'(x)=-J_1(x)$。
+> - TE$_{01}$ 的截止条件来自 $J_0'(k_ca)=0$，即 $\nu_{01}$ 是 $J_0'$ 的第一个零点；
+> - TM$_{11}$ 的截止条件来自 $J_1(k_ca)=0$，即 $\mu_{11}$ 是 $J_1$ 的第一个零点；
+> - 由于 $J_0'(x)\equiv-J_1(x)$，两者的零点**完全相同**：$\nu_{0n}=\mu_{1n}$，特别地 $\nu_{01}=\mu_{11}=3.832$；
+> - 于是 $\lambda_{c,\mathrm{TE}_{01}}=\dfrac{2\pi a}{3.832}=\lambda_{c,\mathrm{TM}_{11}}=1.6398a$。
+>
+> **注意：这是一种“必然的”简并**（由贝塞尔函数的数学恒等式决定），与 $m=1$ 引入的极化简并（见下）**不是一回事**。
+
+**（二）极化简并（polarization degeneracy）—— 同一模式 $m\neq0$ 时有两种正交极化**
+
+由 (3-4-6)，当 $m\neq0$ 时，纵向场的角向依赖有 $\cos m\varphi$ 与 $\sin m\varphi$ **两种独立的解**，它们的 $k_c$ 完全相同（因为 $k_c$ 只取决于 $J_m$ 或 $J_m'$ 的零点，与角向函数无关）。两者是**同一个模式序号** TE$_{mn}$（或 TM$_{mn}$）的**两种正交极化状态**：
+
+- $\cos m\varphi$ ——一种极化方向（例如“水平极化”）；
+- $\sin m\varphi$ ——与之正交的另一种极化方向（“垂直极化”）。
+
+**任意极化方向的波都可以分解为这两个正交极化波的线性组合**，二者场分布形状相同（旋转了 $90^\circ/m$ 而已），但**各自独立携带功率与信息**，相当于**两个并行的通道**。
+
+> **【核心概念】极化简并的工程后果**
+> - 对 $m=0$ 的模（TE$_{01}$、TM$_{01}$），场**圆对称**，只有一种极化状态，**没有极化简并**；
+> - 对 $m\neq0$ 的模（如主模 TE$_{11}$），**存在极化简并**。当波导存在不均匀（椭圆度、弯曲、内部缺陷）时，两种极化的相速会出现微小差异，使**极化面发生旋转**（而且旋转角度随频率、温度、机械应力漂移，**不可预测**）；
+> - 因此圆波导 TE$_{11}$ **很难实现真正的单模单极化传输**，用作馈线时必须配合极化控制措施，或用方圆变换器转到矩形波导 TE$_{10}$ 后再处理。
+> - **反过来说，极化简并也有益处：** 利用两个正交极化通道可以做**极化分集合成**、**双极化频率复用**，使通信容量翻倍；圆极化天线也依赖正交极化的合成。
+
+> **【易错点】两种简并的区分**
+> | 对比项 | 模式简并 | 极化简并 |
+> |---|---|---|
+> | 简并的对象 | 两个**不同**的模式（TE$_{0n}$ 与 TM$_{1n}$） | **同一个**模式的两种正交极化（$m\neq0$） |
+> | 根源 | 贝塞尔函数恒等式 $J_0'=-J_1$ | 角向函数的 $\cos m\varphi$ / $\sin m\varphi$ 二重性 |
+> | 出现位置 | 圆波导特有 | 圆波导（$m\neq0$）与矩形波导（如 TE$_{11}$ 与 TM$_{11}$ 也是一种简并）、方波导 |
+> | 后果 | 不易单模传输 | 极化面漂移、不易单极化传输；也可用于极化复用 |
+
+> **【思考】主模是 TE$_{11}$ 而不是 TE$_{01}$？**
+> 因为
+> $$\nu_{11}=1.841<\nu_{01}=3.832$$
+> 而 $\lambda_c=2\pi a/\nu$，$\nu$ 越小 $\lambda_c$ 越大。所以
+> $$\lambda_{c,\mathrm{TE}_{11}}=3.413a>\lambda_{c,\mathrm{TE}_{01}}=1.640a$$
+> **TE$_{11}$ 的截止波长最长、截止频率最低，因此它是主模。**
+> 那么 TE$_{01}$ 的价值在哪里？它有一个**其他一切模式都不具备的优点**：
+> $$\alpha_c\Big|_{\mathrm{TE}_{01}}\propto f^{-3/2}$$
+> **衰减随频率升高而单调下降！** 原因是 TE$_{01}$ 的 $E$ 只有 $\varphi$ 分量，管壁上**只有 $\varphi$ 方向的电流、完全没有纵向电流**，因此随频率升高（趋肤深度变浅）虽然 $R_s$ 增大，但壁电流分布的变化使总损耗下降得更快，净效果是 $\alpha_c$ 随 $f$ 下降。
+> 这使得 TE$_{01}$ 成为**毫米波远距离传输（H$_{01}$ 圆波导通信）**的理想模式——理论上 50 GHz 时衰减可低到 1–2 dB/km，远优于同轴线和中继方式。
+> **但它不是主模**，而且**$m=0$ 的对称性使它与 TM$_{1n}$ 简并**，一旦波导管有弯曲或椭圆度，TE$_{01}$ 极易转化为 TE$_{11}$、TM$_{11}$ 等高损耗模式而失去优势；为此工程上要使用**过模波导（工作频率远高于截止）+ 模式滤波器 + 精密直管**，代价极大。这就是历史上 H$_{01}$ 圆波导通信最终没有大规模商用的根本原因。
+
+#### （3）圆波导三种常用模式对比
+
+| 对比项 | **TE$_{11}$（主模）** | **TE$_{01}$（低损耗模）** | **TM$_{01}$（圆对称模）** |
+|---|---|---|---|
+| 贝塞尔零点 | $\nu_{11}=1.841$ | $\nu_{01}=3.832$ | $\mu_{01}=2.405$ |
+| $\lambda_c$ | $3.413a$ | $1.640a$ | $2.613a$ |
+| 角向对称性 | $m=1$，一瓣分布 | $m=0$，**圆对称** | $m=0$，**圆对称** |
+| 极化简并 | **有**（两种正交极化） | 无 | 无 |
+| 壁电流 | 含纵向与横向分量 | **只有 $\varphi$ 方向，无纵向电流** | 含纵向分量 |
+| 衰减随 $f$ | 浴盆形，单模带内单调下降 | **单调下降**（$\propto f^{-3/2}$） | 浴盆形 |
+| 主要用途 | **圆—矩变换器、圆极化天线馈源、旋转关节** | **毫米波远距离传输（H$_{01}$ 通信）、低损耗馈线、高 Q 谐振腔** | **雷达旋转关节、微波电子管（速调管/行波管耦合腔）、微波加热、等离子体激励** |
+| 难点 | 极化面易旋转，难单模 | 非主模、与 TM$_{1n}$ 简并、易模式转换 | 非主模，需抑制 TE$_{11}$ |
+
+> **【工程应用】圆波导的典型场合**
+> 1. **雷达旋转关节。** 天线要 360° 旋转，馈线不能跟着转。解决办法：把矩形波导 TE$_{10}$ 用**方圆变换器**变成圆波导 TE$_{11}$，在旋转轴线上做一段圆形波导，两端各接一个方圆变换器。**TM$_{01}$ 有时也用于旋转关节**，因为它圆对称、旋转时场分布不受影响（不会因转动而改变阻抗）。
+> 2. **毫米波低损耗传输线。** TE$_{01}$ 模的 $\alpha\propto f^{-3/2}$，是唯一能在毫米波段实现“长距离、低损耗、大容量”的金属波导方案。
+> 3. **微波电子管。** 速调管、行波管、回旋管的谐振腔与耦合腔大量采用圆柱腔与圆波导，TM$_{01}$ 因轴向电场最强而成为与电子注交换能量的首选（电子注沿轴运动，需要纵向电场对其进行加速/减速）。
+> 4. **微波加热与等离子体。** 圆柱形加热腔、等离子体反应腔常工作在 TM$_{01}$（轴心电场最强，利于均匀加热）。
+> 5. **高 Q 谐振腔。** TE$_{011}$ 圆柱腔的 $Q$ 值可达数万，因为壁电流无纵向分量、损耗极小，广泛用于频率计与稳频腔。
+
+> **【例题 3-6】圆波导单模带宽计算**
+> 某圆波导半径 $a=1\ \mathrm{cm}$，空气填充。求：(1) 各低阶模的截止波长与截止频率；(2) 保证只有 TE$_{11}$ 单模传输的工作频率范围。
+>
+> **解：**
+> **(1) 截止波长与截止频率**（$c=3\times10^{8}\ \mathrm{m/s}$）
+> $$\lambda_{c,\mathrm{TE}_{11}}=3.4126a=3.4126\ \mathrm{cm}\ \Rightarrow\ f_c=\frac{3\times10^{10}}{3.4126}=8.79\ \mathrm{GHz}$$
+> $$\lambda_{c,\mathrm{TM}_{01}}=2.6127a=2.6127\ \mathrm{cm}\ \Rightarrow\ f_c=\frac{3\times10^{10}}{2.6127}=11.48\ \mathrm{GHz}$$
+> $$\lambda_{c,\mathrm{TE}_{21}}=2.0574a=2.0574\ \mathrm{cm}\ \Rightarrow\ f_c=14.58\ \mathrm{GHz}$$
+> $$\lambda_{c,\mathrm{TE}_{01}}=\lambda_{c,\mathrm{TM}_{11}}=1.6398a=1.6398\ \mathrm{cm}\ \Rightarrow\ f_c=18.30\ \mathrm{GHz}$$
+> **(2) 单模（只有 TE$_{11}$）范围：** TE$_{11}$ 已导通（$f>8.79$ GHz），而次低阶模 TM$_{01}$ 必须截止（$f<11.48$ GHz）：
+> $$8.79\ \mathrm{GHz}<f<11.48\ \mathrm{GHz}$$
+> 带宽比 $11.48/8.79=1.306$，即约 **1.31:1**。
+>
+> **讨论与拓展：**
+> - 与同样单模带宽的矩形波导相比，圆波导的带宽窄得多（矩形是 2:1）。因此 **X 波段（8.2–12.4 GHz）的圆波导在 11.5 GHz 以上就已经是多模工作了**，实际使用需注意。
+> - 若把 $a$ 增大到 1.5 cm，则单模区变为 5.86–7.65 GHz，中心频率下降；反之 $a$ 减小到 0.7 cm 则单模区变为 12.6–16.4 GHz（Ku 波段）。
+> - 若要在这根波导中低损耗传输，应使用 **TE$_{01}$**，此时 $f_c=18.30\ \mathrm{GHz}$，工作频率需高于它（并从上方远离，以利用衰减下降的特性），但此时波导中同时存在 TE$_{11}$、TM$_{01}$、TE$_{21}$ 等多个模式，必须加**模式滤波器**抑制非 TE$_{01}$ 的模式。
+
+### 3.4.4 本节考点清单
+
+| 题型 | 常见设问 | 易错点 | 难度 |
+|---|---|---|---|
+| 填空 | 圆波导主模及其 $\lambda_c$ | 写成 TE$_{01}$；$\lambda_c$ 系数写错 | ★ |
+| 选择 | TM$_{mn}$、TE$_{mn}$ 用哪个贝塞尔零点 | TM 与 TE 的零点写反 | ★★ |
+| 简答 | $m$、$n$ 的物理意义 | 说 $m$ 是“半波数”（应是整波数） | ★★ |
+| 简答 | 为什么舍去 $N_m$；周期条件的作用 | 把物理条件与边界条件混淆 | ★★★ |
+| 简答 | 解释 $\lambda_c(\mathrm{TE}_{01})=\lambda_c(\mathrm{TM}_{11})$ | 只说“数值巧合”，不提 $J_0'=-J_1$ | ★★★ |
+| 辨析 | 模式简并 vs 极化简并 | 把两者混为一谈 | ★★★★ |
+| 简答 | 为什么主模是 TE$_{11}$ 而不是 TE$_{01}$；TE$_{01}$ 的价值 | 只答“TE$_{11}$ 截止波长长”，漏掉 TE$_{01}$ 的 $\alpha\propto f^{-3/2}$ | ★★★ |
+| 计算 | 圆波导单模带宽 | 忘记 $\lambda_c=2\pi a/\nu$ 中除的是零点值 | ★★ |
+
+---
+
+## 3.5 波导的激励与耦合
+
+> **【核心概念】什么叫激励、什么叫耦合？**
+> - **激励（excitation）**：如何在波导中**建立起**某种所需的波型？——从外部（同轴、微带、另一根波导、自由空间）把能量送进波导，并使其呈现为指定的模式。
+> - **耦合（coupling）**：如何从波导中**提取**所需的波型？——把能量从波导取出送给负载或另一根波导。
+> - **激励与耦合是对称的互易过程**（同一个结构，反向使用即可），所以本节只讲激励，耦合结构照此倒推即可。
+
+### 3.5.1 为什么不研究“特殊激励的解”，而研究“通解”？
+
+这是本章方法论的最后一块拼图，也是一个很好的思考题。
+
+> **【核心概念】“若言琴上有琴音，放在匣中何不鸣？”**
+> 苏轼这两句诗问的是同一个问题的两面：琴（波导）本身不会响，手指（激励）不会响，**只有琴与手指相遇，才有琴音**。
+> 那么能不能因此就说“只研究有手指的那首曲子”呢？显然不能。因为：
+> - 琴的**音域与音色**是琴的固有属性，**与弹什么曲子无关**；
+> - 同一个琴可以弹无数首曲子，**曲子是琴的本征振动模式与外界激励的线性组合**；
+> - 想知道这架琴能不能弹出某个音、音色如何，**只需要知道它的全部本征模式就足够了**。
+>
+> 波导与微波的关系完全一样：
+> - 波导中**能传什么、以什么速度传、衰减多大**，由它的**本征模式**决定，**与激励方式无关**；
+> - 任何实际激励产生的场，都可以按完备的 TE$_{mn}$、TM$_{mn}$ 模式展开，展开系数就是各个模式的激励幅度；
+> - 所以，**无源问题（激励为零）的解（通解）反而是解决问题的关键**：它给出了波导的“基”，一切有激励的情况都可以由基的线性组合表示。
+>
+> **类比：**
+> - 三维空间有 $\hat x$、$\hat y$、$\hat z$ 三个基矢量，任一矢量都是它们的线性组合；
+> - 一组基张成一个向量空间，空间里任一点都是基的组合；
+> - 七个音阶可以组合出无穷首乐曲。
+>
+> **处理方式：** 从无源区的麦克斯韦方程组出发，只加**边界条件**，得到**一切激励情况**共有的本征解，再通过**线性组合**得到通解。**求解无源问题，才能解决任何有源问题。** 这是本章（乃至整个微波网络理论）最深刻的方法论。
+
+### 3.5.2 三种激励方式
+
+要让某个模式被“点燃”，激励结构必须**与该模式的场方向匹配**。三种基本方式是：**电激励、磁激励、孔缝激励**。
+
+#### （1）电激励（探针 / 电偶极子）
+
+**原理：** 在波导壁上插入一根**探针**（小天线、电偶极子），其方向**平行于所需模式的电场**，探针上的电流就会激发该模式的电场。**耦合强度正比于探针所在处的电场强度**，因此探针应放在**所需模式电场最强处**。
+
+**典型应用：**
+
+- **矩形波导 TE$_{10}$ 模**：$E_y$ 在 $x=a/2$ 处最强、沿 $y$ 均匀。因此把探针从**宽壁中央**（$x=a/2$、$y=0$ 或 $b$）沿 $y$ 方向插入，深度约 $\lambda_0/4$（等效于一段开路短截线，使探针根部电流最大）。**同轴—波导转换器**（同轴探针转换）用的正是这个结构：同轴内导体延伸为探针，插入宽边中央。
+- **圆波导 TE$_{11}$ 模**：探针沿径向插入（因为 TE$_{11}$ 的主要电场是径向的）。
+- **圆波导 TM$_{01}$ 模**：探针沿轴向插入轴线附近（$E_z$ 在轴心最强）。
+
+**工程要点：**
+
+1. **位置**：放在目标模式电场最强处；同时要**避开其他模式的电场腹点**，以免激励出不想要的模式。
+2. **长度（深度）**：约 $\lambda_g/4$，构成“四分之一波长短截线”，使耦合最强；可通过**螺钉（调谐螺钉）**微调。
+3. **方向**：必须与目标模式的电场平行——方向错了就完全激不起来（正交则耦合为零）。
+4. **匹配**：探针本身是一个电抗性负载，必须通过调配器（螺钉、阶梯）把输入阻抗变换到 $50\ \Omega$，否则反射严重。这是“**激励要匹配才能高效**”的具体含义。
+
+#### （2）磁激励（耦合环 / 磁偶极子）
+
+**原理：** 在波导壁上开孔插入一个小**导体环**，环面**垂直于所需模式的磁场**（即**环的轴线平行于 $H$**），穿过环的交变磁通在环上感生电流，从而激发该模式的磁场。**耦合强度正比于穿过环的磁通量**，因此环应放在**所需模式磁场最强处**，并让环面**垂直**于该磁场。
+
+**典型应用：**
+
+- **矩形波导 TE$_{10}$ 模**：$H_x$ 在 $x=a/2$ 处最强。把耦合环从**窄壁**（$x=0$ 或 $x=a$，此处 $H_z$ 最大）或**端壁**插入，或从宽边在 $x=a/2$ 处开孔垂直插入，使环面垂直于 $H_x$。这是**波导—同轴转换**的另一种实现（环耦合）。
+- **谐振腔耦合**：环耦合常用于腔体与馈线之间，因为腔内磁场通常很强。
+- **滤波器**：波导带通滤波器中常以膜片（电耦合）与环/杆（磁耦合）混合实现所需的耦合系数。
+
+**工程要点：**
+
+1. 环面必须**垂直**于目标模式的 $H$；如果环面平行于 $H$，则穿过环的磁通为零，耦合为零。
+2. 环的面积越大，耦合并联电感越大、耦合越强，但也越容易引入失配。
+3. 环耦合是**感性耦合**，电探针是**容性耦合**；两者可以组合使用以调配。
+
+#### （3）孔缝激励（小孔耦合）
+
+**原理：** 在两根波导的**公共壁**上开一个小孔（或缝隙），波导中的电磁场透过小孔“泄漏”到另一根波导中，从而激励起另一个模式的场。小孔相当于**电偶极子（对法向电场响应）**与**磁偶极子（对切向磁场响应）**的组合：
+
+- **电耦合孔**：孔位于电场最强处、孔面垂直于 $E$（法是 $E$ 方向）→ 主要耦合电场；
+- **磁耦合孔**：孔位于磁场最强处、孔面垂直于 $H$ → 主要耦合磁场；
+- **混合耦合孔**：一般情形下两者同时存在，需要综合分析。
+
+**典型应用：**
+
+- **波导定向耦合器**（第六章）：主波导与副波导之间的公共壁上开两个（或多个）小孔，利用**孔间路径差**实现**方向性**——正向耦合的波同相叠加，反向耦合的波反相抵消。
+- **谐振腔耦合与耦合孔**：腔体与波导之间用孔耦合，通过孔径控制**耦合度**与外 $Q$ 值。
+- **波导测量线**：在宽边中央开**纵向窄缝**（不切电流），探针沿缝移动采样电场，测量驻波分布。
+- **裂缝天线**：在宽边开**横向缝**（切电流），缝隙被激励成辐射源，形成天线阵。
+- **滤波器的膜片**：电感膜片（窗）与电容膜片都是“孔缝”的变形，用于实现电抗性匹配。
+
+**工程要点：**
+
+1. **耦合度**（coupling）$C$：定义为输入功率与耦合输出功率之比（dB），孔径越大耦合越强。
+2. **方向性**（directivity）$D$：正、反向耦合输出之比（dB），由孔的位置与数量决定。
+3. **小孔理论的前提**是孔径 $\ll\lambda_c$，同时孔不能太大以免引起显著反射和模式转换。
+4. 孔缝激励**不破坏波导内部的电流连续性**（如果是“不切电流”的缝），因此特别适合在测量与耦合中保持主波导性能。
+
+<figure class="fig">
+<svg viewBox="0 0 900 420" role="img" aria-label="三种波导激励方式示意图">
+  <defs>
+    <marker id="qe" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--warn)"/></marker>
+    <marker id="qm" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="var(--accent)"/></marker>
+  </defs>
+  <\!-- 电激励 -->
+  <text x="150" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">1. 电激励（探针）</text>
+  <rect x="50" y="60" width="200" height="120" fill="none" stroke="var(--line)" stroke-width="1.8"/>
+  <line x1="150" y1="60" x2="150" y2="180" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+  <line x1="50" y1="180" x2="250" y2="180" stroke="var(--line)" stroke-width="3"/>
+  <line x1="150" y1="180" x2="150" y2="96" stroke="var(--warn)" stroke-width="3"/>
+  <circle cx="150" cy="96" r="4" fill="var(--warn)"/>
+  <line x1="150" y1="102" x2="150" y2="74" stroke="var(--warn)" stroke-width="2" marker-end="url(#qe)"/>
+  <text x="158" y="86" font-size="12" fill="var(--warn)">探针 ∥ E</text>
+  <line x1="40" y1="60" x2="40" y2="180" stroke="var(--accent)" stroke-width="2.4"/>
+  <rect x="26" y="60" width="14" height="120" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <text x="150" y="204" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">同轴内导体延伸为探针，从宽边中央</text>
+  <text x="150" y="222" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">（x=a/2）沿 y 插入，深度约 λg/4</text>
+  <text x="150" y="240" text-anchor="middle" font-size="12.5" fill="var(--warn)">耦合强度 ∝ 该处电场强度</text>
+  <\!-- 磁激励 -->
+  <text x="450" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">2. 磁激励（耦合环）</text>
+  <rect x="350" y="60" width="200" height="120" fill="none" stroke="var(--line)" stroke-width="1.8"/>
+  <line x1="450" y1="60" x2="450" y2="180" stroke="var(--ink-2)" stroke-dasharray="5 4"/>
+  <ellipse cx="450" cy="120" rx="26" ry="40" fill="none" stroke="var(--accent)" stroke-width="2.6"/>
+  <line x1="450" y1="80" x2="450" y2="160" stroke="var(--accent)" stroke-width="2" marker-end="url(#qm)"/>
+  <line x1="424" y1="120" x2="396" y2="120" stroke="var(--accent)" stroke-width="2" marker-end="url(#qm)"/>
+  <text x="480" y="106" font-size="12" fill="var(--accent)">环面 ⊥ H</text>
+  <text x="480" y="126" font-size="12" fill="var(--accent)">环轴 ∥ H</text>
+  <text x="450" y="204" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">小环开在磁场最强处（TE₁₀ 时 x=a/2、Hₓ 最大）</text>
+  <text x="450" y="222" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">穿过环的交变磁通感生电流，激发该模式</text>
+  <text x="450" y="240" text-anchor="middle" font-size="12.5" fill="var(--accent)">耦合强度 ∝ 穿过环的磁通量（面积越大越强）</text>
+  <\!-- 孔缝激励 -->
+  <text x="750" y="26" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">3. 孔缝激励</text>
+  <rect x="640" y="60" width="220" height="52" fill="none" stroke="var(--line)" stroke-width="1.8"/>
+  <rect x="640" y="124" width="220" height="52" fill="none" stroke="var(--line)" stroke-width="1.8"/>
+  <line x1="640" y1="112" x2="860" y2="112" stroke="var(--line)" stroke-width="4"/>
+  <rect x="722" y="102" width="56" height="20" fill="none" stroke="var(--warn)" stroke-width="2.2"/>
+  <line x1="750" y1="60" x2="750" y2="96" stroke="var(--brand)" stroke-width="2" marker-end="url(#qe)"/>
+  <line x1="750" y1="140" x2="750" y2="96" stroke="var(--brand)" stroke-width="2" marker-end="url(#qe)"/>
+  <text x="750" y="204" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">两根波导的公共壁上开小孔/缝</text>
+  <text x="750" y="222" text-anchor="middle" font-size="12.5" fill="var(--warn)">小孔 ≈ 电偶极子 + 磁偶极子（混合耦合）</text>
+  <text x="750" y="240" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">定向耦合器、谐振腔耦合、测量线、裂缝天线</text>
+  <line x1="40" y1="272" x2="860" y2="272" stroke="var(--line)"/>
+  <text x="40" y="298" font-size="12.5" fill="var(--ink)">共同要点：① 激励结构的方向必须与目标模式的场方向“对齐”（平行/垂直关系不能错，否则耦合为零）；</text>
+  <text x="40" y="322" font-size="12.5" fill="var(--ink)">② 位置要放在目标模式场的腹点，同时尽量避开其他模式的腹点，以抑制寄生模式；</text>
+  <text x="40" y="346" font-size="12.5" fill="var(--ink)">③ 必须做阻抗匹配（探针/环本身是电抗性负载），否则反射大、效率低；</text>
+  <text x="40" y="370" font-size="12.5" fill="var(--warn)">④ 耦合度（输入功率/耦合输出功率，dB）与方向性（正反向耦合之比，dB）是耦合结构的两个核心指标。</text>
+  <text x="40" y="396" font-size="12.5" fill="var(--ink-2)">本章只要求了解原理与结构，具体的耦合器、变换器、滤波器设计将在微波器件部分展开。</text>
+</svg>
+<figcaption>图 3-11　三种基本激励方式：电探针、磁耦合环、孔缝耦合</figcaption>
+</figure>
+
+### 3.5.3 本节考点清单
+
+| 题型 | 常见设问 | 易错点 | 难度 |
+|---|---|---|---|
+| 简答 | 为什么研究通解而不研究特定激励的解 | 只答“通解更通用”，不讲完备性与线性叠加 | ★★★ |
+| 简答 | 三种激励方式的原理与适用场合 | 把“探针 ∥ E”写成“探针 ⊥ E” | ★★ |
+| 简答 | 激励位置的选择依据 | 不看目标模式的场分布就随意选位置 | ★★ |
+| 概念 | 极化简并带来的“两个通道” | 认为极化简并纯粹是坏事 | ★★★ |
+
+---
+
+## 本章小结
+
+本章从“路”走向“场”，用严格的方法建立起了规则金属波导的完整理论。
+
+1. **方法论**：路分析法（第二章）用 $U$、$I$ 描述，简便但近似；场分析法（本章）从无源区麦克斯韦方程组出发，结合导体边界条件求 $\mathbf{E}$、$\mathbf{H}$ 的严格解，繁琐但普适。二者互补：模式用场解，传播用路论。
+2. **波型分类**：TEM（$E_z=H_z=0$）、TE/H 波（$E_z=0$）、TM/E 波（$H_z=0$）、混合波（HE/EH）。**空心单导体金属波导中不存在 TEM 波**——TEM 要求横向场满足二维拉普拉斯方程、金属壁为等势面，单连通单导体边界下只有平凡解；TEM 必须由双导体系统承载。
+3. **导波原理**：无源区麦克斯韦方程 → 亥姆霍兹方程 $\nabla^2\mathbf{E}+k^2\mathbf{E}=0$（$k^2=\omega^2\mu\varepsilon$）；纵向与横向分离后引入**约束条件 $k_c^2=k^2+\gamma^2$**，纵向分量满足二维亥姆霍兹方程（支配方程）$\nabla_t^2\Phi+k_c^2\Phi=0$；**横向分量可由纵向分量代数地给出**（式 3-2-6），这是波导理论的枢纽。三类波型的求解路线分别为：TEM（拉普拉斯方程，$k_c=0$）、TE（解 $H_z$，$\partial H_z/\partial n=0$）、TM（解 $E_z$，$E_z=0$）。本征模具有**完备性**与**正交性**，因而“求通解”即可解决一切激励问题。
+4. **矩形波导**：$k_c=\sqrt{(m\pi/a)^2+(n\pi/b)^2}$，$\lambda_c=2\Big/\sqrt{(m/a)^2+(n/b)^2}$；TE$_{mn}$ 的 $H_z$ 按 $\cos\cos$ 分布（$m,n$ 不同时为 0），TM$_{mn}$ 的 $E_z$ 按 $\sin\sin$ 分布（$m,n\geq1$）。**TE$_{10}$ 是主模**：$\lambda_c=2a$ 最长、场结构最简单、宽边中央无纵向电流（便于开缝测量）、衰减较小、单模带宽最宽（理论上 2:1）。TE$_{10}$ 的场为 $E_y$、$H_x$、$H_z$，横向是驻波、纵向是行波。用射线模型看，微波在波导中“曲折传播”，$\sin\theta=\lambda_0/\lambda_g$，$\lambda_g=\lambda_0/\sin\theta>\lambda_0$，$v_p=c/\sin\theta>c$，$v_g=c\sin\theta<c$，$v_pv_g=c^2$。波阻抗 $Z_{\mathrm{TE}}=\eta/\sqrt{1-(f_c/f)^2}$（$>\eta$）与 $Z_{\mathrm{TM}}=\eta\sqrt{1-(f_c/f)^2}$（$<\eta$）；截止时 TE 相当于开路、TM 相当于短路。导体衰减 $\alpha_c$ 由三个因子竞争，总体呈浴盆形：在 $b<a/2$ 的扁波导（含标准波导）中，**单模带内衰减随频率单调下降**；若把 $b/a$ 与频率联合优化，则得经典结果 $b=a/2$、$f\approx\sqrt3f_c$。功率容量 $P_{\max}\propto abE_{\mathrm{br}}^2\sqrt{1-(\lambda_0/2a)^2}$，其极大值出现在 $f=\sqrt2f_c\approx1.41f_c$（对应 $a\approx0.707\lambda_0$）。尺寸选择：$\lambda/2<a<\lambda$，$b<\lambda/2$，工程取 $a\approx0.7\lambda$、$b=(0.4\sim0.5)a$，标准波导 $b=a/2$。
+5. **圆波导**：柱坐标分离变量引出贝塞尔方程，因 $\rho\to0$ 处场有限舍去 $N_m$，因 $\varphi$ 周期性要求 $m$ 为整数。TM$_{mn}$：$k_ca=\mu_{mn}$（$J_m$ 的零点），$\lambda_c=2\pi a/\mu_{mn}$；TE$_{mn}$：$k_ca=\nu_{mn}$（$J_m'$ 的零点），$\lambda_c=2\pi a/\nu_{mn}$。$\nu_{11}=1.841$ 最小，故**主模是 TE$_{11}$**（$\lambda_c=3.413a$），单模带宽仅约 1.31:1。**TE$_{01}$（$\lambda_c=1.640a$）** 圆对称、壁电流无纵向分量，衰减随频率单调下降（$\propto f^{-3/2}$），是毫米波远距离传输的经典方案，但因与 TM$_{1n}$ 简并、非主模而难以实用。**TM$_{01}$（$\lambda_c=2.613a$）** 圆对称、轴心电场最强，用于旋转关节、微波电子管与微波加热。由 $J_0'=-J_1$ 得 $\nu_{0n}=\mu_{1n}$，造成 TE$_{0n}$ 与 TM$_{1n}$ 的**模式简并**；$m\neq0$ 时还有 $\cos m\varphi$ 与 $\sin m\varphi$ 的**极化简并**，二者含义不同。
+6. **激励与耦合**：波导是线性系统，任何激励的场都可由完备正交的模式集线性组合表示，因此求解无源问题的“通解”是解决一切激励问题的前提。三种基本激励方式是**电激励（探针 ∥ E）**、**磁激励（耦合环 ⊥ H）**、**孔缝激励（公共壁小孔，电+磁混合耦合）**；激励必须做到方向对齐、位置选在目标模式场腹点、并完成阻抗匹配，才能高效地建立起所需的单一模式。定向耦合器、测量线、裂缝天线等器件都是这些原理的具体应用。
+
+一句话概括全章：**“横驻纵行定波型，$k_c$ 定命门；TE$_{10}$ 称王，圆波导 TE$_{11}$ 当家；通解在手，激励无忧。”**
+
+---
+
+## 自测题
+
+### 一、选择与填空（5 题）
+
+**1.** 关于空心单导体金属波导，下列说法正确的是（　　）
+　A. 可以传输 TEM 波，但存在截止频率
+　B. 只能传输 TE 波与 TM 波，且都存在截止频率
+　C. 可以传输 TEM、TE、TM 三种波型
+　D. 由于内部无导体，无法建立纵向电场
+
+**2.** 矩形波导（$a\times b$，$a>b$）中 TE$_{10}$ 模的截止波长为 ________，TM$_{11}$ 模的截止波长为 ________；若工作波长 $\lambda_0$ 满足 ________，则波导中只有 TE$_{10}$ 模传输。
+
+**3.** 圆波导中 TM$_{mn}$ 模的截止波数由 ________ 的零点决定，TE$_{mn}$ 模由 ________ 的零点决定；圆波导的主模是 ________，其 $\lambda_c=$ ________ $a$。
+
+**4.** 波导中某模式的相速 $v_p$ 与群速 $v_g$ 的关系是（　　）
+　A. $v_p<v_g<c$
+　B. $v_pv_g=c^2$，且 $v_p>c$、$v_g<c$
+　C. $v_p+v_g=c$
+　D. 两者都等于 $c$
+
+**5.** 在矩形波导宽边的中央开一条纵向窄缝，用于波导测量线，其理由是（　　）
+　A. 该处电场最强，便于探针采样
+　B. 该处纵向壁电流为零，开缝不切割电流、不破坏场分布
+　C. 该处横向壁电流最大，便于耦合
+　D. 该处磁场为零，不产生感应电流
+
+---
+
+### 二、计算题（3 题）
+
+**6.** 矩形波导 $a=2.0\ \mathrm{cm}$，$b=1.0\ \mathrm{cm}$，空气填充。(1) 求 TE$_{10}$、TE$_{20}$、TE$_{01}$、TE$_{11}$ 各模的截止频率；(2) 求该波导的单模工作频率范围；(3) 若工作频率 $f=12\ \mathrm{GHz}$，判断此时有哪些模式能传输。
+
+**7.** 一根 WR-90 矩形波导（$a=22.86\ \mathrm{mm}$，$b=10.16\ \mathrm{mm}$）中传输 TE$_{10}$ 模，工作频率 $f=9.375\ \mathrm{GHz}$。求 $\lambda_0$、$\lambda_c$、$\lambda_g$、$\beta$、$v_p$、$v_g$、$Z_{\mathrm{TE}_{10}}$，并验证 $v_pv_g=c^2$。
+
+**8.** 某圆波导半径 $a=2.0\ \mathrm{cm}$。(1) 求 TE$_{11}$、TM$_{01}$、TE$_{01}$ 的截止波长与截止频率；(2) 求只有 TE$_{11}$ 单模传输的频率范围；(3) 若要用该波导以 TE$_{01}$ 模作低损耗传输，工作频率应如何选取，为什么？
+
+---
+
+### 参考答案与详解
+
+**1. 答案：B**
+**解析：** 空心单导体波导中不存在 TEM 波（TEM 要求横向场满足二维拉普拉斯方程，金属壁为等势面，单连通单导体边界下只有平凡解）。TE 与 TM 波都存在，且都有截止频率（$k_c\neq0$），所以波导呈现“高通”特性。D 错：TM 波的 $E_z\neq0$，纵向电场是存在的。
+
+**2. 答案：**$\lambda_c(\mathrm{TE}_{10})=2a$；$\lambda_c(\mathrm{TM}_{11})=\dfrac{2ab}{\sqrt{a^2+b^2}}$；单模条件是 $\dfrac{\lambda_0}{2}<a<\lambda_0$ 且 $b<\dfrac{\lambda_0}{2}$（等价地 $\lambda_{c,\mathrm{TE}_{20}}=a<\lambda_0$，$\lambda_{c,\mathrm{TE}_{01}}=2b<\lambda_0$）。
+**解析：** 由 $\lambda_c=2\Big/\sqrt{(m/a)^2+(n/b)^2}$，代入 $(m,n)=(1,0)$ 得 $2a$；代入 $(1,1)$ 得 $2ab/\sqrt{a^2+b^2}$（注意 TM$_{11}$ 与 TE$_{11}$ 简并，$\lambda_c$ 相同）。单模条件的物理含义是：TE$_{10}$ 导通而所有高次模截止。
+
+**3. 答案：**$J_m(x)$；$J_m'(x)$；TE$_{11}$；$3.413$（即 $2\pi/1.841$）。
+**解析：** TM$_{mn}$ 的边界条件是 $\rho=a$ 处 $E_z=0$，得 $J_m(k_ca)=0$，$k_ca=\mu_{mn}$；TE$_{mn}$ 的边界条件是 $\rho=a$ 处 $E_\varphi=0$，得 $J_m'(k_ca)=0$，$k_ca=\nu_{mn}$。$\nu_{11}=1.841$ 是所有零点中最小的，故 $\lambda_{c,\mathrm{TE}_{11}}=2\pi a/1.841=3.413a$ 最长，TE$_{11}$ 为主模。
+
+**4. 答案：B**
+**解析：** $v_p=\dfrac{v}{\sqrt{1-(f_c/f)^2}}>v$，$v_g=v\sqrt{1-(f_c/f)^2}<v$，二者乘积为 $v^2$（真空中 $c^2$）。$v_p>c$ 不违反相对论，因为它不代表能量或信息的传播速度，只是等相位面推进的“几何投影速度”；承载能量的群速恒小于 $c$。
+
+**5. 答案：B**
+**解析：** TE$_{10}$ 模在宽边（$y=0$、$y=b$）上的纵向电流 $J_z\propto\cos(\pi x/a)$，在 $x=a/2$ 处为零。因此在该处开纵向窄缝不会切断任何电流线，几乎不引起辐射与反射，探针可以沿缝移动采样电场而不扰动场分布。若开横向缝则会切断横向电流（该处横向电流最大），产生辐射——这正是裂缝天线的原理。
+
+**6. 解：**
+**(1) 临界波长与截止频率**（$c=3\times10^{8}\ \mathrm{m/s}$，$a=0.02$ m，$b=0.01$ m）
+$$\lambda_{c,\mathrm{TE}_{10}}=2a=4.0\ \mathrm{cm},\qquad f_c=\frac{3\times10^{10}}{4.0}=7.50\ \mathrm{GHz}$$
+$$\lambda_{c,\mathrm{TE}_{20}}=a=2.0\ \mathrm{cm},\qquad f_c=15.0\ \mathrm{GHz}$$
+$$\lambda_{c,\mathrm{TE}_{01}}=2b=2.0\ \mathrm{cm},\qquad f_c=15.0\ \mathrm{GHz}$$
+$$\lambda_{c,\mathrm{TE}_{11}}=\lambda_{c,\mathrm{TM}_{11}}=\frac{2ab}{\sqrt{a^2+b^2}}=\frac{2\times2\times1}{\sqrt{4+1}}=\frac{4}{2.236}=1.789\ \mathrm{cm},\qquad f_c=\frac{3\times10^{10}}{1.789}=16.8\ \mathrm{GHz}$$
+**(2) 单模范围：** 下限由 TE$_{10}$ 决定，上限由最早导通的高次模决定——TE$_{20}$ 与 TE$_{01}$ 的截止频率都是 15.0 GHz，故
+$$7.50\ \mathrm{GHz}<f<15.0\ \mathrm{GHz}$$
+带宽比 $15.0/7.50=2.0:1$（因为 $b=a/2$，单模带宽达到最大）。
+**(3) $f=12\ \mathrm{GHz}$ 时：** $\lambda_0=3\times10^{10}/12\times10^{9}=2.5$ cm。
+- TE$_{10}$：$\lambda_c=4.0>2.5$ → 导通；
+- TE$_{20}$：$\lambda_c=2.0<2.5$ → 截止；
+- TE$_{01}$：$\lambda_c=2.0<2.5$ → 截止；
+- TE$_{11}$/TM$_{11}$：$\lambda_c=1.789<2.5$ → 截止。
+**故 12 GHz 时仍只有 TE$_{10}$ 单模传输**（$f/f_c=1.6$，工作点良好）。
+**讨论：** 若频率升到 16 GHz，则 TE$_{20}$、TE$_{01}$、TE$_{11}$、TM$_{11}$ 全部导通，成为多模传输。若把 $b$ 减小到 0.5 cm，则 TE$_{01}$ 的截止频率升到 30 GHz，单模上限由 TE$_{20}$（15 GHz）决定，功率容量减半、衰减增大。
+
+**7. 解：**
+**第一步：基本量。**
+$$\lambda_0=\frac{3\times10^{8}}{9.375\times10^{9}}=0.032\ \mathrm{m}=32.0\ \mathrm{mm}$$
+$$\lambda_{c,\mathrm{TE}_{10}}=2a=2\times22.86=45.72\ \mathrm{mm},\qquad
+f_c=\frac{3\times10^{10}}{45.72}=6.562\ \mathrm{GHz}$$
+**第二步：归一化因子。**
+$$\frac{f_c}{f}=\frac{6.562}{9.375}=0.7000,\qquad
+\sqrt{1-\left(\frac{f_c}{f}\right)^2}=\sqrt{1-0.4900}=\sqrt{0.5100}=0.7141$$
+**第三步：$\lambda_g$ 与 $\beta$。**
+$$\lambda_g=\frac{\lambda_0}{\sqrt{1-(f_c/f)^2}}=\frac{32.0}{0.7141}=44.8\ \mathrm{mm}$$
+$$\beta=\frac{2\pi}{\lambda_g}=\frac{2\pi}{0.0448}=140.2\ \mathrm{rad/m}$$
+**第四步：相速与群速。**
+$$v_p=\frac{c}{\sqrt{1-(f_c/f)^2}}=\frac{3\times10^{8}}{0.7141}=4.20\times10^{8}\ \mathrm{m/s}$$
+$$v_g=c\sqrt{1-\left(\frac{f_c}{f}\right)^2}=3\times10^{8}\times0.7141=2.14\times10^{8}\ \mathrm{m/s}$$
+**验证：** $v_pv_g=4.20\times10^{8}\times2.14\times10^{8}=8.99\times10^{16}\approx(3\times10^{8})^2=c^2\ \checkmark$
+**第五步：波阻抗。**
+$$Z_{\mathrm{TE}_{10}}=\frac{\eta_0}{\sqrt{1-(f_c/f)^2}}=\frac{376.99}{0.7141}=528.0\ \Omega$$
+**讨论：** 9.375 GHz 是 X 波段雷达的经典工作频率（对应 $\lambda_0=3.2$ cm）。此时 $f/f_c=1.43$，$\lambda_g=44.8$ mm 明显大于 $\lambda_0=32$ mm，$v_p$ 比 $c$ 大 40%，说明工作点距离截止点不算远，色散较明显。若希望色散更小、$\lambda_g$ 更接近 $\lambda_0$，应提高工作频率（如 12 GHz 时 $\lambda_g\approx37$ mm）；但 12 GHz 时 13.11 GHz 的单模上限已经不远，需要仔细权衡。$Z_{\mathrm{TE}_{10}}=528\ \Omega$ 远大于 $50\ \Omega$，这是同轴—波导转换器必须做阻抗变换的直接原因。
+
+**8. 解：**
+**(1) 截止波长与截止频率**（$a=2.0$ cm，$c=3\times10^{10}$ cm/s）
+$$\lambda_{c,\mathrm{TE}_{11}}=3.4126a=6.825\ \mathrm{cm}\ \Rightarrow\ f_c=\frac{3\times10^{10}}{6.825}=4.39\ \mathrm{GHz}$$
+$$\lambda_{c,\mathrm{TM}_{01}}=2.6127a=5.225\ \mathrm{cm}\ \Rightarrow\ f_c=5.74\ \mathrm{GHz}$$
+$$\lambda_{c,\mathrm{TE}_{01}}=\lambda_{c,\mathrm{TM}_{11}}=1.6398a=3.280\ \mathrm{cm}\ \Rightarrow\ f_c=9.15\ \mathrm{GHz}$$
+**(2) 只有 TE$_{11}$ 单模传输的范围：** TE$_{11}$ 导通要求 $f>4.39$ GHz；次低阶模 TM$_{01}$ 必须截止，要求 $f<5.74$ GHz。故
+$$4.39\ \mathrm{GHz}<f<5.74\ \mathrm{GHz}$$
+带宽比 $5.74/4.39=1.31$，与理论值 $3.413/2.613=1.31$ 一致。
+**(3) 用 TE$_{01}$ 低损耗传输：** TE$_{01}$ 的截止频率是 9.15 GHz，所以工作频率必须**高于 9.15 GHz**（否则截止）；而且要**从上方远离截止频率**，因为 TE$_{01}$ 的导体衰减随频率单调下降（$\alpha_c\propto f^{-3/2}$），频率越高损耗越小。同时要注意：$f>9.15$ GHz 时 TE$_{11}$、TM$_{01}$、TE$_{21}$、TE$_{01}$、TM$_{11}$ 等多个模式都已导通，波导处于**多模工作**状态，必须加装**模式滤波器**（利用各模式衰减或耦合特性的差异滤除杂模），并使用精密直管以避免模式转换。
+**讨论：** 圆波导的单模带宽只有约 1.31:1，明显劣于矩形波导的 2:1，这是圆波导在通用馈线中不如矩形波导常用的重要原因之一。但圆波导的几何对称性使它在**旋转关节**（天线 360° 旋转）中不可替代；而 TE$_{01}$ 模的 $\alpha\propto f^{-3/2}$ 特性，使它在**毫米波远距离低损耗传输**中至今仍有理论价值。若把 $a$ 取为 1 cm，则单模区变为 8.79–11.48 GHz，与 X 波段部分重合，这也是实际圆波导尺寸的一个常见选择。
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

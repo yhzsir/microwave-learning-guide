@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>绪论——微波与微波技术 · 微波技术基础学习指南</title>
+<meta name="description" content="微波的定义与频段、五大特点、发展里程碑、分析方法与重要性">
+<meta name="author" content="微波技术基础学习指南">
+<meta property="og:type" content="website">
+<meta property="og:title" content="绪论——微波与微波技术 · 微波技术基础学习指南">
+<meta property="og:description" content="微波的定义与频段、五大特点、发展里程碑、分析方法与重要性">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6fdb'/%3E%3Cpath d='M4 21c3-8 5-8 8 0s5 8 8 0 5-8 8 0' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>
+(function(){try{var s=localStorage.getItem('mwguide-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-btn" id="menuBtn" aria-label="打开目录">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+  </button>
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">μ</span>
+    <span class="brand-text">
+      <span class="brand-title">微波技术基础</span>
+      <span class="brand-sub">LEARNING GUIDE</span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="search-wrap">
+    <svg class="sicon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="search" type="search" placeholder="搜索知识点、公式、例题…  (Ctrl K)" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="切换主题">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <span>深色</span>
+  </button>
+</header><div class="backdrop" id="backdrop"></div><aside class="sidebar" id="sidebar" aria-label="站点导航"><nav class="sidebar-nav" id="sidebarNav"><a class="nav-link" href="index.html"><span class="nav-num">00</span><span class="nav-label">首页 · 学习总览</span></a><a class="nav-link" href="roadmap.html"><span class="nav-num">01</span><span class="nav-label">学习路线图</span></a><a class="nav-link" href="formulas.html"><span class="nav-num">02</span><span class="nav-label">公式速查手册</span></a><a class="nav-link" href="exam.html"><span class="nav-num">03</span><span class="nav-label">考点总纲</span></a><a class="nav-link" href="smith.html"><span class="nav-num">04</span><span class="nav-label">史密斯圆图交互工具</span></a><a class="nav-link" href="quiz.html"><span class="nav-num">05</span><span class="nav-label">综合自测题</span></a><a class="nav-link" href="resources.html"><span class="nav-num">06</span><span class="nav-label">课件与视频资源</span></a><div class="nav-group"><div class="nav-heading">章节目录</div><a class="nav-link active" href="ch01.html"><span class="nav-num">1</span><span class="nav-label">绪论</span></a><a class="nav-link" href="ch02.html"><span class="nav-num">2</span><span class="nav-label">传输线理论</span></a><a class="nav-link" href="ch03.html"><span class="nav-num">3</span><span class="nav-label">金属波导</span></a><a class="nav-link" href="ch04.html"><span class="nav-num">4</span><span class="nav-label">传输线类型</span></a><a class="nav-link" href="ch05.html"><span class="nav-num">5</span><span class="nav-label">微波网络</span></a><a class="nav-link" href="ch06.html"><span class="nav-num">6</span><span class="nav-label">无源器件</span></a><a class="nav-link" href="ch07.html"><span class="nav-num">7</span><span class="nav-label">专题·Z 矩阵</span></a><a class="nav-link" href="ch08.html"><span class="nav-num">8</span><span class="nav-label">专题·S 矩阵</span></a></div></nav></aside><div class="shell"><main class="article loading" id="article"><div class="spinner" role="status" aria-label="加载中"></div><div id="chapterShell" hidden><div class="chapter-eyebrow" id="eyebrow">第 1 章</div><div class="md" id="md"></div><nav class="pager" id="pager" aria-label="章节导航"></nav></div></main><aside class="toc" id="toc"><div class="toc-heading">本页目录</div><div class="toc-list" id="tocList"></div></aside></div><footer class="footer">
+  <div>《微波技术基础》在线学习指南 · 共 6 章 + 2 个专题推导</div>
+  <div>
+    <a href="../formulas.html">公式速查</a> ·
+    <a href="../exam.html">考点总纲</a> ·
+    <a href="../resources.html">课件资源</a>
+  </div>
+</footer>
+<script src="../assets/js/search-index.js"></script>
+<script id="chapterCfg" type="application/json">{"n":1,"file":"ch01","src":"content/ch01.md","title":"绪论——微波与微波技术"}</script>
+<script id="preContent" type="text/plain">---
+chapter: 1
+title: 绪论——微波与微波技术
+short: 绪论
+desc: 微波的定义与频段、五大特点、发展里程碑、分析方法与重要性
+minutes: 60
+---
+
+# 第一章 绪论——微波与微波技术
+
+## 本章考点地图
+
+绪论是全书的"坐标系"。它本身很少出大题，却决定了后面五章为什么要那样写：为什么要用分布参数、为什么要解麦克斯韦方程组、为什么要定义网络矩阵。考试中本章主要以**概念题、判断题、填空题**出现，偶尔与第二章结合出一道"长线/短线判断"的计算题。
+
+| 考点 | 常见设问 | 题型 | 难度 |
+|---|---|---|---|
+| 微波频段与波长范围 | 微波的频率范围是多少？波长范围是多少？ | 填空/选择 | ★ |
+| 波长—频率换算 | 给定 $f$ 求 $\lambda$，或反之 | 计算 | ★ |
+| "只给波长能否判断是微波" | 为什么 17 m 的波不一定是微波？ | 简答/辨析 | ★★ |
+| 微波的五大特点 | 逐个说出并解释物理本质 | 简答 | ★★★ |
+| 信息容量与频率的关系 | 为什么载波频率越高速率越高？ | 简答/分析 | ★★★ |
+| 基尔霍夫定律为何失效 | 长线判据是什么？$l/\lambda$ 多大算长线？ | 简答/计算 | ★★★ |
+| 三种分析方法 | 路/场/网络分析法各对应哪一章？适用条件？ | 填空/简答 | ★★ |
+| 趋肤效应与损耗 | 为什么微波段导体电阻急剧增加？ | 计算/分析 | ★★★ |
+| 发展里程碑 | 麦克斯韦预言、赫兹验证、高锟与光纤 | 填空 | ★ |
+
+> **【核心概念】**
+> 全章的主线只有一句：**微波是波长与"我们关心的物体尺寸"可比拟的电磁波**。这一句话同时解释了微波为什么"似光"（尺度可比拟 → 几何光学思维）、为什么低频电路理论失效（尺度可比拟 → 分布参数）、为什么天线和雷达的口径由波长决定、为什么微波能加热食物（分子尺度与波长尺度对应）。后面的五大特点、五种应用、三种分析方法，都是这句话的推论。
+
+---
+
+## 1.1 微波的概念：什么是微波
+
+### 1.1.1 从词源到定义
+
+英文 **microwave** 是 **micro（微小）+ wave（波）** 的合成词，字面意思是"微小的波"——"微小"修饰的是**波长**，不是频率，也不是能量。这一点非常关键：
+
+- 微波的**波长小**（毫米、厘米、分米量级）；
+- 微波的**频率高**（$10^8\sim10^{12}\ \mathrm{Hz}$ 量级）；
+- 两者是同一件事的两面，由波动的基本关系锁定。
+
+所以严格的定义是：
+
+> **【核心概念】**
+> **微波（microwave）** 是指频率在 $300\ \mathrm{MHz}\sim3000\ \mathrm{GHz}$、对应真空中波长在 $0.1\ \mathrm{mm}\sim1\ \mathrm{m}$ 之间的电磁波。
+
+写成数学式：
+
+$$
+\lambda f=c
+\tag{1-1-1}
+$$
+
+即
+
+$$
+\lambda=\frac{c}{f},\qquad f=\frac{c}{\lambda}
+\tag{1-1-2}
+$$
+
+其中 $c\approx2.998\times10^{8}\ \mathrm{m/s}$ 为真空光速。工程计算中通常取 $c=3\times10^{8}\ \mathrm{m/s}$，误差约 $0.06\%$，在估算波长时完全够用。
+
+**量纲检查**：$[\lambda]=[\mathrm{m}]$，$[c/f]=\dfrac{\mathrm{m/s}}{\mathrm{s^{-1}}}=\mathrm{m}$，量纲自洽。
+
+**边界验算**：
+- 取 $f=300\ \mathrm{MHz}=3\times10^{8}\ \mathrm{Hz}$，得 $\lambda=3\times10^{8}/3\times10^{8}=1\ \mathrm{m}$；
+- 取 $f=3000\ \mathrm{GHz}=3\times10^{12}\ \mathrm{Hz}$，得 $\lambda=3\times10^{8}/3\times10^{12}=1\times10^{-4}\ \mathrm{m}=0.1\ \mathrm{mm}$。
+
+两端刚好对应 $1\ \mathrm{m}$ 与 $0.1\ \mathrm{mm}$，与定义自洽。
+
+如果波在非真空介质中传播，式 (1-1-2) 应写成更一般的形式：
+
+$$
+\lambda=\frac{v}{f},\qquad v=\frac{c}{n}=\frac{1}{\sqrt{\mu\varepsilon}}
+\tag{1-1-3}
+$$
+
+其中 $v$ 为介质中的相速，$n$ 为折射率，$\mu$、$\varepsilon$ 为介质的磁导率与介电常数。这一点在第三章讲波导波长 $\lambda_g$ 时会反复用到：**同一个频率，在不同结构中有不同的波长**。
+
+### 1.1.2 频段边界是人为划定的
+
+微波的两个端点 $300\ \mathrm{MHz}$ 与 $3000\ \mathrm{GHz}$ 并没有任何物理定律规定。它们是**人为划定**的工程约定，理由有三条：
+
+1. **电路理论的分界**。低于约 $300\ \mathrm{MHz}$ 时，普通尺寸的电路元件（电容、电感、导线）尺寸远小于波长，集总参数模型仍然有效；频率再高，"元件"本身的分布效应无法忽略。所以 $300\ \mathrm{MHz}$ 实际上是"集中参数电路"与"分布参数电路"的分水岭。
+2. **波段命名习惯**。无线电频谱以十倍频程划分大段（长波、中波、短波……），$300\ \mathrm{MHz}=0.3\ \mathrm{GHz}$、$3000\ \mathrm{GHz}=3\ \mathrm{THz}$ 恰好落在十进制边界上，便于记忆与设备划分。
+3. **技术惯性的分界**。$3000\ \mathrm{GHz}$ 以上进入**亚毫米波/太赫兹（THz）**领域，源、探测器、传输线都发生质的变化（从电子学主导转向光子学主导），工程上习惯另立门户。
+
+> **【易错点】**
+> 不要背成"微波就是厘米波"或"微波就是 $1\ \mathrm{GHz}$ 以上"。微波是一个**区间**，包含了分米波、厘米波、毫米波乃至亚毫米波的一部分。也不要认为 $300\ \mathrm{MHz}$ 以下绝对不能算"微波技术"——工程实践中 $100\ \mathrm{MHz}$ 左右的电路（如短波功放、电视发射机末级）已经必须用微波的分析方法处理，这就是"人为划定"的含义。
+
+### 1.1.3 频谱定位：把微波放进整个电磁波谱
+
+下表把无线电频谱自低频向高频排列，标出每一波段的频率范围、真空波长范围与典型应用。
+
+| 波段名称 | 频率范围 | 真空波长范围 | 典型应用 |
+|---|---|---|---|
+| 长波（LF） | $30\sim300\ \mathrm{kHz}$ | $1\sim10\ \mathrm{km}$ | 长波广播、远洋导航、授时、潜艇通信 |
+| 中波（MF） | $300\ \mathrm{kHz}\sim3\ \mathrm{MHz}$ | $100\sim1000\ \mathrm{m}$ | 调幅（AM）中波广播、海事通信 |
+| 短波（HF） | $3\sim30\ \mathrm{MHz}$ | $10\sim100\ \mathrm{m}$ | 国际短波广播、业余无线电、超视距天波通信 |
+| 米波 / 甚高频（VHF） | $30\sim300\ \mathrm{MHz}$ | $1\sim10\ \mathrm{m}$ | 调频（FM）广播 87–108 MHz、电视 1–12 频道、航空通信、对讲机 |
+| 分米波 / 特高频（UHF） | $300\ \mathrm{MHz}\sim3\ \mathrm{GHz}$ | $0.1\sim1\ \mathrm{m}$ | 电视 13–68 频道（470–566 MHz 等）、2G/3G/4G 蜂窝公众移动通信、北斗/导航、无线局域网、微波中继、**微波炉 2.45 GHz** |
+| 厘米波 / 超高频（SHF） | $3\sim30\ \mathrm{GHz}$ | $1\sim10\ \mathrm{cm}$ | 卫星通信（C/Ku 频段）、5G 中频段（3.5 GHz）、点对点微波接力、气象雷达、射电天文 |
+| 毫米波 / 极高频（EHF） | $30\sim300\ \mathrm{GHz}$ | $1\sim10\ \mathrm{mm}$ | **5G 毫米波 24.25–52.6 GHz**、汽车雷达 76–81 GHz、机场安检成像、导弹末制导、卫星互联网（Ku/Ka） |
+| 亚毫米波 / 太赫兹 | $300\ \mathrm{GHz}\sim3\ \mathrm{THz}$ | $0.1\sim1\ \mathrm{mm}$ | 射电天文（ALMA）、大气遥感、无损检测、6G 候选频段 |
+
+<figure class="fig">
+<svg viewBox="0 0 889 520" role="img" aria-label="电磁波频谱与微波频段定位图">
+  <defs>
+    <marker id="ch1SpA" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+    <marker id="ch1SpB" markerWidth="9" markerHeight="9" refX="1" refY="4.5" orient="auto">
+      <path d="M9,0 L0,4.5 L9,9 z" fill="var(--warn)"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="30" font-size="15" font-weight="700" fill="var(--ink)">电磁波频谱上的微波定位（横向按对数频率非等距示意）</text>
+
+  <rect x="270" y="44" width="410" height="88" rx="8" fill="var(--brand)" opacity="0.09"/>
+  <text x="475" y="62" font-size="13" font-weight="700" text-anchor="middle" fill="var(--brand)">微 波 频 段</text>
+  <text x="475" y="80" font-size="11.5" text-anchor="middle" fill="var(--ink-2)">300 MHz ~ 3000 GHz　|　波长 0.1 mm ~ 1 m</text>
+  <text x="475" y="98" font-size="11.5" text-anchor="middle" fill="var(--ink-2)">边界为人为划定：以“集总参数是否失效”为工程依据</text>
+  <text x="475" y="118" font-size="11" text-anchor="middle" fill="var(--accent)">似光性 · 波动性 · 穿透性 · 信息性 · 能量性</text>
+
+  <line x1="50" y1="150" x2="730" y2="150" stroke="var(--line)" stroke-width="1.5" marker-end="url(#ch1SpA)"/>
+  <text x="736" y="146" font-size="11" fill="var(--ink-2)">f↑</text>
+  <text x="50" y="140" font-size="11" fill="var(--ink-2)">频率升高 →</text>
+
+  <rect x="50"   y="158" width="80"  height="46" fill="var(--brand)" opacity="0.08" stroke="var(--line)"/>
+  <rect x="130"  y="158" width="55"  height="46" fill="var(--brand)" opacity="0.13" stroke="var(--line)"/>
+  <rect x="185"  y="158" width="85"  height="46" fill="var(--brand)" opacity="0.18" stroke="var(--line)"/>
+  <rect x="270"  y="158" width="80"  height="46" fill="var(--warn)"  opacity="0.16" stroke="var(--line)"/>
+  <rect x="350"  y="158" width="110" height="46" fill="var(--warn)"  opacity="0.22" stroke="var(--line)"/>
+  <rect x="460"  y="158" width="110" height="46" fill="var(--warn)"  opacity="0.28" stroke="var(--line)"/>
+  <rect x="570"  y="158" width="50"  height="46" fill="var(--warn)"  opacity="0.34" stroke="var(--line)"/>
+  <rect x="620"  y="158" width="60"  height="46" fill="var(--warn)"  opacity="0.40" stroke="var(--line)"/>
+
+  <g font-size="11.5" fill="var(--ink)" text-anchor="middle">
+    <text x="90"  y="188" transform="rotate(-90 90 188)">长波</text>
+    <text x="157" y="188" transform="rotate(-90 157 188)">中波</text>
+    <text x="227" y="188" transform="rotate(-90 227 188)">短波</text>
+    <text x="310" y="188" transform="rotate(-90 310 188)">米波VHF</text>
+    <text x="405" y="188" transform="rotate(-90 405 188)">分米波UHF</text>
+    <text x="515" y="188" transform="rotate(-90 515 188)">厘米波SHF</text>
+    <text x="595" y="188" transform="rotate(-90 595 188)">毫米波EHF</text>
+    <text x="650" y="188" transform="rotate(-90 650 188)">亚毫米波</text>
+  </g>
+
+  <g stroke="var(--line)" stroke-dasharray="3 4">
+    <line x1="270" y1="150" x2="270" y2="232"/>
+    <line x1="350" y1="150" x2="350" y2="232"/>
+    <line x1="460" y1="150" x2="460" y2="232"/>
+    <line x1="570" y1="150" x2="570" y2="232"/>
+    <line x1="620" y1="150" x2="620" y2="232"/>
+  </g>
+
+  <g font-size="11" fill="var(--ink-2)" text-anchor="middle">
+    <text x="46"  y="248">30 kHz</text>
+    <text x="130" y="248">300 kHz</text>
+    <text x="185" y="248">3 MHz</text>
+    <text x="270" y="248" fill="var(--warn)" font-weight="700">300 MHz</text>
+    <text x="350" y="248">3 GHz</text>
+    <text x="460" y="248">30 GHz</text>
+    <text x="570" y="248">300 GHz</text>
+    <text x="620" y="248">3 THz</text>
+    <text x="700" y="248">30 THz</text>
+  </g>
+
+  <path d="M270,262 L270,272 L680,272 L680,262" fill="none" stroke="var(--warn)" stroke-width="1.6" marker-start="url(#ch1SpB)"/>
+  <text x="475" y="288" font-size="11.5" font-weight="700" text-anchor="middle" fill="var(--warn)">微波技术的研究范围</text>
+
+  <g font-size="11.5" fill="var(--ink)">
+    <text x="475" y="330" font-weight="700" text-anchor="middle" fill="var(--ink)">典型应用与代表频点</text>
+    <line x1="40" y1="340" x2="720" y2="340" stroke="var(--line)"/>
+
+    <circle cx="300" cy="368" r="3" fill="var(--accent)"/><line x1="300" y1="365" x2="300" y2="352" stroke="var(--line)"/>
+    <text x="308" y="372">FM 广播 87–108 MHz；电视 1–12 频道 48–223 MHz</text>
+
+    <circle cx="360" cy="402" r="3" fill="var(--accent)"/><line x1="360" y1="399" x2="360" y2="386" stroke="var(--line)"/>
+    <text x="368" y="406">4G/5G 中低频段 700 MHz–3.5 GHz；微波中继 4/6/7/8 GHz</text>
+
+    <circle cx="470" cy="436" r="3" fill="var(--accent)"/><line x1="470" y1="433" x2="470" y2="420" stroke="var(--line)"/>
+    <text x="478" y="440">卫星通信 C 频段 4/6 GHz、Ku 频段 12/14 GHz、Ka 频段 20/30 GHz</text>
+
+    <circle cx="596" cy="470" r="3" fill="var(--accent)"/><line x1="596" y1="467" x2="596" y2="454" stroke="var(--line)"/>
+    <text x="604" y="474">5G 毫米波 24.25–52.6 GHz；汽车雷达 76–81 GHz</text>
+  </g>
+
+  <text x="50" y="498" font-size="11" fill="var(--ink-2)">其他常用频点：微波炉与 ISM 频段 2.45 GHz ± 50 MHz；射电天文氢 21 cm 线 ≈ 1.42 GHz；GPS L1 1.575 GHz</text>
+</svg>
+<figcaption>图 1-1　电磁波频谱与微波频段定位图</figcaption>
+</figure>
+
+> **【工程应用】**
+> 为什么手机频段听起来这么"碎"（700 MHz、1.8 GHz、2.6 GHz、3.5 GHz、26 GHz……）？因为频段划分由国际电信联盟（ITU）统一协调，是按"频道"分配的：一个运营商的绝对带宽 = 其获得的频段宽度。低频段传播损耗小、穿透好但带宽窄；毫米波段带宽大但覆盖差。这就是"频道"这个词的来源，也是 5G 采用"低频打底 + 毫米波扩容"多层次组网的原因。
+
+### 1.1.4 一个必须辨析的问题：只给波长，能判断是微波吗？
+
+这是本章最经典的思考题。设某"波"的频率范围为 $f\in[401\ \mathrm{Hz},\ 20\ \mathrm{kHz}]$，已知其在空气中的传播速度为
+
+$$
+v=340\ \mathrm{m/s}
+$$
+
+由式 (1-1-3) 计算其波长：
+
+$$
+\lambda_{\min}=\frac{340}{20000}=0.017\ \mathrm{m}=1.7\ \mathrm{cm},\qquad
+\lambda_{\max}=\frac{340}{401}\approx0.848\ \mathrm{m}
+$$
+
+若把下限再往下取一点（例如 $f=20\ \mathrm{Hz}$），波长的量级扩展到 $17\ \mathrm{m}$。也就是说，这段波的波长覆盖了 $1.7\ \mathrm{cm}\sim17\ \mathrm{m}$ 的**巨大范围**：$17\ \mathrm{m}$ 远在微波波长范围（$0.1\ \mathrm{mm}\sim1\ \mathrm{m}$）之外，而 $1.7\ \mathrm{cm}$ 和几十厘米的波长却**恰好落在微波波长范围之内**！
+
+如果我们只看波长，$1.7\ \mathrm{cm}$ 与厘米波雷达的工作波长完全一样，似乎该判定为微波。**这就是陷阱所在。**
+
+> **【核心概念】**
+> 这段波其实是**声波**（空气中的人耳听觉范围 20 Hz–20 kHz），不是电磁波。它的速度由空气的声速 $v_{\text{声}}=340\ \mathrm{m/s}$ 决定，而不是光速 $c=3\times10^{8}\ \mathrm{m/s}$，两者相差近六个数量级。
+>
+> 结论：**判断是不是微波，第一步是"它必须是电磁波"，然后才看波长。**"微波 = 波长 0.1 mm~1 m 的电磁波"这一定义中，"电磁波"三个字是前提，"波长范围"只是限定条件。
+
+这个例子还教会我们一个方法论：**波长本身不能唯一确定频率**，必须同时知道波速。
+
+$$
+f=\frac{v}{\lambda}\quad\Longrightarrow\quad
+\text{同一波长}\ \lambda=1.7\ \mathrm{cm}\ \text{对应}
+\begin{cases}
+f=\dfrac{340}{0.017}=2\times10^{4}\ \mathrm{Hz} & (v=340\ \mathrm{m/s}，\text{声波})\\
+f=\dfrac{3\times10^{8}}{0.017}=1.76\times10^{10}\ \mathrm{Hz}=17.6\ \mathrm{GHz} & (v=c，\text{电磁波})
+\end{cases}
+$$
+
+> **【思考】**
+> 蝙蝠靠 $20\sim100\ \mathrm{kHz}$ 的超声波导航，其波长约 $3.4\sim17\ \mathrm{mm}$。若把它换算成同波长的电磁波，属于毫米波（雷达频段）；但蝙蝠用的是声波，其"探测分辨率"由声波长决定。请想一想：为什么同样的波长，声呐（水下声波）在海洋探测中的地位，与毫米波雷达在空中的地位如此相似？——提示：从 $\lambda/D$ 决定分辨率的几何光学规律出发，两者是同一套物理。
+
+### 1.1.5 为什么微波得到广泛应用？——"人类认知的范畴"
+
+微波之所以被广泛使用，不是因为它"频率高、听起来先进"，而是因为**它的波长恰好与我们关心的物体尺度相匹配**。
+
+人的尺度约 $1\ \mathrm{m}$，天线的合理尺寸也就在 $0.1\sim10\ \mathrm{m}$ 量级。由 $L\approx\lambda/2$ 的天线基本尺寸关系可知，要做出物理上可实现的定向天线，波长必须在米级到毫米级——这正是微波区间。若用 $20\ \mathrm{kHz}$ 的声波频率去辐射电磁波（波长 $15\ \mathrm{km}$），天线就得造 $7.5\ \mathrm{km}$ 长，工程上不现实；反之若用可见光（波长 $0.5\ \mu\mathrm{m}$）作通信载波，虽然带宽大得惊人，但**雾、雨、墙、树叶统统挡死**，且无法绕射，只能用于视距内的自由空间光通信。
+
+再看三个具体例子，它们都体现"波长与物体尺度可比拟"这一条：
+
+1. **天线尺寸**：半波振子天线长度 $L=\lambda/2$；喇叭天线口径 $D$ 与波长的比值 $\lambda/D$ 决定波束宽度。$2.45\ \mathrm{GHz}$ 微波炉的磁控管天线、WiFi 路由器的两根天线（$\lambda/2\approx6\ \mathrm{cm}$），尺寸都刚好"能放进家庭设备里"。
+2. **雷达目标尺度**：飞机（$10\sim50\ \mathrm{m}$）、导弹（$1\sim10\ \mathrm{m}$）、无人机（$0.3\sim3\ \mathrm{m}$）的尺寸与微波波长可比拟时，目标处于**谐振区/光学区**，散射截面大、成像可能。若波长远大于目标则进入瑞利区，回波按 $1/\lambda^{4}$ 急剧衰减，根本探不到。
+3. **微波炉中的食物**：食物（含水介质）的厚度在厘米—分米量级，与 $2.45\ \mathrm{GHz}$（$\lambda\approx12.2\ \mathrm{cm}$）的波长相当，微波能穿透到内部若干厘米、实现**体积加热**，而不是像红外线那样只烤表面。
+
+> **【核心概念】**
+> 把这些例子归纳成一句话：**微波是"人可以直接用手做出来的尺寸"与"波"相遇的频段**。所以它既是"似光"的（可以像光一样聚焦、定向、成像），又是"可制造"的（器件尺寸在厘米量级）。这就是微波技术独一无二的工程地位。
+
+### 1.1.6 本节考点清单
+
+> **【考点】**
+> - **题型**：填空（频率/波长范围）、计算（$\lambda=c/f$，注意单位：GHz 与 m 的换算）、简答（人为划定的含义；波长可否单独判定微波）。
+> - **常见设问**："微波的频率范围是____，波长范围是____"；"$f=10\ \mathrm{GHz}$ 的电磁波波长为____"；"某波波长为 $17\ \mathrm{m}$，能否断定它是微波？为什么？"
+> - **易错点**：①把 $300\ \mathrm{MHz}\sim3000\ \mathrm{GHz}$ 记成 $300\ \mathrm{MHz}\sim3000\ \mathrm{MHz}$；②单位换算漏掉 $10^{3}$（$1\ \mathrm{GHz}=10^{9}\ \mathrm{Hz}$）；③回答"波长范围"题时忘记写"电磁波"这一前提。
+> - **难度**：★
+
+---
+
+## 1.2 微波的五大特点
+
+微波之所以需要独立成为一门课程，根本原因是它有五个区别于低频电路的鲜明特性。下面逐条给出**物理本质**（为什么会这样）和**工程含义**（所以我们要怎么做）。
+
+<figure class="fig">
+<svg viewBox="0 0 800 430" role="img" aria-label="微波五大特点与工程对应关系图">
+  <defs>
+    <marker id="ch1FxA" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--brand)"/>
+    </marker>
+    <marker id="ch1FxB" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+
+  <text x="180" y="28" font-size="14" font-weight="700" text-anchor="middle" fill="var(--ink)">物理本质</text>
+  <text x="612" y="28" font-size="14" font-weight="700" text-anchor="middle" fill="var(--ink)">工程含义与应用</text>
+  <line x1="330" y1="40" x2="330" y2="410" stroke="var(--line)" stroke-dasharray="4 5"/>
+  <line x1="470" y1="40" x2="470" y2="410" stroke="var(--line)" stroke-dasharray="4 5"/>
+
+  <rect x="30" y="46" width="290" height="62" rx="10" fill="var(--brand)" opacity="0.1" stroke="var(--brand)"/>
+  <text x="46" y="70" font-size="13.5" font-weight="700" fill="var(--ink)">似光性</text>
+  <text x="46" y="92" font-size="11.5" fill="var(--ink-2)">波长与物体尺度可比拟 → 几何光学近似</text>
+  <line x1="320" y1="77" x2="486" y2="77" stroke="var(--brand)" stroke-width="1.4" marker-end="url(#ch1FxA)"/>
+
+  <rect x="490" y="46" width="290" height="62" rx="10" fill="var(--brand)" opacity="0.05" stroke="var(--accent)"/>
+  <text x="506" y="70" font-size="12.5" font-weight="700" fill="var(--ink)">定向天线、波束宽度 λ/D</text>
+  <text x="506" y="92" font-size="11.5" fill="var(--ink-2)">雷达分辨率、视距传播、天线口径、聚焦与成像</text>
+
+  <rect x="30" y="120" width="290" height="62" rx="10" fill="var(--brand)" opacity="0.1" stroke="var(--brand)"/>
+  <text x="46" y="144" font-size="13.5" font-weight="700" fill="var(--ink)">波动性（高频性）</text>
+  <text x="46" y="166" font-size="11.5" fill="var(--ink-2)">波长与电路尺寸可比拟 → 集总参数失效</text>
+  <line x1="320" y1="151" x2="486" y2="151" stroke="var(--brand)" stroke-width="1.4" marker-end="url(#ch1FxA)"/>
+
+  <rect x="490" y="120" width="290" height="62" rx="10" fill="var(--brand)" opacity="0.05" stroke="var(--accent)"/>
+  <text x="506" y="144" font-size="12.5" font-weight="700" fill="var(--ink)">分布参数 R,L,C,G、传输线理论</text>
+  <text x="506" y="166" font-size="11.5" fill="var(--ink-2)">基尔霍夫定律失效、麦克斯韦方程组、相位与时延</text>
+
+  <rect x="30" y="194" width="290" height="62" rx="10" fill="var(--brand)" opacity="0.1" stroke="var(--brand)"/>
+  <text x="46" y="218" font-size="13.5" font-weight="700" fill="var(--ink)">穿透性</text>
+  <text x="46" y="240" font-size="11.5" fill="var(--ink-2)">穿透电离层与干燥介质，被金属反射</text>
+  <line x1="320" y1="225" x2="486" y2="225" stroke="var(--brand)" stroke-width="1.4" marker-end="url(#ch1FxA)"/>
+
+  <rect x="490" y="194" width="290" height="62" rx="10" fill="var(--brand)" opacity="0.05" stroke="var(--accent)"/>
+  <text x="506" y="218" font-size="12.5" font-weight="700" fill="var(--ink)">卫星通信、微波加热、无损检测</text>
+  <text x="506" y="240" font-size="11.5" fill="var(--ink-2)">遥感、安检成像、介质参数测量、遥感探测</text>
+
+  <rect x="30" y="268" width="290" height="62" rx="10" fill="var(--brand)" opacity="0.1" stroke="var(--brand)"/>
+  <text x="46" y="292" font-size="13.5" font-weight="700" fill="var(--ink)">信息性</text>
+  <text x="46" y="314" font-size="11.5" fill="var(--ink-2)">载频越高 → 可用绝对带宽越宽</text>
+  <line x1="320" y1="299" x2="486" y2="299" stroke="var(--brand)" stroke-width="1.4" marker-end="url(#ch1FxA)"/>
+
+  <rect x="490" y="268" width="290" height="62" rx="10" fill="var(--brand)" opacity="0.05" stroke="var(--accent)"/>
+  <text x="506" y="292" font-size="12.5" font-weight="700" fill="var(--ink)">大容量通信、5G 毫米波、Massive MIMO</text>
+  <text x="506" y="314" font-size="11.5" fill="var(--ink-2)">香农容量 C=Blog₂(1+S/N)、数据链、卫星互联网</text>
+
+  <rect x="30" y="342" width="290" height="62" rx="10" fill="var(--brand)" opacity="0.1" stroke="var(--brand)"/>
+  <text x="46" y="366" font-size="13.5" font-weight="700" fill="var(--ink)">能量性</text>
+  <text x="46" y="388" font-size="11.5" fill="var(--ink-2)">离开源后仍携带动能流 E=P· T</text>
+  <line x1="320" y1="373" x2="486" y2="373" stroke="var(--brand)" stroke-width="1.4" marker-end="url(#ch1FxA)"/>
+
+  <rect x="490" y="342" width="290" height="62" rx="10" fill="var(--brand)" opacity="0.05" stroke="var(--accent)"/>
+  <text x="506" y="366" font-size="12.5" font-weight="700" fill="var(--ink)">微波加热、消毒、无线输能、高功率武器</text>
+  <text x="506" y="388" font-size="11.5" fill="var(--ink-2)">微波炉、微波理疗、无人机充电、电磁脉冲</text>
+</svg>
+<figcaption>图 1-2　微波五大特点与工程对应关系</figcaption>
+</figure>
+
+### 1.2.1 似光性
+
+**物理本质**。当波长 $\lambda$ 远小于（或与）物体的特征尺寸 $D$ 可比拟时，电磁波的传播规律趋近于几何光学：能量沿射线传播，遇到尺寸远大于波长的障碍物产生明显的反射、折射与遮挡。判据是
+
+$$
+\frac{D}{\lambda}\gg1\quad\Longrightarrow\quad\text{可用几何光学近似}
+\tag{1-2-1}
+$$
+
+微波波段 $D/\lambda$ 通常在 $1\sim10^{3}$ 量级（如 $3\ \mathrm{cm}$ 波长、$1\ \mathrm{m}$ 口径天线，$D/\lambda\approx33$），因此**微波能以确定方向直线传播，可被抛物面反射镜聚焦成很窄的波束**。
+
+**定量刻画**。口径为 $D$ 的天线，其半功率波束宽度近似为
+
+$$
+\theta_{3\,\mathrm{dB}}\approx70^{\circ}\frac{\lambda}{D}\quad(\text{度})
+\tag{1-2-2}
+$$
+
+这条式子把"似光性"变成了可计算的工程参数：波长越短、口径越大，波束越窄、方向性越强。例如 $f=10\ \mathrm{GHz}$（$\lambda=3\ \mathrm{cm}$）、$D=1\ \mathrm{m}$ 的抛物面天线，$\theta_{3\,\mathrm{dB}}\approx2.1^{\circ}$；若换成 $100\ \mathrm{MHz}$（$\lambda=3\ \mathrm{m}$），同样口径只能给出约 $210^{\circ}$ 的"波束"——几乎没有方向性。
+
+**工程含义**（为什么重要）：
+1. **定向通信与雷达**：窄波束意味着能量集中（增益高）、抗干扰强、可分辨角度邻近的目标。
+2. **视距传播与中继**：微波像光一样近乎直线传播，绕射能力弱，地球曲率会造成"地平线遮挡"，因此必须靠**微波中继塔组网**或卫星接力，这是地面微波通信系统必须"建塔"的根本原因。
+3. **旁瓣与遮挡**：金属对微波近似全反射，所以微波设备要避开金属遮挡；反过来也用于雷达隐身与屏蔽设计。
+4. **分辨率**：雷达的角分辨率与距离分辨率都正比于波长（或带宽），见 1.4 节。
+
+> **【易错点】**
+> "似光"不等于"和光一样"。微波波长比可见光长 $4\sim6$ 个数量级，所以同一口径下微波波束比光束宽得多——正因如此，射电望远镜要造到几十米甚至上百米口径，而光学望远镜口径可以只有几米。两者的物理规律相同，尺度感完全不同。
+
+### 1.2.2 波动性（高频性）
+
+**物理本质**。低频电路中，我们默认"导线上的电压处处相同、电流处处相同"，于是可以先生成节点方程再解。这个默认成立的隐含条件是：
+
+$$
+l\ll\lambda
+\tag{1-2-3}
+$$
+
+其中 $l$ 是电路的最大几何尺寸。当 $l$ 与 $\lambda$ 可比拟时，电磁波沿电路传播需要可观的**传播时间**，在同一个"时刻"，线上不同位置的电压和电流不再相同——**电压、电流变成了位置的函数** $u(z,t)$、$i(z,t)$。
+
+用相位做定量说明。设信号沿电路传播距离 $l$，产生的相位移为
+
+$$
+\Delta\varphi=\beta l=\frac{2\pi}{\lambda}l
+\tag{1-2-4}
+$$
+
+- 若 $l=0.01\lambda$，$\Delta\varphi=3.6^{\circ}$，工程上认为"处处同电位"，集总参数成立；
+- 若 $l=0.1\lambda$，$\Delta\varphi=36^{\circ}$，相位差异已不可忽略；
+- 若 $l=1\lambda$，$\Delta\varphi=360^{\circ}$，线上至少有一个完整波长，必然出现驻波、反射、谐振等现象。
+
+工程上取
+
+$$
+\boxed{\,l\gtrsim\frac{\lambda}{10}\ \text{即视为"长线"}\,}
+\tag{1-2-5}
+$$
+
+作为**长线判据**（第二章会给出更细致的讨论）。相应地，$l<\lambda/10$ 称为**短线**，可用集总参数处理。注意：这里的"长""短"指的是**相对于波长的电长度**，而不是几何长度——一米长的导线，在 $50\ \mathrm{Hz}$ 下是"短线"，在 $5\ \mathrm{GHz}$ 下却是"长线"。
+
+**基尔霍夫定律为什么会失效**。基尔霍夫电流定律（KCL）说"流入节点的电流代数和为零"，其物理前提是**节点上不能有电荷积累**；基尔霍夫电压定律（KVL）说"回路电压代数和为零"，其物理前提是**回路磁通的变化可以忽略**。在微波频段：
+
+- 导线与元件本身成为"天线"，会向外辐射并接收能量，节点上出现位移电流与分布电容的充放电 → KCL 不再严格成立；
+- 回路的尺寸与波长可比，回路内的磁场随时间快速变化，$\oint\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{l}=-\mathrm{d}\Phi/\mathrm{d}t$ 不再为零 → KVL 不再严格成立。
+
+因此必须回到**麦克斯韦方程组**，并引入**分布参数**：把导线看成沿长度分布的电阻 $R$（$\Omega/\mathrm{m}$）、电感 $L$（$\mathrm{H/m}$）、电容 $C$（$\mathrm{F/m}$）、电导 $G$（$\mathrm{S/m}$），写出传输线方程，才得到正确的电压电流分布——这就是第二章的主题，也是"化场为路"思想的起点。
+
+> **【核心概念】**
+> 波动的**时延**与**相位**在微波频段不能再被忽略，而时延恰恰是"分布参数"的物理来源。记住这个链条：
+> 频率升高 → 波长缩短 → $l/\lambda$ 增大 → 沿线相位差增大 → 不能再用同一组 $(u,i)$ 描述 → 引入分布参数 $R,L,C,G$ → 传输线方程 → 麦克斯韦方程组。
+
+> **【工程应用】**
+> 现代数字电路的时钟频率已达几 GHz（如 $3.6\ \mathrm{GHz}$，对应 $\lambda=8.3\ \mathrm{cm}$）。印刷电路板（PCB）上一条 $8\ \mathrm{mm}$ 长的走线，电长度已达 $0.1\lambda$（约 $36^{\circ}$），高速数字设计里必须做阻抗匹配、走线等长、终端匹配，否则会出现振铃、串扰和眼图闭合。**微波理论早已不只是"射频工程师的事"，它同样决定了 CPU、DDR 内存和 PCB 布线的设计规则。**
+
+### 1.2.3 穿透性
+
+**物理本质**。微波与物质相互作用的方式由材料的电磁参数决定。金属的电导率极高（$\sigma\sim10^{7}\ \mathrm{S/m}$），电磁波几乎无法进入，只能被反射；而**干燥的介质（电介质）**——空气、玻璃、陶瓷、纸张、木材、塑料、干燥食品等——的损耗角正切很小，微波能穿透相当深度；**电离层**是等离子体，当工作频率高于其等离子体频率 $\omega_p$（自由电子密度约 $10^{12}\ \mathrm{m^{-3}}$ 时对应 $f_p\approx9\ \mathrm{MHz}$）时，微波能穿过去而不再被反射。
+
+这就是短波与微波命运不同的原因：短波（$3\sim30\ \mathrm{MHz}$）被电离层反射，可以"打"到几千公里外，实现超视距通信；微波则穿透电离层进入太空，从而使**卫星通信、深空测控、卫星导航**成为可能。
+
+**定量感受穿透深度**。进入有耗介质的场按 $e^{-\alpha z}$ 衰减，工程上常用穿透深度（场强衰减到 $1/e$ 的深度）
+
+$$
+\delta_{\text{穿透}}=\frac{1}{\alpha}
+\tag{1-2-6}
+$$
+
+以水的类组织介质为例，$2.45\ \mathrm{GHz}$ 时穿透深度约 $1\sim2\ \mathrm{cm}$，$915\ \mathrm{MHz}$ 时约 $3\sim4\ \mathrm{cm}$。这正是工业上"低频段用于厚料、$2.45\ \mathrm{GHz}$ 用于薄料"的原因。
+
+**工程含义**：
+1. **卫星通信与航天测控**：只有波长足够短（$f\gtrsim30\ \mathrm{MHz}$）的电磁波才能穿过电离层，这是微波链路连接天地的物理基础。
+2. **微波加热与干燥**：工业上用于木材干燥、粮食烘干、橡胶硫化、造纸、陶瓷烧结，优点是**里外同时加热、速度快、选择性加热（只加热含水部分）**。
+3. **探测与无损检测**：微波能穿透衣物、包装、墙体，用于**机场安检人体成像**、探地雷达（GPR）、墙体内部结构检测、含水量测量。
+4. **大气窗口**：大气中水汽与氧分子的吸收峰决定了若干"窗口"频段（如 $10\ \mathrm{GHz}$、$35\ \mathrm{GHz}$、$94\ \mathrm{GHz}$），而 $60\ \mathrm{GHz}$ 附近氧吸收极强，只能用于短距高保密通信——"穿透性"的定量度量直接决定了频率规划。
+
+> **【易错点】**
+> "穿透性"与"似光性"不矛盾：穿透性是**对特定介质**（干燥介质、电离层）而言；对金属，微波反而是"全反射"。考试中若问"微波能否穿透金属"，答案是否定的；若问"能否穿透电离层"，答案与频率有关，微波可以。
+
+### 1.2.4 信息性
+
+**物理本质**。通信系统的信道容量（香农公式）为
+
+$$
+C=B\log_{2}\!\left(1+\frac{S}{N}\right)\quad(\mathrm{bit/s})
+\tag{1-2-7}
+$$
+
+其中 $B$ 是信道带宽，$S/N$ 是信噪比。而噪声功率为
+
+$$
+P_n=kTB
+\tag{1-2-8}
+$$
+
+（$k=1.38\times10^{-23}\ \mathrm{J/K}$，$T$ 为等效噪声温度）。式 (1-2-8) 说明**噪声功率随带宽线性增长**。因此单纯加宽带宽并不能无限提高容量——需要同时提高信号功率。而**载波频率越高，可用的绝对带宽越宽**（例如中心频率 $30\ \mathrm{GHz}$ 的系统取 $10\%$ 相对带宽就是 $3\ \mathrm{GHz}$；中心频率 $300\ \mathrm{MHz}$ 的系统取同样的 $10\%$ 只有 $30\ \mathrm{MHz}$），这才是"载频越高、速率越高"的物理根源。
+
+**数量级感受**：取 $T=300\ \mathrm{K}$、$B=20\ \mathrm{kHz}$，则 $P_n\approx8.3\times10^{-17}\ \mathrm{W}$。如果接收信号功率为 $10^{-12}\ \mathrm{W}$，则 $S/N\approx1.2\times10^{4}$（约 $41\ \mathrm{dB}$），由式 (1-2-7) 得 $C\approx20\ \mathrm{kHz}\times\log_2(12000)\approx20\times13.5=270\ \mathrm{kbit/s}$。可见"带宽"是容量的第一乘数，而"提高载频以获得更大带宽"是每一代移动通信升级的核心手段。
+
+从 1G 到 6G 的演进，正是这条规律的历史展开：
+
+| 代际 | 多址方式 | 典型速率 | 代表技术与典型载波 | 带来的能力跃变 |
+|---|---|---|---|---|
+| **1G** | FDMA（频分多址） | $\approx10\ \mathrm{kbps}$ | 模拟蜂窝（AMPS/NMT），$450/900\ \mathrm{MHz}$ | 只支持模拟语音，音质差、无加密、易被窃听 |
+| **2G** | TDMA / CDMA（时分/码分） | $\approx64\ \mathrm{kbps}$ | GSM、IS-95，$900/1800\ \mathrm{MHz}$ | 数字化：短信、窄带数据、语音加密 |
+| **3G** | CDMA（码分多址） | $\approx2\ \mathrm{Mbps}$ | CDMA2000、WCDMA、TD-SCDMA，$2\ \mathrm{GHz}$ | 移动互联网、视频通话 |
+| **4G** | OFDMA（正交频分多址） | $\approx100\ \mathrm{Mbps}$ | LTE/LTE-A，$0.7\sim2.6\ \mathrm{GHz}$ | 高清视频、全 IP 化、MIMO 普及 |
+| **5G** | OFDMA + NOMA（非正交多址） | $>10\ \mathrm{Gbps}$ | NR：Sub-6 GHz（$3.5\ \mathrm{GHz}$）+ 毫米波（$24.25\sim52.6\ \mathrm{GHz}$），Massive MIMO、波束赋形 | 增强移动宽带、超可靠低时延、海量机器通信 |
+| **6G**（展望） | 智能超表面 / AI 空口 | 目标 $\mathrm{Tbps}$ 量级 | 太赫兹频段、通感一体、天地一体 | "万物互联"到"万物智联" |
+
+> **【核心概念】**
+> 频率、带宽、速率三者的关系可以总结为一句话：**载波频率决定"可用地皮"的大小，调制与多址方式决定"盖楼的方式"，功率与噪声决定"能盖多高"**。所以每一代通信技术的突破，都伴随着向更高频段迁移 + 更高效的多址/调制方式 + 更大规模天线的组合拳。
+
+**为什么 5G 与 Massive MIMO 绑定在一起**。天线的合理尺寸与波长成正比（约 $\lambda/2$），因此**频率越高，单元天线越小，同样的物理面积内可以塞进越多阵元**。$3.5\ \mathrm{GHz}$ 的 $\lambda/2\approx4.3\ \mathrm{cm}$，一个 $1\ \mathrm{m}\times1\ \mathrm{m}$ 的面板可以容纳上百个阵元，形成大规模阵列（Massive MIMO），通过波束赋形把能量精准地"投"给用户，实现空间复用。反过来，$700\ \mathrm{MHz}$ 的 $\lambda/2\approx21\ \mathrm{cm}$，同样的面积容纳的阵元数少得多。这是"信息性"与"似光性"在工程上的交汇点。
+
+**雷达中的类似规律**。雷达天线的角分辨率与波束宽度成正比于 $\lambda/D$，而距离分辨率取决于信号带宽 $\Delta R=c/(2B)$。因此：
+
+- 要看得"细"（角度分辨），要么加大口径 $D$，要么提高频率（缩短波长）；
+- 要看得"清"（距离分辨），就要加大带宽（如 $1\ \mathrm{GHz}$ 带宽对应 $0.15\ \mathrm{m}$ 距离分辨率）；
+- 两者都指向"更高频率 + 更宽带宽"。
+
+### 1.2.5 能量性
+
+**物理本质**。电磁波离开辐射源之后，仍然携带并输运能量，其能流密度由坡印廷矢量描述：
+
+$$
+\boldsymbol{S}=\boldsymbol{E}\times\boldsymbol{H}\qquad(\mathrm{W/m^{2}})
+\tag{1-2-9}
+$$
+
+总能量与功率、时间的关系为
+
+$$
+E=P\cdot T
+\tag{1-2-10}
+$$
+
+**为什么微波能加热**。物质中的极性分子（如水分子）在交变电场作用下反复转向取向，分子间的摩擦与介质损耗把电磁能转化为热能，宏观上表现为介质的介电损耗。单位体积的介质损耗功率密度为
+
+$$
+p=\omega\varepsilon_0\varepsilon_r''|E|^{2}=\omega\varepsilon_0\varepsilon_r'|E|^{2}\tan\delta
+\tag{1-2-11}
+$$
+
+式中 $\varepsilon_r''$ 是介电常数的虚部，$\tan\delta=\varepsilon_r''/\varepsilon_r'$ 是损耗角正切。式 (1-2-11) 说明了三个工程要点：①频率越高，单位体积的损耗越大；②场强越大，加热越快（所以微波炉要"聚能"）；③**只有损耗大的材料才被加热**，这正是"选择性加热"的由来。
+
+> **【易错点】**
+> 微波炉的频率 $2.45\ \mathrm{GHz}$（波长 $12.2\ \mathrm{cm}$）**并不是水分子共振吸收频率**。水的转动弛豫频率在 $20\ \mathrm{GHz}$ 附近，$2.45\ \mathrm{GHz}$ 的选择主要是因为它属于国际电信联盟划定的工业、科学、医疗（ISM）自由频段（$2.400\sim2.500\ \mathrm{GHz}$，中心 $2.45\ \mathrm{GHz}$），无需申请许可，且在该频率上水的介质损耗适中、穿透深度合适（约 $1\sim2\ \mathrm{cm}$）、磁控管易于高效率制造。把 $2.45\ \mathrm{GHz}$ 说成"水分子共振频率"是流传很广的误解。
+
+**工程应用**：
+1. **微波加热与消毒**：微波炉烹饪、工业干燥与硫化、食品与医疗器具的微波灭菌、邮件灭菌。
+2. **无线能量传输（WPT）**：手机/耳机无线充电（近场磁耦合或射频整流）、心脏起搏器无线供电、植入式医疗器件、无人机空中充电节点、太阳能卫星电站向地面微波输电的设想。
+3. **微波医疗**：微波消融治疗肿瘤、微波理疗（热疗）。
+4. **高功率微波应用**：工业等离子体、粒子加速器射频源、高功率微波武器（见 1.4 节）。
+
+### 1.2.6 高频带来的代价：趋肤效应与损耗剧增
+
+高频不仅有"好处"，还有**代价**，其中最能体现"微波特殊性"的是趋肤效应。
+
+**物理本质**。交变电流在导体内产生交变磁场，磁场又在导体内感生涡流，涡流方向在导体中心与表面电流相反、在表面相同，结果是**电流被"挤"到导体表面附近流动**，中心电流密度趋近于零。这一现象的定量尺度是**趋肤深度（skin depth）**：
+
+$$
+\delta=\sqrt{\frac{2}{\omega\mu\sigma}}=\sqrt{\frac{\rho}{\pi f\mu}}
+\tag{1-2-12}
+$$
+
+其中 $\rho=1/\sigma$ 为电阻率，$\mu=\mu_0\mu_r$ 为磁导率。其物理含义是：**电流主要集中在表面厚 $\delta$ 的薄层内**。
+
+**铜的数值感受**（$\rho=1.72\times10^{-8}\ \Omega\cdot\mathrm{m}$，$\mu_r=1$）：
+
+| 频率 | 趋肤深度 $\delta$ | 说明 |
+|---|---|---|
+| $50\ \mathrm{Hz}$ | $\approx9.4\ \mathrm{mm}$ | 远大于导线半径，趋肤效应可忽略 |
+| $1\ \mathrm{MHz}$ | $\approx66\ \mu\mathrm{m}$ | 已明显，中波天线用多股绞线 |
+| $1\ \mathrm{GHz}$ | $\approx2.1\ \mu\mathrm{m}$ | 微波段：电流只走极薄表层 |
+| $10\ \mathrm{GHz}$ | $\approx0.66\ \mu\mathrm{m}$ | 表面粗糙度已与 $\delta$ 同量级 |
+
+**电阻增加的计算**。导体单位长度的直流电阻为
+
+$$
+R_{0,\mathrm{DC}}=\frac{\rho}{s}=\frac{\rho}{\pi r_0^{2}}
+\tag{1-2-13}
+$$
+
+高频时电流只在周长 $2\pi r_0$、厚度 $\delta$ 的环形薄层内流动，等效导电面积为 $2\pi r_0\delta$，故
+
+$$
+R_{0,\mathrm{HF}}=\frac{\rho}{2\pi r_0\delta}
+=\frac{1}{2\pi r_0}\sqrt{\pi f\mu\rho}
+\tag{1-2-14}
+$$
+
+> **【例题 1-1】**
+> 一根铜导线（$\rho=1.72\times10^{-8}\ \Omega\cdot\mathrm{m}$，$\mu=\mu_0=4\pi\times10^{-7}\ \mathrm{H/m}$），半径 $r_0=2\ \mathrm{mm}$，长度 $l=1\ \mathrm{m}$。
+> (1) 求直流（低频）电阻；(2) 求 $f=10\ \mathrm{GHz}$ 时的电阻；(3) 说明比值。
+>
+> **思路：** 先判断 $10\ \mathrm{GHz}$ 时 $\delta$ 与 $r_0$ 的大小关系，确认处于强趋肤效应区，再用式 (1-2-14)。
+>
+> **解：**
+> (1) 横截面积 $s=\pi r_0^{2}=\pi(2\times10^{-3})^{2}=1.257\times10^{-5}\ \mathrm{m^{2}}$，
+> $$R_{0,\mathrm{DC}}=\frac{1.72\times10^{-8}}{1.257\times10^{-5}}\approx1.37\times10^{-3}\ \Omega/\mathrm{m}$$
+> 即 $1\ \mathrm{m}$ 长导线的直流电阻约 $1.37\ \mathrm{m}\Omega$。
+>
+> (2) 先算趋肤深度：
+> $$\delta=\sqrt{\frac{\rho}{\pi f\mu}}=\sqrt{\frac{1.72\times10^{-8}}{\pi\times10^{10}\times4\pi\times10^{-7}}}\approx0.66\ \mu\mathrm{m}$$
+> 因 $\delta\ll r_0$，用高频公式：
+> $$R_{0,\mathrm{HF}}=\frac{1}{2\pi r_0}\sqrt{\pi f\mu\rho}
+> =\frac{1}{2\pi\times2\times10^{-3}}\sqrt{\pi\times10^{10}\times4\pi\times10^{-7}\times1.72\times10^{-8}}$$
+> $$=\frac{2.607\times10^{-2}}{1.2566\times10^{-2}}\approx2.07\ \Omega/\mathrm{m}$$
+>
+> (3) 比值
+> $$\frac{R_{0,\mathrm{HF}}}{R_{0,\mathrm{DC}}}=\frac{2.07}{1.37\times10^{-3}}\approx1.5\times10^{3}$$
+> 即同一根导线，$10\ \mathrm{GHz}$ 下的单位长度电阻比低频时**增大约 1500 倍**。
+>
+> **讨论与拓展：** ①损耗随 $\sqrt{f}$ 上升，而不是随 $f$ 线性上升——这是高频导体损耗的基本规律（$\alpha_c\propto\sqrt{f}$）。②因此微波传输线表面要镀银、镀金，且要抛光（粗糙度必须远小于 $\delta$，否则等效路径变长、损耗进一步增加）。③也正因如此，微波**不适合用普通导线远距离传输能量**，而要用波导、同轴线或低损耗介质（光纤、自由空间）。④顺便注意：能量传输用低频（输电用 $50\ \mathrm{Hz}$），信息传输用高频（通信载波越高越好）——这是"能量性"与"信息性"在工程取向上的分野。
+
+### 1.2.7 本节考点清单
+
+> **【考点】**
+> - **题型**：简答（五大特点及其物理本质）、计算（趋肤深度、高频电阻、波束宽度）、辨析（$2.45\ \mathrm{GHz}$ 是否为水的共振频率）。
+> - **常见设问**："微波有哪些特点？各自的物理本质是什么？"；"为什么微波频段基尔霍夫定律不再适用？"；"为什么载波频率越高，通信速率越高？"；"铜导线在 $10\ \mathrm{GHz}$ 时的电阻比低频大多少？"
+> - **易错点**：①把"波动性"说成"波粒二象性"；②把穿透性答成"微波能穿透一切"；③把 $2.45\ \mathrm{GHz}$ 说成水分子共振频率；④计算趋肤深度时忘记 $\mu$ 取 $4\pi\times10^{-7}$（或误用 $\mu_r=1$ 之外的数值）。
+> - **难度**：★★★
+
+---
+
+## 1.3 电磁学重要里程碑
+
+微波技术的发展史，本质上是"电磁理论 → 实验验证 → 工程器件 → 系统应用"的层层落地。下表按时间顺序梳理关键节点，其中**赫兹实验**与**高锟的光纤**是两个必须记住的里程碑。
+
+<figure class="fig">
+<svg viewBox="0 0 820 480" role="img" aria-label="电磁学与微波技术发展时间轴">
+  <line x1="70" y1="49" x2="790" y2="49" stroke="var(--line)" stroke-width="2"/>
+
+  <g fill="var(--brand)">
+    <circle cx="100" cy="49" r="5"/>
+    <circle cx="200" cy="49" r="5"/>
+    <circle cx="300" cy="49" r="5"/>
+    <circle cx="400" cy="49" r="5"/>
+    <circle cx="500" cy="49" r="5"/>
+    <circle cx="600" cy="49" r="5"/>
+    <circle cx="700" cy="49" r="5"/>
+  </g>
+  <g fill="var(--warn)">
+    <circle cx="150" cy="49" r="4"/>
+    <circle cx="250" cy="49" r="4"/>
+    <circle cx="350" cy="49" r="4"/>
+    <circle cx="450" cy="49" r="4"/>
+    <circle cx="550" cy="49" r="4"/>
+    <circle cx="650" cy="49" r="4"/>
+    <circle cx="750" cy="49" r="4"/>
+  </g>
+
+  <g stroke="var(--line)">
+    <line x1="100" y1="54" x2="100" y2="92"/>
+    <line x1="150" y1="44" x2="150" y2="92"/>
+    <line x1="200" y1="54" x2="200" y2="92"/>
+    <line x1="250" y1="44" x2="250" y2="92"/>
+    <line x1="300" y1="54" x2="300" y2="92"/>
+    <line x1="350" y1="44" x2="350" y2="92"/>
+    <line x1="400" y1="54" x2="400" y2="92"/>
+    <line x1="450" y1="44" x2="450" y2="92"/>
+    <line x1="500" y1="54" x2="500" y2="92"/>
+    <line x1="550" y1="44" x2="550" y2="92"/>
+    <line x1="600" y1="54" x2="600" y2="92"/>
+    <line x1="650" y1="44" x2="650" y2="92"/>
+    <line x1="700" y1="54" x2="700" y2="92"/>
+    <line x1="750" y1="44" x2="750" y2="320"/>
+  </g>
+
+  <g font-size="12" font-weight="700" fill="var(--ink)" text-anchor="middle">
+    <text x="100" y="38">1785</text>
+    <text x="150" y="38">1820</text>
+    <text x="200" y="38">1831</text>
+    <text x="250" y="38">1864</text>
+    <text x="300" y="38">1887</text>
+    <text x="350" y="38">1895</text>
+    <text x="400" y="38">1901</text>
+    <text x="450" y="38">1940s</text>
+    <text x="500" y="38">1947</text>
+    <text x="550" y="38">1950s</text>
+    <text x="600" y="38">1966</text>
+    <text x="650" y="38">1970</text>
+    <text x="700" y="38">1980s</text>
+    <text x="750" y="38">2000s</text>
+  </g>
+
+  <g font-size="11" fill="var(--ink-2)">
+    <text x="100" y="110" text-anchor="middle">库仑定律</text>
+    <text x="100" y="126" text-anchor="middle">静电场（高斯）</text>
+    <text x="150" y="110" text-anchor="middle">安培定律</text>
+    <text x="150" y="126" text-anchor="middle">静磁场</text>
+    <text x="200" y="110" text-anchor="middle">法拉第</text>
+    <text x="200" y="126" text-anchor="middle">电磁感应</text>
+    <text x="250" y="110" text-anchor="middle">麦克斯韦方程组</text>
+    <text x="250" y="126" text-anchor="middle">预言电磁波</text>
+    <text x="300" y="110" text-anchor="middle">赫兹实验</text>
+    <text x="300" y="126" text-anchor="middle">验证电磁波</text>
+    <text x="350" y="110" text-anchor="middle">马可尼</text>
+    <text x="350" y="126" text-anchor="middle">无线电报</text>
+    <text x="400" y="110" text-anchor="middle">跨大西洋</text>
+    <text x="400" y="126" text-anchor="middle">无线电通信</text>
+  </g>
+
+  <g font-size="11" fill="var(--brand)">
+    <text x="60" y="170" font-weight="700">第一阶段：理论的建立（1785–1864）</text>
+  </g>
+  <rect x="60" y="178" width="330" height="52" rx="8" fill="var(--brand)" opacity="0.07" stroke="var(--brand)"/>
+  <text x="72" y="198" font-size="11" fill="var(--ink-2)">从静电、静磁到电磁感应，实验定律逐个被发现；</text>
+  <text x="72" y="216" font-size="11" fill="var(--ink-2)">麦克斯韦引入位移电流，统一为方程组并预言电磁波。</text>
+
+  <g font-size="11" fill="var(--accent)">
+    <text x="410" y="170" font-weight="700">第二阶段：验证与通信（1887–1901）</text>
+  </g>
+  <rect x="410" y="178" width="180" height="52" rx="8" fill="var(--accent)" opacity="0.09" stroke="var(--accent)"/>
+  <text x="422" y="198" font-size="11" fill="var(--ink-2)">赫兹用火花隙实验证实电磁波存在；</text>
+  <text x="422" y="216" font-size="11" fill="var(--ink-2)">马可尼把电磁波变成通信手段。</text>
+
+  <rect x="600" y="178" width="200" height="52" rx="8" fill="var(--warn)" opacity="0.09" stroke="var(--warn)"/>
+  <text x="700" y="198" font-size="11" text-anchor="middle" fill="var(--ink-2)">1901 年跨大西洋无线电</text>
+  <text x="700" y="216" font-size="11" text-anchor="middle" fill="var(--ink-2)">电报成功，无线时代开启</text>
+
+  <g font-size="11" fill="var(--ink-2)">
+    <text x="450" y="338" text-anchor="middle">波导与雷达</text>
+    <text x="450" y="354" text-anchor="middle">（二战推动）</text>
+    <text x="500" y="338" text-anchor="middle">晶体管发明</text>
+    <text x="500" y="354" text-anchor="middle">电子学革命</text>
+    <text x="550" y="338" text-anchor="middle">微波固态器件</text>
+    <text x="550" y="354" text-anchor="middle">微波集成电路</text>
+    <text x="600" y="338" text-anchor="middle">高锟提出</text>
+    <text x="600" y="354" text-anchor="middle">光纤通信</text>
+    <text x="650" y="338" text-anchor="middle">低损耗光纤</text>
+    <text x="650" y="354" text-anchor="middle">（康宁，20 dB/km）</text>
+    <text x="700" y="338" text-anchor="middle">移动通信</text>
+    <text x="700" y="354" text-anchor="middle">商用蜂窝网</text>
+    <text x="780" y="338" text-anchor="middle">5G / 毫米波</text>
+    <text x="780" y="354" text-anchor="middle">相控阵 / 6G</text>
+  </g>
+
+  <g stroke="var(--line)">
+    <line x1="450" y1="54" x2="450" y2="320"/>
+    <line x1="500" y1="54" x2="500" y2="320"/>
+    <line x1="550" y1="54" x2="550" y2="320"/>
+    <line x1="600" y1="54" x2="600" y2="320"/>
+    <line x1="650" y1="54" x2="650" y2="320"/>
+    <line x1="700" y1="54" x2="700" y2="320"/>
+  </g>
+  <g stroke="var(--line)" stroke-dasharray="3 3">
+    <line x1="450" y1="320" x2="790" y2="320"/>
+  </g>
+
+  <g font-size="11" fill="var(--warn)">
+    <text x="60" y="392" font-weight="700">第三阶段：器件与系统（1940s 至今）</text>
+  </g>
+  <rect x="60" y="400" width="740" height="58" rx="8" fill="var(--brand)" opacity="0.06" stroke="var(--line)"/>
+  <text x="74" y="422" font-size="11.5" fill="var(--ink-2)">战争需求催生厘米波雷达与波导元件；半导体技术让微波设备从“机柜”变成“芯片”；</text>
+  <text x="74" y="442" font-size="11.5" fill="var(--ink-2)">光纤把“微波思路”（导波、模式、阻抗匹配）延伸到光频；移动通信与相控阵让微波技术走入每个人的口袋。</text>
+</svg>
+<figcaption>图 1-3　电磁学与微波技术发展时间轴</figcaption>
+</figure>
+
+### 1.3.1 关键节点详述
+
+**（1）静电与静磁的实验积累（1785–1831）**。库仑用扭秤建立电荷作用力的平方反比律（1785）；高斯把静电场写成通量定律；安培发现电流的磁效应（1820），奥斯特观察到电流使小磁针偏转；欧姆建立电阻定律。这一阶段的共同特征是：**只研究"静止"或"稳恒"的场**，还没有"场以波的形式传播"的概念。
+
+**（2）法拉第电磁感应（1831）**。法拉第发现变化的磁场能在回路中产生电流（感应电动势），并提出了"力线"（场线）的直观图像：
+
+$$
+\oint\boldsymbol{E}\cdot\mathrm{d}\boldsymbol{l}=-\frac{\mathrm{d}\Phi}{\mathrm{d}t}
+\tag{1-3-1}
+$$
+
+这是人类第一次把"变化的场"与"电"联系起来，为麦克斯韦提供了关键拼图。法拉第没有受过正规数学训练，他的"力线"思想由麦克斯韦用数学语言完成。
+
+**（3）麦克斯韦方程组（1864）**。麦克斯韦在安培环路定理中引入**位移电流** $\partial\boldsymbol{D}/\partial t$，使方程组自洽，并由此推导出波动方程，预言电磁波以光速传播、光就是电磁波：
+
+$$
+\nabla\times\boldsymbol{H}=\boldsymbol{J}+\frac{\partial\boldsymbol{D}}{\partial t},\qquad
+\nabla\times\boldsymbol{E}=-\frac{\partial\boldsymbol{B}}{\partial t}
+\tag{1-3-2}
+$$
+
+$$
+\nabla\cdot\boldsymbol{D}=\rho,\qquad
+\nabla\cdot\boldsymbol{B}=0
+\tag{1-3-3}
+$$
+
+由此可得真空中的波速
+
+$$
+c=\frac{1}{\sqrt{\mu_0\varepsilon_0}}
+\tag{1-3-4}
+$$
+
+这是**理论物理史上最伟大的预言之一**：一个纯粹的数学自洽性要求，导出了一个当时还无人见过的物理现象。
+
+**（4）赫兹实验（1887）**。赫兹用火花隙振荡器产生高频电磁振荡，用带缺口的金属环（谐振环）作为接收器，在数米之外观察到了火花——**实验证实了电磁波的存在**，并验证了反射、折射、偏振、驻波等性质。他的实验频率在几十 MHz 到几百 MHz 量级，正是今天所说的"米波"边缘。赫兹本人认为这"没有任何实用价值"，谁也没想到它开启了一个时代。
+
+**（5）马可尼与无线通信（1895–1901）**。马可尼在 1895 年实现几百米的无线电报，1899 年跨英吉利海峡，**1901 年实现跨大西洋（约 3400 km）无线电通信**。这一成就的物理基础出乎所有人意料：短波/中波被高空电离层反射（天波传播），才使超视距通信成为可能。1909 年马可尼获诺贝尔物理学奖。
+
+**（6）波导与雷达（1940 年代，二战）**。战争对"能看见敌机"的需求催生了微波技术的第一次大爆发：**多腔磁控管**（$3\ \mathrm{GHz}$ 大功率源，使机载雷达成为可能）、**矩形波导与波导元件**、**波导 T 形接头与定向耦合器**、**速调管与行波管**。微波技术从"无线电的延伸"变成了独立的学科分支，本书第三章（规则金属波导）、第四章（微波网络）的内容雏形都成型于这一时期。MIT 辐射实验室在 1940–1945 年间编写的 28 卷《Radiation Laboratory Series》至今仍是微波工程的经典文献。
+
+**（7）晶体管与微波固态器件（1947–1950s）**。1947 年贝尔实验室发明点接触晶体管（1956 年诺贝尔物理学奖）， semiconductors 逐步取代真空管。1950 年代出现隧道二极管、变容管、耿氏二极管（Gunn，1963），微波源与放大器开始固态化。此后砷化镓（GaAs）与后来的氮化镓（GaN）、硅锗（SiGe）工艺相继成熟，微波器件从"机柜级"走向"芯片级"，出现了**微波单片集成电路（MMIC）**，这是相控阵雷达、手机射频前端、卫星转发器能够小型化的根本原因。
+
+**（8）卫星通信（1957–1965）**。1957 年人类第一颗人造卫星升空，1965 年"晨鸟"（Early Bird）成为第一颗商用地球同步通信卫星。卫星通信的工作频段（C、Ku、Ka）全部落在微波区间，原因正是 1.2.3 节所述的**电离层穿透性**。
+
+**（9）高锟与光纤通信（1966）**。1966 年，高锟（Charles K. Kao）与 Hockham 发表论文，指出当时石英玻璃高达 $1000\ \mathrm{dB/km}$ 的损耗主要来自**材料中的杂质（尤其是铁离子）而非玻璃本身的固有吸收**，并从理论上指出：只要把杂质降到 ppb 量级，光纤损耗可以降到 $20\ \mathrm{dB/km}$ 以下。这一论断当时被普遍认为是"不切实际的幻想"。1970 年，康宁公司（Corning）制出损耗约 $17\ \mathrm{dB/km}$ 的低损耗光纤，验证了高锟的预言；此后光纤损耗在 $1550\ \mathrm{nm}$ 波段降到 $0.2\ \mathrm{dB/km}$ 以下，成就了今天全球互联网的骨干网。**高锟因"在光纤通信方面的开创性贡献"获得 2009 年诺贝尔物理学奖**（该年物理学奖另一半授予 CCD 图像传感器的发明者博伊尔与史密斯）。
+
+**（10）移动通信与 5G/6G（1980s 至今）**。1980 年代第一代模拟蜂窝网（NMT、AMPS）商用，此后每一代约十年：2G（1990s，数字语音与短信）、3G（2000s，移动互联网）、4G（2010s，移动宽带）、5G（2020 前后，毫米波 + Massive MIMO + 波束赋形），并已开始探索 6G（太赫兹、通感一体、天地一体网络）。这段历史同时说明微波技术与社会生活的耦合达到了前所未有的深度。
+
+> **【记忆技巧】**
+> 一条时间主线："**理论（麦克斯韦）→ 实验（赫兹）→ 通信（马可尼）→ 雷达（二战）→ 器件（晶体管）→ 卫星 → 光纤（高锟）→ 移动（1G–6G）**"。
+> 三个数值锚点：$1864$（麦克斯韦方程组）、$1887$（赫兹实验）、$1966$（高锟光纤论文）；一个奖项锚点：$2009$ 年诺贝尔物理学奖——高锟。
+
+### 1.3.2 本节考点清单
+
+> **【考点】**
+> - **题型**：填空/选择（年份与人物、事件对应）、简答（麦克斯韦方程的预言内容；赫兹实验意义；高锟贡献）。
+> - **常见设问**："谁最早预言了电磁波的存在？谁用实验验证？"；"光纤通信的奠基人是谁，获得哪一年的诺贝尔物理学奖？"；"二战对微波技术的推动体现在哪些方面？"
+> - **易错点**：①把麦克斯韦（1864，理论）与赫兹（1887，实验）的顺序颠倒；②把高锟的奖项记成诺贝尔化学奖（应为物理学奖，2009 年）；③把"磁控管"记成"速调管"——二战雷达的关键大功率源是多腔磁控管。
+> - **难度**：★
+
+---
+
+## 1.4 微波技术的重要性
+
+"微波技术为什么重要"这个问题有三个层次的答案：**技术趋势**（频率越来越高）、**理论必要性**（低频电路理论在微波频段失效）、**应用需求**（国计民生与国防）。三者层层递进。
+
+### 1.4.1 层次一：电子与通信系统的工作频率越来越高
+
+频率上移是过去半个世纪电子与通信技术最确定的主线之一。
+
+**（a）计算机与数字电路**。以酷睿 i7-9700K 为例，主频 $3.6\ \mathrm{GHz}$，对应真空波长
+
+$$
+\lambda=\frac{3\times10^{8}}{3.6\times10^{9}}=8.33\ \mathrm{cm}
+$$
+
+PCB 上 $8\ \mathrm{mm}$ 的走线已是 $0.1\lambda$。换言之，**今天的 CPU 主板和高速接口（PCIe、DDR、USB）本质上是微波电路**，需要做阻抗控制、差分走线、时序匹配与电源完整性设计。此外，芯片内部的时钟分配网络、封装中的过孔与键合线，都需要按传输线建模（寄生电感、寄生电容在 $3.6\ \mathrm{GHz}$ 下已不可忽略）。
+
+**（b）通信系统**。载波频率越高 → 可用绝对带宽越宽 → 速率越高（见 1.2.4 节）。5G 的关键技术正是"往高频走"：
+
+- **毫米波通信**：载波 $20\sim50\ \mathrm{GHz}$（3GPP 定义的 FR2 为 $24.25\sim52.6\ \mathrm{GHz}$），单载波带宽可达 $400\ \mathrm{MHz}$（FR2）甚至 $1\ \mathrm{GHz}$ 以上（部分场景），而 4G LTE 单载波最大只有 $20\ \mathrm{MHz}$，二者相差 $20\sim50$ 倍，这是 $10\ \mathrm{Gbps}$ 峰值速率的带宽基础。
+- **Massive MIMO**：频率高 → 波长短 → 天线单元尺寸小（约 $\lambda/2$）→ 同样物理面积内可集成数十到数百阵元 → 波束赋形、空间复用、多用户同时同频通信。$3.5\ \mathrm{GHz}$ 的 $\lambda/2\approx4.3\ \mathrm{cm}$，$28\ \mathrm{GHz}$ 的 $\lambda/2\approx5.4\ \mathrm{mm}$——这就是手机毫米波天线模组可以做得只有指甲盖大小的原因。
+
+**（c）雷达**。雷达天线口径与波长的关系为
+
+$$
+D\propto\lambda
+\tag{1-4-1}
+$$
+
+在给定角分辨率要求下（$\theta\approx\lambda/D$），**频率越高，所需口径越小**：$10\ \mathrm{GHz}$ 的 $3\ \mathrm{cm}$ 波长只需 $1\ \mathrm{m}$ 级口径即可获得约 $2^{\circ}$ 波束；若换成 $100\ \mathrm{MHz}$（$\lambda=3\ \mathrm{m}$），要达到同样的 $2^{\circ}$ 波束需要约 $100\ \mathrm{m}$ 口径。这解释了为什么现代机载火控雷达、导弹导引头、汽车雷达都往 $X$ 波段（$8\sim12\ \mathrm{GHz}$）、$Ku$ 波段（$12\sim18\ \mathrm{GHz}$）、$Ka$ 波段（$26.5\sim40\ \mathrm{GHz}$）甚至 $W$ 波段（$75\sim110\ \mathrm{GHz}$）走：**口径受限的平台（飞机、导弹、汽车）必须用高频率来换取分辨率**。
+
+### 1.4.2 层次二：低频电路理论在微波频段不再适用
+
+理解这一层，最好的入口是一个类比。
+
+> **【记忆技巧】**
+> **一个苹果的三重解释**：
+> - 拿一个苹果在手里，用**万有引力**解释它为什么落到地上——在"低速、宏观"条件下完全正确；
+> - 若苹果以接近光速飞行，必须用**相对论**；
+> - 若要解释苹果为什么是红的、为什么由原子构成，必须用**量子力学**。
+>
+> 同一个客体，在不同尺度/速度条件下需要不同的理论。微波与基尔霍夫定律的关系完全类似：
+> **基尔霍夫定律（集总参数、$l\ll\lambda$）→ 麦克斯韦方程组（分布参数、$l\sim\lambda$）**，驱动力不是"速度"，而是**频率**（等价地，波长与电路尺寸的比值）。
+
+**为什么基尔霍夫定律会失效**。设一段长度为 $l$ 的传输线，其上有沿 $+z$ 方向传播的电压波 $u(z,t)=U_0\cos(\omega t-\beta z)$。在同一时刻 $t$，线两端电压的相位差为
+
+$$
+\Delta\varphi=\beta l=\frac{2\pi l}{\lambda}
+\tag{1-4-2}
+$$
+
+- **$l\ll\lambda$ 时**（低频）：$\Delta\varphi\to0$，线上各点电压几乎相同，可以用一个节点电压描述，"导线"是理想的等电位连接。此时基尔霍夫定律与集总参数元件（$R$、$L$、$C$）完全够用。
+- **$l\sim\lambda$ 时**（微波）：$\Delta\varphi$ 不可忽略，同一时刻不同位置的电压和电流**不是同一个值**，导线必须用**分布参数**描述——即单位长度的电阻 $R$、电感 $L$、电容 $C$、电导 $G$。
+
+由此写出均匀传输线方程（第二章的核心）：
+
+$$
+-\frac{\mathrm{d}U}{\mathrm{d}z}=(R+j\omega L)I,\qquad
+-\frac{\mathrm{d}I}{\mathrm{d}z}=(G+j\omega C)U
+\tag{1-4-3}
+$$
+
+它有两个重要的解的性质：①电压电流沿线呈**波动**形式（$e^{\pm\gamma z}$，$\gamma=\alpha+j\beta$）；②一般存在**入射波与反射波**的叠加，从而产生驻波、阻抗变换、谐振等低频电路没有的现象。这就是微波电路必须用"路分析法"处理的原因。
+
+**长线判据**。综合 1.2.2 与 1.4.2，得到本章最实用的判据：
+
+$$
+\boxed{\ \frac{l}{\lambda}\gtrsim\frac{1}{10}\ \Longrightarrow\ \text{长线，必须用分布参数与传输线理论}\ }
+\tag{1-4-4}
+$$
+
+$$
+\frac{l}{\lambda}<\frac{1}{10}\ \Longrightarrow\ \text{短线，可用基尔霍夫定律与集总参数}
+$$
+
+**判据的物理依据**：$l/\lambda=0.1$ 对应 $\Delta\varphi=36^{\circ}$。在这个相位差下，沿线电压幅值的最大相对变化已超过 $50\%$（对开路/短路负载）或相位误差已影响匹配设计；而工程上通常要求相位预测误差小于 $5\%$（约 $18^{\circ}$，对应 $l/\lambda=0.05$），$0.1$ 已是"必须建模"的宽松门槛。它与"几何长度"无关，只与**电长度** $l/\lambda$ 有关。
+
+**由此引出一个重要的观念转变**：
+
+| 对比项 | 低频电路（短线） | 微波电路（长线） |
+|---|---|---|
+| 基本判据 | $l\ll\lambda$（$l<\lambda/10$） | $l\gtrsim\lambda/10$ |
+| 描述量 | 集总 $R$、$L$、$C$；节点电压/回路电流 | 分布 $R,L,C,G$；$u(z,t)$、$i(z,t)$ 波 |
+| 支配方程 | 基尔霍夫定律 + 欧姆定律 | 传输线方程 → 麦克斯韦方程组 |
+| 关键现象 | 分压、谐振（$LC$ 谐振） | 反射、驻波、阻抗变换、色散、谐振腔 |
+| 连接方式 | 用导线"连通"即可 | 必须考虑阻抗匹配，否则反射、驻波、效率下降 |
+| 元件概念 | 元件是"点"，参数与频率无关 | "元件"本身是分布结构；参数随频率变化 |
+| 测量方式 | 电压表、电流表直接测 | 需用定向耦合器、网络分析仪测 $S$ 参数（幅度+相位） |
+
+> **【例题 1-2】**
+> 一根长度为 $l=0.5\ \mathrm{m}$ 的导线，分别工作在 (1) $f=5\ \mathrm{GHz}$；(2) $f=50\ \mathrm{Hz}$。判断它是"长线"还是"短线"，并说明工程后果。
+>
+> **思路：** 先算两种频率下的真空波长，再算电长度 $l/\lambda$，与 $1/10$ 比较。
+>
+> **解：**
+> (1) $f=5\ \mathrm{GHz}=5\times10^{9}\ \mathrm{Hz}$：
+> $$\lambda=\frac{c}{f}=\frac{3\times10^{8}}{5\times10^{9}}=0.06\ \mathrm{m}=6\ \mathrm{cm}$$
+> $$\frac{l}{\lambda}=\frac{0.5}{0.06}\approx8.3\quad\gg\quad0.1$$
+> 结论：**长线**。这根 $0.5\ \mathrm{m}$ 的线上约有 $8.3$ 个波长，沿线电压、电流呈明显的驻波分布，必须用传输线理论（分布参数）分析；若按集总参数计算必然出错。
+>
+> (2) $f=50\ \mathrm{Hz}$：
+> $$\lambda=\frac{3\times10^{8}}{50}=6\times10^{6}\ \mathrm{m}=6000\ \mathrm{km}$$
+> $$\frac{l}{\lambda}=\frac{0.5}{6\times10^{6}}\approx8.3\times10^{-8}\quad\ll\quad0.1$$
+> 结论：**短线**。波长比导线长 $1200$ 万倍，沿线相位差只有 $3\times10^{-5}$ 度，导线完全可以看作理想等电位连接，基尔霍夫定律与集总参数模型完全适用。
+>
+> **讨论与拓展：**
+> ①**同一根导线，只是频率不同，结论就完全相反。** "长线/短线"是电学概念，不是几何概念。这就是"波动性（高频性）"最直接的体现。
+> ②判据中的 $0.1$ 是工程门槛，若题目给出更严格的门槛（如 $\lambda/20$），应相应调整判断：本题 $l/\lambda=8.3$，无论用什么门槛都远超。
+> ③反向应用：已知频率，可算出"多长的电路才必须按微波处理"。$f=3.6\ \mathrm{GHz}$ 时 $\lambda=8.3\ \mathrm{cm}$，则 $l\gtrsim8.3\ \mathrm{mm}$ 就要考虑分布效应——这就是高速 PCB 设计必须做阻抗控制的原因；而 $50\ \mathrm{Hz}$ 电力系统中，$600\ \mathrm{km}$ 的输电线才达到 $0.1\lambda$，所以电网分析用集总参数（潮流计算）在常规尺度下完全成立，但对上千公里的超长线路仍要做分布参数修正。这正说明了**微波理论不是"另一门不相干的学问"，而是电路理论在电大尺寸下的自然延伸**。
+
+### 1.4.3 层次三：广泛应用与重大需求
+
+微波技术是典型的"军民两用、国计民生"技术。按应用领域可归为六类：
+
+| 领域 | 典型系统 | 工作频段 | 关键微波技术 |
+|---|---|---|---|
+| 通信 | 移动通信、微波中继、卫星通信、无线局域网、数据链 | $0.7\sim52.6\ \mathrm{GHz}$ | 天线、滤波器、功分器、低噪声放大器、功放、双工器 |
+| 雷达与探测 | 预警/火控/气象/汽车/成像雷达、遥感、射电天文 | $1\sim300\ \mathrm{GHz}$ | 相控阵、T/R 组件、波导缝隙阵、低噪放 |
+| 加热与消毒 | 微波炉、工业干燥与硫化、灭菌、理疗、消融 | $915\ \mathrm{MHz}$、$2.45\ \mathrm{GHz}$ | 磁控管、谐振腔、波导馈能、介质加热建模 |
+| 航天与导航 | 卫星载荷、深空测控、北斗/GPS、星间链路 | $1.2\sim30\ \mathrm{GHz}$ | 高稳定源、行波管/固态功放、天线阵 |
+| 国防与安全 | 制导、引信、电子战、安检成像、非致命武器 | $1\sim100\ \mathrm{GHz}$ | 高功率微波源、有源相控阵、宽带接收机 |
+| 科学仪器 | 粒子加速器、等离子体、微波谐振腔测量、太赫兹谱 | $0.3\sim3000\ \mathrm{GHz}$ | 大功率源、精密波导、超导腔 |
+
+**关于现代国防应用**。微波技术在现代战争中已经从"通信与雷达的手段"升级为"直接作战的武器"，可以归纳为五条作战链路：
+
+<figure class="fig">
+<svg viewBox="0 0 820 400" role="img" aria-label="微波技术作战应用分类示意图">
+  <text x="410" y="26" font-size="14" font-weight="700" text-anchor="middle" fill="var(--ink)">微波技术的五条作战应用链路</text>
+
+  <rect x="300" y="44" width="220" height="42" rx="10" fill="var(--brand)" opacity="0.12" stroke="var(--brand)"/>
+  <text x="410" y="70" font-size="12.5" font-weight="700" text-anchor="middle" fill="var(--ink)">微波技术作战应用</text>
+  <line x1="330" y1="86" x2="96" y2="122" stroke="var(--line)"/>
+  <line x1="370" y1="86" x2="254" y2="122" stroke="var(--line)"/>
+  <line x1="410" y1="86" x2="410" y2="122" stroke="var(--line)"/>
+  <line x1="450" y1="86" x2="566" y2="122" stroke="var(--line)"/>
+  <line x1="490" y1="86" x2="724" y2="122" stroke="var(--line)"/>
+
+  <rect x="24" y="122" width="144" height="180" rx="10" fill="var(--warn)" opacity="0.08" stroke="var(--warn)"/>
+  <text x="96" y="146" font-size="12.5" font-weight="700" text-anchor="middle" fill="var(--ink)">电子战压制</text>
+  <text x="96" y="166" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">微波干扰致盲</text>
+  <text x="96" y="182" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">防空雷达</text>
+  <text x="96" y="202" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">模拟假信号诱骗</text>
+  <text x="96" y="218" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">防空导弹</text>
+  <text x="96" y="242" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">电磁脉冲打击</text>
+  <text x="96" y="258" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">瘫痪指挥链路</text>
+  <text x="96" y="284" font-size="10.5" text-anchor="middle" fill="var(--accent)">宽带干扰机 / EMP</text>
+
+  <rect x="182" y="122" width="144" height="180" rx="10" fill="var(--warn)" opacity="0.08" stroke="var(--warn)"/>
+  <text x="254" y="146" font-size="12.5" font-weight="700" text-anchor="middle" fill="var(--ink)">高功率微波</text>
+  <text x="254" y="166" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">定向摧毁</text>
+  <text x="254" y="182" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">无人机蜂群</text>
+  <text x="254" y="202" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">烧毁电子器件</text>
+  <text x="254" y="218" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">非致命/软杀伤</text>
+  <text x="254" y="242" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">光速攻击</text>
+  <text x="254" y="258" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">面杀伤覆盖</text>
+  <text x="254" y="284" font-size="10.5" text-anchor="middle" fill="var(--accent)">GW 级脉冲源 / 定向天线</text>
+
+  <rect x="340" y="122" width="144" height="180" rx="10" fill="var(--brand)" opacity="0.08" stroke="var(--brand)"/>
+  <text x="412" y="146" font-size="12.5" font-weight="700" text-anchor="middle" fill="var(--ink)">雷达探测</text>
+  <text x="412" y="166" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">有源相控阵</text>
+  <text x="412" y="182" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">精准探测导弹</text>
+  <text x="412" y="198" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">与战机</text>
+  <text x="412" y="218" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">反隐身：捕捉</text>
+  <text x="412" y="234" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">隐身目标回波</text>
+  <text x="412" y="254" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">多目标跟踪</text>
+  <text x="412" y="284" font-size="10.5" text-anchor="middle" fill="var(--accent)">T/R 组件 / 波束赋形</text>
+
+  <rect x="498" y="122" width="144" height="180" rx="10" fill="var(--accent)" opacity="0.08" stroke="var(--accent)"/>
+  <text x="570" y="146" font-size="12.5" font-weight="700" text-anchor="middle" fill="var(--ink)">通信传输</text>
+  <text x="570" y="166" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">微波中继塔组网</text>
+  <text x="570" y="182" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">卫星通信</text>
+  <text x="570" y="202" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">链路被切断时</text>
+  <text x="570" y="218" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">维持指挥通信</text>
+  <text x="570" y="242" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">微波数据链实时</text>
+  <text x="570" y="258" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">共享战场信息</text>
+  <text x="570" y="284" font-size="10.5" text-anchor="middle" fill="var(--accent)">中继 / 数据链 / 抗干扰</text>
+
+  <rect x="656" y="122" width="144" height="180" rx="10" fill="var(--brand)" opacity="0.08" stroke="var(--brand)"/>
+  <text x="728" y="146" font-size="12.5" font-weight="700" text-anchor="middle" fill="var(--ink)">反导与近防</text>
+  <text x="728" y="166" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">反导系统微波</text>
+  <text x="728" y="182" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">雷达跟踪、引导</text>
+  <text x="728" y="198" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">拦截导弹</text>
+  <text x="728" y="222" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">近防系统锁定</text>
+  <text x="728" y="238" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">并拦截来袭</text>
+  <text x="728" y="254" font-size="10.5" text-anchor="middle" fill="var(--ink-2)">空袭弹药</text>
+  <text x="728" y="284" font-size="10.5" text-anchor="middle" fill="var(--accent)">跟踪制导雷达 / 引信</text>
+
+  <rect x="24" y="322" width="776" height="58" rx="10" fill="var(--brand)" opacity="0.05" stroke="var(--line)"/>
+  <text x="38" y="344" font-size="11.5" fill="var(--ink-2)">共同的技术底座：高功率微波源与器件、宽带/多通道收发、相控阵与波束赋形、低相噪频率源、</text>
+  <text x="38" y="364" font-size="11.5" fill="var(--ink-2)">高性能天线与滤波、以及电磁兼容与抗干扰设计——全部是本书后续章节要展开的内容。</text>
+</svg>
+<figcaption>图 1-4　微波技术的五条作战应用链路</figcaption>
+</figure>
+
+这五条链路的共同技术底座是：**高功率微波源**（磁控管、速调管、行波管、固态功放）、**天线与阵列**（相控阵、波束赋形、T/R 组件）、**低噪声接收与滤波**、**频率源与信号处理**。它们在物理上的共同点，正是本章第 1.2 节总结的五大特点。
+
+> **【思考】**
+> 高功率微波武器的杀伤机理不是"把目标烧穿"，而是通过目标上的**天线、缝隙、线缆、孔洞**耦合进入电子系统，在半导体 PN 结、栅氧化层上产生过压过流而失效。请从"微波的穿透性与似光性"出发，解释为什么无人机（大量使用碳纤维-塑料外壳，屏蔽不严且依赖无线链路）是这类武器的典型目标，而全金属屏蔽良好的重型装备则难以奏效。
+
+### 1.4.4 层次三的延伸：微波分析与设计方法（How）
+
+微波问题的求解有三条主要路径。它们不是三种"竞争"的方法，而是**同一物理规律（麦克斯韦方程组）在不同抽象层次上的表达**，各自适用于不同的问题规模与阶段。掌握它们的分工，才能明白后续章节为什么这样安排。
+
+#### （1）三种方法对比
+
+| 对比项 | 路分析法 | 场分析法 | 网络分析法 |
+|---|---|---|---|
+| **出发方程** | 传输线方程（由麦克斯韦方程在 TEM 波条件下"路化"而来） | 麦克斯韦方程组 + 边界条件 | 端口量之间的代数（矩阵）关系 |
+| **求解对象** | 电压 $U(z)$、电流 $I(z)$ | 电场 $\boldsymbol{E}$、磁场 $\boldsymbol{H}$ 的完整表达式 | 网络的 $Z$、$Y$、$A$、$S$ 等矩阵参数 |
+| **核心参数** | 特性阻抗 $Z_0$、传播常数 $\gamma=\alpha+j\beta$ | 波数 $k$、截止波数 $k_c$、模式场分布 | 散射参数 $S_{ij}$、阻抗参数 $Z_{ij}$ |
+| **优点** | 直观、简便、与电路语言一致、便于工程计算与匹配设计 | 严格、普适、能给出场的完整图景，可处理任意截面与模式 | 不关心内部场，便于级联、测量与系统集成 |
+| **缺点** | 只适用于有明确电压电流定义的传输模式（TEM 或准 TEM）；对非 TEM 结构需借助等效 | 数学繁重，解析解仅对少数规则结构存在；不便于直接指导电路设计 | 需要事先知道（或测量）网络参数；无法回答"内部场是否击穿"等问题 |
+| **典型问题** | 某段线的输入阻抗、驻波比、匹配网络设计 | 矩形波导中存在哪些模式？$TE_{10}$ 模的场分布与截止波长？ | 一个滤波器/功分器/放大器的 $S$ 参数与级联计算 |
+| **对应章节** | **第二章　均匀传输线理论** | **第三章　规则金属波导**（及第四章微波传输线） | **第五章　微波网络基础** |
+
+> **【核心概念】**
+> 三者的关系可以用"抽象层次"来记忆：
+> **场分析法**在最底层（麦克斯韦方程，连续分布），**路分析法**在中间层（把横向场归结为一对电压电流，得到分布参数电路），**网络分析法**在最上层（干脆不看内部，只保留端口上的输入输出关系）。
+> 层次越高，计算越简单，但丢失的信息越多；层次越低，结论越可靠，但计算代价越大。**选方法的依据永远是"我到底需要回答什么问题"。**
+
+<figure class="fig">
+<svg viewBox="0 0 800 470" role="img" aria-label="路分析、场分析、网络分析三种方法的对照流程">
+  <defs>
+    <marker id="ch1M1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+    <marker id="ch1M2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--brand)"/>
+    </marker>
+    <marker id="ch1M3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+
+  <rect x="240" y="16" width="320" height="46" rx="10" fill="var(--brand)" opacity="0.14" stroke="var(--brand)"/>
+  <text x="400" y="36" font-size="13" font-weight="700" text-anchor="middle" fill="var(--ink)">麦克斯韦方程组 + 边界条件</text>
+  <text x="400" y="54" font-size="11" text-anchor="middle" fill="var(--ink-2)">一切微波问题的唯一物理出发点</text>
+
+  <line x1="300" y1="62" x2="150" y2="100" stroke="var(--brand)" stroke-width="1.5" marker-end="url(#ch1M2)"/>
+  <line x1="400" y1="62" x2="400" y2="100" stroke="var(--brand)" stroke-width="1.5" marker-end="url(#ch1M2)"/>
+  <line x1="500" y1="62" x2="650" y2="100" stroke="var(--brand)" stroke-width="1.5" marker-end="url(#ch1M2)"/>
+
+  <rect x="30" y="104" width="240" height="150" rx="10" fill="var(--accent)" opacity="0.08" stroke="var(--accent)"/>
+  <text x="150" y="128" font-size="13.5" font-weight="700" text-anchor="middle" fill="var(--ink)">① 路分析法</text>
+  <text x="150" y="150" font-size="11" text-anchor="middle" fill="var(--ink-2)">“化场为路”：横向场 → 电压 U、电流 I</text>
+  <text x="150" y="170" font-size="11" text-anchor="middle" fill="var(--ink-2)">传输线方程（分布参数 R,L,C,G）</text>
+  <text x="150" y="190" font-size="11" text-anchor="middle" fill="var(--ink-2)">核心量：Z₀、γ、Γ、ρ、Zmathrm{in}</text>
+  <text x="150" y="212" font-size="11" text-anchor="middle" fill="var(--ink-2)">特点：简便、贴近电路语言、工程实用</text>
+  <text x="150" y="236" font-size="11.5" font-weight="700" text-anchor="middle" fill="var(--brand)">第二章　均匀传输线理论</text>
+
+  <rect x="280" y="104" width="240" height="150" rx="10" fill="var(--brand)" opacity="0.08" stroke="var(--brand)"/>
+  <text x="400" y="128" font-size="13.5" font-weight="700" text-anchor="middle" fill="var(--ink)">② 场分析法</text>
+  <text x="400" y="150" font-size="11" text-anchor="middle" fill="var(--ink-2)">直接求解 E、H 的完整表达式</text>
+  <text x="400" y="170" font-size="11" text-anchor="middle" fill="var(--ink-2)">纵向场法：Ez、Hz → TE/TM/TEM 模式</text>
+  <text x="400" y="190" font-size="11" text-anchor="middle" fill="var(--ink-2)">核心量：kc、λc、fc、λg、模式场</text>
+  <text x="400" y="212" font-size="11" text-anchor="middle" fill="var(--ink-2)">特点：严格、普适、繁琐</text>
+  <text x="400" y="236" font-size="11.5" font-weight="700" text-anchor="middle" fill="var(--brand)">第三章　规则金属波导</text>
+
+  <rect x="530" y="104" width="240" height="150" rx="10" fill="var(--warn)" opacity="0.08" stroke="var(--warn)"/>
+  <text x="650" y="128" font-size="13.5" font-weight="700" text-anchor="middle" fill="var(--ink)">③ 网络分析法</text>
+  <text x="650" y="150" font-size="11" text-anchor="middle" fill="var(--ink-2)">只保留端口量，忽略内部场</text>
+  <text x="650" y="170" font-size="11" text-anchor="middle" fill="var(--ink-2)">用矩阵定义网络功能与连接关系</text>
+  <text x="650" y="190" font-size="11" text-anchor="middle" fill="var(--ink-2)">核心量：Z、Y、A、S 矩阵</text>
+  <text x="650" y="212" font-size="11" text-anchor="middle" fill="var(--ink-2)">特点：便于级联、测量与系统集成</text>
+  <text x="650" y="236" font-size="11.5" font-weight="700" text-anchor="middle" fill="var(--brand)">第五章　微波网络基础</text>
+
+  <path d="M150,254 L150,286 L400,286" fill="none" stroke="var(--ink-2)" stroke-width="1.2" marker-end="url(#ch1M1)"/>
+  <path d="M650,254 L650,286 L400,286" fill="none" stroke="var(--ink-2)" stroke-width="1.2" marker-end="url(#ch1M1)"/>
+  <path d="M400,254 L400,286" fill="none" stroke="var(--ink-2)" stroke-width="1.2" marker-end="url(#ch1M1)"/>
+
+  <rect x="150" y="292" width="500" height="66" rx="10" fill="var(--brand)" opacity="0.06" stroke="var(--line)"/>
+  <text x="400" y="314" font-size="12" font-weight="700" text-anchor="middle" fill="var(--ink)">配合使用：场分析确定模式与结构尺度 → 路分析做匹配与变换 → 网络分析做系统级联</text>
+  <text x="400" y="336" font-size="11" text-anchor="middle" fill="var(--ink-2)">现实中一条完整设计链：选结构（场）→ 定尺寸（场/路）→ 匹配（路）→ 级联与指标分配（网络）</text>
+
+  <rect x="30" y="374" width="740" height="76" rx="10" fill="var(--accent)" opacity="0.07" stroke="var(--accent)"/>
+  <text x="400" y="396" font-size="12" font-weight="700" text-anchor="middle" fill="var(--ink)">现代补充手段：数值方法（FDTD、FEM、MoM）与 CAD 仿真</text>
+  <text x="400" y="418" font-size="11" text-anchor="middle" fill="var(--ink-2)">本质上仍是“场分析法”的数值实现：把连续场离散化，用计算机求解麦克斯韦方程组，</text>
+  <text x="400" y="438" font-size="11" text-anchor="middle" fill="var(--ink-2)">但结果的理解、验证与优化仍依赖路分析法与网络分析法提供的物理洞察与指标框架。</text>
+</svg>
+<figcaption>图 1-5　三种分析方法（路 / 场 / 网络）对照与配合流程</figcaption>
+</figure>
+
+#### （2）三种方法如何配合使用
+
+一条真实的微波器件（例如一个波导带通滤波器）从需求到成品，通常要经历下面这个过程，三种方法在其中交替出现：
+
+1. **定性选型（场分析法打底）**。先判断用哪种传输结构：同轴线、微带线、矩形波导还是介质波导？这取决于工作频段、功率容量、损耗要求与体积约束。例如高功率、低损耗选矩形波导（$TE_{10}$ 主模），小型化、低成本选微带线。此时要用场分析法确定：结构能支持什么模式、主模的截止频率 $f_c$ 是多少、单模工作带宽有多宽、场分布是否会造成击穿。
+
+2. **确定尺寸（场分析法为主）**。由截止条件反推截面尺寸。矩形波导 $TE_{10}$ 模的截止波长为 $\lambda_c=2a$，为保证单模工作，通常取 $a$ 使工作频率落在 $1.25f_c\sim1.9f_c$ 之间，标准波导的宽边 $a\approx0.7\lambda$、窄边 $b\approx0.35\lambda$（即 $a:b\approx2:1$）。
+
+3. **设计匹配与变换（路分析法为主）**。把波导或微带线看成一段特性阻抗 $Z_0$ 的传输线，用 $\lambda/4$ 阻抗变换器、支节匹配器（单支节/双支节）把负载阻抗变换到源阻抗，使反射系数 $\Gamma\to0$、驻波比 $\rho\to1$。这一步完全可以用第二章的公式手算，也是考试的重点。
+
+4. **级联与指标分配（网络分析法为主）**。滤波器由多个谐振腔级联，放大器由多级级联，天线与馈线要衔接，这时不再关心每一段的内部场，而用 $S$ 参数矩阵描述每一级的输入输出关系，通过 $S$ 矩阵级联（或 $ABCD$ 矩阵相乘）计算总插入损耗、驻波比、隔离度与增益。同时 $S$ 参数也是**唯一可以用矢量网络分析仪直接测量**的参数——这使得"网络分析法"成为连接仿真、测量与系统的共同语言。
+
+5. **仿真验证与优化（数值场分析）**。用 FDTD/FEM/MoM 等数值方法求解完整场分布，检查局部场强是否超过击穿阈值、表面电流是否导致过热、结构公差是否敏感。但**仿真结果需要公路分析给出的直觉来判断对错**：如果仿真出的驻波比与路分析估算相差悬殊，首先要怀疑仿真设置（端口、边界、网格），而不是相信仿真。
+
+> **【核心概念】**
+> 三种方法的选择口诀：
+> **"看内部场用场，算匹配用路，搭系统用网络。"**
+> 考试中的映射关系必须记牢：路 → 第二章（均匀传输线理论）；场 → 第三章（规则金属波导）；网络 → 第五章（微波网络基础）。
+
+> **【工程应用】**
+> 手机射频前端是一个"三种方法齐上阵"的典型系统：天线与馈线的场分布要用场分析（含人体手掌握持的影响）；天线阻抗匹配网络（$\pi$ 型/多级 $LC$）要用路分析；功率放大器、滤波器、开关、双工器的级联指标用 $S$ 参数（网络分析）计算。系统工程师最终交付的，是一张标满 $S$ 参数与功率预算的链路表。
+
+### 1.4.5 本节考点清单
+
+> **【考点】**
+> - **题型**：简答/论述（为什么微波重要；为什么低频电路理论失效）、计算（波长与电长度、长线判据）、填空（CPU 主频、5G 频段、$D\propto\lambda$；三种方法与章节的对应关系）。
+> - **常见设问**："为什么通信要向高频发展？两条理由是什么？"；"请从电长度角度解释基尔霍夫定律在微波频段失效的原因"；"天线口径与波长是什么关系？"；"$l=0.5\ \mathrm{m}$ 的线在 $50\ \mathrm{Hz}$ 与 $5\ \mathrm{GHz}$ 下分别是什么线？"；"微波分析与设计有哪三种方法，各自对应哪一章？"
+> - **易错点**：①只答"频率高所以快"，漏掉"带宽"这一物理机制；②把 $D\propto\lambda$ 记反成 $D\propto1/\lambda$（记住：**口径与波长成正比，频率高则口径小**）；③"长线判据"答成 $l>\lambda$ 或"长度大于 1 米"这类几何描述；④把"路分析法"的出发点答成麦克斯韦方程组，或把三种方法与章节对应错位（路→第二章、场→第三章、网络→第五章）。
+> - **难度**：★★
+
+---
+
+## 本章小结
+
+1. **微波的定义**：微波是频率 $300\ \mathrm{MHz}\sim3000\ \mathrm{GHz}$、真空中波长 $0.1\ \mathrm{mm}\sim1\ \mathrm{m}$ 的**电磁波**，两者由 $\lambda f=c$ 锁定。频段边界是**人为划定**的，其工程依据是"集总参数是否失效"。
+2. **判断的第一步**：微波必须是电磁波。只给波长不能判定（$1.7\ \mathrm{cm}$ 的声波与 $17.6\ \mathrm{GHz}$ 的电磁波同波长），必须同时知道波速。
+3. **五大特点**：似光性（$\lambda$ 与物体尺度可比拟 → 定向、聚焦、视距传播、分辨率）、波动性/高频性（$\lambda$ 与电路尺度可比拟 → 集总参数与基尔霍夫定律失效 → 分布参数与麦克斯韦方程组）、穿透性（穿透电离层与干燥介质 → 卫星通信、微波加热、无损检测）、信息性（载频高 → 绝对带宽宽 → 速率高 → 1G 到 6G 的演进）、能量性（$E=P\cdot T$ → 加热、消毒、无线输能、高功率武器）。
+4. **高频的代价**：趋肤效应使电流集中在 $\delta=\sqrt{\rho/(\pi f\mu)}$ 的薄层内，铜导线在 $10\ \mathrm{GHz}$ 时单位长度电阻比低频增大三个数量级，且损耗按 $\sqrt{f}$ 上升。
+5. **历史主线**：静电静磁（库仑、安培、高斯）→ 1831 法拉第电磁感应 → 1864 麦克斯韦方程组预言电磁波 → 1887 赫兹实验验证 → 1895/1901 马可尼无线电报 → 1940s 波导与雷达 → 1947 晶体管 → 1950s 微波固态器件 → 1966 高锟提出光纤通信（2009 年诺贝尔物理学奖）→ 1970 低损耗光纤 → 1980s 蜂窝移动通信 → 2000s 至今 5G/毫米波/相控阵。
+6. **为什么重要**：①频率持续上移（CPU $3.6\ \mathrm{GHz}$、5G 毫米波 $20\sim50\ \mathrm{GHz}$、雷达 $D\propto\lambda$）；②低频电路理论失效——当 $l\gtrsim\lambda/10$（长线判据）时，同一时刻沿线电压电流不再是同一个值，必须引入分布参数 $R,L,C,G$；③从通信、雷达到加热、航天、国防的重大需求。
+7. **怎么做**：三种方法——路分析法（传输线方程，化场为路，第二章）、场分析法（麦克斯韦方程组，解 $\boldsymbol{E}$、$\boldsymbol{H}$，第三章）、网络分析法（端口矩阵，第五章）。三者配合的完整链条是"场分析定结构与模式 → 路分析做匹配与变换 → 网络分析做级联与系统指标 → 数值仿真做验证"。
+
+一句话收束：**微波技术研究的是"波长已小到与人造结构的尺寸可比拟"的电磁波——它既是电磁场理论在工程尺度上的落地，也是现代通信、雷达、航天与国防的共同技术底座。**
+
+---
+
+## 自测题
+
+### 一、选择与填空题
+
+**1.** 微波的频率范围是（　　）。
+A. $30\ \mathrm{MHz}\sim300\ \mathrm{MHz}$　　B. $300\ \mathrm{MHz}\sim3000\ \mathrm{GHz}$
+C. $3\ \mathrm{GHz}\sim30\ \mathrm{GHz}$　　D. $300\ \mathrm{GHz}\sim3000\ \mathrm{GHz}$
+
+**2.** 下列关于微波的认识，错误的是（　　）。
+A. 微波是波长在 $0.1\ \mathrm{mm}\sim1\ \mathrm{m}$ 之间的电磁波
+B. 微波频段的边界是人为划定的
+C. 只要波长落在 $0.1\ \mathrm{mm}\sim1\ \mathrm{m}$ 区间内，就一定是微波
+D. 微波可以穿透电离层，这是卫星通信的基础
+
+**3.** 某均匀无耗传输线的总长度为 $l$，工作波长为 $\lambda$。当 $l/\lambda$ 大于约（　　）时，一般应作为"长线"用分布参数方法处理。
+A. $0.01$　　B. $0.1$　　C. $1$　　D. $10$
+
+**4.** 微波的"路分析法"以________为出发点，对应教材第________章；"场分析法"以________为出发点，对应第________章；"网络分析法"用________矩阵描述网络功能，对应第________章。
+
+**5.** 微波炉的工作频率为 $2.45\ \mathrm{GHz}$，其选择的主要原因是________；其对应的真空波长约为________。
+
+**6.** 提出光纤通信理论设想、并因此获得 2009 年诺贝尔物理学奖的科学家是________。
+
+### 二、计算题
+
+**7.** 已知某电磁波的频率 $f=10\ \mathrm{GHz}$，求其在真空中的波长；若该波进入相对介电常数 $\varepsilon_r=4$、相对磁导率 $\mu_r=1$ 的无耗介质中，求介质中的相速与波长。
+
+**8.** 一根长度为 $l=0.5\ \mathrm{m}$ 的均匀导线分别工作在 $f_1=5\ \mathrm{GHz}$ 与 $f_2=50\ \mathrm{Hz}$。请判断两种情况下的电长度，说明各自应按"长线"还是"短线"处理，并解释为什么同一根导线的结论会相反。
+
+**9.** 一根铜导线半径 $r_0=2\ \mathrm{mm}$，$\rho=1.72\times10^{-8}\ \Omega\cdot\mathrm{m}$，$\mu_r=1$。求：(1) 直流时单位长度电阻；(2) $f=10\ \mathrm{GHz}$ 时的趋肤深度与单位长度电阻；(3) 两者的比值，并说明高频损耗随频率的变化规律。
+
+---
+
+### 答案与解析
+
+**1. B。** 微波频率范围为 $300\ \mathrm{MHz}\sim3000\ \mathrm{GHz}$（即 $0.3\sim3000\ \mathrm{GHz}$），对应波长 $1\ \mathrm{m}\sim0.1\ \mathrm{mm}$。A 是米波/VHF 的下半段，C 只是厘米波的一部分，D 是亚毫米波/太赫兹的一部分。
+
+**2. C。** 错在"只凭波长就判定"。微波的定义中"电磁波"是前提条件，波长区间只是限定条件。例如空气中 $401\ \mathrm{Hz}\sim20\ \mathrm{kHz}$ 的声波，其波长 $0.017\sim17\ \mathrm{m}$ 会覆盖微波波长区间的一部分，但它是声波（$v=340\ \mathrm{m/s}\neq c$），不是微波。A、B、D 均正确。
+
+**3. B。** 长线判据一般取 $l\gtrsim\lambda/10$，即 $l/\lambda>0.1$。其物理依据是此时沿线相位差达到约 $36^{\circ}$，集总参数模型误差不可忽略。A 太严（$3.6^{\circ}$ 时仍可近似集总），C、D 太松。
+
+**4.** 依次为：**传输线方程**，**二**（均匀传输线理论）；**麦克斯韦方程组**，**三**（规则金属波导）；**$S$（散射矩阵，或 $Z$、$Y$、$A$ 矩阵）**，**五**（微波网络基础）。
+
+**5.** 主要原因是：$2.45\ \mathrm{GHz}$（$2.400\sim2.500\ \mathrm{GHz}$）属于国际电信联盟划定的**工业、科学、医疗（ISM）自由频段**，无需申请许可即可使用，且在该频率上水的介质损耗与穿透深度（约 $1\sim2\ \mathrm{cm}$）适中、磁控管易于高效制造。
+波长 $\lambda=c/f=3\times10^{8}/2.45\times10^{9}\approx0.122\ \mathrm{m}\approx12.2\ \mathrm{cm}$。
+（注意：$2.45\ \mathrm{GHz}$ **不是**水分子的共振吸收频率——水的转动弛豫频率在 $20\ \mathrm{GHz}$ 附近。）
+
+**6.** **高锟**（Charles K. Kao），获 2009 年诺贝尔物理学奖。
+
+**7. 解：**
+(1) 真空中
+$$\lambda_0=\frac{c}{f}=\frac{3\times10^{8}}{10\times10^{9}}=3.0\times10^{-2}\ \mathrm{m}=3.0\ \mathrm{cm}$$
+（若取 $c=2.998\times10^{8}\ \mathrm{m/s}$，得 $\lambda_0=2.998\ \mathrm{cm}$，工程上按 $3\ \mathrm{cm}$ 记即可。）
+(2) 无耗介质中相速
+$$v_p=\frac{c}{\sqrt{\mu_r\varepsilon_r}}=\frac{3\times10^{8}}{\sqrt{1\times4}}=1.5\times10^{8}\ \mathrm{m/s}$$
+介质中波长
+$$\lambda=\frac{v_p}{f}=\frac{1.5\times10^{8}}{10\times10^{9}}=1.5\times10^{-2}\ \mathrm{m}=1.5\ \mathrm{cm}$$
+**讨论：** 频率不变，但因介质中相速降为一半，波长也降为一半。这说明"波长与频率"不是一一对应关系，必须同时指明介质。介质波长变短意味着**同样物理长度的电路，在介质中电长度更大**——这是微带线、介质填充波导能实现小型化的原理，也是第三章"波导波长 $\lambda_g$" 概念的雏形。
+
+**8. 解：**
+(1) $f_1=5\ \mathrm{GHz}$：
+$$\lambda_1=\frac{3\times10^{8}}{5\times10^{9}}=0.06\ \mathrm{m}=6\ \mathrm{cm},\qquad
+\frac{l}{\lambda_1}=\frac{0.5}{0.06}\approx8.3\ \gg\ 0.1$$
+属**长线**。导线上存在约 $8.3$ 个波长，沿线电压、电流呈明显的驻波分布，必须用传输线方程与分布参数处理。
+(2) $f_2=50\ \mathrm{Hz}$：
+$$\lambda_2=\frac{3\times10^{8}}{50}=6\times10^{6}\ \mathrm{m}=6000\ \mathrm{km},\qquad
+\frac{l}{\lambda_2}=\frac{0.5}{6\times10^{6}}\approx8.3\times10^{-8}\ \ll\ 0.1$$
+属**短线**。沿线最大相位差仅约 $3\times10^{-5}$ 度，导线可视为理想等电位连接，基尔霍夫定律与集总参数模型完全适用。
+(3) **结论相反的原因：** "长线/短线"由**电长度** $l/\lambda$ 决定，而非几何长度。同一根 $0.5\ \mathrm{m}$ 的导线，在 $5\ \mathrm{GHz}$ 下 $l/\lambda\approx8.3$，在 $50\ \mathrm{Hz}$ 下 $l/\lambda\approx8.3\times10^{-8}$，两者相差 $10^{8}$ 倍，故一个是长线、一个是短线。这也说明电路理论的适用范围是**有频率条件**的：低频电路理论是麦克斯韦方程组在 $l\ll\lambda$ 时的近似。
+
+**9. 解：**
+(1) 横截面积
+$$s=\pi r_0^{2}=\pi(2\times10^{-3})^{2}=1.257\times10^{-5}\ \mathrm{m^{2}}$$
+直流单位长度电阻
+$$R_{0,\mathrm{DC}}=\frac{\rho}{s}=\frac{1.72\times10^{-8}}{1.257\times10^{-5}}\approx1.37\times10^{-3}\ \Omega/\mathrm{m}$$
+(2) 趋肤深度
+$$\delta=\sqrt{\frac{\rho}{\pi f\mu}}=\sqrt{\frac{1.72\times10^{-8}}{\pi\times10^{10}\times4\pi\times10^{-7}}}\approx6.6\times10^{-7}\ \mathrm{m}=0.66\ \mu\mathrm{m}$$
+因 $\delta\ll r_0=2\ \mathrm{mm}$，处于强趋肤效应区，电流集中在表面薄层，等效导电面积约 $2\pi r_0\delta$，故
+$$R_{0,\mathrm{HF}}=\frac{1}{2\pi r_0}\sqrt{\pi f\mu\rho}
+=\frac{1}{2\pi\times2\times10^{-3}}\times\sqrt{\pi\times10^{10}\times4\pi\times10^{-7}\times1.72\times10^{-8}}\approx2.07\ \Omega/\mathrm{m}$$
+(3) 比值
+$$\frac{R_{0,\mathrm{HF}}}{R_{0,\mathrm{DC}}}=\frac{2.07}{1.37\times10^{-3}}\approx1.51\times10^{3}$$
+即增大约 $1500$ 倍。
+**规律与结论：** 高频电阻 $R_{0,\mathrm{HF}}\propto\sqrt{f}$，即**损耗随频率按平方根增长**（而非线性）。因此：①微波传输线表面需镀银/镀金并抛光（表面粗糙度必须远小于 $\delta$）；②微波不宜用普通导线远距离传输能量；③导体衰减常数 $\alpha_c$ 与 $\sqrt{f}$ 成正比，是选择传输结构（波导、同轴线、微带线）时必须权衡的因素。
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

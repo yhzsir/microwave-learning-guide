@@ -1,0 +1,822 @@
+---
+chapter: 0
+title: 学习路线图
+short: 学习路线图
+desc: 32 学时精简课程的学习顺序、知识依赖关系、时间分配与各阶段目标自检
+minutes: 30
+---
+
+# 学习路线图
+
+《微波技术基础》内容看起来很多：传输线、金属波导、微带线、网络矩阵、无源器件，公式一摞接一摞。但它们并不是并列的知识块，而是一条**单向的推理链**。这条链的主线是：
+
+**路（第 2 章）→ 场（第 3 章）→ 工程传输线（第 4 章）→ 网络（第 5 章）→ 器件（第 6 章）**，两头再各挂上引子（第 1 章）与两个专题（第 7、8 章）。
+
+为什么按这个顺序学最省力？因为**每一章只引入一个新工具，其余全是复用**：
+
+- 第 2 章引入的第一个、也是最重要的工具是**"把一段线看成分布参数网络"**。由此得到 $Z_0$、$\gamma=\alpha+j\beta$、$\Gamma$、$\rho$、$Z_{\mathrm{in}}$ 这一整套"路"的语言。
+- 第 3 章引入的新工具只有**"纵向场法 + 截止"**：$k_c$、$\lambda_c$、$f_c$。相移沿纵向累积（$\beta z$）、阻抗沿纵向变换这两个逻辑完全照搬第 2 章，只是把 $\beta$ 换成 $\beta=\sqrt{k_0^{2}-k_c^{2}}$、把 $Z_0$ 换成波阻抗。
+- 第 4 章不引入新工具，只做**"场与路的合并"**：用第 3 章的模式概念判断"能传什么波"，再用第 2 章的 $Z_0$ 公式算尺寸。
+- 第 5 章引入的新工具是**端口黑箱与矩阵**：把第 2 章熟悉的 $U$、$I$、$\Gamma$ 打包成 $[Z]$、$[Y]$、$[A]$、$[S]$。它把前面所有"具体结构"抽象掉，只留下端口关系。
+- 第 6 章不再引入新工具，而是**用第 5 章的矩阵反解第 3、4 章的结构的器件功能**（E-T、H-T、魔 T、调配器）。
+- 第 7、8 章是两把**"性质判据的钥匙"**：无耗 ↔ 反厄米/幺正，互易 ↔ 对称，结构对称 ↔ $S_{11}=S_{22}$。它们把第 5 章的矩阵从"会算"提升到"会判"。
+
+> **【核心概念】**
+> 一条主线贯穿全书：**微波里没有"元件"，只有"结构 + 波长"**。第 2 章把结构化成分布参数，第 3 章把结构化成模式，第 4 章把结构化成截面尺寸，第 5 章把结构化成端口矩阵，第 6 章把结构化成器件指标。五种"化法"，同一件事。
+>
+> 因此，**第 2 章不是六章中的一章，而是全书的语法**。第 2 章没学透，第 3 章的波阻抗、第 4 章的微带 $Z_0$、第 5 章的归一化、第 6 章的 $\lambda/4$ 变换器全部会"看得懂字面，做不出题"。
+
+> **【考点】**
+> 路线图这一页在试卷上不直接出题，但它决定了你的复习次序。若考试范围是全 6 章，**分值密度最高的三块依次是：第 2 章（通常 25%～35%）、第 3 章（约 20%～25%）、第 5 章（约 15%～20%）**，三者合计常在 70% 以上。第 1 章以概念题形式占 5%～8%，第 4、6 章以小题和简答为主占 15% 左右。
+
+---
+
+## 一、知识依赖关系图
+
+下图把 8 个章节的**前置依赖**画成一张有向图。箭头的方向是"先学 → 后学"，箭头旁的短标注写明"到底依赖前面哪一个具体概念"。**读书时如果某一章卡住，沿着箭头往回找，一定能在上游章节里找到那个没弄懂的概念。**
+
+<figure class="fig">
+<svg viewBox="0 0 1140 900" role="img" aria-label="微波技术基础八章知识依赖关系图">
+  <defs>
+    <marker id="rmAr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+    <marker id="rmArA" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--accent)"/>
+    </marker>
+    <marker id="rmArW" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--warn)"/>
+    </marker>
+    <marker id="rmArB" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--brand)"/>
+    </marker>
+  </defs>
+  <style>
+    .rmbox { stroke-width: 1.5; }
+    .rmb-i { fill: var(--ink-2); fill-opacity: .10; stroke: var(--ink-2); }
+    .rmb-b { fill: var(--brand);  fill-opacity: .10; stroke: var(--brand); }
+    .rmb-a { fill: var(--accent); fill-opacity: .10; stroke: var(--accent); }
+    .rmb-w { fill: var(--warn);   fill-opacity: .10; stroke: var(--warn); }
+    .rm-num { font-size: 10px; fill: var(--ink-2); }
+    .rm-tit { font-size: 12.5px; font-weight: 700; fill: var(--ink); }
+    .rm-lab { font-size: 10.5px; fill: var(--ink-2); }
+    .rm-leg { font-size: 12px; fill: var(--ink-2); }
+    .rm-legk { font-size: 12px; font-weight: 700; fill: var(--ink); }
+  </style>
+
+  <text x="40" y="24" font-size="14" font-weight="700" fill="var(--ink)">八章知识依赖关系（箭头＝前置依赖方向，短标注＝依赖的具体概念）</text>
+
+  <g>
+    <rect class="rmbox rmb-i" x="482" y="28" width="176" height="54" rx="10"/>
+    <text class="rm-num" x="570" y="47" text-anchor="middle">第 1 章 · 引子</text>
+    <text class="rm-tit" x="570" y="64" text-anchor="middle">绪论·微波与微波技术</text>
+    <text class="rm-num" x="570" y="77" text-anchor="middle">60 min · 概念 与 三种方法</text>
+  </g>
+
+  <g>
+    <rect class="rmbox rmb-b" x="482" y="148" width="176" height="54" rx="10"/>
+    <text class="rm-num" x="570" y="167" text-anchor="middle">第 2 章 · 路分析</text>
+    <text class="rm-tit" x="570" y="184" text-anchor="middle">均匀传输线理论</text>
+    <text class="rm-num" x="570" y="197" text-anchor="middle">300 min · 全书语法</text>
+  </g>
+
+  <g>
+    <rect class="rmbox rmb-a" x="100" y="286" width="176" height="54" rx="10"/>
+    <text class="rm-num" x="188" y="305" text-anchor="middle">第 3 章 · 场分析</text>
+    <text class="rm-tit" x="188" y="322" text-anchor="middle">规则金属波导</text>
+    <text class="rm-num" x="188" y="335" text-anchor="middle">300 min · 模式与截止</text>
+  </g>
+
+  <g>
+    <rect class="rmbox rmb-w" x="482" y="286" width="176" height="54" rx="10"/>
+    <text class="rm-num" x="570" y="305" text-anchor="middle">第 5 章 · 网络分析</text>
+    <text class="rm-tit" x="570" y="322" text-anchor="middle">微波网络基础</text>
+    <text class="rm-num" x="570" y="335" text-anchor="middle">240 min · 矩阵语言</text>
+  </g>
+
+  <g>
+    <rect class="rmbox rmb-a" x="100" y="430" width="176" height="54" rx="10"/>
+    <text class="rm-num" x="188" y="449" text-anchor="middle">第 4 章 · 场＋路</text>
+    <text class="rm-tit" x="188" y="466" text-anchor="middle">微波传输线</text>
+    <text class="rm-num" x="188" y="479" text-anchor="middle">220 min · 同轴/微带</text>
+  </g>
+
+  <g>
+    <rect class="rmbox rmb-w" x="482" y="430" width="176" height="54" rx="10"/>
+    <text class="rm-num" x="570" y="449" text-anchor="middle">第 7 章 · 专题推导一</text>
+    <text class="rm-tit" x="570" y="466" text-anchor="middle">无耗网络 [Z] 矩阵</text>
+    <text class="rm-num" x="570" y="479" text-anchor="middle">90 min · 证明题</text>
+  </g>
+
+  <g>
+    <rect class="rmbox rmb-w" x="864" y="430" width="176" height="54" rx="10"/>
+    <text class="rm-num" x="952" y="449" text-anchor="middle">第 8 章 · 专题推导二</text>
+    <text class="rm-tit" x="952" y="466" text-anchor="middle">对称性与 [S] 矩阵</text>
+    <text class="rm-num" x="952" y="479" text-anchor="middle">90 min · 证明题</text>
+  </g>
+
+  <g>
+    <rect class="rmbox rmb-w" x="482" y="574" width="176" height="54" rx="10"/>
+    <text class="rm-num" x="570" y="593" text-anchor="middle">第 6 章 · 综合</text>
+    <text class="rm-tit" x="570" y="610" text-anchor="middle">微波无源器件</text>
+    <text class="rm-num" x="570" y="623" text-anchor="middle">200 min · 器件与接头</text>
+  </g>
+
+  <path d="M570,82 L570,142" fill="none" stroke="var(--ink-2)" stroke-width="1.5" marker-end="url(#rmAr)"/>
+  <text class="rm-lab" x="582" y="106">1→2：长线判据 l/λ≳0.1、</text>
+  <text class="rm-lab" x="582" y="120">分布参数 R、L、C、G</text>
+
+  <path d="M482,175 L188,175 L188,280" fill="none" stroke="var(--brand)" stroke-width="1.5" marker-end="url(#rmArB)"/>
+  <text class="rm-lab" x="335" y="167" text-anchor="middle">2→3：相移 β、波长与波动概念</text>
+
+  <path d="M570,202 L570,280" fill="none" stroke="var(--brand)" stroke-width="1.5" marker-end="url(#rmArB)"/>
+  <text class="rm-lab" x="582" y="228">2→5：端口 U、I 与</text>
+  <text class="rm-lab" x="582" y="242">反射系数、Zin 概念</text>
+
+  <path d="M482,190 L320,190 L320,457 L282,457" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#rmArB)"/>
+  <text class="rm-lab" x="404" y="182" text-anchor="middle">2→4：分布参数、Z₀</text>
+
+  <path d="M658,190 L760,190 L760,457 L664,457" fill="none" stroke="var(--warn)" stroke-width="1.5" marker-end="url(#rmArW)"/>
+  <text class="rm-lab" x="712" y="449" text-anchor="middle">2→7：Z 参数概念</text>
+
+  <path d="M188,340 L188,424" fill="none" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#rmArA)"/>
+  <text class="rm-lab" x="200" y="376">3→4：模式、λc</text>
+  <text class="rm-lab" x="200" y="390">单模工作条件</text>
+
+  <path d="M658,313 L952,313 L952,424" fill="none" stroke="var(--warn)" stroke-width="1.5" marker-end="url(#rmArW)"/>
+  <text class="rm-lab" x="862" y="305" text-anchor="middle">5→8：S 矩阵、幺正性</text>
+
+  <path d="M482,313 L420,313 L420,601 L476,601" fill="none" stroke="var(--warn)" stroke-width="1.5" marker-end="url(#rmArW)"/>
+  <text class="rm-lab" x="428" y="388">5→6：级联与网络参数</text>
+
+  <rect x="40" y="664" width="1060" height="222" rx="12" fill="var(--ink-2)" fill-opacity=".05" stroke="var(--line)"/>
+  <text class="rm-legk" x="60" y="690">依赖关系说明（箭头旁简注的完整版）</text>
+  <text class="rm-leg" x="60" y="718">1→2：需要"长线判据 l/λ≳0.1"与"分布参数 R、L、C、G"两个前提，否则传输线方程无从谈起。</text>
+  <text class="rm-leg" x="60" y="742">2→3：需要相移常数 β、相速 v_p、波长 λ，以及"波沿纵向按相位累积"的波动概念。</text>
+  <text class="rm-leg" x="60" y="766">2→4：需要分布参数、特性阻抗 Z₀ 与"阻抗—反射"的整套换算关系（虚线为弱依赖，了解即可）。</text>
+  <text class="rm-leg" x="60" y="790">2→7：需要自阻抗、输入阻抗与"纯电抗"的物理含义——专题一讨论的正是 [Z] 的无耗性。</text>
+  <text class="rm-leg" x="60" y="814">3→4：需要模式（TE/TM）、截止波长 λc 与单模工作条件，才能判断截面尺寸与带宽。</text>
+  <text class="rm-leg" x="60" y="838">5→6：需要网络参数与级联的概念，才能把接头、调配器、魔 T 描述成"矩阵"。</text>
+  <text class="rm-leg" x="60" y="862">5→8：需要端口量、S 矩阵、幺正性与互易性的定义——专题二的主角正是这些性质。</text>
+  <text class="rm-leg" x="60" y="886">7 与 8 并列：两个专题都以第 5 章为共同基础，可互换顺序，但建议先 7 后 8（先 [Z] 后 [S]）。</text>
+</svg>
+<figcaption>图 0-1　《微波技术基础》八章知识依赖关系图：箭头旁标注的是"后一章到底依赖前一章的哪一个具体概念"</figcaption>
+</figure>
+
+### 1.1 三条独立的"学习通道"
+
+把上图按颜色拆开看，会得到三条几乎可以**并行推进**的通道。理解这一点，就能自由调整学习顺序而不迷路：
+
+| 通道 | 章节链 | 承担的任务 | 学不动的典型症状 |
+|---|---|---|---|
+| **路通道**（主色 蓝） | 1 → 2 →（4 的左半部分） | 建立分布参数、反射、阻抗、匹配的整套语言 | 圆图上不知道怎么转、$\lambda/4$ 变换器算错长度 |
+| **场通道**（青色） | 2 → 3 →（4 的右半部分） | 判断"什么波能传"、定截面尺寸与带宽 | 分不清 $\lambda$、$\lambda_c$、$\lambda_g$，$f_c$ 算成 $f$ |
+| **网络通道**（橙色） | 2 → 5 → 6，并派生 7、8 | 把结构抽象成端口矩阵，反解器件功能 | 只会背 $[S]$ 定义，看到"由 $[S]$ 判性质"就卡住 |
+
+三条通道在**第 2 章汇合**——这就是为什么第 2 章既是最长的一章（300 min），也是唯一"不能跳"的一章。
+
+> **【记忆技巧】**
+> 把三个通道记成三种问法：
+> **路通道问"匹配了没有"**（$\Gamma$、$\rho$、$Z_{\mathrm{in}}$）；
+> **场通道问"传得动吗"**（$\lambda_c$、$f_c$、单模）；
+> **网络通道问"这个黑盒子干了什么"**（$[S]$、$[A]$、级联）。
+> 拿到任何一道题，先问自己属于哪一问，再去调对应的公式。
+
+### 1.2 三个"汇合点"与它们的后果
+
+- **汇合点一：第 2 章末（圆图与匹配）**。这里同时用到相位（路）、反射（路）与几何作图。圆图一旦掌握，第 3、4、6 章所有匹配问题都可以"一图通吃"。**这是全课程性价比最高的一个技能点。**
+- **汇合点二：第 4 章（微带线）**。这里要求你同时用场通道（准 TEM 模是否成立、高次模是否被激发）和路通道（$Z_0$、$\varepsilon_e$、尺寸）。综合题常从这里出。
+- **汇合点三：第 6 章（魔 T 与功率分配）**。这里要求你同时用网络通道（$[S]$ 矩阵、幺正性）和结构对称性（第 8 章）。**"三端口无耗互易网络不可能同时匹配"这类结论题就诞生在这里。**
+
+---
+
+## 二、三种学习方法论的切换
+
+全书只有三种"看微波的方式"。它们不是三种并列的技巧，而是**同一物理对象的三种分辨率**：路分析法看端口的电压电流，场分析法看内部的电磁场分布，网络分析法看端口之间的线性关系。三种方式各有各的失效边界，用错方式事倍功半。
+
+<figure class="fig">
+<svg viewBox="0 0 1080 500" role="img" aria-label="路分析法、场分析法、网络分析法三列对照图">
+  <defs>
+    <marker id="rm3Ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <style>
+    .r3t { font-size: 13.5px; font-weight: 700; fill: var(--ink); }
+    .r3k { font-size: 11px; font-weight: 700; fill: var(--ink-2); }
+    .r3v { font-size: 11px; fill: var(--ink-2); }
+    .r3h { font-size: 12px; font-weight: 700; fill: var(--ink); }
+  </style>
+
+  <text x="24" y="26" font-size="14" font-weight="700" fill="var(--ink)">三种分析方法的分工：同一物理对象的三种分辨率</text>
+
+  <rect x="24" y="44" width="324" height="322" rx="12" fill="var(--brand)" fill-opacity=".08" stroke="var(--brand)"/>
+  <text class="r3t" x="186" y="72" text-anchor="middle">① 路分析法</text>
+  <text class="r3v" x="186" y="92" text-anchor="middle">—— 把场"路化"</text>
+  <line x1="48" y1="104" x2="324" y2="104" stroke="var(--brand)" stroke-opacity=".4"/>
+  <text class="r3k" x="44" y="128">出发点</text>
+  <text class="r3v" x="44" y="146">传输线方程（电报方程）</text>
+  <text class="r3k" x="44" y="172">研究对象</text>
+  <text class="r3v" x="44" y="190">TEM／准 TEM 线上的 U(z)、I(z)</text>
+  <text class="r3k" x="44" y="216">核心量</text>
+  <text class="r3v" x="44" y="234">Z₀、γ=α+jβ、Γ、ρ、Zin</text>
+  <text class="r3k" x="44" y="260">适用结构</text>
+  <text class="r3v" x="44" y="278">同轴线、双导线、微带线</text>
+  <text class="r3k" x="44" y="304">对应章节</text>
+  <text class="r3v" x="44" y="322">第 2 章（第 4 章部分）</text>
+  <text class="r3k" x="44" y="348">失效条件</text>
+  <text class="r3v" x="44" y="366">非 TEM 波，U、I 无唯一定义</text>
+
+  <rect x="378" y="44" width="324" height="322" rx="12" fill="var(--accent)" fill-opacity=".08" stroke="var(--accent)"/>
+  <text class="r3t" x="540" y="72" text-anchor="middle">② 场分析法</text>
+  <text class="r3v" x="540" y="92" text-anchor="middle">—— 直接解电磁场</text>
+  <line x1="402" y1="104" x2="678" y2="104" stroke="var(--accent)" stroke-opacity=".4"/>
+  <text class="r3k" x="398" y="128">出发点</text>
+  <text class="r3v" x="398" y="146">麦克斯韦方程组＋边界条件</text>
+  <text class="r3k" x="398" y="172">研究对象</text>
+  <text class="r3v" x="398" y="190">E、H 的完整分布与传播模式</text>
+  <text class="r3k" x="398" y="216">核心量</text>
+  <text class="r3v" x="398" y="234">kc、λc、fc、λg、vp、vg、波阻抗</text>
+  <text class="r3k" x="398" y="260">适用结构</text>
+  <text class="r3v" x="398" y="278">矩形／圆波导、谐振腔、任意截面</text>
+  <text class="r3k" x="398" y="304">对应章节</text>
+  <text class="r3v" x="398" y="322">第 3 章（第 4 章部分）</text>
+  <text class="r3k" x="398" y="348">失效条件</text>
+  <text class="r3v" x="398" y="366">不均匀区、复杂边界无解析解</text>
+
+  <rect x="732" y="44" width="324" height="322" rx="12" fill="var(--warn)" fill-opacity=".08" stroke="var(--warn)"/>
+  <text class="r3t" x="894" y="72" text-anchor="middle">③ 网络分析法</text>
+  <text class="r3v" x="894" y="92" text-anchor="middle">—— 只留端口，内部当黑箱</text>
+  <line x1="756" y1="104" x2="1032" y2="104" stroke="var(--warn)" stroke-opacity=".4"/>
+  <text class="r3k" x="752" y="128">出发点</text>
+  <text class="r3v" x="752" y="146">端口量之间的线性关系</text>
+  <text class="r3k" x="752" y="172">研究对象</text>
+  <text class="r3v" x="752" y="190">端口 U、I 或入射／反射波 a、b</text>
+  <text class="r3k" x="752" y="216">核心量</text>
+  <text class="r3v" x="752" y="234">[Z]、[Y]、[A]、[S] 矩阵</text>
+  <text class="r3k" x="752" y="260">适用结构</text>
+  <text class="r3v" x="752" y="278">任意微波元件、级联系统</text>
+  <text class="r3k" x="752" y="304">对应章节</text>
+  <text class="r3v" x="752" y="322">第 5 章 + 第 6 章 + 专题 7、8</text>
+  <text class="r3k" x="752" y="348">失效条件</text>
+  <text class="r3v" x="752" y="366">需内部场强、击穿、热设计时不够用</text>
+
+  <rect x="24" y="386" width="1032" height="96" rx="12" fill="var(--ink-2)" fill-opacity=".06" stroke="var(--line)"/>
+  <text class="r3h" x="44" y="412">选择法则（口诀）：看内部场用场，算匹配用路，搭系统用网络。</text>
+  <text class="r3v" x="44" y="436">第一步问"要不要知道结构里面发生了什么"：要 → 场分析；不要 → 走第二步。</text>
+  <text class="r3v" x="44" y="456">第二步问"这段线的横向尺寸能不能唯一确定电压电流"：能（TEM／准 TEM）→ 路分析；不能（空心波导）→ 网络分析。</text>
+  <text class="r3v" x="44" y="476">第三步问"要算的是单个元件的对外功能，还是多个元件的整体指标"：单个 → 网络参数定义；多个 → 级联与矩阵相乘。</text>
+</svg>
+<figcaption>图 0-2　路分析法、场分析法、网络分析法的三列对照：出发点、对象、核心量、适用结构与失效边界</figcaption>
+</figure>
+
+### 2.1 三种方法的分项对比
+
+| 比较项 | 路分析法 | 场分析法 | 网络分析法 |
+|---|---|---|---|
+| 数学出发点 | 传输线方程（一维波动方程） | 麦克斯韦方程组（三维边值问题） | 端口量之间的线性方程组 |
+| 基本变量 | 电压 $U(z)$、电流 $I(z)$ | 电场 $\boldsymbol{E}$、磁场 $\boldsymbol{H}$ | 端口电压电流，或入射波 $a$、反射波 $b$ |
+| 求解对象 | 沿线分布与输入阻抗 | 模式、场结构、截止与传播特性 | 矩阵元素的数值与性质 |
+| 决定性的新概念 | 分布参数 $R,L,C,G$、$Z_0$、$\Gamma$ | 截止波数 $k_c$、模式 TE/TM/TEM | 端口的归一化与黑箱 |
+| 典型结构 | 同轴线、双导线、微带线、带状线 | 矩形波导、圆波导、谐振腔 | 膜片、螺钉、T 形接头、魔 T、滤波器 |
+| 对应章节 | 第 2 章 | 第 3 章 | 第 5 章（器件在第 6 章） |
+| 思维特征 | **空间离散化**：把线切成无穷多小段 | **边界定模式**：解出来的解由边界形状决定 | **结构抽象化**：把内部过程整体丢掉 |
+| 最大优势 | 计算量小，可直接手算匹配 | 严格、普适，能回答"能不能传" | 可测量、可级联、可系统集成 |
+| 最大局限 | 只对 TEM／准 TEM 有效 | 解析解只存在于规则边界 | 得不到内部场强，无法做击穿与热设计 |
+| 常见题型 | 求 $Z_{\mathrm{in}}$、$\Gamma$、$\rho$、匹配设计 | 求 $\lambda_c$、$f_c$、$\lambda_g$、单模设计 | 求 $[Z]/[Y]/[A]/[S]$、判性质、级联 |
+| 分值权重（估） | 25%～35% | 20%～25% | 15%～20%（加第 6 章约 30%） |
+
+### 2.2 解题时怎么选：一条三步判别流程
+
+拿到一道题，按下面三步走，几乎不会选错方法：
+
+1. **看题目给的量是什么。**
+   - 给 $Z_0$、$\Gamma$、$\rho$、$Z_l$、$l/\lambda$ → 路分析法（第 2 章）。
+   - 给截面尺寸 $a$、$b$、$r$，给 $f$ 或 $\lambda$，问"能不能传"、"传几个模" → 场分析法（第 3 章）。
+   - 给矩阵元素、给 $S$ 参数、问网络性质或级联 → 网络分析法（第 5 章）。
+2. **看题目问的是"内部"还是"端口"。**
+   凡出现"模式"、"截止"、"场分布"、"单模传输"、"击穿"，一律走场；凡出现"驻波比"、"反射系数"、"输入阻抗"、"匹配"，一律走路；凡出现"插入损耗"、"隔离度"、"级联"、"$S_{11}$"，一律走网络。
+3. **看题目要的是"数值"还是"性质"。**
+   要数值 → 公式直接算；要性质（是否无耗、是否互易、是否对称）→ 先写出参数矩阵，再用第 7、8 章的判据。
+
+> **【易错点】**
+> 最常见的选错有两种。
+> **其一，用路分析法处理矩形波导。** 矩形波导是单导体结构，不存在 TEM 模，横截面上"电压"本身就没有唯一定义。凡是题目里出现矩形波导内部尺寸并要求算 $Z_{\mathrm{in}}$，正确写法是**先算波阻抗再等效为一段传输线**，而不是直接套第 2 章的 $Z_{\mathrm{in}}$ 公式却把 $Z_0$ 写成 $50\ \Omega$ 这类给定值。
+> **其二，用场分析法去求匹配。** 匹配问题的本质是"阻抗在纵向的变换",用场求解属于杀鸡用牛刀，而且得不偿失。看到"设计匹配网络"四个字，立刻切换到第 2 章。
+
+> **【思考】**
+> 为什么第 4 章（微波传输线）在依赖图上同时指向第 2 章和第 3 章？想一想：微带线是"准 TEM"，用路分析法算 $Z_0$；可是它又是"开放结构"，会激发高次模（表面模），必须用场分析法判断单模带宽。**两条通道在微带线上第一次真正合流**——这也是第 4 章最容易出综合题的原因。
+
+---
+
+## 三、32 学时压缩课程的学习路线
+
+本节把 6 章 + 2 个专题压进一条可执行的路线。总学时按下表安排约 **40 学时**（含自测与复习），比 32 学时的课堂讲授多出的部分，正好用来做题目和自测——**只听不练的微波技术是学不会的**。
+
+<figure class="fig">
+<svg viewBox="0 0 960 340" role="img" aria-label="六个学习阶段的时间分配与优先级">
+  <style>
+    .rs-n { font-size: 11.5px; font-weight: 700; fill: var(--ink); }
+    .rs-v { font-size: 10.5px; fill: var(--ink-2); }
+    .rs-b { font-size: 11px; fill: var(--ink-2); }
+  </style>
+  <text x="30" y="24" font-size="14" font-weight="700" fill="var(--ink)">六个阶段的时间分配与优先级（条长＝投入学时，★＝保底优先级）</text>
+
+  <text class="rs-n" x="30" y="66">阶段一　打地基</text>
+  <text class="rs-v" x="30" y="82">第 1 章 · 4 学时</text>
+  <rect x="240" y="54" width="52" height="26" rx="5" fill="var(--ink-2)" fill-opacity=".45"/>
+  <text class="rs-b" x="302" y="72">概念与坐标，不追分；只要求"能说清五大特点与三种方法的归属"</text>
+  <text class="rs-b" x="880" y="72" text-anchor="end">★★</text>
+
+  <text class="rs-n" x="30" y="112">阶段二　路分析法核心</text>
+  <text class="rs-v" x="30" y="128">第 2 章 · 12 学时（含圆图与匹配练习）</text>
+  <rect x="240" y="100" width="156" height="26" rx="5" fill="var(--brand)" fill-opacity=".75"/>
+  <text class="rs-b" x="406" y="118">全书语法，必须一题一题手算到位，圆图练到"不看表"</text>
+  <text class="rs-b" x="880" y="118" text-anchor="end">★★★★★</text>
+
+  <text class="rs-n" x="30" y="158">阶段三　场分析法</text>
+  <text class="rs-v" x="30" y="174">第 3 章 · 12 学时</text>
+  <rect x="240" y="146" width="156" height="26" rx="5" fill="var(--accent)" fill-opacity=".75"/>
+  <text class="rs-b" x="406" y="164">抓住 kc、λc、fc、λg 四条线与 TE10 主模的场结构</text>
+  <text class="rs-b" x="880" y="164" text-anchor="end">★★★★★</text>
+
+  <text class="rs-n" x="30" y="204">阶段四　工程传输线</text>
+  <text class="rs-v" x="30" y="220">第 4 章 · 6 学时</text>
+  <rect x="240" y="192" width="78" height="26" rx="5" fill="var(--accent)" fill-opacity=".55"/>
+  <text class="rs-b" x="328" y="210">公式型章节，重在"记住公式＋会用尺寸选择表"</text>
+  <text class="rs-b" x="880" y="210" text-anchor="end">★★★</text>
+
+  <text class="rs-n" x="30" y="250">阶段五　网络分析法</text>
+  <text class="rs-v" x="30" y="266">第 5 章 + 专题 7、8 · 8 学时</text>
+  <rect x="240" y="238" width="104" height="26" rx="5" fill="var(--warn)" fill-opacity=".75"/>
+  <text class="rs-b" x="354" y="256">矩阵定义要背熟，两个专题的证明要能默写</text>
+  <text class="rs-b" x="880" y="256" text-anchor="end">★★★★</text>
+
+  <text class="rs-n" x="30" y="296">阶段六　器件综合</text>
+  <text class="rs-v" x="30" y="312">第 6 章 · 6 学时</text>
+  <rect x="240" y="284" width="78" height="26" rx="5" fill="var(--warn)" fill-opacity=".55"/>
+  <text class="rs-b" x="328" y="302">用前五章的结论反解器件，重点是 T 形接头族与调配器</text>
+  <text class="rs-b" x="880" y="302" text-anchor="end">★★★★</text>
+</svg>
+<figcaption>图 0-3　六个学习阶段的时间分配：第 2、3 章合计占全部投入的一半以上，是不可压缩的核心</figcaption>
+</figure>
+
+### 3.1 分阶段计划表
+
+| 阶段 | 章节 | 建议学时 | 阶段目标 | 检验标准（达不到就回炉） |
+|---|---|---|---|---|
+| **一 · 打地基** | 第 1 章 | 4 | 建立"微波是什么、为什么难、怎么研究"的坐标 | 能说出微波频率与波长范围并互算；能解释长线判据 $l/\lambda\gtrsim0.1$ 的来源；能默写五种分析方法与章节的对应关系 |
+| **二 · 路分析法核心** | 第 2 章 | 12 | 把分布参数、反射、阻抗、匹配全部变成"条件反射" | 能默写电报方程与 $Z_{\mathrm{in}}(z)$；能由 $\Gamma_l$ 手算任意位置的 $\Gamma(z)$、$\rho$、波腹波节位置；能在史密斯圆图上 3 步完成单枝节匹配设计 |
+| **三 · 场分析法** | 第 3 章 | 12 | 掌握"什么波能传、传几个模、怎么算波长与速度" | 能独立证明空心波导不存在 TEM 波；能由 $a$、$b$ 算 $\lambda_c$、$f_c$；能设计单模工作区；能算 $\lambda_g$、$v_p$、$v_g$ 并说明三者关系 |
+| **四 · 工程传输线** | 第 4 章 | 6 | 把场与路合起来，用于同轴线、带状线、微带线 | 能由 $a$、$b$、$\varepsilon_r$ 算同轴线 $Z_0$ 并解释 $b/a=1.65$ 与 $3.59$；能用 Hammerstad 公式算微带 $Z_0$ 与 $\varepsilon_e$；能写出三种线的高次模限制条件 |
+| **五 · 网络分析法** | 第 5 章 + 专题 7、8 | 8 | 掌握四种矩阵的定义、性质、转换与级联 | 能默写 $[Z]$、$[Y]$、$[A]$、$[S]$ 的定义式与归一化关系；能由 $[S]$ 判断无耗、互易、有耗；能完成 $[A]$ 级联与参考面移动的相位修正；能默写 $[Z]^+=-[Z]$ 与 $z_{11}=z_{22}\Rightarrow S_{11}=S_{22}$ 的完整证明 |
+| **六 · 器件综合** | 第 6 章 | 6 | 用网络语言读器件手册，反解器件功能 | 能写出 E-T、H-T、魔 T 的 $[S]$ 矩阵并说明每条性质；能证明"三端口无耗互易网络不可能三个端口同时匹配"；能完成 $\lambda/4$ 变换器与螺钉调配器的数值设计 |
+
+**合计**：4 + 12 + 12 + 6 + 8 + 6 = **48 学时**（其中约 8 学时用于自测与模拟卷）。若按 32 学时的课堂节奏，可把阶段一压到 2 学时、阶段四压到 4 学时、阶段六压到 4 学时，得到 2 + 11 + 11 + 4 + 7 + 4 ≈ **39 学时**的紧凑版。
+
+> **【考点】**
+> **若时间紧张，优先保 2、3、5 三章。** 理由很直接：
+> - 第 2 章是全书唯一的"通用工具"，它同时给第 3、4、5、6 章供应概念。丢掉第 2 章，后面四章全部变成"看不懂的公式"。
+> - 第 3 章是唯一能出"严格推导 + 数值计算 + 结构设计"三种题型的章节，且 $\lambda_c$、$TE_{10}$ 几乎是必考。
+> - 第 5 章是矩阵语言的入口，第 6 章与两个专题全部挂靠在它上面；且 $[S]$ 矩阵的题目形式固定、套路清晰，是"低投入高产出的典型"。
+>
+> 相对可以压缩的是第 1 章（概念题，考前突击 1 小时即可）与第 4 章（公式型，背表＋做两类题即可）。
+
+---
+
+## 四、每周学习计划模板
+
+下面给出一个可直接执行的 **8 周计划**。按每周投入 **5～6 小时**设计（其中约 3 小时阅读与推导、1.5 小时做题、0.5～1 小时复习），八周合计约 **44 学时**，与第三节的紧凑版基本吻合。
+
+<figure class="fig">
+<svg viewBox="0 0 1000 500" role="img" aria-label="八周学习计划甘特图">
+  <style>
+    .rg-w { font-size: 12px; font-weight: 700; fill: var(--ink-2); }
+    .rg-t { font-size: 11.5px; fill: var(--ink); }
+    .rg-b { font-size: 10.5px; fill: var(--ink); }
+    .rg-n { font-size: 10.5px; fill: var(--ink-2); }
+  </style>
+  <defs>
+    <marker id="rgAr" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+
+  <text x="24" y="26" font-size="14" font-weight="700" fill="var(--ink)">八周学习计划甘特图（每周 5～6 学时，★ 为阶段自测节点）</text>
+
+  <text class="rg-w" x="247" y="62" text-anchor="middle">第 1 周</text>
+  <text class="rg-w" x="342" y="62" text-anchor="middle">第 2 周</text>
+  <text class="rg-w" x="437" y="62" text-anchor="middle">第 3 周</text>
+  <text class="rg-w" x="532" y="62" text-anchor="middle">第 4 周</text>
+  <text class="rg-w" x="627" y="62" text-anchor="middle">第 5 周</text>
+  <text class="rg-w" x="722" y="62" text-anchor="middle">第 6 周</text>
+  <text class="rg-w" x="817" y="62" text-anchor="middle">第 7 周</text>
+  <text class="rg-w" x="912" y="62" text-anchor="middle">第 8 周</text>
+
+  <line x1="200" y1="70" x2="200" y2="452" stroke="var(--line)" stroke-width="1"/>
+  <line x1="295" y1="70" x2="295" y2="452" stroke="var(--line)" stroke-width="1"/>
+  <line x1="390" y1="70" x2="390" y2="452" stroke="var(--line)" stroke-width="1"/>
+  <line x1="485" y1="70" x2="485" y2="452" stroke="var(--line)" stroke-width="1"/>
+  <line x1="580" y1="70" x2="580" y2="452" stroke="var(--line)" stroke-width="1"/>
+  <line x1="675" y1="70" x2="675" y2="452" stroke="var(--line)" stroke-width="1"/>
+  <line x1="770" y1="70" x2="770" y2="452" stroke="var(--line)" stroke-width="1"/>
+  <line x1="865" y1="70" x2="865" y2="452" stroke="var(--line)" stroke-width="1"/>
+  <line x1="960" y1="70" x2="960" y2="452" stroke="var(--line)" stroke-width="1"/>
+
+  <text class="rg-t" x="190" y="96" text-anchor="end">第 1 章　绪论</text>
+  <rect x="204" y="80" width="86" height="22" rx="5" fill="var(--ink-2)" fill-opacity=".45"/>
+  <text class="rg-b" x="247" y="96" text-anchor="middle">概念＋频段＋趋肤效应</text>
+
+  <text class="rg-t" x="190" y="134" text-anchor="end">第 2 章（1/3）电报方程与基本量</text>
+  <rect x="204" y="118" width="182" height="22" rx="5" fill="var(--brand)" fill-opacity=".70"/>
+  <text class="rg-b" x="295" y="134" text-anchor="middle">Z₀、γ、α、β、λ、相速、相波长</text>
+
+  <text class="rg-t" x="194" y="172" text-anchor="end">第 2 章（2/3）反射、驻波与 Zin</text>
+  <rect x="299" y="156" width="182" height="22" rx="5" fill="var(--brand)" fill-opacity=".70"/>
+  <text class="rg-b" x="390" y="172" text-anchor="middle">Γ、ρ、行波／驻波／行驻波、波腹波节</text>
+
+  <text class="rg-t" x="190" y="210" text-anchor="end">第 2 章（3/3）圆图与匹配</text>
+  <rect x="394" y="194" width="182" height="22" rx="5" fill="var(--brand)" fill-opacity=".85"/>
+  <text class="rg-b" x="485" y="210" text-anchor="middle">史密斯圆图、λ/4 变换器、单枝节</text>
+  <text class="rg-n" x="590" y="210">★ 阶段二自测（第 2 章全套计算题）</text>
+
+  <text class="rg-t" x="203.6" y="248" text-anchor="end">第 3 章（1/2）导波原理与矩形波导</text>
+  <rect x="489" y="232" width="182" height="22" rx="5" fill="var(--accent)" fill-opacity=".75"/>
+  <text class="rg-b" x="580" y="248" text-anchor="middle">TE／TM、kc、λc、fc、TE₁₀ 场结构</text>
+
+  <text class="rg-t" x="190" y="286" text-anchor="end">第 3 章（2/2）波导特性与圆波导</text>
+  <rect x="584" y="270" width="182" height="22" rx="5" fill="var(--accent)" fill-opacity=".75"/>
+  <text class="rg-b" x="675" y="286" text-anchor="middle">λg、vp、vg、波阻抗、衰减、圆波导</text>
+  <text class="rg-n" x="780" y="286">★ 阶段三自测（λc 与单模设计）</text>
+
+  <text class="rg-t" x="190" y="324" text-anchor="end">第 4 章　微波传输线</text>
+  <rect x="679" y="308" width="86" height="22" rx="5" fill="var(--accent)" fill-opacity=".55"/>
+  <text class="rg-b" x="722" y="324" text-anchor="middle">同轴／带状／微带／耦合线</text>
+
+  <text class="rg-t" x="190" y="362" text-anchor="end">第 5 章　网络矩阵 ＋ 专题 7、8</text>
+  <rect x="774" y="346" width="86" height="22" rx="5" fill="var(--warn)" fill-opacity=".75"/>
+  <text class="rg-b" x="817" y="362" text-anchor="middle">[Z]/[Y]/[A]/[S]＋两大证明</text>
+
+  <text class="rg-t" x="190" y="400" text-anchor="end">第 6 章　微波无源器件</text>
+  <rect x="869" y="384" width="86" height="22" rx="5" fill="var(--warn)" fill-opacity=".55"/>
+  <text class="rg-b" x="912" y="400" text-anchor="middle">负载／接头／T 形族／魔 T</text>
+
+  <text class="rg-t" x="190" y="438" text-anchor="end">综合自测与模拟卷</text>
+  <rect x="869" y="422" width="86" height="22" rx="5" fill="var(--ink-2)" fill-opacity=".35"/>
+  <text class="rg-b" x="912" y="438" text-anchor="middle">限时 180 min 全真演练</text>
+</svg>
+<figcaption>图 0-4　八周学习计划甘特图：第 2 章占据前三周（含圆图与匹配），第 3 章占两周，其余四章各一周左右</figcaption>
+</figure>
+
+### 4.1 八周计划表
+
+| 周次 | 学什么（约 3 h） | 做什么题（约 1.5 h） | 复习什么（约 0.5 h） |
+|---|---|---|---|
+| **第 1 周** | 第 1 章全章；第 2 章 2.1～2.2：分布参数、电报方程、$Z_0$、$\gamma=\alpha+j\beta$、相速与波长 | 第 1 章自测全部；由 $L$、$C$ 求 $Z_0$ 与 $\beta$ 共 2 题；由 $\lambda$ 求 $f$ 共 2 题 | 首周无旧内容，改为回看"长线判据 $l/\lambda\gtrsim0.1$"的物理含义 |
+| **第 2 周** | 第 2 章 2.3～2.4：$Z_{\mathrm{in}}(z)$、$\Gamma_l$、$\Gamma(z)$、$\rho$、行波／驻波／行驻波 | 第 2 章自测一、二；由 $Z_l$ 求 $\Gamma_l$、$\Gamma(z)$、$\rho$、波腹波节位置共 4 题 | 第 1 章五大特点与三种方法归属，口头复述 5 分钟 |
+| **第 3 周** | 第 2 章 2.5～2.6：传输功率与效率、史密斯圆图原理与使用 | 圆图读图 10 题（由 $z$ 求 $\Gamma$、由 $\Gamma$ 求 $z$、求 $\rho$、求驻波相位）；功率与效率 2 题 | 第 2 章前四节公式默写（$Z_{\mathrm{in}}$、$\Gamma(z)$、$\rho$ 与 $\Gamma$ 互换） |
+| **第 4 周** | 第 3 章 3.1～3.3：导波原理、TE／TM／TEM、$k_c$、$\lambda_c$、$f_c$、$TE_{10}$ 主模 | 第 2 章匹配题重做（$\lambda/4$ 变换器 2 题、单枝节 3 题）；第 3 章自测选择填空 | 第 2 章全套计算题过一遍，错题标记 |
+| **第 5 周** | 第 3 章 3.4～3.7：$\lambda_g$、$v_p$、$v_g$、波阻抗、衰减、圆波导、激励与耦合 | 第 3 章自测全部；$\lambda_c$、$f_c$ 计算 3 题；单模工作区设计 2 题；$\lambda_g$、$v_p$、$v_g$ 计算 2 题 | 第 3 章"TEM 不存在于空心波导"的证明重写一遍 |
+| **第 6 周** | 第 4 章全章：同轴线、带状线、微带线（准 TEM、$\varepsilon_e$、Hammerstad 公式）、耦合微带线、介质波导 | 第 4 章自测全部；同轴线 $Z_0$ 与 $b/a$ 最佳值 3 题；微带 $\varepsilon_e$、$Z_0$ 2 题；高次模限制 1 题 | 第 3 章 $\lambda_c$、$\lambda_g$ 与波阻抗公式默写 |
+| **第 7 周** | 第 5 章全章：等效传输线与归一化、$[Z]/[Y]/[A]/[S]$ 的定义、性质、转换与级联；专题 7、8 | 第 5、7、8 章自测全部；由 $[S]$ 判无耗／互易 5 题；$[A]$ 级联 2 题；默写两个专题的完整证明 | 第 2 章 $\Gamma$ 与归一化阻抗的关系 $\bar z=(1+\Gamma)/(1-\Gamma)$ |
+| **第 8 周** | 第 6 章全章：终端元件、连接元件、衰减器与相移器、螺钉调配器、阶梯阻抗变换器、T 形接头族与魔 T | 第 6 章自测全部；E-T／H-T／魔 T 的 $[S]$ 各 1 题；三端口不能同时匹配的证明 1 题；**完整模拟卷 1 套（限时 180 min）** | 全书公式速查手册通读一遍，重点看第 2、3、5 章 |
+
+> **【记忆技巧】**
+> 记不住进度时，用"**1-3-2-1-1**"这个节奏：
+> 第 1 章 **1** 周打地基 → 第 2 章 **3** 周（前三周的全部精力）→ 第 3 章 **2** 周 → 第 4、5 章各 **1** 周 → 第 6 章 **1** 周并做模拟卷。
+> 具体说就是"**一周入门，三周练路，两周练场，一周线，一周网，一周器件加考试**"。
+
+---
+
+## 五、每个阶段的目标自检清单
+
+自检的原则是"**可验证**"：每一条都要能只在草稿纸上完成，不查书、不问人。达不到的条目就是下一轮复习的目标。
+
+### 阶段一 · 打地基（第 1 章，4 学时）
+
+- [ ] 能准确说出微波的频率范围 $300\ \mathrm{MHz}\sim3000\ \mathrm{GHz}$ 与真空波长范围 $0.1\ \mathrm{mm}\sim1\ \mathrm{m}$，并说明两个端点为何是"人为划定"的
+- [ ] 能在 10 秒内完成频率与波长的互算，包括介质中的一般形式 $\lambda=v/f=1/(f\sqrt{\mu\varepsilon})$
+- [ ] 能写出长线判据 $l/\lambda\gtrsim0.1$，并解释"$0.1$"对应的沿线相位差约为 $36^{\circ}$
+- [ ] 能逐条解释微波的五大特点（似光性、波动性、穿透性、信息性、能量性），每条各举一个工程实例
+- [ ] 能说明基尔霍夫定律在微波频段失效的根本原因是**电长度**而不是几何长度
+- [ ] 能写出趋肤深度 $\delta=\sqrt{\rho/(\pi f\mu)}$，并说明高频导体电阻按 $\sqrt{f}$ 上升的三条工程后果
+- [ ] 能说清三种分析方法（路／场／网络）各自的出发点与对应章节
+
+### 阶段二 · 路分析法核心（第 2 章，12 学时）
+
+- [ ] 能默写电报方程 $\mathrm{d}U/\mathrm{d}z=-(R+j\omega L)I$、$\mathrm{d}I/\mathrm{d}z=-(G+j\omega C)U$，并解释每一项的物理意义与量纲
+- [ ] 能独立推导 $Z_0=\sqrt{(R+j\omega L)/(G+j\omega C)}$ 与 $\gamma=\sqrt{(R+j\omega L)(G+j\omega C)}$，并写出无耗时的退化形式 $\alpha=0$、$Z_0=\sqrt{L/C}$、$\beta=\omega\sqrt{LC}$
+- [ ] 能独立推导 $Z_{\mathrm{in}}(z)=Z_0\dfrac{Z_l+jZ_0\tan\beta z}{Z_0+jZ_l\tan\beta z}$，并说明 $\lambda/4$（阻抗反演）与 $\lambda/2$（阻抗复现）两个特例
+- [ ] 能由 $Z_l$ 依次算出 $\Gamma_l$、$\Gamma(z)=\Gamma_l e^{-j2\beta z}$、$\rho=\dfrac{1+|\Gamma_l|}{1-|\Gamma_l|}$，并能反向由 $\rho$ 求 $|\Gamma_l|$
+- [ ] 能判断行波、驻波、行驻波三种工作状态，并写出各自的 $|\Gamma|$、$\rho$、$Z_{\mathrm{in}}$ 特征
+- [ ] 能算出电压波腹与波节的位置，并说明它们与 $\Gamma_l$ 相位（而非模值）的关系
+- [ ] 能在史密斯圆图上完成 3 步以内的匹配设计（$\lambda/4$ 变换器或单枝节调配器）
+- [ ] 能算传输功率 $P$ 与传输效率 $\eta$，并解释"驻波不消耗功率，却会降低功率容量"的原因
+
+### 阶段三 · 场分析法（第 3 章，12 学时）
+
+- [ ] 能完整证明"空心金属波导中不存在 TEM 波"（含"单导体无法同时满足两个边界条件"这一步）
+- [ ] 能由矩形波导尺寸 $a$、$b$ 写出各模式的 $\lambda_c$、$f_c$ 表达式，并算出 $TE_{10}$、$TE_{20}$、$TE_{01}$ 的数值
+- [ ] 能画出 $TE_{10}$ 模的电场线与磁场线，并标出壁电流方向
+- [ ] 能设计单模工作区：由 $f$ 反推 $a$ 的允许范围，并说明标准波导取 $a:b\approx2:1$ 的双重理由
+- [ ] 能算出 $\lambda_g$、$v_p$、$v_g$，并写出 $\lambda_g=\lambda/\sqrt{1-(\lambda/\lambda_c)^{2}}$ 与 $v_pv_g=c^{2}$
+- [ ] 能写出 $TE$、$TM$、$TEM$ 三种波阻抗的表达式，并说明 $\eta_{TE}>\eta_{TEM}>\eta_{TM}$ 的原因
+- [ ] 能说明波导衰减随频率的变化规律，并说出"衰减存在最小频率"的物理原因
+- [ ] 能说出圆波导三个常用模式 $TE_{11}$、$TE_{01}$、$TM_{01}$ 各自的用途与优缺点
+
+### 阶段四 · 工程传输线（第 4 章，6 学时）
+
+- [ ] 能写出同轴线 $Z_0=\dfrac{60}{\sqrt{\varepsilon_r}}\ln\dfrac{b}{a}$，并算出 $b/a=1.65$（最大功率）与 $b/a=3.59$（最小衰减）两个最佳值
+- [ ] 能写出同轴线 $TE_{11}$ 高次模的截止条件，并说明它如何同时限制最高工作频率与最大横向尺寸
+- [ ] 能说明带状线的结构与 $Z_0$ 的定性变化规律（$w/b$ 增大则 $Z_0$ 下降）
+- [ ] 能用 Hammerstad 公式算出微带的 $\varepsilon_e$ 与 $Z_0$，并解释为什么 $1<\varepsilon_e<\varepsilon_r$
+- [ ] 能写出微带线尺寸选择的三条约束（高次模、加工精度、辐射与损耗）
+- [ ] 能说明耦合微带线奇模／偶模阻抗 $Z_{0o}$、$Z_{0e}$ 的定义，并写出它们与 $Z_0$ 及耦合系数的关系
+
+### 阶段五 · 网络分析法（第 5 章 + 专题 7、8，8 学时）
+
+- [ ] 能默写 $[Z]$、$[Y]$ 的定义式与开路／短路测量条件，并说清互易（$Z_{12}=Z_{21}$）与对称（$Z_{11}=Z_{22}$）的物理区别
+- [ ] 能默写 $[A]$ 的定义（含 $-I_2$ 约定）、四个元素的测量条件，以及约束 $AD-BC=1$
+- [ ] 能默写 $[S]$ 的定义 $\mathbf{b}=[S]\mathbf{a}$，并说明 $S_{ij}$ 的物理意义与测量条件
+- [ ] 能完成二端口的 $[S]\to[Z]\to[A]$ 相互转换（至少能熟练套用公式）
+- [ ] 能由 $[S]$ 判断网络是无耗、互易还是有耗，并写出对应的矩阵条件
+- [ ] 能完成两个 $[A]$ 矩阵的级联，以及参考面移动时 $S$ 参数的相位修正 $S'_{ij}=S_{ij}e^{-j(\theta_i+\theta_j)}$
+- [ ] 能默写"无耗网络 $[Z]^+=-[Z]$"的完整证明（从平均功率为零出发，含"$a$、$b$ 可独立取任意值"这一步）
+- [ ] 能默写 $[S]=([z]+[E])^{-1}([z]-[E])$ 的 $2\times2$ 展开，并证明 $z_{11}=z_{22}\Rightarrow S_{11}=S_{22}$
+
+### 阶段六 · 器件综合（第 6 章，6 学时）
+
+- [ ] 能区分匹配负载与短路负载的用途，并说明匹配负载为什么必须是宽带的
+- [ ] 能说出波导接头、同轴接头、转换接头各自的失配来源与改善措施
+- [ ] 能写出 E-T、H-T 接头的 $[S]$ 矩阵，并说明每个非零元素对应的物理通道
+- [ ] 能写出魔 T 的 $[S]$ 矩阵，并逐条验证它的四条性质（匹配、隔离、等分、同相／反相）
+- [ ] 能证明"三端口无耗互易网络不可能三个端口同时匹配"
+- [ ] 能完成 $\lambda/4$ 阻抗变换器的数值设计，并说明它的窄带缺点
+- [ ] 能说明螺钉调配器（单螺钉／双螺钉／三螺钉）的工作原理与各自的调配范围
+- [ ] 能说明阶梯阻抗变换器如何展宽带宽，并写出两节 $\lambda/4$ 变换器的设计思路
+
+> **【思考】**
+> 自检清单最有效的用法不是"读一遍"，而是**遮盖住答案逐条默写**。建议在每一阶段结束时，把该阶段的清单抄在一张卡片上，**只在完全写不出来的条目上做记号**，然后只复习有记号的条目。三轮之后，卡片上剩下的记号通常不超过 3 条。
+
+---
+
+## 六、高频考点与投入产出比
+
+复习时间永远是稀缺的。要最大化分数，必须回答两个问题：**哪些考点出现频率高？** **哪些考点学起来快？** 把这两件事画在一张图上，就得到下面的"考点投入产出矩阵"。
+
+<figure class="fig">
+<svg viewBox="0 0 1276 640" role="img" aria-label="高频考点难度与考频的投入产出矩阵图">
+  <style>
+    .qm-ax { font-size: 12px; font-weight: 700; fill: var(--ink); }
+    .qm-tk { font-size: 11px; fill: var(--ink-2); }
+    .qm-num { font-size: 10px; font-weight: 700; fill: var(--ink); }
+    .qm-lg { font-size: 10.5px; fill: var(--ink-2); }
+    .qm-lgh { font-size: 12px; font-weight: 700; fill: var(--ink); }
+    .qm-band { font-size: 12px; font-weight: 700; fill: var(--ink-2); }
+  </style>
+
+  <text x="30" y="26" font-size="14" font-weight="700" fill="var(--ink)">考点投入产出矩阵：横轴＝难度，纵轴＝考频／分值权重；左侧为"基础必拿区"，右侧为"拉分攻坚区"</text>
+
+  <rect x="90" y="70" width="463" height="490" fill="var(--brand)" fill-opacity=".06"/>
+  <rect x="553" y="70" width="277" height="490" fill="var(--warn)" fill-opacity=".06"/>
+  <text class="qm-band" x="106" y="90">基础必拿区（难度 ≤ ★★★）</text>
+  <text class="qm-band" x="569" y="90">拉分攻坚区（难度 ≥ ★★★★）</text>
+
+  <line x1="90" y1="560" x2="830" y2="560" stroke="var(--ink-2)" stroke-width="1.5"/>
+  <line x1="90" y1="70" x2="90" y2="560" stroke="var(--ink-2)" stroke-width="1.5"/>
+
+  <line x1="90" y1="462" x2="830" y2="462" stroke="var(--line)"/>
+  <line x1="90" y1="364" x2="830" y2="364" stroke="var(--line)"/>
+  <line x1="90" y1="266" x2="830" y2="266" stroke="var(--line)"/>
+  <line x1="90" y1="168" x2="830" y2="168" stroke="var(--line)"/>
+  <line x1="90" y1="70" x2="830" y2="70" stroke="var(--line)"/>
+  <line x1="275" y1="70" x2="275" y2="560" stroke="var(--line)"/>
+  <line x1="460" y1="70" x2="460" y2="560" stroke="var(--line)"/>
+  <line x1="645" y1="70" x2="645" y2="560" stroke="var(--line)"/>
+  <line x1="830" y1="70" x2="830" y2="560" stroke="var(--line)"/>
+
+  <line x1="90" y1="217" x2="830" y2="217" stroke="var(--brand)" stroke-width="1.4" stroke-dasharray="7 5"/>
+  <text class="qm-tk" x="98" y="212">高频线（考频权重 ≈ 7）：线上方必须优先拿下</text>
+
+  <text class="qm-tk" x="82" y="564" text-anchor="end">0</text>
+  <text class="qm-tk" x="82" y="466" text-anchor="end">2</text>
+  <text class="qm-tk" x="82" y="368" text-anchor="end">4</text>
+  <text class="qm-tk" x="82" y="270" text-anchor="end">6</text>
+  <text class="qm-tk" x="82" y="172" text-anchor="end">8</text>
+  <text class="qm-tk" x="82" y="74" text-anchor="end">10</text>
+  <text class="qm-ax" x="46" y="320" transform="rotate(-90 46 320)" text-anchor="middle">考频／分值权重</text>
+
+  <text class="qm-tk" x="90" y="582" text-anchor="middle">★</text>
+  <text class="qm-tk" x="275" y="582" text-anchor="middle">★★</text>
+  <text class="qm-tk" x="460" y="582" text-anchor="middle">★★★</text>
+  <text class="qm-tk" x="645" y="582" text-anchor="middle">★★★★</text>
+  <text class="qm-tk" x="830" y="582" text-anchor="middle">★★★★★</text>
+  <text class="qm-ax" x="460" y="606" text-anchor="middle">难度</text>
+
+  <circle cx="127" cy="389" r="11" fill="var(--ink-2)" fill-opacity=".85"/>
+  <text class="qm-num" x="127" y="393" text-anchor="middle">1</text>
+  <circle cx="238" cy="413" r="11" fill="var(--ink-2)" fill-opacity=".85"/>
+  <text class="qm-num" x="238" y="417" text-anchor="middle">2</text>
+  <circle cx="275" cy="291" r="11" fill="var(--brand)"/>
+  <text class="qm-num" x="275" y="295" text-anchor="middle">3</text>
+  <circle cx="460" cy="95" r="13" fill="var(--brand)"/>
+  <text class="qm-num" x="460" y="99" text-anchor="middle">4</text>
+  <circle cx="423" cy="315" r="11" fill="var(--brand)"/>
+  <text class="qm-num" x="423" y="319" text-anchor="middle">5</text>
+  <circle cx="609" cy="158" r="13" fill="var(--brand)"/>
+  <text class="qm-num" x="609" y="162" text-anchor="middle">6</text>
+  <circle cx="664" cy="168" r="13" fill="var(--brand)"/>
+  <text class="qm-num" x="664" y="172" text-anchor="middle">7</text>
+  <circle cx="497" cy="119" r="13" fill="var(--accent)"/>
+  <text class="qm-num" x="497" y="123" text-anchor="middle">8</text>
+  <circle cx="460" cy="242" r="11" fill="var(--accent)"/>
+  <text class="qm-num" x="460" y="246" text-anchor="middle">9</text>
+  <circle cx="608" cy="291" r="11" fill="var(--accent)"/>
+  <text class="qm-num" x="608" y="295" text-anchor="middle">10</text>
+  <circle cx="460" cy="315" r="11" fill="var(--accent)"/>
+  <text class="qm-num" x="460" y="319" text-anchor="middle">11</text>
+  <circle cx="516" cy="227" r="11" fill="var(--warn)"/>
+  <text class="qm-num" x="516" y="231" text-anchor="middle">12</text>
+  <circle cx="645" cy="144" r="13" fill="var(--warn)"/>
+  <text class="qm-num" x="645" y="148" text-anchor="middle">13</text>
+  <circle cx="682" cy="340" r="11" fill="var(--warn)"/>
+  <text class="qm-num" x="682" y="344" text-anchor="middle">14</text>
+  <circle cx="719" cy="315" r="11" fill="var(--warn)"/>
+  <text class="qm-num" x="719" y="319" text-anchor="middle">15</text>
+  <circle cx="645" cy="217" r="13" fill="var(--warn)"/>
+  <text class="qm-num" x="645" y="221" text-anchor="middle">16</text>
+
+  <text class="qm-lgh" x="870" y="80">图例（编号 · 考点 · 难度／考频 · 章节）</text>
+  <text class="qm-lg" x="870" y="106">① 微波频段与波长换算　难 ★ ／ 频 ★★★　第 1 章</text>
+  <text class="qm-lg" x="870" y="128">② 长线判据与趋肤效应　难 ★★ ／ 频 ★★★　第 1 章</text>
+  <text class="qm-lg" x="870" y="150">③ 电报方程、Z₀ 与 γ　难 ★★ ／ 频 ★★★★　第 2 章</text>
+  <text class="qm-lg" x="870" y="172">④ Zin、Γ、ρ 计算　难 ★★★ ／ 频 ★★★★★　第 2 章</text>
+  <text class="qm-lg" x="870" y="194">⑤ 行波／驻波／行驻波判别　难 ★★ ／ 频 ★★★★　第 2 章</text>
+  <text class="qm-lg" x="870" y="216">⑥ 史密斯圆图与应用　难 ★★★★ ／ 频 ★★★★　第 2 章</text>
+  <text class="qm-lg" x="870" y="238">⑦ λ/4 变换器与单枝节匹配　难 ★★★★ ／ 频 ★★★★　第 2 章</text>
+  <text class="qm-lg" x="870" y="260">⑧ λc、fc 与 TE₁₀ 主模　难 ★★★ ／ 频 ★★★★★　第 3 章</text>
+  <text class="qm-lg" x="870" y="282">⑨ λg、vp、vg 与波阻抗　难 ★★★ ／ 频 ★★★★　第 3 章</text>
+  <text class="qm-lg" x="870" y="304">⑩ 单模工作区设计　难 ★★★★ ／ 频 ★★★　第 3 章</text>
+  <text class="qm-lg" x="870" y="326">⑪ 同轴线／微带线 Z₀　难 ★★★ ／ 频 ★★★　第 4 章</text>
+  <text class="qm-lg" x="870" y="348">⑫ [Z]／[Y]／[A] 定义与转换　难 ★★★ ／ 频 ★★★★　第 5 章</text>
+  <text class="qm-lg" x="870" y="370">⑬ [S] 矩阵与性质判别　难 ★★★★ ／ 频 ★★★★★　第 5 章</text>
+  <text class="qm-lg" x="870" y="392">⑭ 参考面移动与级联　难 ★★★★ ／ 频 ★★★　第 5 章</text>
+  <text class="qm-lg" x="870" y="414">⑮ 无耗网络 [Z] 矩阵证明　难 ★★★★ ／ 频 ★★★　第 7 章</text>
+  <text class="qm-lg" x="870" y="436">⑯ E-T／H-T／魔 T 的 [S]　难 ★★★★ ／ 频 ★★★★　第 6 章</text>
+
+  <rect x="866" y="456" width="356" height="164" rx="12" fill="var(--brand)" fill-opacity=".08" stroke="var(--brand)"/>
+  <text class="qm-lgh" x="882" y="480">结论：优先投入这 8 项</text>
+  <text class="qm-lg" x="882" y="504">第一梯队（最低投入、最高回报）：</text>
+  <text class="qm-lg" x="882" y="524">　④ Zin、Γ、ρ 计算　⑧ λc、fc 与 TE₁₀</text>
+  <text class="qm-lg" x="882" y="544">　⑬ [S] 矩阵与性质判别</text>
+  <text class="qm-lg" x="882" y="566">第二梯队（难度中等、分值稳定）：</text>
+  <text class="qm-lg" x="882" y="586">　③ 电报方程与 Z₀　⑨ λg、vp、vg　⑫ [Z]/[Y]/[A]</text>
+  <text class="qm-lg" x="882" y="606">第三梯队（难度高但必考，需提前动手）：⑥ 圆图　⑦ 匹配　⑯ 器件 [S]</text>
+</svg>
+<figcaption>图 0-5　考点投入产出矩阵：横轴为难度（★～★★★★★），纵轴为考频／分值权重（0～10）；左上角为"低难度、高频次"的必拿分，右上方是"高难度、高频次"的拉分题</figcaption>
+</figure>
+
+### 6.1 考点投入产出比一览表
+
+| 考点 | 出现频率 | 平均分值 | 建议投入时间 | 投入产出比 | 章节 |
+|---|---|---|---|---|---|
+| $Z_{\mathrm{in}}$、$\Gamma$、$\rho$ 的正反算 | 每卷必考 | 12～18 分 | 6 h | ★★★★★ | 第 2 章 |
+| $\lambda_c$、$f_c$ 计算与 $TE_{10}$ 主模 | 每卷必考 | 10～15 分 | 5 h | ★★★★★ | 第 3 章 |
+| $[S]$ 矩阵定义、性质判别与反解 | 每卷必考 | 10～15 分 | 5 h | ★★★★★ | 第 5 章 |
+| 电报方程、$Z_0$、$\gamma$ 的推导与计算 | 高频 | 6～10 分 | 3 h | ★★★★ | 第 2 章 |
+| 行波／驻波／行驻波判别与波腹波节 | 高频 | 5～8 分 | 3 h | ★★★★ | 第 2 章 |
+| $\lambda_g$、$v_p$、$v_g$、波阻抗计算 | 高频 | 6～10 分 | 3 h | ★★★★ | 第 3 章 |
+| $[Z]$、$[Y]$、$[A]$ 定义与相互转换 | 高频 | 6～10 分 | 3 h | ★★★★ | 第 5 章 |
+| 史密斯圆图读图与作图 | 高频 | 8～12 分 | 5 h | ★★★★ | 第 2 章 |
+| 匹配设计（$\lambda/4$ 变换器、单枝节） | 高频 | 8～12 分 | 5 h | ★★★★ | 第 2 章 |
+| E-T／H-T／魔 T 的 $[S]$ 与性质 | 高频 | 6～10 分 | 3 h | ★★★★ | 第 6 章 |
+| 单模工作区与波导尺寸选择 | 中频 | 5～8 分 | 3 h | ★★★ | 第 3 章 |
+| 同轴线 $Z_0$ 与 $b/a$ 最佳值 | 中频 | 4～7 分 | 2 h | ★★★ | 第 4 章 |
+| 微带线 $\varepsilon_e$、$Z_0$ 与尺寸选择 | 中频 | 4～7 分 | 2 h | ★★★ | 第 4 章 |
+| 无耗网络 $[Z]^+=-[Z]$ 的证明 | 中频 | 6～10 分 | 3 h | ★★★ | 第 7 章 |
+| 网络对称性 $\Rightarrow S_{11}=S_{22}$ 的证明 | 中频 | 6～10 分 | 3 h | ★★★ | 第 8 章 |
+| 参考面移动的相位修正 | 中低频 | 4～6 分 | 2 h | ★★ | 第 5 章 |
+| 三端口不能同时匹配的证明 | 中低频 | 5～8 分 | 2 h | ★★ | 第 6 章 |
+| 波导／同轴线衰减计算 | 低频 | 3～5 分 | 2 h | ★ | 第 3、4 章 |
+| 微波频段、五大特点、发展里程碑 | 每卷 1～2 题 | 4～8 分 | 1 h | ★★★★ | 第 1 章 |
+| 趋肤效应与表面电阻 | 低频 | 3～5 分 | 1 h | ★★★ | 第 1 章 |
+
+### 6.2 明确的优先投入结论
+
+把复习时间按下面的顺序分配，可以在同样的时间里拿到最多分数：
+
+1. **第一优先：第 2 章的 $Z_{\mathrm{in}}$、$\Gamma$、$\rho$、史密斯圆图与阻抗匹配。**
+   理由是这四件事**共用同一套底层公式**（$\Gamma$ 与 $\bar z$ 的互换），学会一个就带动其余三个；而它们在试卷上通常以"一道大题 + 两道小题"的形式出现，合计分值常常超过 25 分。**这是全书投入产出比最高的一块，没有之一。**
+2. **第一优先：第 3 章的 $\lambda_c$、$f_c$ 与 $TE_{10}$ 主模。**
+   公式形式固定（$\lambda_c=2a/m$ 一类），数值计算步骤短，判分点明确（写对公式给一半分）。与之绑定的"单模工作区设计"更是"送分型"的设计题：只要记住 $TE_{10}$ 是主模、$TE_{20}$ 是第一个高次模，就能写出 $a$ 的允许区间。
+3. **第一优先：第 5 章的 $[S]$ 矩阵。**
+   定义式 $\mathbf{b}=[S]\mathbf{a}$ 只有一行，性质判据只有三条（幺正↔无耗、对称↔互易、$S_{11}=S_{22}$↔结构对称），却能支撑起"判性质、反解元素、算级联、移参考面"四类题型。**记住三条判据，等于拿下第 5 章的大半。**
+4. **第二优先（时间充裕才展开）：第 2 章的圆图与匹配、第 6 章的器件 $[S]$、第 7、8 章的两个证明。**
+   这几项难度较高，但分值稳定且题型固定。若第一优先的三块已经扎实，投入这四项的边际收益仍然很高。
+5. **可以压缩的：第 3、4 章的衰减计算、第 1 章的史实性内容、第 4 章的耦合线细节。**
+   这些内容或者分值低，或者属于"记住结论即可"的类型。
+
+> **【考点】**
+> 把上面的结论浓缩成一句话：**"第 2 章三件套（$Z_{\mathrm{in}}$、$\Gamma$、$\rho$）＋圆图匹配，第 3 章的 $\lambda_c$ 与 $TE_{10}$，第 5 章的 $[S]$——这三块到手，及格线以上；这三块之外的全拿稳，优秀线以上。"**
+
+---
+
+## 七、常见学习误区
+
+下面 8 条是历年学习中重复出现、且**在考场上会直接扣分**的典型误区。每一条都给出了"正确说法"与"为什么会错"。
+
+> **【易错点】**
+> **误区 1：把微波当成一个频率区间来背，忘掉"电磁波"这个前提。**
+> 微波的定义是"**频率在 $300\ \mathrm{MHz}\sim3000\ \mathrm{GHz}$、真空中波长在 $0.1\ \mathrm{mm}\sim1\ \mathrm{m}$ 的电磁波**"。区分"是不是微波"，必须先确认"是不是电磁波"，再看波长落不落在区间里。
+> **正确说法**：只给波长不能判定。$17\ \mathrm{cm}$ 的声波与 $1.76\ \mathrm{GHz}$ 的电磁波波长相近，但前者不是微波。判断前必须先知道波速。
+
+> **【易错点】**
+> **误区 2：把"长线／短线"理解成几何长度。**
+> 长线判据是 $l/\lambda\gtrsim0.1$，判据里出现的是**电长度**，而不是米或厘米。
+> **正确说法**：同一根 $0.5\ \mathrm{m}$ 的导线，在 $50\ \mathrm{Hz}$ 下是短线（$l/\lambda\approx8\times10^{-8}$），在 $5\ \mathrm{GHz}$ 下是长线（$l/\lambda\approx8.3$）。结论相反的原因只有一个——波长变了。
+
+> **【易错点】**
+> **误区 3：把 $\lambda$、$\lambda_c$、$\lambda_g$ 三个"波长"混用。**
+> 三者的含义完全不同：$\lambda$ 是**同一频率在无界介质中的波长**（$=v/f$）；$\lambda_c$ 是**截止波长**（只由截面尺寸与模式决定，与频率无关）；$\lambda_g$ 是**波导波长**（沿纵向的相波长，且 $\lambda_g>\lambda>\lambda_c$ 的关系不成立——正确的是 $\lambda_g>\lambda$，而 $\lambda$ 与 $\lambda_c$ 的大小关系决定该模式能否传输）。
+> **正确说法**：$\lambda>\lambda_c$（即 $f<f_c$）时波被截止，$\beta$ 变成纯虚数，$\lambda_g$ 无定义；只有 $\lambda<\lambda_c$ 时才有 $\lambda_g=\lambda/\sqrt{1-(\lambda/\lambda_c)^{2}}>\lambda$。
+
+> **【易错点】**
+> **误区 4：把 $\rho$ 与 $|\Gamma|$ 的换算公式记反，或认为"驻波比越小，损耗一定越小"。**
+> 正确关系是 $\rho=\dfrac{1+|\Gamma|}{1-|\Gamma|}$、$|\Gamma|=\dfrac{\rho-1}{\rho+1}$。检验方法：$|\Gamma|=0$ 时应有 $\rho=1$，$|\Gamma|\to1$ 时应有 $\rho\to\infty$。**只要代入这两个端点，公式就不会记反。**
+> 另一半错误在物理上：**理想无耗线上的纯驻波并不消耗功率**，它只是把能量在电场与磁场之间来回交换。$\rho$ 变大真正带来的是"**功率容量下降**"与"**线上损耗增大（因为 $\alpha$ 项乘上了 $\frac{1+|\Gamma|^{2}}{1-|\Gamma|^{2}}$）**"这两件事。
+> **正确说法**：$\rho\to\infty$ 时线上仍然可以传输功率（行驻波），只是功率容量与效率同时恶化。
+
+> **【易错点】**
+> **误区 5：在空心金属波导里直接套用电压、电流与"$Z_0=50\ \Omega$"的输入阻抗公式。**
+> 矩形波导是**单导体**结构，不存在 TEM 模，横截面上的"电压""电流"没有唯一定义，因此严格说没有 $Z_0$。
+> **正确说法**：处理波导匹配问题时，要么把 **波阻抗** $\eta_{TE}$（或等效阻抗）当作"特性阻抗"代入路分析的公式，要么完全改用网络参数（$[S]$、$[A]$）描述。凡是题目要求算"波导内的 $Z_{\mathrm{in}}$"，都需要先明确用哪一种等效阻抗，并说明其定义方式。
+
+> **【易错点】**
+> **误区 6：把"无耗"与"互易"的判据混在一起，看到矩阵满足一条就误判另一条。**
+> 这两条是**互相独立的约束**：
+> - 无耗：$[Z]^+=-[Z]$（反厄米）、$[S]^+[S]=[I]$（幺正）；
+> - 互易：$[Z]=[Z]^{T}$、$[S]=[S]^{T}$（转置等于自身）。
+>
+> **正确说法**：存在"无耗但非互易"的网络（含铁氧体的环行器、隔离器）；也存在"互易但有耗"的网络（电阻衰减器）。**判断时必须分别检验两条。** 顺带注意：$[S]$ 的互易条件是 $S_{ij}=S_{ji}$，**不是** $S_{ij}=S_{ji}^{*}$（后者是无耗条件的组成部分）。
+
+> **【易错点】**
+> **误区 7：把"结构对称"当成"互易"，或反过来。**
+> - **互易**说的是"激励与响应可以互换"，与结构是否有几何对称面无关；
+> - **对称（结构对称）**说的是"从两个端口看进去的结构一样"，即 $Z_{11}=Z_{22}$，对 $[S]$ 就是 $S_{11}=S_{22}$。
+>
+> 一个明显不对称的结构（例如一段渐变线）照样可以互易；一个完全对称的结构也可能因为含铁氧体而**不**互易。
+> **正确说法**：互易 ⇒ 参数矩阵转置不变；结构对称 ⇒ 对角元素相等。两者是不同的性质，专题二专门讲它们之间的关系。
+
+> **【易错点】**
+> **误区 8：用低频电路的直觉估尺寸，以为"越小越好"，忽略高次模与加工公差。**
+> 微波结构尺寸受**两端夹逼**：太小会被高次模截止条件或加工公差限制（微带的线宽精度、同轴线的内导体支撑），太大则会激发高次模并产生辐射与高次模谐振。
+> **正确说法**：选尺寸要同时满足三条——**只传主模**（工作频率在主模与第一个高次模的截止频率之间）、**能加工**（最小线宽与最小间隙在工艺能力内）、**损耗与功率容量可接受**。第 3、4 章的"尺寸选择"表格正是这三条约束的工程化总结。
+
+> **【思考】**
+> 上面 8 条误区有一个共同特征：**它们都源于"把公式当公式背，而没弄清公式成立的前提"。** 微波技术里几乎没有"无条件成立"的公式——$Z_{\mathrm{in}}$ 公式要求 TEM 波与无耗线，$\eta_{TE}$ 只对 TE 模有效，$[Z]^+=-[Z]$ 要求无耗。养成"用公式前先写前提"的习惯，能避免绝大多数错误。
+
+---
+
+## 八、如何使用本网站
+
+这个学习指南把课程拆成"**章节正文 — 公式速查 — 考点总纲 — 交互工具 — 综合自测**"五个层次。各页面的用途如下：
+
+| 页面 | 用途 | 什么时候用 |
+|---|---|---|
+| **首页 · 学习总览** | 课程全貌：6 章 + 2 专题的结构、学时分配、核心公式一览 | 学习开始时看一次，建立全局印象 |
+| **学习路线图**（本页） | 学习顺序、依赖关系、时间分配、自检清单、考点投入产出比 | 每个阶段开始前看一次，确定本阶段目标 |
+| **章节正文页**（第 1～6 章 + 专题一、二） | 每章的完整讲解：核心概念、公式推导、例题、SVG 图形、考点清单、自测题 | 学习的主体时间花在这里 |
+| **公式速查手册** | 全书核心公式的分类汇总（传输线、波导、传输线类型、网络矩阵、器件） | 做题卡住时查公式；考前通读一遍 |
+| **考点总纲** | 按题型与章节整理的考点清单、难度星级与分值估计 | 复习阶段确定"哪里还得补" |
+| **史密斯圆图交互工具** | 可拖动的圆图：实时显示归一化阻抗、反射系数、驻波比与导纳 | 学第 2 章圆图时反复操作；做匹配题时验证结果 |
+| **综合自测题** | 覆盖 6 章 + 2 专题的模拟题与详解，含一套完整模拟卷 | 每个阶段结束后限时自测；考前全真演练 |
+| **课件与视频资源** | 与章节对应的视频讲解与参考资料 | 某一节读不懂时换一种讲法听一遍 |
+
+### 8.1 推荐的使用顺序
+
+**第一步：读章节页（占全部时间的 60%～65%）。**
+按第 1 章的正文开始，逐章推进。读的时候遵守三条纪律：
+①**每个公式都先自己推一遍**——尤其是电报方程、$Z_{\mathrm{in}}(z)$、$\Gamma(z)$、$[S]$ 与 $[Z]$ 的转换；
+②**每道例题先遮住解答自己做**，做完再对照，重点看"思路"那一栏是否与自己一致；
+③**每读完一节立刻看该节的考点清单**，把"难度 ★★★★"以上的条目记下来。
+
+**第二步：用公式速查手册做"闭卷回忆"（占 15%～20%）。**
+一章读完后，不要立刻翻回正文，而是打开公式速查手册，**只看公式名称，尝试默写表达式与适用条件**。凡是写不出来的，再回正文查。这个动作比重复阅读有效得多。
+
+**第三步：做综合自测题（占 20%～25%）。**
+按"**先限时闭卷做，再逐题对详解**"的方式。每章的自测题控制在 40～60 分钟内完成；模拟卷严格按 180 分钟计时。对完答案后，把错题按"知识性错误（公式记错）"与"操作性错误（算错、抄错）"分类，前者回正文，后者靠练。
+
+**第四步（穿插进行）：用交互工具与视频补短板。**
+史密斯圆图是唯一"必须动手"的工具——建议在学第 2 章时至少操作 30 分钟，把"点 → $\Gamma$ → $\rho$ → 导纳"的相互转换变成肌肉记忆。若某一节的推导读了两遍仍然不通，再去找对应视频换一种讲法。
+
+> **【小结】**
+> **读 → 查 → 测**，三步一循环：
+> - **读**（章节正文）：理解物理图像与推导过程；
+> - **查**（公式速查）：把知识压缩成可默写的形式；
+> - **测**（综合自测）：暴露真实的掌握程度。
+>
+> 一个循环对应一个阶段。六个阶段走完，加上一套限时模拟卷，这门课就基本拿下了。
+
+> **【考点】**
+> 最后再强调一次路线图的结论：**整门课的重心在第 2 章。** 第 2 章的 $Z_{\mathrm{in}}$、$\Gamma$、$\rho$ 与史密斯圆图、匹配设计，是全书唯一"学会了就到处能用"的技能。如果时间只够复习一章，选第 2 章；如果只够复习两块内容，选第 2 章的反射与阻抗换算 + 第 3 章的 $\lambda_c$ 与 $TE_{10}$；如果只够复习一个工具，选史密斯圆图。
+

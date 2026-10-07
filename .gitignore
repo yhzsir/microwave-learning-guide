@@ -1,0 +1,7 @@
+﻿# 构建产物（HTML 由 tools/build.ps1 生成，但因托管 GitHub Pages 而纳入版本库）
+# 仅忽略临时与系统文件
+Thumbs.db
+.DS_Store
+*.log
+*.tmp
+_build_*/

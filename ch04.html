@@ -1,0 +1,2003 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>微波传输线（同轴线、带状线、微带线与光纤） · 微波技术基础学习指南</title>
+<meta name="description" content="同轴线、带状线、微带线、耦合微带线的场分布、特性阻抗、衰减与尺寸设计">
+<meta name="author" content="微波技术基础学习指南">
+<meta property="og:type" content="website">
+<meta property="og:title" content="微波传输线（同轴线、带状线、微带线与光纤） · 微波技术基础学习指南">
+<meta property="og:description" content="同轴线、带状线、微带线、耦合微带线的场分布、特性阻抗、衰减与尺寸设计">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6fdb'/%3E%3Cpath d='M4 21c3-8 5-8 8 0s5 8 8 0 5-8 8 0' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>
+(function(){try{var s=localStorage.getItem('mwguide-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-btn" id="menuBtn" aria-label="打开目录">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+  </button>
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">μ</span>
+    <span class="brand-text">
+      <span class="brand-title">微波技术基础</span>
+      <span class="brand-sub">LEARNING GUIDE</span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="search-wrap">
+    <svg class="sicon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="search" type="search" placeholder="搜索知识点、公式、例题…  (Ctrl K)" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="切换主题">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <span>深色</span>
+  </button>
+</header><div class="backdrop" id="backdrop"></div><aside class="sidebar" id="sidebar" aria-label="站点导航"><nav class="sidebar-nav" id="sidebarNav"><a class="nav-link" href="index.html"><span class="nav-num">00</span><span class="nav-label">首页 · 学习总览</span></a><a class="nav-link" href="roadmap.html"><span class="nav-num">01</span><span class="nav-label">学习路线图</span></a><a class="nav-link" href="formulas.html"><span class="nav-num">02</span><span class="nav-label">公式速查手册</span></a><a class="nav-link" href="exam.html"><span class="nav-num">03</span><span class="nav-label">考点总纲</span></a><a class="nav-link" href="smith.html"><span class="nav-num">04</span><span class="nav-label">史密斯圆图交互工具</span></a><a class="nav-link" href="quiz.html"><span class="nav-num">05</span><span class="nav-label">综合自测题</span></a><a class="nav-link" href="resources.html"><span class="nav-num">06</span><span class="nav-label">课件与视频资源</span></a><div class="nav-group"><div class="nav-heading">章节目录</div><a class="nav-link" href="ch01.html"><span class="nav-num">1</span><span class="nav-label">绪论</span></a><a class="nav-link" href="ch02.html"><span class="nav-num">2</span><span class="nav-label">传输线理论</span></a><a class="nav-link" href="ch03.html"><span class="nav-num">3</span><span class="nav-label">金属波导</span></a><a class="nav-link active" href="ch04.html"><span class="nav-num">4</span><span class="nav-label">传输线类型</span></a><a class="nav-link" href="ch05.html"><span class="nav-num">5</span><span class="nav-label">微波网络</span></a><a class="nav-link" href="ch06.html"><span class="nav-num">6</span><span class="nav-label">无源器件</span></a><a class="nav-link" href="ch07.html"><span class="nav-num">7</span><span class="nav-label">专题·Z 矩阵</span></a><a class="nav-link" href="ch08.html"><span class="nav-num">8</span><span class="nav-label">专题·S 矩阵</span></a></div></nav></aside><div class="shell"><main class="article loading" id="article"><div class="spinner" role="status" aria-label="加载中"></div><div id="chapterShell" hidden><div class="chapter-eyebrow" id="eyebrow">第 4 章</div><div class="md" id="md"></div><nav class="pager" id="pager" aria-label="章节导航"></nav></div></main><aside class="toc" id="toc"><div class="toc-heading">本页目录</div><div class="toc-list" id="tocList"></div></aside></div><footer class="footer">
+  <div>《微波技术基础》在线学习指南 · 共 6 章 + 2 个专题推导</div>
+  <div>
+    <a href="../formulas.html">公式速查</a> ·
+    <a href="../exam.html">考点总纲</a> ·
+    <a href="../resources.html">课件资源</a>
+  </div>
+</footer>
+<script src="../assets/js/search-index.js"></script>
+<script id="chapterCfg" type="application/json">{"n":4,"file":"ch04","src":"content/ch04.md","title":"微波传输线（同轴线、带状线、微带线与光纤）"}</script>
+<script id="preContent" type="text/plain">---
+chapter: 4
+title: 微波传输线（同轴线、带状线、微带线与光纤）
+short: 传输线类型
+desc: 同轴线、带状线、微带线、耦合微带线的场分布、特性阻抗、衰减与尺寸设计
+minutes: 220
+---
+
+# 第四章 微波传输线（同轴线、带状线、微带线与光纤）
+
+## 本章考点地图
+
+本章回答一个非常实际的问题：**微波信号究竟"走"在什么样的线上？** 前两章我们已经掌握了两种极端的方法——第二章用"路"的方法分析均匀传输线（TEM 波，$L$、$C$ 分布参数），第三章用"场"的方法分析规则金属波导（TE、TM 波，存在截止频率）。本章站在这两者之间：**用"路"的方法分析以 TEM 或准 TEM 模式工作的平面传输线**，并把结论直接落到"给定特性阻抗和频率，如何确定几何尺寸"这类设计问题上。
+
+| 考点 | 核心内容 | 常见题型 | 难度 | 出现频率 |
+|---|---|---|---|---|
+| 传输线家族与选型 | 单导体/双导体/介质波导的区别、TEM 与 TE/TM、有无截止频率 | 选择、填空、简答 | ★★ | 高 |
+| 同轴线场分布与 $Z_0$ | $E_r$、$H_\varphi$ 的静态解、$Z_0=\frac{60}{\sqrt{\varepsilon_r}}\ln\frac{b}{a}$ | 计算、推导 | ★★★ | 极高 |
+| 同轴线三个最佳比值 | 耐压最高 $b/a=2.72$、功率最大 $b/a=1.65$、衰减最小 $b/a=3.59$ | 推导、比较 | ★★★★ | 极高 |
+| 同轴线单模条件 | $\lambda_{\min}>\pi(a+b)$，高次模 $\mathrm{TE}_{11}$ 限制上限频率 | 设计计算 | ★★★★ | 极高 |
+| 同轴线衰减 | $\alpha_c\propto R_s$、$\alpha_c\propto\sqrt{f}$、$\alpha_d\propto\tan\delta$ | 计算、量级估算 | ★★★ | 中 |
+| 带状线 | 均匀介质填充、$v_p=c/\sqrt{\varepsilon_r}$、椭圆积分解与工程近似式 | 计算、查曲线 | ★★★ | 高 |
+| 微带线准 TEM | $\varepsilon_e$ 的定义、$1<\varepsilon_e<\varepsilon_r$、$\lambda_g=\lambda_0/\sqrt{\varepsilon_e}$ | 填空、计算 | ★★★★ | 极高 |
+| 微带线 $Z_0$ | 两段闭式解（$w/h\le1$ 与 $w/h>1$）、正反向设计 | 设计计算 | ★★★★ | 极高 |
+| 微带线尺寸选择 | 表面波 $\mathrm{TE}_1$、$\mathrm{TM}_0$ 与波导模式的抑制 | 计算、判断 | ★★★ | 高 |
+| 耦合微带线奇偶模 | 磁壁/电壁、$C_e$、$C_o$、$Z_{0e}>Z_{0o}$ 的严格论证 | 推导、判断 | ★★★★★ | 高 |
+| 介质波导与光纤 | 全反射约束、归一化频率 $V$、单模条件 $V<2.405$ | 计算、简答 | ★★★ | 中 |
+
+> **【考点】**
+> 本章的"性价比"最高的三个得分点是：
+> 1. **同轴线的三个最佳比值**（$1.65$、$2.72$、$3.59$）——必须会推、会算、会解释；
+> 2. **微带线 $Z_0$ 与 $\varepsilon_e$ 的两段闭式解**——正算（已知 $w/h$ 求 $Z_0$）与反算（已知 $Z_0$ 求 $w/h$）都要熟练；
+> 3. **耦合微带线"偶模阻抗大于奇模阻抗"的物理论证**——这是最容易被"公式记忆"带错方向的判断题。
+
+---
+
+## 4.1 概述
+
+### 4.1.1 从"波导"到"集成传输线"
+
+前两章的两条技术路线可以这样概括：
+
+- **均匀传输线（第二类分析对象）**：以平行双导线、同轴线为代表，是**双导体**结构，主模为 **TEM 波**（$E_z=H_z=0$），可以用"路"的方法——把场的问题化归为分布电感 $L$、分布电容 $C$、特性阻抗 $Z_0=\sqrt{L/C}$、相速 $v_p=1/\sqrt{LC}$；
+- **规则金属波导（第三类分析对象）**：以矩形波导、圆波导为代表，是**单导体**结构（靠金属壁与管内空间构成），不能传输 TEM 波，只能传输 **TE 波或 TM 波**，必须用"场"的方法（求解满足边界条件的麦克斯韦方程），并且**每一种模式都存在截止频率 $f_c$**，低于 $f_c$ 时电磁波迅速衰减而不能传播。
+
+那么实际系统中我们究竟选什么？这取决于系统的**成本、体积、重量、可靠性和可集成性**。
+
+> **【核心概念】**
+> 矩形波导的优点是**损耗小、结构牢固、功率容量大**；缺点是**笨重、成本高、工作频带窄（单模工作时带宽不到一个倍频程）、难以与集成电路兼容**。
+> 现代微波系统（雷达、通信、测量设备）的新要求是：**体积 $\downarrow$、重量 $\downarrow$、可靠性 $\uparrow$、成本 $\downarrow$，并且能与印制电路板（PCB）和集成电路直接集成**。
+> 这两组要求之间的矛盾，催生了本章的主角——**微波集成传输线**（同轴线、带状线、微带线、耦合微带线、槽线、共面波导，以及频率进一步升高后的介质波导与光纤）。
+
+从方法的连续性上看，三章的关系可以用一张表说清楚：
+
+| 章节 | 分析对象 | 主要传输模式 | 分析方法 |
+|---|---|---|---|
+| 第二章 | 均匀传输线 | TEM | 路分析法（$L$、$C$、$Z_0$、$\Gamma$、$\rho$） |
+| 第三章 | 规则金属波导 | TE、TM | 场分析法（波动方程 + 边界条件） |
+| 第四章 | 微波集成传输线 | TEM、准 TEM | 路分析法为主，场分析法为辅 |
+
+### 4.1.2 传输线家族图谱
+
+微波传输线的家族可以按"**电磁波被什么约束**"来分类，这样分类的好处是：约束方式直接决定了它能传什么模式、有没有截止频率、工作频带有多宽。
+
+<figure class="fig">
+<svg viewBox="0 0 720 330" role="img" aria-label="微波传输线家族图谱">
+  <defs>
+    <marker id="ch4ar1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="var(--line)"/>
+    </marker>
+  </defs>
+  <rect x="270" y="8" width="180" height="32" rx="6" fill="none" stroke="var(--brand)" stroke-width="1.6"/>
+  <text x="360" y="29" text-anchor="middle" font-size="14" fill="var(--ink)">微波传输线</text>
+
+  <path d="M360,40 L360,56" stroke="var(--line)" stroke-width="1.2"/>
+  <path d="M90,56 L630,56" stroke="var(--line)" stroke-width="1.2"/>
+  <path d="M90,56 L90,72" stroke="var(--line)" stroke-width="1.2" marker-end="url(#ch4ar1)"/>
+  <path d="M270,56 L270,72" stroke="var(--line)" stroke-width="1.2" marker-end="url(#ch4ar1)"/>
+  <path d="M460,56 L460,72" stroke="var(--line)" stroke-width="1.2" marker-end="url(#ch4ar1)"/>
+  <path d="M630,56 L630,72" stroke="var(--line)" stroke-width="1.2" marker-end="url(#ch4ar1)"/>
+
+  <rect x="20" y="74" width="140" height="30" rx="5" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+  <text x="90" y="94" text-anchor="middle" font-size="12.5" fill="var(--ink)">双导体传输线</text>
+  <rect x="180" y="74" width="180" height="30" rx="5" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+  <text x="270" y="94" text-anchor="middle" font-size="12.5" fill="var(--ink)">平面传输线</text>
+  <rect x="380" y="74" width="160" height="30" rx="5" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
+  <text x="460" y="94" text-anchor="middle" font-size="12.5" fill="var(--ink)">介质波导</text>
+  <rect x="560" y="74" width="140" height="30" rx="5" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+  <text x="630" y="94" text-anchor="middle" font-size="12.5" fill="var(--ink)">金属波导</text>
+
+  <path d="M90,104 L90,122" stroke="var(--line)" stroke-width="1"/>
+  <rect x="20" y="124" width="140" height="26" rx="4" fill="none" stroke="var(--line)"/>
+  <text x="90" y="141" text-anchor="middle" font-size="12" fill="var(--ink-2)">平行双导线</text>
+  <rect x="20" y="156" width="140" height="26" rx="4" fill="none" stroke="var(--line)"/>
+  <text x="90" y="173" text-anchor="middle" font-size="12" fill="var(--ink-2)">同轴线</text>
+  <text x="90" y="200" text-anchor="middle" font-size="11.5" fill="var(--accent)">TEM，无 fc</text>
+
+  <path d="M270,104 L270,122" stroke="var(--line)" stroke-width="1"/>
+  <rect x="180" y="124" width="180" height="24" rx="4" fill="none" stroke="var(--line)"/>
+  <text x="270" y="140" text-anchor="middle" font-size="12" fill="var(--ink-2)">带状线 stripline</text>
+  <rect x="180" y="152" width="180" height="24" rx="4" fill="none" stroke="var(--line)"/>
+  <text x="270" y="168" text-anchor="middle" font-size="12" fill="var(--ink-2)">微带线 microstrip</text>
+  <rect x="180" y="180" width="180" height="24" rx="4" fill="none" stroke="var(--line)"/>
+  <text x="270" y="196" text-anchor="middle" font-size="12" fill="var(--ink-2)">槽线 slotline</text>
+  <rect x="180" y="208" width="180" height="24" rx="4" fill="none" stroke="var(--line)"/>
+  <text x="270" y="224" text-anchor="middle" font-size="12" fill="var(--ink-2)">共面波导 CPW</text>
+  <text x="270" y="252" text-anchor="middle" font-size="11.5" fill="var(--accent)">TEM／准 TEM，无 fc</text>
+
+  <path d="M460,104 L460,122" stroke="var(--line)" stroke-width="1"/>
+  <rect x="380" y="124" width="160" height="26" rx="4" fill="none" stroke="var(--line)"/>
+  <text x="460" y="141" text-anchor="middle" font-size="12" fill="var(--ink-2)">介质棒波导</text>
+  <rect x="380" y="156" width="160" height="26" rx="4" fill="none" stroke="var(--line)"/>
+  <text x="460" y="173" text-anchor="middle" font-size="12" fill="var(--ink-2)">光纤 optical fiber</text>
+  <text x="460" y="200" text-anchor="middle" font-size="11.5" fill="var(--accent)">混合模，主模无 fc</text>
+
+  <path d="M630,104 L630,122" stroke="var(--line)" stroke-width="1"/>
+  <rect x="560" y="124" width="140" height="26" rx="4" fill="none" stroke="var(--line)"/>
+  <text x="630" y="141" text-anchor="middle" font-size="12" fill="var(--ink-2)">矩形波导</text>
+  <rect x="560" y="156" width="140" height="26" rx="4" fill="none" stroke="var(--line)"/>
+  <text x="630" y="173" text-anchor="middle" font-size="12" fill="var(--ink-2)">圆波导</text>
+  <text x="630" y="200" text-anchor="middle" font-size="11.5" fill="var(--warn)">TE／TM，有 fc</text>
+
+  <path d="M20,272 L700,272" stroke="var(--line)" stroke-dasharray="4 4" stroke-width="1"/>
+  <text x="20" y="292" font-size="11.5" fill="var(--ink-2)">频率升高 → 尺寸变小 → 加工困难 → 改用介质波导／光纤</text>
+  <text x="20" y="312" font-size="11.5" fill="var(--ink-2)">频率适中、要求低损耗大功率 → 金属波导；要求小型化可集成 → 平面传输线</text>
+</svg>
+<figcaption>图 4-1　微波传输线家族图谱与选型思路</figcaption>
+</figure>
+
+### 4.1.3 各传输线的综合对比
+
+选型时必须比较的维度有八个：**是否 TEM、有无截止频率、带宽、损耗、功率容量、体积与成本、适合频段、是否易于集成**。下面这张表是本章的骨架，请务必记住其中每一行。
+
+| 对比项 | 同轴线 | 带状线 | 微带线 | 矩形波导 | 光纤 |
+|---|---|---|---|---|---|
+| 导体结构 | 内导体 + 外导体 | 中心导带 + 上下接地板 | 导带 + 单侧接地板 | 单导体金属管 | 无金属，纤芯 + 包层 |
+| 主模 | TEM | 准 TEM（严格为 TEM） | 准 TEM | $\mathrm{TE}_{10}$ | $\mathrm{HE}_{11}$ |
+| 截止频率 | $f_c=0$ | $f_c=0$ | $f_c=0$ | $f_c\ne0$ | 主模 $f_c=0$ |
+| 工作带宽 | 很宽（＜数十 GHz 受高次模限制） | 宽 | 宽 | 窄（单模约 $1.3\!:\!1$） | 极宽（$>100\ \mathrm{THz}$ 潜在） |
+| 损耗 | 中等（$\alpha\propto\sqrt{f}$） | 中等 | 较大（辐射 + 介质） | 最小 | 极小（$0.2\ \mathrm{dB/km}$） |
+| 功率容量 | 大 | 中 | 小 | 最大 | 很大（但受非线性限制） |
+| 体积／成本 | 较大／中 | 小／低 | 最小／最低 | 大／高 | 很小／低 |
+| 适合频段 | DC～40 GHz | DC～20 GHz | DC～60 GHz（色散限制） | 1～300 GHz | 约 $200\ \mathrm{THz}$ |
+| 易集成性 | 需接头转换 | 好 | 最好（平面工艺） | 差 | 好 |
+
+> **【核心概念】**
+> 平面传输线（带状线、微带线、槽线、共面波导）之所以成为现代微波毫米波系统的主流，根本原因是它们可以用**平面工艺**（光刻、溅射、蚀刻）在基片上一次性制作出来：**容易集成、成本低、便于大批量生产**。整个微波集成电路（MIC）——单片微波集成电路（MMIC）、射频集成电路（RFIC）、以及今天的 PCB 射频板——都建立在微带线这一类传输线之上。
+> 微带线的"微"字，含义正是"能把 $Z_0$ 做小、把尺寸做小"：**同轴线和带状线的 $Z_0$ 只取决于横截面的比值（$b/a$、$w/b$），结构不能任意缩小；微带线的 $Z_0$ 与 $w/h$ 有关，在保持 $Z_0$ 不变的前提下，把 $w$、$h$ 同时缩小若干倍，$Z_0$ 基本不变，于是尺寸可以做得很小**。这就是"$Z_0$ 一定，微带可以很小"的含义。
+
+> **【易错点】**
+> - "无截止频率"≠"可以无限制地提高频率"。TEM／准 TEM 传输线虽然没有 $f_c$，但**高次模（同轴线的 $\mathrm{TE}_{11}$、带状线的 TE／TM 模、微带的表面波模）**会在高频出现，因此都有一条**上限工作频率**。
+> - 微带线的场一部分在空气、一部分在介质中，**它严格来说不是 TEM 波**，只是频率较低时"看起来像" TEM，故称**准 TEM**。第二章关于 TEM 的全部结论（$v_p=1/\sqrt{LC}$、$\lambda_g=c/(f\sqrt{\varepsilon_r})$、$Z_0=\sqrt{L/C}$）在微带线上只是近似成立，必须用**有效介电常数**修正。
+
+---
+
+## 4.2 同轴线
+
+### 4.2.1 结构与主模 TEM 波
+
+同轴线（coaxial line）由**内导体（半径 $a$）**、**外导体（内半径 $b$）**和填充其间的**介质（介电常数 $\varepsilon=\varepsilon_r\varepsilon_0$，磁导率 $\mu$）**组成，内外导体同轴放置。
+
+由于结构具有轴对称性且有两个导体，同轴线可以支持 TEM 波：电场只有径向分量、磁场只有圆周分量，$E_z=H_z=0$。TEM 波的场结构与频率无关，可以用**静电场与恒定磁场**的结果直接写出。
+
+<figure class="fig">
+<svg viewBox="0 0 720 260" role="img" aria-label="同轴线横截面场分布与纵剖面">
+  <defs>
+    <marker id="ch4ar2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="var(--warn)"/>
+    </marker>
+    <marker id="ch4ar3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="var(--brand)"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="20" font-size="13" fill="var(--ink)">(a) 横截面</text>
+  <circle cx="120" cy="140" r="86" fill="none" stroke="var(--line)" stroke-width="2.4"/>
+  <circle cx="120" cy="140" r="26" fill="none" stroke="var(--line)" stroke-width="2.4"/>
+  <circle cx="120" cy="140" r="86" fill="none" stroke="var(--line)" stroke-dasharray="3 3"/>
+  <circle cx="120" cy="140" r="2.6" fill="var(--line)"/>
+  <text x="120" y="46" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">外导体 (b)</text>
+  <text x="120" y="248" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">内导体 (a)</text>
+
+  <path d="M154,140 L196,140" stroke="var(--warn)" stroke-width="1.6" marker-end="url(#ch4ar2)"/>
+  <path d="M120,100 L120,66" stroke="var(--warn)" stroke-width="1.6" marker-end="url(#ch4ar2)"/>
+  <path d="M86,140 L44,140" stroke="var(--warn)" stroke-width="1.6" marker-end="url(#ch4ar2)"/>
+  <path d="M120,180 L120,214" stroke="var(--warn)" stroke-width="1.6" marker-end="url(#ch4ar2)"/>
+  <path d="M162,98 A60,60 0 0 0 162,182" fill="none" stroke="var(--brand)" stroke-width="1.6" marker-end="url(#ch4ar3)"/>
+  <text x="112" y="88" font-size="12" fill="var(--warn)">Er</text>
+  <text x="182" y="132" font-size="12" fill="var(--brand)">Hφ</text>
+  <text x="30" y="200" font-size="11.5" fill="var(--ink-2)">电场沿径向</text>
+  <text x="30" y="218" font-size="11.5" fill="var(--ink-2)">磁场沿圆周</text>
+
+  <text x="300" y="20" font-size="13" fill="var(--ink)">(b) 纵剖面（电力线 + 传导电流）</text>
+  <rect x="300" y="100" width="380" height="10" fill="none" stroke="var(--line)" stroke-width="1.6"/>
+  <rect x="300" y="176" width="380" height="10" fill="none" stroke="var(--line)" stroke-width="1.6"/>
+  <line x1="490" y1="100" x2="490" y2="186" stroke="var(--line)" stroke-width="2.4"/>
+  <line x1="300" y1="150" x2="680" y2="150" stroke="var(--line)" stroke-dasharray="4 4" stroke-width="1"/>
+  <g stroke="var(--warn)" stroke-width="1.3">
+    <path d="M490,132 L490,104" marker-end="url(#ch4ar2)"/>
+    <path d="M490,168 L490,196" marker-end="url(#ch4ar2)"/>
+    <path d="M400,132 L400,104" marker-end="url(#ch4ar2)"/>
+    <path d="M400,168 L400,196" marker-end="url(#ch4ar2)"/>
+    <path d="M580,132 L580,104" marker-end="url(#ch4ar2)"/>
+    <path d="M580,168 L580,196" marker-end="url(#ch4ar2)"/>
+  </g>
+  <line x1="330" y1="150" x2="370" y2="150" stroke="var(--brand)" stroke-width="1.8" marker-end="url(#ch4ar3)"/>
+  <text x="345" y="142" font-size="12" fill="var(--brand)">I</text>
+  <text x="656" y="92" font-size="11.5" fill="var(--ink-2)">外导体</text>
+  <text x="656" y="212" font-size="11.5" fill="var(--ink-2)">内导体</text>
+  <text x="300" y="240" font-size="11.5" fill="var(--ink-2)">纵向 Ez=Hz=0，故 U、I 有确定意义，可"路化"</text>
+</svg>
+<figcaption>图 4-2　同轴线的横截面场分布与纵剖面结构</figcaption>
+</figure>
+
+设内导体上单位长度电荷对应的静电场为 $E_r=E_0/r$，则 TEM 波沿 $+z$ 传播时场量写成：
+
+$$
+E_r=\frac{E_0}{r}e^{-j\beta z},\qquad H_\varphi=\frac{E_0}{\eta r}e^{-j\beta z},\qquad \eta=\sqrt{\frac{\mu}{\varepsilon}}
+\tag{4-2-1}
+$$
+
+其中 $\eta$ 是介质的**本征阻抗（波阻抗）**，单位 $\Omega$；对空气 $\eta_0=120\pi\approx377\ \Omega$，对相对介电常数 $\varepsilon_r$ 的介质 $\eta=120\pi/\sqrt{\varepsilon_r}$。
+
+**为什么是 $1/r$？** 这是静电场的高斯定律结果：在半径 $r$、长度 $\Delta z$ 的柱面上，电通量 $2\pi r\Delta z\cdot\varepsilon E_r$ 必须等于柱内包住的电荷，与 $r$ 无关，故 $E_r\propto1/r$。**为什么 $H_\varphi$ 也带 $1/r$？** 由 TEM 波的关系 $H_\varphi=E_r/\eta$（横向电场与横向磁场正交且比值等于本征阻抗）直接得到，物理上就是安培环路定律：$H_\varphi\propto I/r$。
+
+### 4.2.2 由电压、电流求特性阻抗
+
+TEM 波的好处是**电压、电流有明确定义**（因为 $E_z=H_z=0$，横截面上的"电压"与纵向的"电流"满足集总电路关系）。
+
+取 $z=0$ 截面，由**高斯定律**求内外导体之间的电压：
+
+$$
+U=\int_a^b E_r\,dr=E_0\ln\frac{b}{a}
+\tag{4-2-2}
+$$
+
+由**安培环路定律**求内导体上的电流（沿圆周积分一圈）：
+
+$$
+I=\oint_l H_\varphi\,dl=\frac{E_0}{\eta}\cdot2\pi=\frac{2\pi E_0}{\eta}
+\tag{4-2-3}
+$$
+
+两者相除即得特性阻抗：
+
+$$
+Z_0=\frac{U}{I}=\frac{\eta}{2\pi}\ln\frac{b}{a}=\frac{120\pi}{2\pi\sqrt{\varepsilon_r}}\ln\frac{b}{a}=\frac{60}{\sqrt{\varepsilon_r}}\ln\frac{b}{a}\ \Omega
+\tag{4-2-4}
+$$
+
+> **【公式推导】**
+> 也可以完全用"路"的方法得到同一个结果。同轴线单位长度的分布电容（由 $Q=CU$ 与 $Q=\varepsilon E_0\cdot2\pi$）、分布电感（由 $\Phi=LI$ 与内导体表面磁场）分别为
+> $$C=\frac{2\pi\varepsilon}{\ln(b/a)}\ \mathrm{F/m},\qquad L=\frac{\mu}{2\pi}\ln\frac{b}{a}\ \mathrm{H/m}$$
+> 于是
+> $$Z_0=\sqrt{\frac{L}{C}}=\frac{1}{2\pi}\sqrt{\frac{\mu}{\varepsilon}}\ln\frac{b}{a}=\frac{60}{\sqrt{\varepsilon_r}}\ln\frac{b}{a}\ \Omega$$
+> 这与式 (4-2-4) 完全一致，说明"场"与"路"在这一问题上给出了同样的答案。
+> 同时得到相速与相移常数：
+> $$v_p=\frac{1}{\sqrt{LC}}=\frac{1}{\sqrt{\mu\varepsilon}}=\frac{c}{\sqrt{\varepsilon_r}},\qquad
+> \beta=\omega\sqrt{\mu\varepsilon}=k_0\sqrt{\varepsilon_r}=\frac{2\pi}{\lambda_0}\sqrt{\varepsilon_r}$$
+
+**物理意义与量纲**：$Z_0$ 只取决于**内外径之比** $b/a$ 和介质 $\varepsilon_r$，与绝对尺寸无关（量与量纲上，$\eta$ 是 $\Omega$，$\ln(b/a)$ 无量纲）。这一点极其重要：**$b/a$ 决定 $Z_0$，绝对尺寸决定"能用到多高频率"**——两个自由度正好对应两个设计指标（阻抗指标 + 单模指标）。
+
+常用取值：**$50\ \Omega$**（通用型，兼顾功率容量与衰减，也是标准波导与绝大部分连接器的阻抗）和 **$75\ \Omega$**（衰减最小，用于视频、有线电视等长距离传输）。由式 (4-2-4) 反解：
+
+$$
+\frac{b}{a}=e^{\frac{\sqrt{\varepsilon_r}Z_0}{60}}
+\tag{4-2-5}
+$$
+
+例如空气同轴线 $Z_0=50\ \Omega$ 对应 $b/a=e^{50/60}=e^{0.8333}=2.301$；$Z_0=75\ \Omega$ 对应 $b/a=e^{1.25}=3.490$。
+
+### 4.2.3 同轴线的三个"最佳比值"（重点）
+
+同轴线的尺寸设计有一个经典问题：**在给定外导体内半径 $b$（或给定某种约束）的条件下，$b/a$ 取多大最有利？** 由于"最有利"可以指三件不同的事——**耐压最高（不易击穿）**、**传输功率最大**、**衰减最小**——于是得到三个著名的比值 $2.72$、$1.65$、$3.59$。
+
+#### （1）耐压最高：$b/a=e=2.72$
+
+内外导体间的最大电场出现在内导体表面 $r=a$ 处：
+
+$$
+E_{\max}=E_r(a)=\frac{E_0}{a}=\frac{U}{a\ln(b/a)}
+\tag{4-2-6}
+$$
+
+**介质击穿取决于 $E_{\max}$，而不是取决于 $U$**。在给定电压 $U$ 下要让 $E_{\max}$ 最小，就要让 $a\ln(b/a)$ 最大。固定 $b$，对 $a$ 求极值：
+
+$$
+\frac{d}{da}\left[a\ln\frac{b}{a}\right]=\ln\frac{b}{a}-1=0\ \Rightarrow\ \ln\frac{b}{a}=1\ \Rightarrow\ \frac{b}{a}=e=2.718\approx2.72
+\tag{4-2-7}
+$$
+
+代入空气情形得 $Z_0=60\ln e=60\ \Omega$。
+
+> **【核心概念】**
+> **耐压最高（击穿电压最高）**：$b/a=2.72$、$Z_0=60\ \Omega$。
+> **为什么是这个值？** 减小 $a$ 会让 $E_{\max}=U/(a\ln(b/a))$ 增大（内导体表面场强升高）；增大 $a$ 又会让 $\ln(b/a)$ 减小，同样使 $E_{\max}$ 增大。两者折中，在 $\ln(b/a)=1$ 处取极小。
+
+#### （2）传输功率最大：$b/a=e^{1/2}=1.65$
+
+传输功率与电压、阻抗的关系为 $P=\dfrac{U^2}{2Z_0}$（无耗线上的行波功率）。把 $U=E_{\max}a\ln(b/a)$ 与 $Z_0=\dfrac{\eta\ln(b/a)}{2\pi}$ 代入：
+
+$$
+P_{\max}=\frac{U^2}{2Z_0}
+=\frac{E_{\max}^2a^2\ln^2(b/a)}{2\cdot\dfrac{\eta\ln(b/a)}{2\pi}}
+=\frac{\pi a^2\ln(b/a)}{\eta}E_{\max}^2
+\tag{4-2-8}
+$$
+
+**注意**：功率容量由 $E_{\max}=E_{\text{击穿}}$ 决定，所以 $E_{\max}$ 取常数、固定 $b$、对 $a$ 求极值：
+
+$$
+\frac{d}{da}\left[a^2\ln\frac{b}{a}\right]=2a\ln\frac{b}{a}-a=0
+\ \Rightarrow\ \ln\frac{b}{a}=\frac{1}{2}
+\ \Rightarrow\ \frac{b}{a}=e^{1/2}=1.6487\approx1.65
+\tag{4-2-9}
+$$
+
+此时 $Z_0=60\times0.5=30\ \Omega$（空气），且
+
+$$
+P_{\max}=\frac{\pi b^2E_{\max}^2}{2e\,\eta}
+\tag{4-2-10}
+$$
+
+> **【易错点】**
+> 耐压最高对应 $a\ln(b/a)$ 最大（$b/a=2.72$），功率最大对应 $a^2\ln(b/a)$ 最大（$b/a=1.65$）。两者**相差一个因子 $a$**，因为功率除了与 $E_{\max}$ 有关，还与"面积"（可容纳的电压与电流的乘积）有关。考试中经常把这两个比值故意互换来设陷阱。
+
+#### （3）衰减最小：$b/a=3.59$
+
+同轴线的导体衰减常数为（推导见 4.2.5 节）：
+
+$$
+\alpha_c=\frac{R_s}{2\eta\ln(b/a)}\left(\frac{1}{a}+\frac{1}{b}\right)\ \mathrm{Np/m}
+\tag{4-2-11}
+$$
+
+其中 $R_s=\sqrt{\pi f\mu/\sigma}$ 是导体表面电阻。固定 $b$、对 $a$ 求极值，只需令 $\dfrac{1/a+1/b}{\ln(b/a)}$ 最小，即令 $\dfrac{\ln(b/a)}{1/a+1/b}$ 最大：
+
+$$
+\frac{d}{da}\left[\frac{\ln(b/a)}{1/a+1/b}\right]=0
+\ \Rightarrow\ 1+\frac{a}{b}=\ln\frac{b}{a}
+\tag{4-2-12}
+$$
+
+令 $x=b/a$，方程为 $1+1/x=\ln x$，数值解得 $x=3.5911\approx3.59$，此时
+
+$$
+Z_0=60\ln3.591=60\times1.278=76.7\ \Omega
+\tag{4-2-13}
+$$
+
+这就是"衰减最小的同轴线阻抗约为 $77\ \Omega$"的由来，也是 $75\ \Omega$ 标准（略作取整）的物理基础。**物理上为什么会有最优值？** 减小 $a$ 使内导体电阻 $R\propto R_s/(2\pi a)$ 增大、损耗增大；增大 $a$ 又使 $b/a$ 减小、$Z_0$ 减小，而 $\alpha_c=R/(2Z_0)$ 中分母变小也导致损耗增大。两者折中出现了最小值。
+
+<figure class="fig">
+<svg viewBox="0 0 720 300" role="img" aria-label="同轴线b比a与功率容量和衰减的关系曲线">
+  <defs>
+    <marker id="ch4ar4" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <line x1="70" y1="240" x2="680" y2="240" stroke="var(--ink-2)" stroke-width="1.2" marker-end="url(#ch4ar4)"/>
+  <line x1="70" y1="240" x2="70" y2="30" stroke="var(--ink-2)" stroke-width="1.2" marker-end="url(#ch4ar4)"/>
+  <text x="640" y="262" font-size="12" fill="var(--ink-2)">b/a</text>
+  <text x="30" y="40" font-size="12" fill="var(--ink-2)">相对值</text>
+  <g font-size="11" fill="var(--ink-2)">
+    <text x="118" y="258" text-anchor="middle">1.65</text>
+    <text x="238" y="258" text-anchor="middle">2.72</text>
+    <text x="430" y="258" text-anchor="middle">3.59</text>
+    <text x="70" y="258" text-anchor="middle">1</text>
+  </g>
+  <g stroke="var(--line)" stroke-dasharray="3 3">
+    <line x1="118" y1="240" x2="118" y2="86"/>
+    <line x1="238" y1="240" x2="238" y2="70"/>
+    <line x1="430" y1="240" x2="430" y2="122"/>
+  </g>
+  <path d="M70,60 Q100,66 118,86 Q170,140 238,206 Q330,232 430,236 Q560,238 680,238"
+        fill="none" stroke="var(--brand)" stroke-width="2"/>
+  <text x="150" y="70" font-size="12" fill="var(--brand)">功率容量 Pmax</text>
+  <path d="M70,40 Q140,120 238,132 Q330,150 430,122 Q520,96 620,74"
+        fill="none" stroke="var(--warn)" stroke-width="2"/>
+  <text x="470" y="60" font-size="12" fill="var(--warn)">衰减 αc（越小越好）</text>
+  <circle cx="118" cy="86" r="3.6" fill="var(--brand)"/>
+  <circle cx="430" cy="122" r="3.6" fill="var(--warn)"/>
+  <circle cx="238" cy="70" r="3.2" fill="var(--ink-2)"/>
+  <text x="248" y="64" font-size="11.5" fill="var(--ink-2)">耐压最高</text>
+  <text x="120" y="278" font-size="11.5" fill="var(--brand)">P 最大：Z0=30 Ω</text>
+  <text x="300" y="278" font-size="11.5" fill="var(--warn)">α 最小：Z0=76.7 Ω</text>
+  <text x="560" y="278" font-size="11.5" fill="var(--ink-2)">通用 50 Ω 是折中</text>
+</svg>
+<figcaption>图 4-3　同轴线三个最佳比值：功率容量与衰减随 $b/a$ 的变化</figcaption>
+</figure>
+
+#### （4）综合折中：为什么是 $50\ \Omega$？
+
+三个最佳比值互不相同：功率容量在 $30\ \Omega$ 处最优，衰减在 $77\ \Omega$ 处最优，耐压在 $60\ \Omega$ 处最优。工程上需要**一个兼顾三者的通用阻抗**：
+
+- 从 $30\ \Omega$ 到 $77\ \Omega$ 的几何平均是 $\sqrt{30\times77}\approx48\ \Omega$，取整即 $50\ \Omega$；
+- 在 $50\ \Omega$ 附近，功率容量比最优值只下降约 $10\%\sim15\%$，衰减比最优值只增大约 $10\%$；
+- 更重要的是：$50\ \Omega$ 与**标准矩形波导的等效阻抗、标准连接器（N 型、SMA）**匹配良好，于是成为事实上的世界标准。
+
+而 **$75\ \Omega$** 则专门用于以**衰减最小**为首要指标的长距离传输场合，例如视频信号、有线电视（CATV）分配网络。
+
+> **【记忆技巧】**
+> 三个数字记住"**一六五、二七二、三五九**"，并配一句口诀：
+> "**功率要小阻抗（1.65→30 Ω），耐压要六十（2.72→60 Ω），衰减要七十（3.59→77 Ω）**"。
+> 再记住"$50\ \Omega$ 是折中，$75\ \Omega$ 管视频"。
+
+> **【例题 4-1】**
+> 某空气绝缘的同轴线，要求最低高次模的截止频率为 $20\ \mathrm{GHz}$，且不出现高次模。
+> （1）若要求传输衰减最小，求内导体半径 $a$ 与外导体内半径 $b$；
+> （2）若改为通用型 $Z_0=50\ \Omega$，再求 $a$、$b$；
+> （3）比较两种设计在 $10\ \mathrm{GHz}$ 时的导体衰减。
+>
+> **解：**
+> **第一步：由单模条件确定 $a+b$。** 同轴线的最低高次模是 $\mathrm{TE}_{11}$，其截止波长为
+> $$\lambda_{c,\mathrm{TE}_{11}}=\pi(a+b)$$
+> 为使 TEM 单模传输，必须 $\lambda>\pi(a+b)$，即最高工作频率
+> $$f_{\max}<\frac{c}{\pi(a+b)\sqrt{\varepsilon_r}}$$
+> 空气绝缘 $\varepsilon_r=1$，取 $f_{\max}=f_{c,\mathrm{TE}_{11}}=20\ \mathrm{GHz}$：
+> $$a+b=\frac{c}{\pi f_c}=\frac{3\times10^8}{\pi\times20\times10^9}=\frac{9.55\times10^{7}}{20\times10^{9}}=4.775\times10^{-3}\ \mathrm{m}=4.775\ \mathrm{mm}$$
+>
+> **（1）衰减最小设计。** 取 $b/a=3.59$，即 $b=3.59a$，代入 $a+b=4.59a=4.775\ \mathrm{mm}$：
+> $$a=\frac{4.775}{4.59}=1.040\ \mathrm{mm},\qquad b=4.775-1.040=3.735\ \mathrm{mm}$$
+> 此时 $Z_0=60\ln3.59=76.7\ \Omega$。
+>
+> **（2）通用型 $50\ \Omega$ 设计。** 由 $Z_0=\dfrac{60}{\sqrt{\varepsilon_r}}\ln\dfrac{b}{a}=50$ 得
+> $$\ln\frac{b}{a}=\frac{50}{60}=0.8333,\qquad \frac{b}{a}=e^{0.8333}=2.301$$
+> 于是 $a+b=3.301a=4.775\ \mathrm{mm}$：
+> $$a=\frac{4.775}{3.301}=1.447\ \mathrm{mm},\qquad b=4.775-1.447=3.328\ \mathrm{mm}$$
+>
+> **（3）衰减比较。** 铜的 $\sigma=5.8\times10^{7}\ \mathrm{S/m}$，在 $f=10\ \mathrm{GHz}$ 时
+> $$R_s=\sqrt{\frac{\pi f\mu_0}{\sigma}}=\sqrt{\frac{\pi\times10^{10}\times4\pi\times10^{-7}}{5.8\times10^{7}}}=2.61\times10^{-2}\ \Omega$$
+> 对 $50\ \Omega$ 设计（$a=1.447\ \mathrm{mm}$、$b=3.328\ \mathrm{mm}$）：
+> $$\alpha_c=\frac{R_s}{2\eta\ln(b/a)}\left(\frac{1}{a}+\frac{1}{b}\right)
+> =\frac{2.61\times10^{-2}}{2\times377\times0.8333}\left(\frac{1}{1.447}+\frac{1}{3.328}\right)\times10^{3}
+> =4.12\times10^{-2}\ \mathrm{Np/m}$$
+> 换算成分贝：$\alpha_c=4.12\times10^{-2}\times8.686=0.358\ \mathrm{dB/m}$。
+> 对 $76.7\ \Omega$ 设计（$a=1.040\ \mathrm{mm}$、$b=3.735\ \mathrm{mm}$）同样计算：
+> $$\alpha_c=\frac{2.61\times10^{-2}}{2\times377\times1.278}\left(\frac{1}{1.040}+\frac{1}{3.735}\right)\times10^{3}
+> =3.33\times10^{-2}\ \mathrm{Np/m}=0.289\ \mathrm{dB/m}$$
+>
+> **讨论：** 两种设计的单模上限频率相同（都由 $a+b=4.775\ \mathrm{mm}$ 决定），但衰减最小设计比 $50\ \Omega$ 设计的衰减低约 $19\%$，代价是阻抗不是通用值（与标准连接器、标准波导的匹配变差）。这正是"$50\ \Omega$ 是工程折中，$75\ \Omega$ 是低损耗专线"的定量依据。
+
+### 4.2.4 高次模与单模传输
+
+同轴线中除 TEM 波之外，还存在 $\mathrm{TE}_{mn}$ 与 $\mathrm{TM}_{mn}$ 高次模（它们的 $E_z$ 或 $H_z\ne0$，必须用贝塞尔函数求解）。其中**最低次高次模是 $\mathrm{TE}_{11}$**，其截止波长为
+
+$$
+\lambda_{c,\mathrm{TE}_{11}}=\pi(a+b)\quad\Longrightarrow\quad
+f_{c,\mathrm{TE}_{11}}=\frac{c}{\pi(a+b)\sqrt{\varepsilon_r}}
+\tag{4-2-14}
+$$
+
+> **【核心概念】**
+> 式 (4-2-14) 是**近似式**（由平均周长 $\pi(a+b)$ 得到的工程公式，误差在 $1\%$ 以内），严格解需要用贝塞尔函数的根：$\mathrm{TE}_{11}$ 模对应 $k_c=1.841/a$（$a\ll b$ 的圆波导极限），一般写成
+> $$\lambda_{c,\mathrm{TE}_{11}}\approx\pi(a+b)\quad\text{或}\quad \lambda_{c,\mathrm{TE}_{11}}=\frac{2\pi}{\sqrt{\left(\frac{1.841}{a}\right)^2+\cdots}}$$
+> 工程设计与教材题目一律采用简洁的 $\lambda_c=\pi(a+b)$，它物理意义明确：**电磁波"绕"内外导体一周（周长约 $\pi(a+b)$）正好容纳一个波长时，高次模开始出现**。
+> **单模（TEM 单模）传输条件**：
+> $$\lambda_{\min}>\pi(a+b)\quad\Longleftrightarrow\quad f_{\max}<\frac{c}{\pi(a+b)\sqrt{\varepsilon_r}}$$
+
+**这个条件决定了同轴线的上限频率**：$a+b$ 越小，上限频率越高，但内导体半径 $a$ 随之减小，欧姆损耗按 $1/a$ 增大、功率容量按 $a^2$ 下降。因此**频率太高就不能用同轴线**——这是从同轴线走向波导（第三章）或平面传输线（本章 4.3、4.4 节）的根本原因。
+
+> **【考点】**
+> 单模条件常与三个最佳比值结合出题，如"某空气同轴线要求 $50\ \Omega$ 且单模工作到 $20\ \mathrm{GHz}$，求 $a$、$b$"（即例题 4-1）。解题顺序固定：
+> ① 用 $\lambda_{\min}>\pi(a+b)$ 求 $a+b$；② 用 $Z_0=\frac{60}{\sqrt{\varepsilon_r}}\ln\frac{b}{a}$（或指定的 $b/a$ 最佳比值）求 $b/a$；③ 联立解出 $a$、$b$。
+
+### 4.2.5 衰减常数
+
+同轴线的总衰减为 $\alpha=\alpha_c+\alpha_d$（辐射损耗可忽略）。
+
+**（1）导体衰减。** 单位长度总电阻由内、外导体两部分构成：$R=\dfrac{R_s}{2\pi}\left(\dfrac{1}{a}+\dfrac{1}{b}\right)\ \Omega/\mathrm{m}$，代入 $\alpha_c=\dfrac{R}{2Z_0}$（第二章结果）得
+
+$$
+\alpha_c=\frac{R_s}{2\eta\ln(b/a)}\left(\frac{1}{a}+\frac{1}{b}\right)\ \mathrm{Np/m},
+\qquad R_s=\sqrt{\frac{\pi f\mu}{\sigma}}\ \Omega
+\tag{4-2-15}
+$$
+
+**量纲与规律**：$R_s$ 的单位是 $\Omega$，$1/a+1/b$ 的单位是 $1/\mathrm{m}$，$\eta$ 是 $\Omega$，故整体单位为 $\mathrm{Np/m}$，正确。**关键规律**：
+
+$$
+\alpha_c\propto R_s\propto\sqrt{f}
+\tag{4-2-16}
+$$
+
+即**导体衰减随频率按 $\sqrt{f}$ 增长**，同时 $\alpha_c\propto1/(a\ln(b/a))$，尺寸越大损耗越小——这就是为什么长距离馈线要用粗同轴（如 $7/8''$ 馈管）。
+
+**（2）介质衰减。** 由有耗介质的复介电常数 $\varepsilon=\varepsilon'(1-j\tan\delta)$ 可得
+
+$$
+\alpha_d=\frac{\omega\sqrt{\mu\varepsilon}}{2}\tan\delta=\frac{k_0\sqrt{\varepsilon_r}}{2}\tan\delta=\frac{\pi\sqrt{\varepsilon_r}}{\lambda_0}\tan\delta\ \mathrm{Np/m}
+\tag{4-2-17}
+$$
+
+其中 $\tan\delta$ 是介质损耗角正切。**关键规律**：$\alpha_d\propto f\tan\delta$（线性增长，比导体衰减增长更快）；**空气绝缘同轴线 $\tan\delta\approx0$，故 $\alpha_d\approx0$**，这就是大功率、低损耗同轴线常充干燥空气或氮气的原因。工程上取 $\tan\delta\sim10^{-4}$ 量级（如聚乙烯）。
+
+> **【工程应用】**
+> 衰减的"分贝—奈培"换算是高频考点：$1\ \mathrm{Np}=8.686\ \mathrm{dB}$，反之 $1\ \mathrm{dB}=0.1151\ \mathrm{Np}$。因为这来自功率比的两种定义方式：
+> $$L[\mathrm{dB}]=10\lg\frac{P_1}{P_2},\qquad L[\mathrm{Np}]=\ln\frac{U_1}{U_2}=\frac{1}{2}\ln\frac{P_1}{P_2}$$
+> 令两者相等：$10\lg e^{x}=10x\lg e=4.343x$，而 $x\ \mathrm{Np}$ 对应 $x$，故 $1\ \mathrm{Np}=8.686\ \mathrm{dB}$。
+
+### 4.2.6 应用与局限
+
+**优点**：工作频带宽（从直流到数十 GHz，无截止频率）、易于与同轴连接器连接、柔软可弯曲、屏蔽性好。
+
+**局限**：
+
+1. 频率升高时，为保持单模必须减小 $a+b$，于是 $a$ 减小，**欧姆损耗按 $1/a$ 上升**；
+2. 尺寸减小的同时**功率容量按 $a^2$ 下降**，机械加工与装配难度上升；
+3. 介质支撑会引入附加的 $\alpha_d$ 和不均匀性；
+4. 一般在**数十 GHz 以下**使用；更高频率改用金属波导（低损耗、高功率）或微带线／介质波导（易集成）。
+
+> **【小结】**
+> 本节要点：
+> 1. 同轴线主模是 **TEM**，$E_r\propto1/r$、$H_\varphi\propto1/r$，**无截止频率**；
+> 2. $Z_0=\dfrac{60}{\sqrt{\varepsilon_r}}\ln\dfrac{b}{a}$，只与**比值** $b/a$ 有关；
+> 3. 三个最佳比值：耐压 $2.72$（$60\ \Omega$）、功率 $1.65$（$30\ \Omega$）、衰减 $3.59$（$76.7\ \Omega$），工程折中取 $50\ \Omega$，低损耗专线取 $75\ \Omega$；
+> 4. 单模条件 $\lambda>\pi(a+b)$，最低高次模 $\mathrm{TE}_{11}$ 决定上限频率；
+> 5. $\alpha_c=\dfrac{R_s}{2\eta\ln(b/a)}\left(\dfrac{1}{a}+\dfrac{1}{b}\right)\propto\sqrt{f}$，$\alpha_d=\dfrac{\pi\sqrt{\varepsilon_r}}{\lambda_0}\tan\delta\propto f$。
+>
+> 本节考点清单：$Z_0$ 推导（★★★）、三个最佳比值推导（★★★★）、单模条件与尺寸设计（★★★★）、衰减量级估算与单位换算（★★★）。
+
+---
+
+## 4.3 带状线（Stripline）
+
+### 4.3.1 从同轴线到带状线：演化与场分布
+
+带状线（stripline，又称对称带线）可以看成**同轴线"压扁"**的结果：把同轴线的外导体变成上下两块平行的接地板，把内导体变成位于中间的矩形截面导带，介质填满全部空间。
+
+<figure class="fig">
+<svg viewBox="0 0 720 250" role="img" aria-label="带状线由同轴线演变的过程">
+  <defs>
+    <marker id="ch4ar5" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <g font-size="12" fill="var(--ink-2)" text-anchor="middle">
+    <text x="80" y="30">同轴线</text>
+    <text x="270" y="30">外导体上下分开</text>
+    <text x="460" y="30">压扁、充填介质</text>
+    <text x="640" y="30">带状线</text>
+  </g>
+  <circle cx="80" cy="130" r="52" fill="none" stroke="var(--line)" stroke-width="2"/>
+  <circle cx="80" cy="130" r="16" fill="none" stroke="var(--line)" stroke-width="2.4"/>
+  <path d="M140,130 L192,130" stroke="var(--ink-2)" stroke-width="1.6" marker-end="url(#ch4ar5)"/>
+
+  <path d="M212,86 L328,86" stroke="var(--line)" stroke-width="3"/>
+  <path d="M212,174 L328,174" stroke="var(--line)" stroke-width="3"/>
+  <rect x="262" y="122" width="16" height="16" fill="none" stroke="var(--line)" stroke-width="2.4"/>
+  <path d="M336,130 L388,130" stroke="var(--ink-2)" stroke-width="1.6" marker-end="url(#ch4ar5)"/>
+
+  <path d="M408,80 L568,80" stroke="var(--line)" stroke-width="3"/>
+  <rect x="408" y="80" width="160" height="100" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 3"/>
+  <path d="M408,180 L568,180" stroke="var(--line)" stroke-width="3"/>
+  <rect x="478" y="122" width="26" height="14" fill="none" stroke="var(--line)" stroke-width="2.4"/>
+  <path d="M576,130 L604,130" stroke="var(--ink-2)" stroke-width="1.6" marker-end="url(#ch4ar5)"/>
+
+  <path d="M624,80 L700,80" stroke="var(--line)" stroke-width="3"/>
+  <path d="M624,180 L700,180" stroke="var(--line)" stroke-width="3"/>
+  <rect x="624" y="80" width="76" height="100" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 3"/>
+  <rect x="656" y="122" width="24" height="14" fill="none" stroke="var(--line)" stroke-width="2.4"/>
+  <text x="662" y="204" font-size="11.5" fill="var(--ink-2)">w</text>
+  <path d="M626,208 L700,208" stroke="var(--ink-2)" stroke-width="1" marker-start="url(#ch4ar5)" marker-end="url(#ch4ar5)"/>
+  <text x="640" y="226" font-size="11.5" fill="var(--ink-2)">b</text>
+  <path d="M706,80 L706,180" stroke="var(--ink-2)" stroke-width="1"/>
+  <text x="212" y="226" font-size="11.5" fill="var(--ink-2)">中心导带 + 上下接地板，介质均匀填充</text>
+</svg>
+<figcaption>图 4-4　带状线由同轴线演变而来的四个步骤</figcaption>
+</figure>
+
+带状线的**主模是 TEM 波**（严格 TEM，因为介质是均匀填充的），因此：
+
+$$
+v_p=\frac{c}{\sqrt{\varepsilon_r}},\qquad
+\lambda_g=\frac{c}{f\sqrt{\varepsilon_r}}=\frac{\lambda_0}{\sqrt{\varepsilon_r}},\qquad
+\beta=k_0\sqrt{\varepsilon_r}=\frac{2\pi}{\lambda_0}\sqrt{\varepsilon_r},\qquad
+f_c=0
+\tag{4-3-1}
+$$
+
+**为什么带状线是严格 TEM、而微带线只是准 TEM？** 关键在"**介质是否均匀充满**"。TEM 波要求电场、磁场都只有横向分量，而由 $\nabla\times\vec E=-j\omega\mu\vec H$ 可知，这要求介质的 $\varepsilon$、$\mu$ 在横截面内处处相同；带状线的介质均匀充满中心导带与接地板之间的全部空间，满足要求；微带线只有一半空间是介质、另一半是空气，不满足要求。
+
+<figure class="fig">
+<svg viewBox="0 0 720 230" role="img" aria-label="带状线横截面电场分布">
+  <path d="M120,50 L600,50" stroke="var(--line)" stroke-width="4"/>
+  <path d="M120,180 L600,180" stroke="var(--line)" stroke-width="4"/>
+  <rect x="120" y="50" width="480" height="130" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="5 4"/>
+  <rect x="330" y="107" width="60" height="16" fill="var(--line)" opacity="0.65"/>
+  <text x="360" y="100" text-anchor="middle" font-size="12" fill="var(--ink-2)">中心导带（宽 w，厚 t）</text>
+  <g stroke="var(--brand)" stroke-width="1.5">
+    <path d="M270,115 L270,60"/><path d="M300,115 L300,60"/><path d="M330,115 L330,60"/>
+    <path d="M360,115 L360,60"/><path d="M390,115 L390,60"/><path d="M420,115 L420,60"/><path d="M450,115 L450,60"/>
+    <path d="M270,115 L270,170"/><path d="M300,115 L300,170"/><path d="M330,115 L330,170"/>
+    <path d="M360,115 L360,170"/><path d="M390,115 L390,170"/><path d="M420,115 L420,170"/><path d="M450,115 L450,170"/>
+  </g>
+  <text x="360" y="42" text-anchor="middle" font-size="12" fill="var(--ink-2)">上接地板</text>
+  <text x="360" y="200" text-anchor="middle" font-size="12" fill="var(--ink-2)">下接地板</text>
+  <path d="M120,212 L600,212" stroke="var(--ink-2)" stroke-width="1"/>
+  <path d="M120,206 L120,218" stroke="var(--ink-2)" stroke-width="1"/>
+  <path d="M600,206 L600,218" stroke="var(--ink-2)" stroke-width="1"/>
+  <text x="360" y="228" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">板间距 b（介质相对介电常数 εr 均匀填充）</text>
+  <text x="620" y="80" font-size="12" fill="var(--brand)">电力线</text>
+  <text x="620" y="100" font-size="11.5" fill="var(--ink-2)">导带→上下板</text>
+</svg>
+<figcaption>图 4-5　带状线横截面与电场分布（介质均匀填充，TEM 波）</figcaption>
+</figure>
+
+### 4.3.2 特性阻抗
+
+带状线的特性阻抗同样由 $Z_0=\sqrt{L/C}=1/(v_pC)$ 决定，因此**问题的核心是求单位长度分布电容 $C$**。
+
+先用最简单的平板电容模型建立直觉：若把中心导带与接地板看作平行板电容（面积 $S$、间距 $d$），$C=\varepsilon S/d$。对带状线：导带宽度 $w$ 增大（面积 $\uparrow$）→ $C\uparrow$ → $Z_0\downarrow$；板间距 $b$ 增大（间距 $\uparrow$）→ $C\downarrow$ → $Z_0\uparrow$。这与同轴线的规律完全平行：
+
+$$
+\text{同轴线：}\ \frac{b}{a}\uparrow\ \Rightarrow\ C\downarrow\ \Rightarrow\ Z_0\uparrow;
+\qquad
+\text{带状线：}\ \frac{w}{b}\uparrow\ \Rightarrow\ C\uparrow\ \Rightarrow\ Z_0\downarrow
+\tag{4-3-2}
+$$
+
+> **【核心概念】**
+> 带状线的两条工程口诀：
+> **宽导带（$w$ 大）→ 低阻抗；窄导带（$w$ 小）→ 高阻抗。**
+> 这与同轴线"外径比大→高阻抗"的规律互为镜像，因为一个是"面积型"电容、一个是"间距型"电容。
+
+**（1）精确解（保角变换）。** 用保角变换（conformal mapping）把带状线的横截面映射为平行板电容器，可得到严格解：
+
+$$
+Z_0=\frac{30\pi}{\sqrt{\varepsilon_r}}\frac{K(k)}{K'(k)}\ \Omega,
+\qquad k=\operatorname{sech}\left(\frac{\pi w}{2b}\right),\qquad K'(k)=K\!\left(\sqrt{1-k^2}\right)
+\tag{4-3-3}
+$$
+
+其中 $K(k)$ 是第一类完全椭圆积分，$w$ 是中心导带宽度，$b$ 是上下接地板间距，$t\to0$ 为薄导带假设。
+
+**为什么会出现椭圆积分？** 因为带状线的横截面是一个"矩形导体夹在两块无限大平板之间"的区域，其共形映射的自然函数是椭圆函数；$K/K'$ 正是描述"矩形的宽高比"的比值。**代价是计算复杂、不适合工程手算**，所以工程上有下面的闭式近似式，或者干脆查设计曲线。
+
+**（2）工程闭式解（分 $w/b$ 两种情况）。**
+
+**① 窄导带（$w/b<0.35$）**——此时导带很细，等效于"同轴线的内导体"，可用等效圆导体直径 $d$ 表示：
+
+$$
+Z_0=\frac{60}{\sqrt{\varepsilon_r}}\ln\frac{4b}{\pi d}\ \Omega
+\tag{4-3-4}
+$$
+
+$$
+d=\frac{w}{2}\left[1+\frac{t}{w}\left(1+\ln\frac{4\pi w}{t}+1.26\left(\frac{t}{w}\right)^{2}\right)\right]
+\tag{4-3-5}
+$$
+
+当 $t\to0$ 时 $d\to w/2$，式 (4-3-4) 化为
+
+$$
+Z_0=\frac{60}{\sqrt{\varepsilon_r}}\ln\frac{8b}{\pi w}\ \Omega
+\tag{4-3-6}
+$$
+
+> **【易错点】**
+> 式 (4-3-5) 的物理含义是"**导带越厚，等效导体越粗，电容越大，阻抗越低**"，因此**厚度 $t$ 会使 $Z_0$ 下降**。这与"仅按 $w$ 计算"的结果相比会低几个百分点，薄导带（$t/w$ 很小）时可以忽略。注意式 (4-3-5) 中的 $1.26(t/w)^2$ 只是二阶小量修正，$t\to0$ 时整个括号趋于 $1$。
+
+**② 宽导带（$w/b>0.35$）**——此时可用"宽平板 + 边缘修正"的模型：
+
+$$
+Z_0=\frac{120\pi/\sqrt{\varepsilon_r}}{\dfrac{w}{b}+\dfrac{2}{\pi}\ln\left(1+\dfrac{2b}{t}\right)+1.444}\ \Omega
+\tag{4-3-7}
+$$
+
+工程上更常用**等效加宽**的方式处理厚度：把导带宽度替换为 $w_e=w+\Delta w$，再用式 (4-3-3) 或宽导带近似式（$t\to0$ 时 $Z_0=\dfrac{30\pi}{\sqrt{\varepsilon_r}}\cdot\dfrac{1}{w/b+\frac{2}{\pi}\ln2}$）计算。$t\to0$、$w/b\sim0.5$ 时两种算法与严格解 (4-3-3) 的偏差在 $2\%$ 以内，工程上完全可用；但**涉及厚度时必须用式 (4-3-5)/(4-3-7) 或查设计曲线**。
+
+> **【工程应用】**
+> 带状线的分析与综合（设计）是两类相反的问题：
+> - **分析（带线分析）**：已知 $w/b$、$t/b$、$\varepsilon_r$，求 $Z_0$（用式 (4-3-3)～(4-3-7) 或查曲线）；
+> - **综合（带线综合）**：已知 $Z_0$、$\varepsilon_r$，求 $w/b$（查曲线或用迭代）。
+> 工程上常用"**归一化阻抗 $\sqrt{\varepsilon_r}Z_0$ 对 $w/b$ 的设计曲线**"，其中 $t/b$ 作为参变量。查曲线的好处是直观、快速，缺点是精度有限（一般 $1\%\sim2\%$）。
+
+> **【例题 4-2】**
+> 某带状线要求 $Z_0=50\ \Omega$，介质基片相对介电常数 $\varepsilon_r=9$，导带厚度 $t\approx0$，求 $w/b$。
+>
+> **解：**
+> **思路：** 先算归一化阻抗，判断落在哪个区间，再选公式。
+> $$\sqrt{\varepsilon_r}Z_0=\sqrt9\times50=150\ \Omega$$
+> $w/b$ 未知，先假设属于窄导带（$w/b<0.35$），用式 (4-3-6)：
+> $$150=60\ln\frac{8b}{\pi w}\ \Longrightarrow\ \ln\frac{8b}{\pi w}=2.5\ \Longrightarrow\ \frac{8b}{\pi w}=e^{2.5}=12.18$$
+> $$\frac{w}{b}=\frac{8}{\pi\times12.18}=\frac{8}{38.27}=0.209\approx0.21$$
+> 校核：$0.21<0.35$，假设成立。用严格椭圆积分解验算：由 $\dfrac{30\pi}{\sqrt{\varepsilon_r}}\dfrac{K(k)}{K'(k)}=50$ 得 $\dfrac{K(k)}{K'(k)}=\dfrac{150}{30\pi}=1.5915$，对应 $k\approx0.947$，则
+> $$k=\operatorname{sech}\frac{\pi w}{2b}=0.947\ \Longrightarrow\ \frac{\pi w}{2b}=\operatorname{arccosh}\frac{1}{0.947}=0.333\ \Longrightarrow\ \frac{w}{b}=0.212$$
+> **答：** $w/b\approx0.20\sim0.21$（工程曲线给出 $0.2$，近似式给出 $0.21$，两者一致）。
+> **讨论：** 本例说明"**高介电常数基片可以显著缩小电路尺寸**"：$\varepsilon_r=9$ 时，同样的 $50\ \Omega$ 只需 $w/b=0.21$（窄导带），而在 $\varepsilon_r=1$ 的空气带线中 $50\ \Omega$ 需要 $w/b\approx0.7$ 左右。归一化阻抗 $\sqrt{\varepsilon_r}Z_0=150\ \Omega$ 说明该带线属于"细线高阻"情形。
+
+> **【例题 4-3】**
+> 某带状线 $b=2\ \mathrm{mm}$，导带厚度 $t=0.1\ \mathrm{mm}$，导带宽度 $w=1.7\ \mathrm{mm}$，介质 $\varepsilon_r=1.2$，求 $Z_0$。
+>
+> **解：**
+> **第一步：归一化几何尺寸。**
+> $$\frac{t}{b}=\frac{0.1}{2}=0.05,\qquad \frac{w}{b}=\frac{1.7}{2}=0.85$$
+> **第二步：选公式。** $w/b=0.85>0.35$，属宽导带，用式 (4-3-7)：
+> $$Z_0=\frac{120\pi/\sqrt{1.2}}{0.85+\dfrac{2}{\pi}\ln\left(1+\dfrac{2\times2}{0.1}\right)+1.444}$$
+> 其中 $\sqrt{1.2}=1.0954$，$\dfrac{120\pi}{\sqrt{1.2}}=\dfrac{376.99}{1.0954}=344.2$；又 $\dfrac{2b}{t}=\dfrac{4}{0.1}=40$，$\ln41=3.714$，
+> $$\frac{2}{\pi}\times3.714=2.364$$
+> 分母 $=0.85+2.364+1.444=4.658$，故
+> $$Z_0=\frac{344.2}{4.658}=73.9\ \Omega$$
+> **第三步：与设计曲线对照。** 由 $t/b=0.05$、$w/b=0.85$ 查带线设计曲线得
+> $$\sqrt{\varepsilon_r}Z_0=66.5\ \Longrightarrow\ Z_0=\frac{66.5}{1.0954}=60.7\ \Omega$$
+> **答：** 按设计曲线 $Z_0\approx60.7\ \Omega$；按宽导带闭式解计算约 $74\ \Omega$，两者相差约 $20\%$。
+> **讨论：** 出现这个偏差的原因是：$t/b=0.05$ 属于**厚导带**情形，式 (4-3-7) 中的对数项是按 $\ln(1+2b/t)$ 的简化模型写出的，对厚导带会低估电容（从而高估阻抗）。**正确的做法是采用等效加宽修正**：把导带宽度换成
+> $$w_e=w+\frac{t}{\pi}\left(1+\ln\frac{2b}{t}\right)=1.7+\frac{0.1}{\pi}(1+\ln40)=1.7+0.149=1.849\ \mathrm{mm}$$
+> 代入严格椭圆积分解 (4-3-3)：$k=\operatorname{sech}\dfrac{\pi w_e}{2b}=\operatorname{sech}(1.452)=0.4437$，查表得 $K/K'=0.7322$，于是
+> $$\sqrt{\varepsilon_r}Z_0=30\pi\times0.7322=69.0\ \Longrightarrow\ Z_0=\frac{69.0}{1.0954}=63.0\ \Omega$$
+> 与曲线值 $60.7\ \Omega$ 只差约 $4\%$，可以作为手算的可靠校核。**结论：厚导带时务必用等效加宽（或直接查曲线），不要直接代 $t\to0$ 的公式。**
+
+### 4.3.3 衰减常数
+
+带状线的总衰减为 $\alpha=\alpha_c+\alpha_d$（辐射损耗可忽略，因为场被完全封闭在两块接地板之间）。
+
+**（1）导体衰减。** 工程上把导体衰减写成"**分段 + 几何因子**"的形式，因为窄导带与宽导带中电流分布不同：
+
+$$
+\alpha_c=
+\begin{cases}
+2.7\times10^{-3}\dfrac{R_s\,\varepsilon_r Z_0}{30\pi b}A\ \mathrm{Np/m}, & \sqrt{\varepsilon_r}Z_0<120\ \Omega\ (\text{窄导带})\\[8pt]
+0.16\dfrac{R_s\,B}{Z_0 b}\ \mathrm{Np/m}, & \sqrt{\varepsilon_r}Z_0>120\ \Omega\ (\text{宽导带})
+\end{cases}
+\tag{4-3-8}
+$$
+
+其中 $A$、$B$ 是由 $w/b$、$t/b$ 决定的**几何因子**（量级为 $1$，由设计曲线给出）；$120\ \Omega$ 是两条分支的分界。物理规律是共同的：
+
+$$
+\alpha_c\propto R_s\propto\sqrt{f},\qquad \alpha_c\propto\frac{1}{b},\qquad \alpha_c\propto\frac{1}{Z_0}\ (\text{高阻细线})
+\tag{4-3-9}
+$$
+
+**物理意义**：$b$ 越大，导体表面的电流密度越低（电流分布在更宽的板上），损耗越小；同时 $Z_0$ 越高意味着导带越细、电流密度越高，损耗越大。这解释了一个重要工程事实：**为了降低带状线损耗，应尽量选厚基片、低阻抗线**（但厚基片会降低单模上限频率，见 4.3.5 节）。
+
+**（2）介质衰减。** 介质均匀填充时，TEM 波的介质衰减与同轴线形式相同：
+
+$$
+\alpha_d=\frac{\pi\sqrt{\varepsilon_r}}{\lambda_0}\tan\delta\ \mathrm{Np/m}
+\tag{4-3-10}
+$$
+
+**（3）两者的相对大小。** 一般 $\tan\delta\sim10^{-4}\sim10^{-3}$，故在 $10\ \mathrm{GHz}$ 以下导体衰减通常占主导（微带／带线中 $\alpha_c$ 为主要来源），频率升高后 $\alpha_d\propto f$ 增长快于 $\alpha_c\propto\sqrt{f}$，介质衰减逐渐成为主要来源。
+
+### 4.3.4 相速与波长
+
+$$
+v_p=\frac{c}{\sqrt{\varepsilon_r}}=\frac{1}{\sqrt{\mu\varepsilon}},\qquad
+\lambda_g=\frac{v_p}{f}=\frac{c}{f\sqrt{\varepsilon_r}}=\frac{\lambda_0}{\sqrt{\varepsilon_r}},\qquad
+\beta=\frac{2\pi}{\lambda_g}=k_0\sqrt{\varepsilon_r}
+\tag{4-3-11}
+$$
+
+因为介质均匀填充，**所有频率的相速相同（无色散）**，$Z_0$ 也不随频率变化，这是带状线优于微带线的地方（见 4.4.6 节）。
+
+> **【易错点】**
+> 同轴线与带状线的对比：
+>
+> | 对比项 | 同轴线 | 带状线 |
+> |---|---|---|
+> | 结构 | 圆柱对称 | 平面（导带夹在两板之间） |
+> | 主模 | TEM | TEM |
+> | $Z_0$ 控制量 | $b/a$ | $w/b$（及 $t/b$） |
+> | 是否易集成 | 难（需接头） | 易（平面工艺） |
+> | 与外部电路连接 | 同轴接头 | 需同轴—带线转换 |
+> | 高次模 | $\mathrm{TE}_{11}$ | TE／TM（横向谐振模） |
+
+### 4.3.5 尺寸选择（抑制高次模）
+
+带状线的主模是 TEM，但**尺寸不合理时会激发 TE 模与 TM 模**（本质是横向的"波导模式"）。设计原则与波导相同：让这些高次模的截止波长小于最短工作波长 $\lambda_{\min}$。
+
+$$
+\lambda_{c,\mathrm{TE}}\approx2w\sqrt{\varepsilon_r},\qquad
+\lambda_{c,\mathrm{TM}}\approx2b\sqrt{\varepsilon_r}
+\tag{4-3-12}
+$$
+
+要求单模传输，即
+
+$$
+\lambda_{\min}>2w\sqrt{\varepsilon_r}\quad\Longrightarrow\quad w<\frac{\lambda_{\min}}{2\sqrt{\varepsilon_r}}
+\tag{4-3-13}
+$$
+
+$$
+\lambda_{\min}>2b\sqrt{\varepsilon_r}\quad\Longrightarrow\quad b<\frac{\lambda_{\min}}{2\sqrt{\varepsilon_r}}
+\tag{4-3-14}
+$$
+
+> **【核心概念】**
+> - $\lambda_{c,\mathrm{TE}}\approx2w\sqrt{\varepsilon_r}$：TE 模的截止由**导带宽度 $w$** 决定（相当于宽度为 $w$ 的波导的横向谐振）；
+> - $\lambda_{c,\mathrm{TM}}\approx2b\sqrt{\varepsilon_r}$：TM 模的截止由**板间距 $b$** 决定（相当于间距为 $b$ 的平行板中的 TM 模）；
+> - 两者都要求几何尺寸小于 $\lambda_{\min}/(2\sqrt{\varepsilon_r})$，取**更严格的那一个**作为 $b$（或 $w$）的上限。
+> - **重要推论**：频率升高 $\Rightarrow$ $\lambda$ 下降 $\Rightarrow$ $w$、$b$ 都必须减小 $\Rightarrow$ 尺寸下降。而 $Z_0$ 只取决于 $w/b$ 的**比值**，所以只要按比例同时缩小 $w$ 和 $b$，$Z_0$ 可以保持不变——**这正是带状线（以及微带线）适用于集成电路的根本原因**。
+
+除电性能约束外，还需考虑工艺限制：导带厚度 $t$ 不能太薄（否则导体损耗过大、附着力差），$w$ 不能小于光刻精度极限，$b$ 与 $w$ 的比值受加工精度控制（一般要求 $w/b$ 的加工误差使 $Z_0$ 误差控制在 $\pm2\%$ 以内）。
+
+> **【小结】**
+> 1. 带状线由同轴线演变而来，介质**均匀填充**，主模为**严格 TEM**，无截止频率；
+> 2. $v_p=c/\sqrt{\varepsilon_r}$、$\lambda_g=\lambda_0/\sqrt{\varepsilon_r}$，**无色散**；
+> 3. $Z_0$ 的严格解为式 (4-3-3)（椭圆积分），工程上用窄／宽导带两段闭式解，**厚导带必须做等效加宽修正**；
+> 4. **宽导带→低阻抗，窄导带→高阻抗**；$Z_0$ 只与 $w/b$ 有关，故可以按比例缩小尺寸而保持阻抗；
+> 5. 尺寸选择：$w<\lambda_{\min}/(2\sqrt{\varepsilon_r})$、$b<\lambda_{\min}/(2\sqrt{\varepsilon_r})$；
+> 6. $\alpha_c\propto\sqrt{f}/b$，$\alpha_d=\pi\sqrt{\varepsilon_r}\tan\delta/\lambda_0$。
+>
+> 本节考点清单：$Z_0$ 计算（正向／反向，★★★）、$v_p$、$\lambda_g$ 计算（★★）、尺寸选择与高次模抑制（★★★）、与同轴线的对比（★★）。
+
+---
+
+## 4.4 微带线（Microstrip Line）
+
+### 4.4.1 从带状线到微带线：演化与结构
+
+微带线可以看成**带状线"去掉上面那块接地板"**的结果：介质基片（厚度 $h$、相对介电常数 $\varepsilon_r$）的下表面是完整的接地板（地平面），上表面是一条宽度为 $w$、厚度为 $t$ 的导带，导带之上是空气。它是**微波集成电路中使用最广泛的传输线**。
+
+<figure class="fig">
+<svg viewBox="0 0 720 240" role="img" aria-label="微带线由带状线演变的过程">
+  <defs>
+    <marker id="ch4ar6" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <text x="90" y="26" text-anchor="middle" font-size="12" fill="var(--ink-2)">带状线</text>
+  <path d="M40,70 L150,70" stroke="var(--line)" stroke-width="3.4"/>
+  <rect x="40" y="70" width="110" height="90" fill="none" stroke="var(--accent)" stroke-width="0.9" stroke-dasharray="4 3"/>
+  <path d="M40,160 L150,160" stroke="var(--line)" stroke-width="3.4"/>
+  <rect x="86" y="108" width="20" height="12" fill="none" stroke="var(--line)" stroke-width="2.2"/>
+  <path d="M168,115 L216,115" stroke="var(--ink-2)" stroke-width="1.6" marker-end="url(#ch4ar6)"/>
+
+  <text x="300" y="26" text-anchor="middle" font-size="12" fill="var(--ink-2)">去掉上接地板</text>
+  <rect x="228" y="70" width="150" height="90" fill="none" stroke="var(--accent)" stroke-width="0.9" stroke-dasharray="4 3"/>
+  <path d="M228,160 L378,160" stroke="var(--line)" stroke-width="3.4"/>
+  <rect x="288" y="108" width="30" height="12" fill="var(--line)" opacity="0.7"/>
+  <text x="303" y="60" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">空气</text>
+  <path d="M396,115 L444,115" stroke="var(--ink-2)" stroke-width="1.6" marker-end="url(#ch4ar6)"/>
+
+  <text x="561" y="26" text-anchor="middle" font-size="12" fill="var(--ink-2)">微带线</text>
+  <rect x="456" y="70" width="210" height="90" fill="none" stroke="var(--accent)" stroke-width="0.9" stroke-dasharray="4 3"/>
+  <path d="M456,160 L666,160" stroke="var(--line)" stroke-width="3.4"/>
+  <rect x="546" y="108" width="30" height="12" fill="var(--line)" opacity="0.7"/>
+  <text x="561" y="60" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">空气</text>
+  <text x="561" y="182" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">介质基片 εr</text>
+  <path d="M456,188 L666,188" stroke="var(--ink-2)" stroke-width="1"/>
+  <path d="M456,184 L456,192" stroke="var(--ink-2)" stroke-width="1"/>
+  <path d="M666,184 L666,192" stroke="var(--ink-2)" stroke-width="1"/>
+  <text x="561" y="206" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">基片厚度 h</text>
+  <text x="456" y="226" font-size="11.5" fill="var(--ink-2)">导带宽度 w，厚度 t；下表面为完整地平面</text>
+</svg>
+<figcaption>图 4-6　微带线由带状线演变而来（去掉上接地板，场分居于空气与介质中）</figcaption>
+</figure>
+
+**微带线的工艺基础**——"微波集成电路理论与金属薄膜工艺共同发展"：用溅射、蒸发、光刻、蚀刻等**金属薄膜工艺**在基片上制作导带图形，两端用同轴接头（如 SMA）与外部电路连接。常用基片材料及其参数为：
+
+| 基片材料 | 相对介电常数 $\varepsilon_r$ | 损耗角正切 $\tan\delta$ | 特点 |
+|---|---|---|---|
+| 氧化铝陶瓷 $\mathrm{Al_2O_3}$ | $9.0\sim9.9$ | $10^{-4}$ 量级 | 介电常数大，尺寸小，损耗低，成本较高 |
+| 聚氯乙烯（软基片） | $2.5$ | $10^{-3}$ 量级 | 便宜、柔性，损耗较大 |
+| 石英 | $3.8$ | $10^{-4}$ | 温度稳定性好 |
+| 复合介质基片（PTFE 类） | $2.2\!\sim\!10.5$ | $10^{-3}\!\sim\!10^{-4}$ | 兼顾性能与成本 |
+
+> **【核心概念】**
+> 微带线实现"小型化"的物理机制：
+> 1. **高介电常数**：$\lambda_g=\lambda_0/\sqrt{\varepsilon_e}$，$\varepsilon_r\uparrow\Rightarrow$ 波长缩短 $\Rightarrow$ 电路尺寸 $\downarrow$。故微波集成电路偏好高 $\varepsilon_r$ 基片。
+> 2. **比值决定阻抗**：$Z_0$ 由 $w/h$ 决定，所以在保持 $Z_0$ 不变的前提下可把 $w$、$h$ 同比例缩小，尺寸可以做到很小（这与同轴线、带状线"绝对尺寸也可缩但受机械强度限制"不同，见 4.4.3 节）。
+> 3. **低损耗材料**：$\tan\delta\sim10^{-4}$ 是"实现高度集成的关键"之一，因为介质损耗直接决定电路插入损耗。
+
+### 4.4.2 准 TEM 波与有效介电常数
+
+#### （1）为什么不是纯 TEM
+
+微带线的结构是**非对称**的：导带上方是空气（$\varepsilon_0$），下方是介质（$\varepsilon_r\varepsilon_0$）。前已说明，TEM 波要求横截面内介质均匀，因此**微带线中不存在纯粹的 TEM 波**，其严格解是"混合模"（同时含 $E_z$、$H_z$ 分量）。
+
+但在频率不太高时，$E_z$、$H_z$ 分量很小，场结构非常接近 TEM 波，可以近似当作 TEM 处理——称为**准 TEM 波（quasi-TEM）**。
+
+> **【核心概念】**
+> "龟兔赛跑"的类比：把一部分场在空气里传播看作"兔子"（相速 $v_{p1}=c$），把另一部分场在介质里传播看作"乌龟"（相速 $v_{p2}=c/\sqrt{\varepsilon_r}$）。实际微带线的相速既不是 $c$ 也不是 $c/\sqrt{\varepsilon_r}$，而是两者的某种"加权平均"（合成波 = 空气波 + 介质波）。这个加权的结果就用**有效介电常数 $\varepsilon_e$** 表示：
+> $$\frac{c}{\sqrt{\varepsilon_r}}<v_p<c\quad\Longleftrightarrow\quad 1<\varepsilon_e<\varepsilon_r$$
+
+#### （2）有效介电常数 $\varepsilon_e$ 的定义与等效思想
+
+**等效思想**：用一个"**全部填充等效介质 $\varepsilon_e$ 的假想 TEM 传输线**"来代替真实的非对称微带线，要求两者**波长相同、特性阻抗相同、相速相同**：
+
+$$
+\varepsilon_e=\frac{C}{C_0}
+\tag{4-4-1}
+$$
+
+其中 $C$ 是真实微带线的单位长度分布电容（介质 + 空气），$C_0$ 是**把所有介质换成空气时**的分布电容。因为介质的引入只会使电容增大，故 $C>C_0$，$\varepsilon_e>1$；又因为只有部分场在介质中，故 $\varepsilon_e<\varepsilon_r$。
+
+由 $v_p=1/\sqrt{LC}$、$Z_0=\sqrt{L/C}$ 以及"空气中微带线的特性阻抗 $Z_{0a}=1/(cC_0)$"，可以推导出**等效传输线的全部参数**：
+
+$$
+C=\varepsilon_eC_0,\qquad
+v_p=\frac{c}{\sqrt{\varepsilon_e}},\qquad
+\lambda_g=\frac{\lambda_0}{\sqrt{\varepsilon_e}}=\frac{c}{f\sqrt{\varepsilon_e}},\qquad
+\beta=k_0\sqrt{\varepsilon_e}=\frac{2\pi}{\lambda_0}\sqrt{\varepsilon_e}
+\tag{4-4-2}
+$$
+
+$$
+Z_0=\frac{Z_{0a}}{\sqrt{\varepsilon_e}},\qquad Z_{0a}=\frac{1}{cC_0}
+\tag{4-4-3}
+$$
+
+> **【公式推导】**
+> 为什么 $Z_0=Z_{0a}/\sqrt{\varepsilon_e}$？设等效线的单位长度电容为 $C=\varepsilon_eC_0$，单位长度电感为 $L$。由 $Z_0=\sqrt{L/C}$、$v_p=1/\sqrt{LC}$：
+> - 空气线：$Z_{0a}=\sqrt{L/C_0}$，$v_{p0}=1/\sqrt{LC_0}=c$，故 $Z_{0a}=1/(cC_0)$；
+> - 等效线：$Z_0=\sqrt{L/(\varepsilon_eC_0)}=\dfrac{1}{\sqrt{\varepsilon_e}}\sqrt{L/C_0}=\dfrac{Z_{0a}}{\sqrt{\varepsilon_e}}$。
+> 相速方面：$v_p=1/\sqrt{L\varepsilon_eC_0}=c/\sqrt{\varepsilon_e}$。**注意**：这里假设"介质只改变电容、不改变电感"（因为介质是非磁性的，$\mu=\mu_0$，电流分布基本不受介质影响），这正是准 TEM 等效模型的核心近似。
+
+<figure class="fig">
+<svg viewBox="0 0 720 250" role="img" aria-label="微带线横截面场分布与有效介电常数概念">
+  <defs>
+    <marker id="ch4ar7" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="var(--brand)"/>
+    </marker>
+  </defs>
+  <text x="24" y="24" font-size="13" fill="var(--ink)">(a) 实际微带线的电力线（一部分在空气、一部分在介质）</text>
+  <path d="M60,120 L360,120" stroke="var(--line)" stroke-width="4"/>
+  <rect x="60" y="120" width="300" height="80" fill="none" stroke="var(--accent)" stroke-width="0.9" stroke-dasharray="4 3"/>
+  <text x="210" y="170" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">介质 εr</text>
+  <text x="210" y="100" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">空气 ε0</text>
+  <g stroke="var(--brand)" stroke-width="1.3" fill="none">
+    <path d="M150,120 C140,80 200,60 250,84" marker-end="url(#ch4ar7)"/>
+    <path d="M230,120 C240,76 300,66 330,96" marker-end="url(#ch4ar7)"/>
+    <path d="M250,120 C250,190 250,190 250,196" marker-end="url(#ch4ar7)"/>
+    <path d="M170,120 C170,196 170,196 170,196" marker-end="url(#ch4ar7)"/>
+    <path d="M320,120 C320,196 320,196 320,196" marker-end="url(#ch4ar7)"/>
+  </g>
+  <text x="60" y="222" font-size="11.5" fill="var(--ink-2)">导带 w（厚度 t）在地平面上方 h 处</text>
+
+  <text x="420" y="24" font-size="13" fill="var(--ink)">(b) 等效为全部填充 εe 的 TEM 线</text>
+  <path d="M440,120 L700,120" stroke="var(--line)" stroke-width="4"/>
+  <rect x="440" y="120" width="260" height="80" fill="none" stroke="var(--brand)" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="570" y="170" text-anchor="middle" font-size="12" fill="var(--brand)">等效介质 εe（1&lt;εe&lt;εr）</text>
+  <g stroke="var(--brand)" stroke-width="1.3" fill="none">
+    <path d="M500,120 L500,196" marker-end="url(#ch4ar7)"/>
+    <path d="M570,120 L570,196" marker-end="url(#ch4ar7)"/>
+    <path d="M640,120 L640,196" marker-end="url(#ch4ar7)"/>
+  </g>
+  <text x="440" y="222" font-size="11.5" fill="var(--ink-2)">vp=c/√(εe)，λg=λ0/√(εe)，Z0=Z0a/√(εe)</text>
+</svg>
+<figcaption>图 4-7　微带线横截面场分布与有效介电常数 $\varepsilon_e$ 的等效思想</figcaption>
+</figure>
+
+#### （3）微带线的优缺点
+
+| 优点 | 说明 |
+|---|---|
+| 体积小、重量轻 | 平面结构，$\varepsilon_r\uparrow$ 时尺寸进一步缩小 |
+| 易于集成 | 与固态器件、PCB 工艺兼容，是 MMIC／RFIC 的基础 |
+| 成本低、可批量生产 | 光刻工艺一次成型，适合大批量 |
+| 便于连接 | 与同轴接头（SMA）、贴片元件直接连接 |
+
+| 缺点 | 说明 |
+|---|---|
+| 损耗较大 | 导体损耗 + 介质损耗（$\tan\delta\sim10^{-4}$），比同轴、波导大 |
+| 功率容量小 | 导带细、散热面积小，易击穿、易过热 |
+| 存在辐射损耗 | 开放结构，高频时能量会辐射出去，也易受干扰 |
+| 有色散 | 频率升高时 $\varepsilon_e$、$Z_0$ 随频率变化，准 TEM 近似失效 |
+
+> **【易错点】**
+> 微带线与带状线的"速度—抗干扰"权衡：
+> - **微带线**：场部分在空气中，等效介电常数低（$\varepsilon_e<\varepsilon_r$），**传输速度快、结构简单**；但结构开放，**抗干扰能力差**（易辐射、易受串扰）。
+> - **带状线**：介质均匀填充，传输速度慢（$v_p=c/\sqrt{\varepsilon_r}$）、结构复杂（需要多层基片）；但上下接地板把场封闭，**抗干扰能力强**。
+> 系统设计中若追求小型化与集成度选微带，若追求屏蔽与低串扰选带状线（或共面波导）。
+
+### 4.4.3 特性阻抗的闭式解
+
+微带线的严格解同样要用保角变换（考虑混合介质边界），结果比带状线更复杂，不适合工程手算。工程上最通用的是 **Hammerstad 闭式解**（与 Wheeler 结果等价），按 $w/h$ 分两段给出，并同时给出 $\varepsilon_e$ 与 $Z_0$：
+
+**① 窄导带（$w/h\le1$）**
+
+$$
+\varepsilon_e=\frac{\varepsilon_r+1}{2}+\frac{\varepsilon_r-1}{2}\left[\left(1+12\frac{h}{w}\right)^{-1/2}+0.04\left(1-\frac{w}{h}\right)^{2}\right]
+\tag{4-4-4}
+$$
+
+$$
+Z_0=\frac{60}{\sqrt{\varepsilon_e}}\ln\left(\frac{8h}{w}+\frac{w}{4h}\right)\ \Omega
+\tag{4-4-5}
+$$
+
+**② 宽导带（$w/h>1$）**
+
+$$
+\varepsilon_e=\frac{\varepsilon_r+1}{2}+\frac{\varepsilon_r-1}{2}\left(1+12\frac{h}{w}\right)^{-1/2}
+\tag{4-4-6}
+$$
+
+$$
+Z_0=\frac{120\pi/\sqrt{\varepsilon_e}}{\dfrac{w}{h}+1.393+0.667\ln\left(\dfrac{w}{h}+1.444\right)}\ \Omega
+\tag{4-4-7}
+$$
+
+> **【公式推导】**
+> 式 (4-4-4)、(4-4-6) 的物理含义可以这样理解：
+> - 第一项 $\dfrac{\varepsilon_r+1}{2}$ 是"介质与空气各占一半"时的平均值（当 $w/h\to\infty$ 时，场几乎全部集中在基片内，但基片上表面仍有边界，故 $\varepsilon_e\to$ 略小于 $\varepsilon_r$；当 $w/h\to0$ 时，场大部分在空气中，$\varepsilon_e\to1$）；
+> - 第二项 $\dfrac{\varepsilon_r-1}{2}\left(1+12\dfrac{h}{w}\right)^{-1/2}$ 刻画"**导带越窄（$w/h$ 越小），场越分散到空气中，$\varepsilon_e$ 越接近 1**"；
+> - 式 (4-4-4) 中多出的 $0.04(1-w/h)^2$ 是窄导带的经验修正项，在 $w/h=1$ 处为零，两式在 $w/h=1$ 处自然衔接。
+> 由此可以判断两个极限：$w/h\ll1$（细线）时 $\varepsilon_e\to(\varepsilon_r+1)/2$；$w/h\gg1$（宽带）时 $\varepsilon_e\to\varepsilon_r$。
+
+**导带厚度 $t$ 的影响**：厚度使导带等效变宽，工程上用**等效加宽**处理：
+
+$$
+\frac{w_e}{h}=\frac{w}{h}+\frac{t}{\pi h}\left(1+\ln\frac{2h}{t}\right)
+\tag{4-4-8}
+$$
+
+然后把 $w_e/h$ 代入式 (4-4-4)～(4-4-7)。**因为 $w_e>w$，所以厚度使 $Z_0$ 下降**（与带状线一致）。
+
+<figure class="fig">
+<svg viewBox="0 0 720 300" role="img" aria-label="微带线特性阻抗与宽度厚度比的设计曲线">
+  <defs>
+    <marker id="ch4ar8" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <line x1="80" y1="250" x2="680" y2="250" stroke="var(--ink-2)" stroke-width="1.2" marker-end="url(#ch4ar8)"/>
+  <line x1="80" y1="250" x2="80" y2="30" stroke="var(--ink-2)" stroke-width="1.2" marker-end="url(#ch4ar8)"/>
+  <text x="650" y="272" font-size="12" fill="var(--ink-2)">w/h</text>
+  <text x="26" y="36" font-size="12" fill="var(--ink-2)">Z0/Ω</text>
+  <g font-size="11" fill="var(--ink-2)">
+    <text x="80" y="268" text-anchor="middle">0.1</text>
+    <text x="200" y="268" text-anchor="middle">0.5</text>
+    <text x="320" y="268" text-anchor="middle">1</text>
+    <text x="440" y="268" text-anchor="middle">2</text>
+    <text x="560" y="268" text-anchor="middle">5</text>
+    <text x="650" y="268" text-anchor="middle">10</text>
+    <text x="64" y="60" text-anchor="end">150</text>
+    <text x="64" y="105" text-anchor="end">120</text>
+    <text x="64" y="150" text-anchor="end">90</text>
+    <text x="64" y="195" text-anchor="end">60</text>
+    <text x="64" y="240" text-anchor="end">30</text>
+  </g>
+  <g stroke="var(--line)" stroke-dasharray="3 3">
+    <line x1="80" y1="60" x2="680" y2="60"/><line x1="80" y1="105" x2="680" y2="105"/>
+    <line x1="80" y1="150" x2="680" y2="150"/><line x1="80" y1="195" x2="680" y2="195"/>
+    <line x1="80" y1="240" x2="680" y2="240"/>
+  </g>
+  <path d="M100,82 Q150,120 200,160 Q260,196 320,212 Q400,230 500,241 Q600,246 680,248"
+        fill="none" stroke="var(--brand)" stroke-width="2.2"/>
+  <text x="380" y="60" font-size="12" fill="var(--brand)">εr=2.2（软基片）</text>
+  <path d="M100,120 Q150,158 200,192 Q260,218 320,229 Q400,240 500,246 Q600,249 680,250"
+        fill="none" stroke="var(--warn)" stroke-width="2.2"/>
+  <text x="380" y="92" font-size="12" fill="var(--warn)">εr=9.6（陶瓷基片）</text>
+  <line x1="320" y1="250" x2="320" y2="212" stroke="var(--accent)" stroke-dasharray="4 3"/>
+  <circle cx="320" cy="212" r="3.6" fill="var(--accent)"/>
+  <text x="330" y="206" font-size="11.5" fill="var(--accent)">例 4-6：Z0≈71 Ω</text>
+  <text x="96" y="290" font-size="11.5" fill="var(--ink-2)">w/h 增大 ⇒ 导带变宽 ⇒ 电容增大 ⇒ Z0 单调下降；同一 w/h 下 εr 越大 Z0 越低</text>
+</svg>
+<figcaption>图 4-8　微带线特性阻抗 $Z_0$ 与 $w/h$ 的设计曲线（两组基片对比）</figcaption>
+</figure>
+
+**三条必须记住的规律**：
+
+1. **$Z_0$ 随 $w/h$ 单调下降**（与带状线相同：宽导带→低阻抗）；
+2. **同一 $w/h$ 下，$\varepsilon_r$ 越大 $\varepsilon_e$ 越大，$Z_0$ 越低**（因为 $Z_0=Z_{0a}/\sqrt{\varepsilon_e}$）；
+3. **细线（$w/h$ 小）是高阻抗线，宽线（$w/h$ 大）是低阻抗线**。在实际电路中，$50\ \Omega$ 是主流，$Z_0<20\ \Omega$ 的宽线常用于"射频扼流／偏置网络"，$Z_0>100\ \Omega$ 的细线常用于高阻匹配段。
+
+> **【例题 4-4】**
+> 某微带线导带宽度 $w=2\ \mathrm{mm}$、厚度 $t\to0$，基片厚度 $h=1\ \mathrm{mm}$、相对介电常数 $\varepsilon_r=9.6$，求特性阻抗 $Z_0$；若导带厚度 $t=0.1\ \mathrm{mm}$，再求 $Z_0$。
+>
+> **解：**
+> **第一步：确定区间。** $w/h=2>1$，用宽导带公式 (4-4-6)、(4-4-7)。
+> **第二步：$t\to0$ 时计算 $\varepsilon_e$。**
+> $$\varepsilon_e=\frac{9.6+1}{2}+\frac{9.6-1}{2}\left(1+\frac{12}{2}\right)^{-1/2}
+> =5.3+4.3\times7^{-1/2}=5.3+4.3\times0.37796=6.925$$
+> **第三步：计算 $Z_0$。**
+> $$Z_0=\frac{120\pi/\sqrt{6.925}}{2+1.393+0.667\ln(2+1.444)}
+> =\frac{376.99/2.6316}{3.393+0.667\times1.2368}
+> =\frac{143.3}{4.218}=34.0\ \Omega$$
+> **第四步：$t=0.1\ \mathrm{mm}$ 时用等效加宽。** 由式 (4-4-8)：
+> $$\frac{w_e}{h}=\frac{w}{h}+\frac{t}{\pi h}\left(1+\ln\frac{2h}{t}\right)
+> =2+\frac{0.1}{\pi}\left(1+\ln\frac{2\times1}{0.1}\right)
+> =2+0.03183\times(1+2.996)=2+0.127=2.127$$
+> 代入式 (4-4-6)、(4-4-7)：
+> $$\varepsilon_e=5.3+4.3\left(1+\frac{12}{2.127}\right)^{-1/2}=5.3+4.3\times(6.641)^{-1/2}=5.3+1.669=6.969$$
+> $$Z_0=\frac{376.99/\sqrt{6.969}}{2.127+1.393+0.667\ln(2.127+1.444)}
+> =\frac{376.99/2.6398}{3.520+0.667\times1.2719}
+> =\frac{142.8}{4.369}=32.7\ \Omega$$
+> **答：** $t\to0$ 时 $Z_0\approx34\ \Omega$；$t=0.1\ \mathrm{mm}$ 时 $Z_0\approx32.7\ \Omega$。
+> **讨论：** 导带厚度从 $0$ 增到 $0.1\ \mathrm{mm}$（$t/h=0.1$）使 $Z_0$ 下降了约 $4\%$。虽然厚度只使几何宽度增加了 $6\%$，但因为它同时增大了电容并使 $\varepsilon_e$ 略升，$Z_0$ 的变化是不可忽略的。**工程上做精确设计时必须计入 $t$（或用三维电磁仿真校核）。**
+
+> **【例题 4-5】**
+> 某微带线基片厚度 $h=1\ \mathrm{mm}$、$\varepsilon_r=4.4$，导带宽度 $w=1\ \mathrm{mm}$、$t\to0$，求 $\varepsilon_e$ 与 $Z_0$。
+>
+> **解：**
+> $w/h=1$，处于两段公式的衔接点，用式 (4-4-4)、(4-4-5)（$w/h\le1$）：
+> $$\varepsilon_e=\frac{4.4+1}{2}+\frac{4.4-1}{2}\left[(1+12)^{-1/2}+0.04(1-1)^{2}\right]
+> =2.7+1.7\times0.27735=3.171$$
+> $$Z_0=\frac{60}{\sqrt{3.171}}\ln\left(\frac{8}{1}+\frac{1}{4}\right)
+> =\frac{60}{1.7809}\ln8.25=33.69\times2.110=71.1\ \Omega$$
+> 用宽导带公式 (4-4-6)、(4-4-7) 交叉校核：
+> $$Z_0=\frac{120\pi/\sqrt{3.171}}{1+1.393+0.667\ln(1+1.444)}
+> =\frac{211.7}{2.393+0.667\times0.894}=\frac{211.7}{2.989}=70.8\ \Omega$$
+> **答：** $\varepsilon_e\approx3.17$，$Z_0\approx71\ \Omega$（两段公式结果相差不到 $0.5\%$，说明公式在 $w/h=1$ 处衔接良好）。
+> **讨论：** $\varepsilon_e=3.17$ 处于 $1$ 与 $\varepsilon_r=4.4$ 之间且明显偏向小的一侧，说明该线"场有相当一部分跑到了空气中"。这带来两个后果：① 相速 $v_p=c/\sqrt{3.17}=0.561c$，比全介质填充（$c/\sqrt{4.4}=0.477c$）快约 $18\%$；② 一旦在导带上方加介质覆盖层（如封装、保护层），$\varepsilon_e$ 会显著变化，$Z_0$ 随之改变——**这是微带电路封装后性能漂移的根源**。
+
+> **【例题 4-6】**
+> 设计一段 $50\ \Omega$ 微带线，已知 $\varepsilon_r=9.6$、基片厚度 $h=0.8\ \mathrm{mm}$、$t\to0$，求导带宽度 $w$。
+>
+> **解：**
+> **第一步：估计区间。** $50\ \Omega$ 在 $\varepsilon_r=9.6$ 时对应较窄的导带（对照图 4-8 可知 $w/h$ 应略小于 $1$）。
+> **第二步：设 $w/h\le1$，用式 (4-4-4)、(4-4-5) 迭代。** 先取试探值 $w/h=1$：
+> $$\varepsilon_e=5.3+4.3\times13^{-1/2}=5.3+1.192=6.492,\qquad \sqrt{\varepsilon_e}=2.548$$
+> $$Z_0=\frac{60}{2.548}\ln(8+0.25)=23.55\times2.110=49.7\ \Omega$$
+> 结果略低于 $50\ \Omega$，说明 $w/h$ 应略小于 $1$。取 $w/h=0.98$：
+> $$\varepsilon_e=5.3+4.3\left(1+\frac{12}{0.98}\right)^{-1/2}=5.3+4.3\times(13.245)^{-1/2}=5.3+1.182=6.482$$
+> $$Z_0=\frac{60}{2.546}\ln\left(\frac{8}{0.98}+\frac{0.98}{4}\right)=23.57\times\ln(8.163+0.245)=23.57\times2.139=50.4\ \Omega$$
+> 取 $w/h=0.99$ 可得 $Z_0\approx50.0\ \Omega$，故
+> $$w=0.99h=0.99\times0.8=0.79\ \mathrm{mm}\approx0.8\ \mathrm{mm}$$
+> **第三步：用综合公式校核。** Hammerstad 反向设计公式为
+> $$A=\frac{Z_0}{60}\sqrt{\frac{\varepsilon_r+1}{2}}+\frac{\varepsilon_r-1}{\varepsilon_r+1}\left(0.23+\frac{0.11}{\varepsilon_r}\right)$$
+> $$A=\frac{50}{60}\sqrt{5.3}+\frac{8.6}{10.6}(0.23+0.0115)=0.8333\times2.302+0.8113\times0.2415=2.114$$
+> $$\frac{w}{h}=\frac{8e^{A}}{e^{2A}-2}=\frac{8\times8.284}{68.62-2}=\frac{66.27}{66.62}=0.995$$
+> 两种方法给出 $w/h\approx0.99\sim1.00$，一致。
+> **答：** $w\approx0.79\sim0.80\ \mathrm{mm}$，此时 $\varepsilon_e\approx6.48$，$\lambda_g=\lambda_0/\sqrt{6.48}$。
+> **讨论：** 若该线工作在 $10\ \mathrm{GHz}$（$\lambda_0=30\ \mathrm{mm}$），则 $\lambda_g=30/2.546=11.8\ \mathrm{mm}$，$\lambda_g/4=2.95\ \mathrm{mm}$——这是该基片上 $\lambda_g/4$ 变换器、枝节线段的物理长度。可见**高介电常数基片把"微波电路"的尺寸压缩到了毫米量级**，这就是集成电路可行的直接原因。
+
+### 4.4.4 衰减常数
+
+微带线的衰减由三部分组成：$\alpha=\alpha_c+\alpha_d+\alpha_r$（导体、介质、辐射）。
+
+**（1）导体衰减 $\alpha_c$（主要来源）。** 微带线的电流分布不均匀（导带边缘电流密度高、地平面电流集中在导带正下方），因此 $\alpha_c$ 比同尺寸带状线大。工程规律为
+
+$$
+\alpha_c\propto R_s\propto\sqrt{f},\qquad \alpha_c\propto\frac{1}{Z_0 h}\ \text{（同量级下）}
+\tag{4-4-9}
+$$
+
+即**频率越高、阻抗越高、基片越薄，导体损耗越大**。
+
+**（2）介质衰减 $\alpha_d$。** 只有基片中的那部分场产生介质损耗，因此必须乘上"填充因子"（用 $\varepsilon_e$、$\varepsilon_r$ 表示）：
+
+$$
+\alpha_d=27.3\,\frac{\varepsilon_r}{\sqrt{\varepsilon_e}}\,\frac{\varepsilon_e-1}{\varepsilon_r-1}\,\frac{\tan\delta}{\lambda_0}\ \ \mathrm{dB}/\text{单位长度}
+\tag{4-4-10}
+$$
+
+> **【公式推导】**
+> 式 (4-4-10) 的结构可以逐项读出物理意义：
+> - $\dfrac{1}{\lambda_0}$：$\alpha_d\propto$ 频率（单位长度上经历的"介质周期"数越多，损耗越大）；
+> - $\tan\delta$：介质本身的损耗能力；
+> - $\dfrac{\varepsilon_e-1}{\varepsilon_r-1}$：**填充因子**——当 $\varepsilon_e\to1$（场全在空气中）时为零损耗，当 $\varepsilon_e\to\varepsilon_r$（场全在介质中）时为 $1$；
+> - $\dfrac{\varepsilon_r}{\sqrt{\varepsilon_e}}$：由 $\varepsilon_e$ 引起的相波长修正；
+> - 系数 $27.3=8.686\pi$：把 $\pi/\lambda_0$ 型公式从 $\mathrm{Np}$ 换算成 $\mathrm{dB}$（$8.686\ \mathrm{dB/Np}$）。写成 $\mathrm{Np}$ 形式即
+> $$\alpha_d=3.14\,\frac{\varepsilon_r}{\sqrt{\varepsilon_e}}\,\frac{\varepsilon_e-1}{\varepsilon_r-1}\,\frac{\tan\delta}{\lambda_0}\ \mathrm{Np}/\text{单位长度}$$
+
+**（3）辐射衰减 $\alpha_r$。** 开放结构造成的能量辐射，在**弯曲、不连续处（阶梯、T 形头）和频率较高时**不可忽略；一般直线上可忽略，但它是微带线"抗干扰差"的物理原因，也是微带电路要加金属屏蔽盒的原因（加屏蔽盒又会改变 $\varepsilon_e$，需要重新设计）。
+
+> **【易错点】**
+> - 带状线 $\alpha_d=\dfrac{\pi\sqrt{\varepsilon_r}}{\lambda_0}\tan\delta$ 用的是 $\varepsilon_r$（因为介质均匀填充）；**微带线必须用 $\varepsilon_e$ 并乘填充因子**，直接套带状线公式会明显高估介质损耗。
+> - $\alpha_c\propto\sqrt{f}$、$\alpha_d\propto f$，所以**存在一个"损耗主导者切换"的频率**：低频段导体损耗为主，高频段介质损耗为主。
+
+### 4.4.5 尺寸选择（抑制高次模与表面波）
+
+微带线的高次模有两类：**波导模式（横向谐振模）**与**表面波模式（surface wave）**。
+
+**（1）波导模式。** 把"导带 + 地平面 + 介质"看成一个填充介质的波导：
+
+$$
+\lambda_{c,\mathrm{TE}_{10}}\approx2\left(w+0.4h\right)\sqrt{\varepsilon_r}\ \ (\text{考虑边缘效应与厚度的修正}),
+\qquad
+\lambda_{c,\mathrm{TM}_{01}}\approx2h\sqrt{\varepsilon_r}
+\tag{4-4-11}
+$$
+
+其中 $\mathrm{TE}_{10}$ 型模的截止由**导带宽度**决定，$\mathrm{TM}_{01}$ 型（平行板）模的截止由**基片厚度**决定。**薄导带（$t\to0$）时 $\mathrm{TE}_{10}$ 的截止波长简化为 $2w\sqrt{\varepsilon_r}$**，式中的 $0.4h$ 是宽度方向的边缘效应修正。
+
+**（2）表面波模式。** 表面波是沿介质基片表面传播、能量集中在基片内并随离开表面距离指数衰减的波。其特点是：
+
+| 表面波模式 | 截止波长 | 说明 |
+|---|---|---|
+| $\mathrm{TM}_0$ | $\lambda_c=\infty$ | **无截止**，任何频率都存在，是高频时最主要的寄生模式 |
+| $\mathrm{TE}_1$ | $\lambda_{c,\mathrm{TE}_1}=4h\sqrt{\varepsilon_r-1}$ | 次低次模，频率最高时可被激发 |
+
+**（3）单模工作条件。** 要求所有高次模的截止波长小于最短工作波长 $\lambda_{\min}$：
+
+$$
+\lambda_{\min}>2h\sqrt{\varepsilon_r},\qquad
+\lambda_{\min}>4h\sqrt{\varepsilon_r-1},\qquad
+\lambda_{\min}>2(w+0.4h)\sqrt{\varepsilon_r}
+\tag{4-4-12}
+$$
+
+等价地写成**尺寸上限**：
+
+$$
+h<\min\left\{\frac{\lambda_{\min}}{2\sqrt{\varepsilon_r}},\ \frac{\lambda_{\min}}{4\sqrt{\varepsilon_r-1}}\right\},
+\qquad
+w<\frac{\lambda_{\min}}{2\sqrt{\varepsilon_r}}-0.4h
+\tag{4-4-13}
+$$
+
+> **【核心概念】**
+> 三条限制的物理含义：
+> 1. $h<\dfrac{\lambda_{\min}}{2\sqrt{\varepsilon_r}}$：基片太厚时，导带与地平面之间形成"平行板波导"，激发出 $\mathrm{TM}_{01}$ 型高次模；
+> 2. $h<\dfrac{\lambda_{\min}}{4\sqrt{\varepsilon_r-1}}$：基片太厚时能量会以**表面波**形式沿基片泄漏出去（$\mathrm{TE}_1$ 模），这不仅增加损耗，还会造成**阵列天线中的单元间互耦**；
+> 3. $w<\dfrac{\lambda_{\min}}{2\sqrt{\varepsilon_r}}$：导带太宽时形成横向波导模 $\mathrm{TE}_{10}$。
+> **由于 $\sqrt{\varepsilon_r-1}<\sqrt{\varepsilon_r}$，第二式的分母更小，通常（$\varepsilon_r$ 较大时）它是更严格的限制。** 工程上常取更保守的值，例如把上限频率取为理论值的 $0.8$ 倍。
+> **注意**：$\mathrm{TM}_0$ 表面波无截止频率，因此"彻底消除表面波"是不可能的；工程上只能通过**减薄基片、加屏蔽盒（抑制辐射）、采用过孔接地**等措施抑制它。
+
+> **【工程应用】**
+> 基片厚度 $h$ 的选取是微带电路设计的核心折中：
+> - $h$ **大**：导体损耗小（$\alpha_c\propto1/h$）、$Z_0$ 对 $w$ 的加工误差不敏感、功率容量大；但容易激发表面波与平行板模，且不利于小型化与散热；
+> - $h$ **小**：利于小型化、抑制高次模、散热好；但导体损耗上升、导带太细（高阻线）时加工误差导致 $Z_0$ 偏差大。
+> 常见工程取值：$X$ 波段用 $h=0.5\sim1\ \mathrm{mm}$；毫米波用 $h=0.1\sim0.25\ \mathrm{mm}$。
+
+### 4.4.6 微带线的色散
+
+**色散（dispersion）**指相速（或 $\varepsilon_e$、$Z_0$）随频率变化的现象。微带线的色散有两个来源：
+
+1. **准 TEM 近似失效**：频率升高后 $E_z$、$H_z$ 分量不可忽略，纵向场使场结构随频率变化，$\varepsilon_e$ 与 $Z_0$ 都随频率漂移；
+2. **表面波与辐射**的耦合：高频时能量向基片与空间泄漏，有效相速进一步变化。
+
+**工程判据**（满足其一即需考虑色散，必须用全波分析或色散修正公式）：
+
+$$
+\frac{h}{\lambda_0}>0.1,\qquad\text{或}\qquad f[\mathrm{GHz}]\cdot h[\mathrm{mm}]\gtrsim2\!\sim\!3
+\tag{4-4-14}
+$$
+
+**色散的实际后果与对策**：
+
+| 后果 | 说明 | 对策 |
+|---|---|---|
+| 阻抗随频率变化 | 设计频率处 $Z_0=50\ \Omega$，偏离后偏离设计值 | 保留调试手段；用宽带匹配 |
+| 相速随频率变化 | 脉冲信号展宽（群速色散） | 限制工作带宽；用色散修正的 $\varepsilon_e(f)$ |
+| 电路尺寸失配 | $\lambda_g$ 随 $f$ 变化，$\lambda_g/4$ 线段偏离设计长度 | 按中心频率设计，评估边缘频率性能 |
+| 高阶模泄漏 | 表面波、辐射损耗上升 | 减薄基片、加屏蔽、加过孔 |
+
+> **【考点】**
+> 微带线的"三个统一思想"是本节的灵魂，考试中经常以简答题形式出现：
+> 1. **场与路的统一**：微带线的全部"路"参数（$L$、$C$、$Z_0$、$v_p$）都能从场分布（$E_r$、$H_\varphi$ 式场）出发求出——"**路中有场，场中有路**"；
+> 2. **微波与低频的统一**：分布参数电路在低频退化为集总参数，微带线的电阻、电容模型与低频电容电阻在极限情况下一致；
+> 3. **等效思想的统一**：用"全空气线 + 有效介电常数 $\varepsilon_e$"这一个等效模型，就把非对称混合介质问题化归为均匀 TEM 问题，代价是引入频率限制（准 TEM）。
+
+> **【小结】**
+> 1. 微带线 = 导带 + 基片 + 地平面，**非对称结构 → 不是纯 TEM，而是准 TEM**；
+> 2. 引入**有效介电常数 $\varepsilon_e=C/C_0$**，$1<\varepsilon_e<\varepsilon_r$，$v_p=c/\sqrt{\varepsilon_e}$，$\lambda_g=\lambda_0/\sqrt{\varepsilon_e}$，$Z_0=Z_{0a}/\sqrt{\varepsilon_e}$；
+> 3. $Z_0$ 与 $\varepsilon_e$ 有 $w/h\le1$、$w/h>1$ 两段闭式解，**厚度 $t$ 用等效加宽 $w_e/h=w/h+\frac{t}{\pi h}(1+\ln\frac{2h}{t})$ 修正**；
+> 4. 尺寸选择：$h<\min\{\frac{\lambda_{\min}}{2\sqrt{\varepsilon_r}},\frac{\lambda_{\min}}{4\sqrt{\varepsilon_r-1}}\}$，其中 $\mathrm{TE}_1$ 表面波限制通常最严格，$\mathrm{TM}_0$ 表面波无截止；
+> 5. 衰减：$\alpha_c\propto\sqrt{f}$（主要），$\alpha_d=27.3\frac{\varepsilon_r}{\sqrt{\varepsilon_e}}\frac{\varepsilon_e-1}{\varepsilon_r-1}\frac{\tan\delta}{\lambda_0}\ \mathrm{dB}$，辐射损耗在弯曲与不连续处不可忽略；
+> 6. 色散判据 $h/\lambda_0>0.1$，超过后必须用全波分析。
+>
+> 本节考点清单：$\varepsilon_e$ 与 $Z_0$ 的正／反向计算（★★★★）、准 TEM 的物理原因（★★★）、尺寸选择与表面波抑制（★★★）、色散判据（★★）。
+
+---
+
+## 4.5 耦合微带线
+
+### 4.5.1 为什么会出现耦合微带线
+
+在平面集成电路中，两条微带线只要**靠得足够近**，就会通过**互电容**（电场耦合）和**互感**（磁场耦合）互相影响。这种"成对出现、互相影响"的结构称为**耦合微带线（coupled microstrip lines）**。它既是**有意利用**的功能结构（定向耦合器、滤波器、耦合器、平衡器件的基础），也是**无意产生**的寄生效应（串扰、寄生耦合）。
+
+耦合微带线同样工作在准 TEM 模式，因此仍可以用分布参数网络描述，但每条线的电压、电流不再独立，必须联立求解——这就是**耦合传输线方程**。
+
+<figure class="fig">
+<svg viewBox="0 0 720 300" role="img" aria-label="耦合微带线横截面与偶模奇模电场线对照">
+  <defs>
+    <marker id="ch4ar9" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="var(--brand)"/>
+    </marker>
+    <marker id="ch4ar10" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="var(--warn)"/>
+    </marker>
+  </defs>
+  <text x="16" y="22" font-size="13" fill="var(--ink)">(a) 偶模激励：对称面为磁壁（PMC）</text>
+  <path d="M40,150 L330,150" stroke="var(--line)" stroke-width="3.6"/>
+  <rect x="40" y="150" width="290" height="60" fill="none" stroke="var(--accent)" stroke-width="0.9" stroke-dasharray="4 3"/>
+  <rect x="96" y="112" width="34" height="12" fill="var(--line)" opacity="0.7"/>
+  <rect x="240" y="112" width="34" height="12" fill="var(--line)" opacity="0.7"/>
+  <line x1="185" y1="70" x2="185" y2="216" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <text x="185" y="64" text-anchor="middle" font-size="11.5" fill="var(--accent)">磁壁（无电场线穿越）</text>
+  <g stroke="var(--brand)" stroke-width="1.3" fill="none">
+    <path d="M113,112 L113,150" marker-end="url(#ch4ar9)"/>
+    <path d="M80,120 C70,145 80,150 96,150" marker-end="url(#ch4ar9)"/>
+    <path d="M146,120 C160,145 150,150 132,150" marker-end="url(#ch4ar9)"/>
+    <path d="M257,112 L257,150" marker-end="url(#ch4ar9)"/>
+    <path d="M224,120 C214,145 224,150 240,150" marker-end="url(#ch4ar9)"/>
+    <path d="M290,120 C304,145 294,150 276,150" marker-end="url(#ch4ar9)"/>
+  </g>
+  <text x="185" y="238" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">U1=U2=Ue：两导带等电位，耦合电容上无电荷</text>
+  <text x="185" y="258" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">Ce=Ca-Cab 最小 ⇒ Z0e 最大</text>
+
+  <text x="390" y="22" font-size="13" fill="var(--ink)">(b) 奇模激励：对称面为电壁（PEC）</text>
+  <path d="M410,150 L700,150" stroke="var(--line)" stroke-width="3.6"/>
+  <rect x="410" y="150" width="290" height="60" fill="none" stroke="var(--accent)" stroke-width="0.9" stroke-dasharray="4 3"/>
+  <rect x="466" y="112" width="34" height="12" fill="var(--line)" opacity="0.7"/>
+  <rect x="610" y="112" width="34" height="12" fill="var(--line)" opacity="0.7"/>
+  <line x1="555" y1="70" x2="555" y2="216" stroke="var(--warn)" stroke-width="2.6"/>
+  <text x="555" y="64" text-anchor="middle" font-size="11.5" fill="var(--warn)">电壁（等效接地）</text>
+  <g stroke="var(--warn)" stroke-width="1.3" fill="none">
+    <path d="M483,112 L483,150" marker-end="url(#ch4ar10)"/>
+    <path d="M450,120 C440,145 450,150 466,150" marker-end="url(#ch4ar10)"/>
+    <path d="M516,120 C540,140 552,146 555,150" marker-end="url(#ch4ar10)"/>
+    <path d="M627,112 L627,150" marker-end="url(#ch4ar10)"/>
+    <path d="M594,120 C570,140 558,146 555,150" marker-end="url(#ch4ar10)"/>
+    <path d="M660,120 C674,145 664,150 646,150" marker-end="url(#ch4ar10)"/>
+  </g>
+  <text x="555" y="238" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">U1=-U2=Uo：两导带等幅反相，耦合电容上有电荷</text>
+  <text x="555" y="258" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">Co=Ca+Cab 最大 ⇒ Z0o 最小</text>
+  <text x="16" y="286" font-size="11.5" fill="var(--ink-2)">两导带宽度均为 w，间距 s，基片厚度 h，εr；对称面垂直于基片、位于两导带正中</text>
+</svg>
+<figcaption>图 4-9　耦合微带线横截面与偶模／奇模电场线对照</figcaption>
+</figure>
+
+### 4.5.2 耦合传输线方程
+
+设两根线的单位长度自电感为 $L$、自电容（对地）为 $C_a$，互电感为 $L_{ab}$、互电容（两线之间）为 $C_{ab}$。由第二章的传输线方程推广（把互感、互容引入）：
+
+$$
+\begin{aligned}
+-\frac{dU_1}{dz}&=j\omega L I_1+j\omega L_{ab}I_2\\[4pt]
+-\frac{dU_2}{dz}&=j\omega L_{ab}I_1+j\omega L I_2\\[4pt]
+-\frac{dI_1}{dz}&=j\omega\left(C_a+C_{ab}\right)U_1-j\omega C_{ab}U_2\\[4pt]
+-\frac{dI_2}{dz}&=-j\omega C_{ab}U_1+j\omega\left(C_a+C_{ab}\right)U_2
+\end{aligned}
+\tag{4-5-1}
+$$
+
+> **【易错点】**
+> "**为什么互容项有个负号？**"——因为定义 $C_{ab}$ 是**两线之间的耦合电容**，流经它的电流取决于**两线之间的电位差** $U_1-U_2$。把 $C_{ab}(U_1-U_2)$ 的贡献分别归到两条线上，就会出现 $+C_{ab}U_1$ 与 $-C_{ab}U_2$ 的组合。同理，式中的 $C_a+C_{ab}$ 也不是笔误：$C_a$ 是"另一根线接地时本线对地的**部分电容**"，而 $C_a+C_{ab}$ 才是**另一根线悬空（不接地）时**本线的等效自电容。第二章式 (2-2-5) 的单根线方程正是这里的 $L_{ab}=C_{ab}=0$ 特例。
+
+显然，$U_1$、$U_2$ 耦合在一起，不能单独求解。但如果做**对称／反对称分解**，方程就能解耦——这就是**奇偶模分析**。
+
+### 4.5.3 奇偶模分析（重点）
+
+**核心思想**：任意激励 $(U_1,U_2)$ 都可以分解为"对称（偶模）+ 反对称（奇模）"两部分之和：
+
+$$
+U_1=U_e+U_o,\qquad U_2=U_e-U_o
+\quad\Longleftrightarrow\quad
+U_e=\frac{U_1+U_2}{2},\qquad U_o=\frac{U_1-U_2}{2}
+\tag{4-5-2}
+$$
+
+> **【核心概念】**
+> 例如 $U_1=1\ \mathrm{V}$、$U_2=2\ \mathrm{V}$，则
+> $$U_e=\frac{1+2}{2}=1.5\ \mathrm{V},\qquad U_o=\frac{1-2}{2}=-0.5\ \mathrm{V}$$
+> 即 "$1\ \mathrm{V}$ 与 $2\ \mathrm{V}$ 的任意激励 = 两线各加 $1.5\ \mathrm{V}$（偶模）+ 两线分别加 $+0.5\ \mathrm{V}$ 与 $-0.5\ \mathrm{V}$（奇模）"。
+> **为什么可以这样分解？** 因为耦合线是**线性**网络，满足叠加原理；而"对称激励"与"反对称激励"恰好各自保持对称性，使方程退化为两根**独立**的等效单线。这就是"对称—反对称思想"。
+
+#### （1）偶模激励
+
+两线加**等幅同相**电压：$U_1=U_2=U_e$，$I_1=I_2=I_e$。由于两线电位相同，**对称面（两导带正中的平面）上电场的切向分量为零**，等效于一面**理想磁导体（PMC，磁壁）**。把 $U_1=U_2$、$I_1=I_2$ 代入式 (4-5-1)：
+
+$$
+-\frac{dU_e}{dz}=j\omega\left(L+L_{ab}\right)I_e,\qquad
+-\frac{dI_e}{dz}=j\omega\left(C_a-C_{ab}\right)U_e
+\tag{4-5-3}
+$$
+
+于是得到等效单线的分布参数与传播常数：
+
+$$
+L_e=L+L_{ab}=L\left(1+K_L\right),\qquad
+C_e=C_a-C_{ab}=C_a\left(1-K_C\right)
+\tag{4-5-4}
+$$
+
+$$
+\beta_e=\omega\sqrt{L_eC_e}=\omega\sqrt{LC_a\left(1+K_L\right)\left(1-K_C\right)},
+\qquad
+v_{pe}=\frac{1}{\sqrt{L_eC_e}}
+\tag{4-5-5}
+$$
+
+$$
+Z_{0e}=\sqrt{\frac{L_e}{C_e}}=\sqrt{\frac{L\left(1+K_L\right)}{C_a\left(1-K_C\right)}}
+=\sqrt{\frac{L}{C_a}}\sqrt{\frac{1+K_L}{1-K_C}}
+\tag{4-5-6}
+$$
+
+其中 $K_L=\dfrac{L_{ab}}{L}$、$K_C=\dfrac{C_{ab}}{C_a}$ 分别称为**电感耦合系数**与**电容耦合系数**（一般 $K<1$）。
+
+> **【核心概念】**
+> 偶模时对称面是**磁壁**：磁场没有切向分量（磁场线垂直于对称面），而电场线**不能穿越**磁壁（因为两线等电位，对称面上不存在电势差）。所以**偶模时两导带之间没有电场线**，耦合电容 $C_{ab}$ 上不带电荷，等效电容**减小**为 $C_e=C_a-C_{ab}$。
+
+#### （2）奇模激励
+
+两线加**等幅反相**电压：$U_1=-U_2=U_o$，$I_1=-I_2=I_o$。此时对称面上电位为零，等效于一面**理想电导体（PEC，电壁，相当于接地）**。代入式 (4-5-1)：
+
+$$
+-\frac{dU_o}{dz}=j\omega\left(L-L_{ab}\right)I_o,\qquad
+-\frac{dI_o}{dz}=j\omega\left(C_a+C_{ab}\right)U_o
+\tag{4-5-7}
+$$
+
+$$
+L_o=L-L_{ab}=L\left(1-K_L\right),\qquad
+C_o=C_a+C_{ab}=C_a\left(1+K_C\right)
+\tag{4-5-8}
+$$
+
+$$
+\beta_o=\omega\sqrt{LC_a\left(1-K_L\right)\left(1+K_C\right)},
+\qquad
+Z_{0o}=\sqrt{\frac{L\left(1-K_L\right)}{C_a\left(1+K_C\right)}}
+=\sqrt{\frac{L}{C_a}}\sqrt{\frac{1-K_L}{1+K_C}}
+\tag{4-5-9}
+$$
+
+> **【核心概念】**
+> 奇模时对称面是**电壁**：电场没有切向分量（电场线垂直于电壁），对称面相当于"接地平面"。此时两导带之间存在明显的电势差（$U_o$、$0$、$-U_o$），**耦合电容 $C_{ab}$ 上带电荷**，等效电容**增大**为 $C_o=C_a+C_{ab}$。
+
+#### （3）关键结论：$Z_{0e}>Z_{0o}$（重点辨析）
+
+> **【核心概念】**
+> **问：偶模和奇模的特性阻抗哪个更大？**
+> **答：偶模特性阻抗更大，即 $Z_{0e}>Z_{0o}$。**
+>
+> **严格论证（两条独立理由，互相印证）：**
+>
+> **理由一（电容角度）：** 由式 (4-5-4)、(4-5-8)，偶模等效电容 $C_e=C_a-C_{ab}$，奇模等效电容 $C_o=C_a+C_{ab}$。因为 $C_{ab}>0$，故
+> $$C_e<C_o$$
+> 而 $Z_0\propto1/\sqrt{C}$（$L$ 在两种模式下差别远小于 $C$ 的变化，且 $\sqrt{L_e/C_e}$ 中分子 $L_e$ 更大、分母 $C_e$ 更小），于是
+> $$Z_{0e}=\sqrt{\frac{L_e}{C_e}}>\sqrt{\frac{L_o}{C_o}}=Z_{0o}$$
+> 直接比较两式：$\dfrac{Z_{0e}}{Z_{0o}}=\sqrt{\dfrac{(1+K_L)(1+K_C)}{(1-K_L)(1-K_C)}}>1$，因为分子中两项都大于 $1$、分母中两项都小于 $1$。
+>
+> **理由二（物理图像）：** 偶模时两导带电位相同，**耦合电容两端没有电位差，因此不带电荷**，等效电容"减小"；奇模时两导带电位相反，**耦合电容上集聚电荷**，等效电容"增大"。电容越小，同样的电压只需更少的电荷、或说在同样的电流下建立更高的电压，故**偶模的等效特性阻抗更高**。
+>
+> **一个容易混淆的记号提示：** 若采用**电容矩阵**记号（$C_{11}$ 为"另一线接地时本线的自电容"、$C_{12}$ 为互电容且通常取负号 $C_{12}=-C_{ab}$），则
+> $$C_e=C_{11}+C_{12}=C_a,\qquad C_o=C_{11}-C_{12}=C_a+2C_{ab}$$
+> 仍然有 $C_e<C_o$，结论不变。**关键是不要把 $C_{12}$ 的正负号与 $C_{ab}$ 的物理意义混为一谈**：$C_{ab}>0$ 是"两线之间的耦合电容"，而 $C_{12}$ 在电容矩阵中是负的。只要坚持"偶模时无电荷过耦合电容→电容小→阻抗大"这一物理图像，就不会出错。
+
+#### （4）任意激励 = 奇模 + 偶模
+
+由于两种模式在线上互相独立传播，任意激励下的电压、电流可以写成
+
+$$
+U_1(z)=U_e e^{-j\beta_e z}+U_o e^{-j\beta_o z},\qquad
+U_2(z)=U_e e^{-j\beta_e z}-U_o e^{-j\beta_o z}
+\tag{4-5-10}
+$$
+
+**注意 $\beta_e\ne\beta_o$**（见式 (4-5-5)、(4-5-9)），这意味着奇模与偶模的**相速不同**——这是耦合线一切"耦合效应"（串扰、耦合器方向性、色散）的根源。
+
+### 4.5.4 有效介电常数与耦合系数
+
+**（1）奇偶模的有效介电常数。** 对微带型耦合线，奇模与偶模的场分布不同，填充因子不同：
+
+$$
+\varepsilon_{ee}=1+q_e\left(\varepsilon_r-1\right),\qquad
+\varepsilon_{eo}=1+q_o\left(\varepsilon_r-1\right)
+\tag{4-5-11}
+$$
+
+其中 $q_e$、$q_o$ 是**奇偶模填充因子**（取决于几何尺寸）。奇模时电壁把场"压向"导体表面、更多场进入介质，一般 $q_o>q_e$，故 **$\varepsilon_{eo}>\varepsilon_{ee}$**，于是
+
+$$
+v_{pe}=\frac{c}{\sqrt{\varepsilon_{ee}}}>v_{po}=\frac{c}{\sqrt{\varepsilon_{eo}}}
+\qquad(\text{偶模传播更快})
+\tag{4-5-12}
+$$
+
+$$
+Z_{0e}=\frac{Z_{0e}^{a}}{\sqrt{\varepsilon_{ee}}},\qquad
+Z_{0o}=\frac{Z_{0o}^{a}}{\sqrt{\varepsilon_{eo}}},\qquad
+\lambda_{ge}=\frac{\lambda_0}{\sqrt{\varepsilon_{ee}}},\qquad
+\lambda_{go}=\frac{\lambda_0}{\sqrt{\varepsilon_{eo}}}
+\tag{4-5-13}
+$$
+
+其中 $Z_{0e}^{a}$、$Z_{0o}^{a}$ 是**全部填充空气时**（$\varepsilon_r=1$）的偶、奇模特性阻抗。
+
+**（2）空气填充时的乘积关系。** 当耦合线处于均匀介质（全部空气）中时，$K_L=K_C=K$，由式 (4-5-6)、(4-5-9) 可得一组非常有用的关系：
+
+$$
+Z_{0e}^{a}Z_{0o}^{a}=\left(Z_{0}^{a}\right)^{2}
+\tag{4-5-14}
+$$
+
+其中 $Z_0^a$ 是空气填充下**单根**微带线的特性阻抗。式 (4-5-14) 说明：耦合线的偶、奇模阻抗被"锁定"在单线阻抗的两侧，耦合越强，两者分离越远。
+
+**（3）耦合系数。** 定义
+
+$$
+k=\frac{Z_{0e}-Z_{0o}}{Z_{0e}+Z_{0o}}
+\tag{4-5-15}
+$$
+
+$k$ 的取值范围是 $0\le k<1$：$k=0$ 表示两线无耦合（间距无穷大或 $L_{ab}=C_{ab}=0$），$k\to1$ 表示强耦合。
+
+> **【公式推导】**
+> 在空气填充（$K_L=K_C=K$）情形下，把式 (4-5-6)、(4-5-9) 中的 $Z_0^a=\sqrt{L/C_a}$ 提出：
+> $$Z_{0e}^{a}=Z_0^{a}\sqrt{\frac{1+K}{1-K}},\qquad Z_{0o}^{a}=Z_0^{a}\sqrt{\frac{1-K}{1+K}}$$
+> 代入式 (4-5-15)：
+> $$k=\frac{\sqrt{\frac{1+K}{1-K}}-\sqrt{\frac{1-K}{1+K}}}{\sqrt{\frac{1+K}{1-K}}+\sqrt{\frac{1-K}{1+K}}}
+> =\frac{(1+K)-(1-K)}{(1+K)+(1-K)}=K$$
+> 即**耦合系数 $k$ 恰好等于电容（电感）耦合系数 $K$**。这是耦合线理论中最漂亮的结果之一。
+> 并且
+> $$Z_{0e}^{a}-Z_{0o}^{a}=Z_0^{a}\cdot\frac{2K}{\sqrt{1-K^{2}}}\ \xrightarrow{K\to1}\ \infty$$
+> 即**耦合越强，偶模与奇模阻抗的差别越大**；反之 $K\to0$ 时 $Z_{0e}-Z_{0o}\to0$，两者趋于单线阻抗。
+
+> **【例题 4-7】**
+> 某空气填充耦合微带线的单线特性阻抗 $Z_0^a=50\ \Omega$，电容耦合系数 $K_C=K_L=K=0.5$。
+> （1）求偶模、奇模特性阻抗 $Z_{0e}^{a}$、$Z_{0o}^{a}$；
+> （2）求耦合系数 $k$；
+> （3）若实际基片 $\varepsilon_r=9.6$、实测 $\varepsilon_{ee}=6.0$、$\varepsilon_{eo}=7.0$，求真实的 $Z_{0e}$、$Z_{0o}$ 与两模式的相速之比。
+>
+> **解：**
+> **（1）** 由式 (4-5-6)、(4-5-9) 取 $K=0.5$：
+> $$Z_{0e}^{a}=50\sqrt{\frac{1+0.5}{1-0.5}}=50\sqrt{3}=86.6\ \Omega$$
+> $$Z_{0o}^{a}=50\sqrt{\frac{1-0.5}{1+0.5}}=\frac{50}{\sqrt3}=28.9\ \Omega$$
+> 校核乘积关系：$86.6\times28.9=2503\approx50^{2}=2500$，与式 (4-5-14) 一致。
+> **（2）** 由式 (4-5-15)：
+> $$k=\frac{86.6-28.9}{86.6+28.9}=\frac{57.7}{115.5}=0.50$$
+> 与 $K=0.5$ 相等，验证了"$k=K$"的结论。
+> **（3）** 由式 (4-5-13)：
+> $$Z_{0e}=\frac{86.6}{\sqrt{6.0}}=\frac{86.6}{2.449}=35.4\ \Omega,\qquad
+> Z_{0o}=\frac{28.9}{\sqrt{7.0}}=\frac{28.9}{2.646}=10.9\ \Omega$$
+> $$\frac{v_{pe}}{v_{po}}=\sqrt{\frac{\varepsilon_{eo}}{\varepsilon_{ee}}}=\sqrt{\frac{7.0}{6.0}}=1.08$$
+> **答：** $Z_{0e}^{a}=86.6\ \Omega$、$Z_{0o}^{a}=28.9\ \Omega$、$k=0.50$；真实基片上 $Z_{0e}=35.4\ \Omega$、$Z_{0o}=10.9\ \Omega$，偶模相速比奇模快约 $8\%$。
+> **讨论：** ① 由于 $\varepsilon_{ee}\ne\varepsilon_{eo}$，两种模式的相速不同，这是**微带型耦合线"非理想"的根本原因**：它使定向耦合器的方向性变差、使耦合线滤波器出现寄生通带。若要消除这一效应，可用**带状线（均匀介质）**做耦合线，此时 $\varepsilon_{ee}=\varepsilon_{eo}=\varepsilon_r$，两种模式同速，器件性能最佳。② 耦合线阻抗关系是式 (4-5-14) 的"乘积恒定"约束，因此**不能独立指定 $Z_{0e}$ 与 $Z_{0o}$**——设计中只要定出 $Z_0^a$ 与 $k$，两者就都确定了。
+
+### 4.5.5 耦合微带线的应用
+
+| 应用 | 原理要点 |
+|---|---|
+| 定向耦合器 | 利用 $\beta_e\ne\beta_o$（或均匀介质中长度恰为 $\lambda_g/4$）使耦合端与隔离端分离 |
+| 耦合线带通／带阻滤波器 | 多节耦合线级联，调整奇偶模阻抗实现滤波响应 |
+| 平衡器件（平衡混频器、平衡放大器） | 耦合线作为 3 dB 电桥，为两个器件提供等幅反相信号 |
+| 串扰分析 | 平行长线之间的耦合是数字／射频 PCB 中最主要的串扰来源；缩短平行长度、增大间距、加地线隔离 |
+| 延迟线、阻抗变换 | 利用奇偶模不同相速构造宽带变换与延迟 |
+
+> **【工程应用】**
+> 在 PCB 设计与芯片布线中，耦合微带线是**寄生效应**的主要来源：
+> 1. **近端串扰（NEXT）与远端串扰（FEXT）**：由 $C_{ab}$ 的电流耦合与 $L_{ab}$ 的磁耦合共同决定；在微带线（非均匀介质）中两者不完全抵消，在带状线（均匀介质）中可部分抵消；
+> 2. **抑制措施**：增大线间距（一般要求 $s\ge3w$）、缩短平行走线长度、在两线之间加接地过孔墙、采用差分线（把耦合"利用"起来，用共模抑制比换取抗干扰能力）；
+> 3. **有意利用**：差分线对、耦合线定向耦合器、Lange 耦合器。
+
+> **【小结】**
+> 1. 耦合微带线通过**互电感 $L_{ab}$** 与**互电容 $C_{ab}$** 耦合，方程是式 (4-5-1)；
+> 2. 任意激励可分解为**偶模（等幅同相，磁壁）+ 奇模（等幅反相，电壁）**，分解式 $U_e=(U_1+U_2)/2$、$U_o=(U_1-U_2)/2$；
+> 3. 偶模 $C_e=C_a-C_{ab}$（小）、奇模 $C_o=C_a+C_{ab}$（大）$\Rightarrow$ **$Z_{0e}>Z_{0o}$**；
+> 4. 空气填充时 $Z_{0e}^aZ_{0o}^a=(Z_0^a)^2$、$k=K$；微带型耦合线因 $\varepsilon_{ee}\ne\varepsilon_{eo}$ 存在两模式相速差；
+> 5. 耦合线既是有用的电路元件（耦合器、滤波器），也是寄生串扰的来源。
+>
+> 本节考点清单：耦合方程（★★★）、奇偶模分解与磁壁／电壁（★★★★）、$Z_{0e}>Z_{0o}$ 的论证（★★★★★）、$k$ 与 $K$ 的关系（★★★）、耦合线应用（★★）。
+
+---
+
+## 4.6 介质波导与光纤
+
+### 4.6.1 为什么需要介质波导
+
+**频率进一步提高，金属波导和微带线都遇到了硬约束。**
+
+对金属波导：单模传输要求 $\lambda_c$ 随频率升高而下降，因而横向尺寸 $a$ 必须减小（$a$ 大致落在 $\lambda/2$ 与 $\lambda$ 之间）。进入**毫米波段**（$\lambda=10^{-3}\sim10^{-2}\ \mathrm{m}$，即 $30\sim300\ \mathrm{GHz}$）后，$a$ 只有毫米量级，加工精度、公差、表面粗糙度都难以保证；继续升高到**亚毫米波与光波**，金属波导的尺寸与损耗都变得不可接受。
+
+对微带线：尺寸选择要求 $w<\dfrac{\lambda_{\min}}{2\sqrt{\varepsilon_r}}$、$h<\min\left\{\dfrac{\lambda_{\min}}{2\sqrt{\varepsilon_r}},\dfrac{\lambda_{\min}}{4\sqrt{\varepsilon_r-1}}\right\}$，频率升高同样使 $h$、$w$ 迅速缩小，而且导体损耗随 $\sqrt{f}$ 上升、辐射损耗急剧增大。
+
+**出路是：去掉金属壁，让电磁波完全由介质来约束。**
+
+> **【核心概念】**
+> **金属波导**靠金属壁的边界条件（$E$ 的切向分量为零）约束电磁波；**介质波导**没有金属壁，靠**介质与周围介质（或空气）的折射率差**，利用**全反射**把电磁波约束在高折射率介质（纤芯）内部，并在边界外形成**指数衰减的隐失场（evanescent field）**。
+> 因此介质波导中的波是**表面波**：能量主要集中在介质内部及界面附近，离开界面后场量按指数规律快速衰减。
+
+### 4.6.2 介质波导的模式与截止特性
+
+介质波导（圆柱形介质棒、光纤）中的场必须同时满足纤芯与包层中的波动方程及界面连续条件，解得的模式是**混合模（hybrid mode）**，即 **$E_z$、$H_z$ 同时存在**的模式，记为 $\mathrm{HE}_{mn}$ 与 $\mathrm{EH}_{mn}$；此外还存在纯模式的 $\mathrm{TE}_{0n}$、$\mathrm{TM}_{0n}$（角向指数为零时才可能）。
+
+| 模式 | 说明 | 截止频率 |
+|---|---|---|
+| $\mathrm{HE}_{11}$ | **主模**，最低次模 | $f_c=0$（**无截止**） |
+| $\mathrm{TE}_{01}$、$\mathrm{TM}_{01}$ | 第一高次模（两者**简并**，$f_c$ 相同） | $f_{c}\ne0$ |
+
+**主模 $\mathrm{HE}_{11}$ 的三个重要性质：**
+
+1. **单模传输时损耗较小**；
+2. **可由矩形波导的主模 $\mathrm{TE}_{10}$ 直接激励**，不需要复杂的波型转换器（这也是毫米波介质波导容易与金属波导衔接的原因）；
+3. **它也是光纤的主模**——所以研究介质波导的模式理论，就是研究光纤的理论基础。圆介质波导的场分布求解与第三章的**圆波导**完全类似（同样的贝塞尔函数本征值问题），区别只在于边界条件从"金属壁"换成了"介质界面"。
+
+> **【易错点】**
+> "介质波导没有截止频率"这个说法**只对主模成立**。严格地说：
+> - **主模 $\mathrm{HE}_{11}$ 的截止频率为 $0$**（$f_c=0$），所以理论上任意低的频率都能以 $\mathrm{HE}_{11}$ 模传输；
+> - **所有高次模都有截止频率**，第一高次模 $\mathrm{TE}_{01}$／$\mathrm{TM}_{01}$ 的截止频率为
+> $$f_{c}=\frac{2.405\,c}{2\pi a\sqrt{\varepsilon_{r1}-\varepsilon_{r2}}}
+> =\frac{2.405\,c}{2\pi a\,\mathrm{NA}}\cdot\sqrt{\varepsilon_0\mu_0}\ \text{的归一体}
+> \tag{4-6-1}$$
+> 其中 $a$ 为纤芯半径，$\varepsilon_{r1}$、$\varepsilon_{r2}$ 分别为纤芯与包层的相对介电常数，$2.405$ 是第一类贝塞尔函数 $J_0(x)$ 的第一个零点。
+> - **单模传输条件**就是让第一高次模截止，即 $f<f_c$。
+
+### 4.6.3 归一化频率与单模条件
+
+把所有几何与材料参数归到一个无量纲量上，就得到**归一化频率**（也叫 $V$ 参数）：
+
+$$
+V=\frac{2\pi a}{\lambda}\sqrt{n_1^{2}-n_2^{2}}=\frac{2\pi a}{\lambda}\,\mathrm{NA}
+=\frac{\pi D}{\lambda}\,\mathrm{NA}
+\tag{4-6-2}
+$$
+
+其中 $D=2a$ 为纤芯直径，$n_1$、$n_2$ 为纤芯与包层的折射率，$\mathrm{NA}$ 为数值孔径（见 4.6.5 节）。
+
+$$
+\text{单模传输条件：}\quad V<2.405
+\tag{4-6-3}
+$$
+
+$2.405$ 的来历：它是 $J_0(x)$ 的第一个零点，也是 $\mathrm{TE}_{01}$／$\mathrm{TM}_{01}$ 模（光纤中第一高次模）的归一化截止频率 $V_c=2.405$。**只要 $V<2.405$，除主模 $\mathrm{HE}_{11}$ 外的所有模式都被截止，光纤中只有一种模式传播。**
+
+$V$ 的物理意义可以这样理解：$2\pi a$ 是纤芯"周长尺度"（半径归一化），$\mathrm{NA}/\lambda$ 描述"每单位长度能分辨的横向空间频率"，两者相乘就是"**纤芯尺度能够容纳多少个横向半波长**"的度量。$V$ 越大，能容纳的模式越多（多模）；$V$ 越小，越接近单模。
+
+### 4.6.4 光纤的基本结构
+
+**光纤（optical fiber）**是圆柱形介质波导的典型代表，由三部分组成：**纤芯（core，折射率 $n_1$）**、**包层（cladding，折射率 $n_2<n_1$）**和外面的**涂覆层（coating，用于机械保护）**。
+
+<figure class="fig">
+<svg viewBox="0 0 720 300" role="img" aria-label="光纤结构、全反射光路与折射率剖面">
+  <defs>
+    <marker id="ch4ar11" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="var(--warn)"/>
+    </marker>
+  </defs>
+  <text x="16" y="22" font-size="13" fill="var(--ink)">(a) 光纤横截面与纵剖面（全反射传播）</text>
+  <circle cx="120" cy="150" r="80" fill="none" stroke="var(--line)" stroke-width="2"/>
+  <circle cx="120" cy="150" r="42" fill="none" stroke="var(--brand)" stroke-width="2"/>
+  <circle cx="120" cy="150" r="104" fill="none" stroke="var(--ink-2)" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="120" y="100" text-anchor="middle" font-size="11.5" fill="var(--brand)">纤芯 n1</text>
+  <text x="120" y="176" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">包层 n2</text>
+  <text x="120" y="272" text-anchor="middle" font-size="11.5" fill="var(--ink-2)">涂覆层（保护）</text>
+
+  <rect x="300" y="112" width="380" height="76" fill="none" stroke="var(--brand)" stroke-width="1.4"/>
+  <rect x="300" y="88" width="380" height="24" fill="none" stroke="var(--ink-2)" stroke-width="1" stroke-dasharray="4 3"/>
+  <rect x="300" y="188" width="380" height="24" fill="none" stroke="var(--ink-2)" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="676" y="106" font-size="11" fill="var(--ink-2)">包层</text>
+  <text x="676" y="206" font-size="11" fill="var(--ink-2)">包层</text>
+  <path d="M300,150 L340,112 M340,112 L400,188 M400,188 L460,112 M460,112 L520,188 M520,188 L580,150"
+        fill="none" stroke="var(--warn)" stroke-width="1.8" marker-end="url(#ch4ar11)"/>
+  <text x="340" y="80" font-size="11.5" fill="var(--warn)">全反射（θ&gt;θc）</text>
+  <text x="300" y="236" font-size="11.5" fill="var(--ink-2)">n1&gt;n2：界面处满足全反射条件，光被"曲折"地约束在纤芯内</text>
+
+  <text x="16" y="290" font-size="11" fill="var(--ink-2)">当入射角大于临界角 θc=arcsin(n2/n1) 时，光在纤芯—包层界面发生全反射，无折射泄漏</text>
+</svg>
+<figcaption>图 4-10　光纤的基本结构与全反射传播原理</figcaption>
+</figure>
+
+**（1）按折射率分布分类。**
+
+<figure class="fig">
+<svg viewBox="0 0 720 250" role="img" aria-label="阶跃折射率与渐变折射率光纤的折射率剖面与光路">
+  <text x="16" y="22" font-size="13" fill="var(--ink)">(a) 阶跃折射率（SI）光纤</text>
+  <line x1="70" y1="200" x2="330" y2="200" stroke="var(--ink-2)" stroke-width="1.2"/>
+  <line x1="70" y1="200" x2="70" y2="60" stroke="var(--ink-2)" stroke-width="1.2"/>
+  <text x="330" y="220" font-size="11" fill="var(--ink-2)">半径 r</text>
+  <text x="40" y="66" font-size="11" fill="var(--ink-2)">n</text>
+  <path d="M70,80 L160,80 L160,150 L330,150" fill="none" stroke="var(--brand)" stroke-width="2.2"/>
+  <text x="100" y="74" font-size="11" fill="var(--brand)">n1</text>
+  <text x="200" y="144" font-size="11" fill="var(--ink-2)">n2</text>
+  <text x="160" y="196" font-size="11" fill="var(--ink-2)" text-anchor="middle">a</text>
+  <path d="M200,110 L280,150 M280,150 L200,190 M200,190 L280,150" fill="none" stroke="var(--warn)" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <text x="200" y="112" font-size="10.5" fill="var(--warn)">多模：锯齿状光路</text>
+
+  <text x="390" y="22" font-size="13" fill="var(--ink)">(b) 渐变折射率（GI）光纤</text>
+  <line x1="430" y1="200" x2="690" y2="200" stroke="var(--ink-2)" stroke-width="1.2"/>
+  <line x1="430" y1="200" x2="430" y2="60" stroke="var(--ink-2)" stroke-width="1.2"/>
+  <text x="648" y="220" font-size="11" fill="var(--ink-2)">半径 r</text>
+  <text x="400" y="66" font-size="11" fill="var(--ink-2)">n</text>
+  <path d="M430,80 Q500,84 520,120 Q540,150 560,152 L690,152" fill="none" stroke="var(--brand)" stroke-width="2.2"/>
+  <text x="432" y="74" font-size="11" fill="var(--brand)">n1</text>
+  <text x="600" y="146" font-size="11" fill="var(--ink-2)">n2</text>
+  <text x="520" y="196" font-size="11" fill="var(--ink-2)" text-anchor="middle">a</text>
+  <path d="M450,100 Q490,190 530,110 Q570,196 610,120 Q650,192 680,140" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+  <text x="436" y="228" font-size="10.5" fill="var(--warn)">多模：正弦自聚焦光路，模式时延差小</text>
+</svg>
+<figcaption>图 4-11　阶跃折射率（SI）与渐变折射率（GI）光纤的折射率剖面</figcaption>
+</figure>
+
+- **阶跃折射率（SI，step-index）光纤**：纤芯内折射率处处等于 $n_1$，到包层突变为 $n_2$。多模 SI 光纤中不同模式走不同的折线路径，**模式间时延差大**（模式色散严重），带宽受限。
+- **渐变折射率（GI，graded-index）光纤**：纤芯内折射率按幂律（分布因子 $g$）从中心向外逐渐减小到 $n_2$，光路呈正弦状弯曲并周期性自聚焦。**不同模式的平均轴向速度趋于一致，模式色散显著减小**，因此多模 GI 光纤的带宽远高于多模 SI 光纤。
+
+**（2）按传输模式数分类。**
+
+| 类型 | 模式数 | 特点 |
+|---|---|---|
+| 单模光纤（SMF） | 只传 $\mathrm{HE}_{11}$ 一种模式 | $V<2.405$；纤芯很细（几 $\mu\mathrm{m}$）；无色散小的模式色散，带宽极大；用于长距离、高速传输 |
+| 多模光纤（MMF） | 传多种模式 | $V>2.405$；纤芯较粗（数十 $\mu\mathrm{m}$）；存在模式色散，带宽受限；用于短距离、低速、低成本场合 |
+
+### 4.6.5 光纤的基本参数
+
+**（1）光波波长与相速、群速。**
+
+$$
+\lambda_g=\frac{2\pi}{\beta}\ (\text{波导波长}),\qquad
+\lambda=\frac{2\pi}{k}=\frac{v_p}{f},\qquad
+v_p=\frac{\omega}{\beta}
+\tag{4-6-4}
+$$
+
+其中 $v_p$ 是相速。**注意**：光纤中存在色散，因此相速随频率变化，**信息的传播速度是群速 $v_g=d\omega/d\beta$，而不是相速**。
+
+**（2）相对折射率差 $\Delta$。**
+
+$$
+\Delta=\frac{n_1-n_2}{n_1}\approx\frac{n_1^{2}-n_2^{2}}{2n_1^{2}}\quad(\text{弱导近似})
+\tag{4-6-5}
+$$
+
+普通石英光纤 $\Delta\approx0.001\sim0.01$（弱导光纤），正因如此，可以用"线偏振模（LP 模）"近似来描述其场分布。
+
+**（3）折射率分布因子 $g$。** 描述纤芯内折射率的非均匀分布：
+
+$$
+n^{2}(r)=
+\begin{cases}
+n_1^{2}\left[1-2\Delta\left(\dfrac{r}{a}\right)^{g}\right], & r\le a\\[6pt]
+n_2^{2}, & r>a
+\end{cases}
+\tag{4-6-6}
+$$
+
+$g\to\infty$ 对应阶跃光纤，$g=2$ 对应抛物线型渐变光纤（最常用）。
+
+**（4）数值孔径 $\mathrm{NA}$。** 定义为光纤能够接收的最大入射角的正弦：
+
+$$
+\mathrm{NA}=\sin\theta_{\max}=\sqrt{n_1^{2}-n_2^{2}}=n_1\sqrt{2\Delta}
+\tag{4-6-7}
+$$
+
+> **【公式推导】**
+> 由折射定律（斯涅尔定律）与全反射条件，光线能在纤芯中传播的条件是其在芯—包界面上的入射角大于临界角 $\theta_c=\arcsin(n_2/n_1)$。把这一条件换算到光纤端面的入射角 $\theta_0$（由空气入射）：
+> $$n_0\sin\theta_0=n_1\sin\theta_1,\qquad \sin\theta_1\le\sqrt{1-\left(\frac{n_2}{n_1}\right)^{2}}$$
+> 于是
+> $$\sin\theta_{\max}=\sqrt{n_1^{2}-n_2^{2}}=\mathrm{NA}$$
+> **物理意义**：$\mathrm{NA}$ 描述光纤"**收光锥角**"的大小——$\mathrm{NA}$ 越大，越容易把光源的光耦合进光纤（耦合效率高），但 $\mathrm{NA}$ 越大意味着 $n_1$ 与 $n_2$ 差越大，模式色散越严重、带宽越低。**这是"耦合效率"与"带宽"之间的一对矛盾**，也是单模光纤（$\mathrm{NA}\approx0.1$）与多模光纤（$\mathrm{NA}\approx0.2\!\sim\!0.3$）设计取向不同的原因。
+
+> **【例题 4-8】**
+> 某石英单模光纤工作波长 $\lambda=1.55\ \mu\mathrm{m}$，纤芯折射率 $n_1=1.45$，相对折射率差 $\Delta=0.003$。求（1）数值孔径 $\mathrm{NA}$；（2）为保证单模传输，纤芯半径 $a$ 与直径 $D$ 的上限；（3）若改用 $\lambda=0.85\ \mu\mathrm{m}$，单模条件是否仍满足？
+>
+> **解：**
+> **（1）数值孔径。**
+> $$\mathrm{NA}=n_1\sqrt{2\Delta}=1.45\times\sqrt{2\times0.003}=1.45\times0.07746=0.1123$$
+> **（2）单模上限。** 由单模条件 $V=\dfrac{2\pi a}{\lambda}\mathrm{NA}<2.405$：
+> $$a<\frac{2.405\lambda}{2\pi\,\mathrm{NA}}=\frac{2.405\times1.55\times10^{-6}}{2\pi\times0.1123}
+> =\frac{3.728\times10^{-6}}{0.7057}=5.28\times10^{-6}\ \mathrm{m}=5.28\ \mu\mathrm{m}$$
+> $$D=2a<10.6\ \mu\mathrm{m}$$
+> 例如取 $a=4\sim5\ \mu\mathrm{m}$（对应 $D=8\sim10\ \mu\mathrm{m}$）即可实现单模传输。
+> **（3）改用 $\lambda=0.85\ \mu\mathrm{m}$。** 此时若 $a$ 仍取 $5\ \mu\mathrm{m}$：
+> $$V=\frac{2\pi\times5\times10^{-6}}{0.85\times10^{-6}}\times0.1123=\frac{3.1416\times10^{-5}}{0.85\times10^{-6}}\times0.1123=36.96\times0.1123=4.15>2.405$$
+> 不满足单模条件（会成为多模光纤）。要恢复单模，必须把 $a$ 减小到
+> $$a<\frac{2.405\times0.85\times10^{-6}}{2\pi\times0.1123}=2.90\ \mu\mathrm{m}$$
+> **答：** $\mathrm{NA}=0.1123$；$\lambda=1.55\ \mu\mathrm{m}$ 时 $a<5.28\ \mu\mathrm{m}$（$D<10.6\ \mu\mathrm{m}$）；在 $0.85\ \mu\mathrm{m}$ 波长下同一根光纤不满足单模条件，需把纤芯半径减到 $2.9\ \mu\mathrm{m}$ 以下。
+> **讨论：** 本题揭示了一个重要事实：**光纤的单模条件是"波长相关"的**。同一根光纤在长波长（$1.55\ \mu\mathrm{m}$）下是单模的，在短波长（$0.85\ \mu\mathrm{m}$）下可能就是多模的——这就是"**单模光纤的截止波长**"参数的物理含义：只有当工作波长**大于**该光纤的截止波长 $\lambda_c=\dfrac{2\pi a\,\mathrm{NA}}{2.405}$ 时，光纤才是单模的。工程上 $1.31\ \mu\mathrm{m}$ 零色散单模光纤的截止波长一般设计在 $1.1\sim1.28\ \mu\mathrm{m}$ 之间。
+
+### 4.6.6 光纤的传输特性
+
+描述光纤传输特性的两个核心参数是**损耗**和**色散**。
+
+#### （1）损耗特性与三个低损耗窗口
+
+光纤损耗的机制包括：**本征吸收**（紫外吸收与红外吸收）、**杂质吸收**（主要是 $\mathrm{OH^-}$ 羟基离子的吸收峰）、**瑞利散射**（$\propto\lambda^{-4}$，是长波长下损耗下降而后又回升的原因）、**弯曲损耗**与**界面缺陷损耗**。
+
+石英光纤存在**三个低损耗窗口**：
+
+| 窗口 | 波长 | 典型损耗 | 用途 |
+|---|---|---|---|
+| 短波窗口 | $0.85\ \mu\mathrm{m}$ | $3.0\ \mathrm{dB/km}$ | 短距离、低速、低成本（配合 GaAs 激光器） |
+| 长波窗口 1 | $1.31\ \mu\mathrm{m}$ | $0.5\ \mathrm{dB/km}$ | 中距离、高速（**零色散波长**附近） |
+| 长波窗口 2 | $1.55\ \mu\mathrm{m}$ | $0.2\ \mathrm{dB/km}$ | 长距离、高速（**最低损耗**，配合掺铒光纤放大器 EDFA） |
+
+**为什么 $1.55\ \mu\mathrm{m}$ 是长距离传输的首选？** 损耗最低（$0.2\ \mathrm{dB/km}$，即约 $0.046\ \mathrm{Np/km}$），意味着**中继距离可以极大延长**；再配合 **EDFA（掺铒光纤放大器，Erbium-Doped Fiber Amplifier）** 实现全光放大，取代了传统的"光—电—光"中继，使跨洋海缆与洲际干线成为可能。
+
+> **【工程应用】**
+> 光纤"革命"的起点是**低损耗**。1966 年，**高锟（Charles K. Kao）**提出：石英玻璃的损耗主要来自材料中的杂质（尤其是铁离子），只要把杂质提纯到极高纯度，光纤损耗可以从当时的 $1000\ \mathrm{dB/km}$ 量级降到 $20\ \mathrm{dB/km}$ 以下，从而使光纤通信成为可能。这一设想在 1970 年被实验证实，高锟因此获得 **2009 年诺贝尔物理学奖**，被称为"光纤通信之父"。这里体现的正是**科学预见 + 工匠精神**：把损耗从 $1000\ \mathrm{dB/km}$ 降到 $0.2\ \mathrm{dB/km}$，才有了今天覆盖全球的光纤网络。
+
+#### （2）色散特性
+
+**色散**指不同频率或不同模式的光在光纤中传播速度不同，导致脉冲信号在传输过程中**展宽、畸变**，最终造成码间干扰、限制传输距离与速率。光纤中的色散有三类：
+
+| 色散类型 | 物理原因 | 特点 | 抑制方法 |
+|---|---|---|---|
+| **材料色散** | 石英的折射率 $n(\lambda)$ 随波长变化（$dn/d\lambda\ne0$），不同谱分量的传播速度不同 | 单模光纤中的主要色散；在 $1.31\ \mu\mathrm{m}$ 附近可为零 | 选择**零色散波长**工作；色散补偿光纤（DCF） |
+| **波导色散** | 不同波长的场在纤芯与包层中的功率分配比例不同，等效折射率随波长变化 | 与光纤结构参数（$a$、$\Delta$）强相关，可与材料色散相互抵消 | 设计**色散位移光纤（DSF）**、**非零色散位移光纤（NZ-DSF）** |
+| **模间色散（模式色散）** | 不同模式走不同路径、轴向速度不同，到达时间不同 | 多模光纤的主要色散，最严重 | 用**单模光纤**；或用**渐变折射率**光纤使各模式平均速度接近 |
+
+信号畸变后的工程处理是**中继整形**：传统方式是光—电—光再生（3R 中继：Reamplify、Reshape、Retime），现代方式是用 EDFA 做模拟放大 + 色散补偿模块（或数字相干接收 + 电域均衡）。
+
+#### （3）非线性效应
+
+在长距离、大功率（尤其是 WDM 密集波分复用 + EDFA 放大）条件下，光纤中的光功率密度很高，石英的**非线性**效应不可忽略，主要包括：
+
+- **自相位调制（SPM）**与**交叉相位调制（XPM）**：折射率随光强变化（克尔效应），导致相位调制与频谱展宽；
+- **四波混频（FWM）**：多个波长之间产生新频率分量，造成 WDM 信道间串扰；
+- **受激拉曼散射（SRS）**与**受激布里渊散射（SBS）**：能量在信道间转移或向后散射，限制入纤功率；
+- **自聚焦与光损伤**：功率过高时损坏光纤。
+
+**对策**：控制入纤功率、采用非零色散位移光纤（利用色散抑制 FWM）、合理设计信道间隔。
+
+### 4.6.7 光纤的优点与微波—光波的统一
+
+**光纤相对于金属传输线的五大优点（必须记全）：**
+
+1. **巨大的带宽**：光频约 $200\ \mathrm{THz}$（$1.55\ \mu\mathrm{m}$），潜在可用带宽超过 $100\ \mathrm{THz}$；单根光纤的传输容量已达 Tbps 量级，远超任何电缆。
+2. **极低的损耗**：$0.2\ \mathrm{dB/km}$ @ $1.55\ \mu\mathrm{m}$，比同轴电缆低 $2\sim3$ 个数量级，中继距离可达上百公里。
+3. **抗电磁干扰（EMI）**：光纤是**介质**，不受电磁场影响、不产生电磁辐射、也不与其他信号线耦合。**这与第一章所强调的金属"穿透性"形成鲜明对比**：金属导体在电磁场中会产生感应电流因而受干扰（也因而屏蔽），而介质中的光波与外界电磁场几乎"互不相干"，天然具备抗干扰与保密性（难以窃听）。
+4. **尺寸小、重量轻**：同样的传输容量下，光缆的直径与重量远小于铜缆，适合飞机、舰船、城市管道等空间受限场合。
+5. **原材料丰富**：主要原料是石英（二氧化硅，沙子），**节省大量铜与铝**；且制造过程能耗低、资源可持续。
+
+> **【核心概念】**
+> **微波与光波的统一。** 微波与光波在物理本质上是同一种东西——**电磁波**，只是频率（波长）不同：
+> - 微波：$300\ \mathrm{MHz}\sim300\ \mathrm{GHz}$，波长从米到毫米；
+> - 光波：约 $10^{14}\ \mathrm{Hz}$，波长 $0.4\sim1.6\ \mu\mathrm{m}$。
+>
+> 两者都服从**麦克斯韦方程组**，因此：
+> - 光在光纤中的传播规律与微波在介质波导中的传播规律**完全同构**（都是介质波导中的混合模，都有归一化频率 $V$ 与单模条件 $V<2.405$）；
+> - 金属波导中的"截止波数 $k_c$"、介质波导中的"归一化频率 $V$"、光纤中的"$V$ 参数"是同一类概念在不同边界条件下的表现。
+>
+> **"光是波长更短的电，电是波长更长的光。"** 理解这句话，就理解了本章与第三章的内在统一：**从矩形波导、同轴线、带状线、微带线，到介质波导与光纤，全都是麦克斯韦方程在不同边界条件下的解。**
+
+> **【工程应用】**
+> **微波与光波的融合——光载无线（RoF，Radio Over Fiber）与系统演进。**
+> 通信系统的容量上限由**香农公式**给出：
+> $$C=W\log_2\left(1+\mathrm{SNR}\right)\quad(\mathrm{bit/s})
+> \tag{4-6-8}$$
+> 其中 $W$ 是信道带宽、$\mathrm{SNR}$ 是信噪比。**提高容量只有两条路：加大带宽 $W$，或提高信噪比**。
+> - 光纤的有线信道：$W$ 极大（$>100\ \mathrm{GHz}$）、$\mathrm{SNR}$ 高、信道质量好、可靠性高，但**便携性差**；
+> - 无线信道：便携性好，但 $W$ 有限（典型 $100\ \mathrm{Mbps}\to1\ \mathrm{Gbps}$，向毫米波与大规模 MIMO 扩展）。
+>
+> 于是现代网络呈现"**蜂窝变小、基站下沉**"的趋势：手机到基站用无线（便携），基站到中心站用光纤（大容量、高质量回传，即 backhaul）。进一步的发展方向包括：
+> - **RoF（Radio Over Fiber）**：把射频信号直接调制到光上，用光纤传输到远端天线单元（RAU），实现"**中心站集中处理 + 分布式天线**"，是 5G 室分、C-RAN 的关键技术；
+> - **可见光通信（VLC）**：用 LED 照明兼做通信光源；
+> - **空间光通信**：星间、星地激光链路，带宽大、无需频谱许可。
+>
+> **可见，微波技术与光波技术正在走向同一个系统。** 掌握本章的介质波导与光纤原理，是理解未来通信网络（全光网络 + 毫米波接入）的基础。
+
+> **【小结】**
+> 1. 介质波导**没有金属壁**，靠折射率差与**全反射**把波约束在介质内，波为**表面波／混合模**（$\mathrm{HE}_{mn}$、$\mathrm{EH}_{mn}$）；
+> 2. 主模 $\mathrm{HE}_{11}$ 的 $f_c=0$，第一高次模 $\mathrm{TE}_{01}$／$\mathrm{TM}_{01}$（简并）的归一化截止频率为 $2.405$；
+> 3. 归一化频率 $V=\dfrac{2\pi a}{\lambda}\mathrm{NA}$，**单模条件 $V<2.405$**；
+> 4. 光纤参数：$\Delta=\dfrac{n_1-n_2}{n_1}$、$\mathrm{NA}=\sqrt{n_1^{2}-n_2^{2}}=n_1\sqrt{2\Delta}$、分布因子 $g$（$g\to\infty$ 阶跃、$g=2$ 抛物线）；
+> 5. 三个低损耗窗口：$0.85\ \mu\mathrm{m}$（$3.0\ \mathrm{dB/km}$）、$1.31\ \mu\mathrm{m}$（$0.5\ \mathrm{dB/km}$，零色散）、$1.55\ \mu\mathrm{m}$（$0.2\ \mathrm{dB/km}$，最低损耗 + EDFA）；
+> 6. 三种色散：材料色散、波导色散、模间色散；非线性效应：SPM／XPM、FWM、SRS／SBS；
+> 7. 光纤五大优点：带宽大、损耗低、抗电磁干扰、尺寸小重量轻、原材料丰富；
+> 8. **微波与光波在麦克斯韦方程下统一**，香农公式 $C=W\log_2(1+\mathrm{SNR})$ 给出容量极限，RoF 是二者的融合方向。
+>
+> 本节考点清单：全反射与介质波导原理（★★★）、$V$ 参数与单模条件（★★★★）、$\mathrm{NA}$ 与 $\Delta$ 计算（★★★）、三个低损耗窗口与色散类型（★★★）、微波与光波的统一（★★）。
+
+---
+
+## 本章小结
+
+本章沿着"**从金属波导到集成传输线，再到介质波导与光纤**"的技术演进主线，用"路"的方法为主分析了四类微波传输线。要点归纳如下：
+
+1. **传输线的分类与选型。** 同轴线、平行双导线是**双导体** TEM 传输线；带状线、微带线、槽线、共面波导是**平面传输线**（TEM 或准 TEM）；介质棒波导与光纤是**介质波导**（混合模，主模无截止）；矩形／圆波导是**金属波导**（TE／TM，有截止频率）。选型必须同时考虑模式、截止频率、带宽、损耗、功率容量、体积成本、适合频段与可集成性八个维度，其中**平面传输线因平面工艺、易集成、低成本、可批量生产而成为微波集成电路的主流**。
+
+2. **同轴线。** 主模 TEM，$E_r=E_0e^{-j\beta z}/r$、$H_\varphi=E_0e^{-j\beta z}/(\eta r)$，由 $U=E_0\ln(b/a)$、$I=2\pi E_0/\eta$ 得 $Z_0=\dfrac{60}{\sqrt{\varepsilon_r}}\ln\dfrac{b}{a}$。三个最佳比值是本章最经典的结论：**耐压最高 $b/a=e=2.72$（$Z_0=60\ \Omega$）、功率最大 $b/a=e^{1/2}=1.65$（$Z_0=30\ \Omega$）、衰减最小 $b/a=3.59$（$Z_0=76.7\ \Omega$）**；工程折中取 **$50\ \Omega$**，低损耗长距离取 **$75\ \Omega$**。单模条件是 $\lambda_{\min}>\pi(a+b)$（最低高次模 $\mathrm{TE}_{11}$），衰减 $\alpha_c=\dfrac{R_s}{2\eta\ln(b/a)}\left(\dfrac{1}{a}+\dfrac{1}{b}\right)\propto\sqrt{f}$、$\alpha_d=\dfrac{\pi\sqrt{\varepsilon_r}}{\lambda_0}\tan\delta$。
+
+3. **带状线。** 由同轴线演化而来，介质**均匀填充**，主模为**严格 TEM**，$v_p=c/\sqrt{\varepsilon_r}$、$\lambda_g=\lambda_0/\sqrt{\varepsilon_r}$、$f_c=0$、**无色散**。$Z_0$ 有严格解（椭圆积分）与窄／宽导带两段工程近似；**宽导带低阻抗、窄导带高阻抗**，$Z_0$ 只取决于 $w/b$ 的比值，故可按比例缩小尺寸。厚导带须做等效加宽修正。尺寸选择 $w,b<\lambda_{\min}/(2\sqrt{\varepsilon_r})$。
+
+4. **微带线。** 非对称结构使场分居于空气与介质中，**不是纯 TEM 而是准 TEM**；引入**有效介电常数 $\varepsilon_e=C/C_0$（$1<\varepsilon_e<\varepsilon_r$）**，$v_p=c/\sqrt{\varepsilon_e}$、$\lambda_g=\lambda_0/\sqrt{\varepsilon_e}$、$Z_0=Z_{0a}/\sqrt{\varepsilon_e}$。$Z_0$ 与 $\varepsilon_e$ 有 $w/h\le1$ 与 $w/h>1$ 两段 Hammerstad 闭式解，厚度按 $w_e/h=w/h+\frac{t}{\pi h}(1+\ln\frac{2h}{t})$ 修正。尺寸选择需同时抑制 $\mathrm{TE}_{10}$ 型横向模、$\mathrm{TM}_{01}$ 平行板模与表面波（$\mathrm{TE}_1$：$4h\sqrt{\varepsilon_r-1}$；$\mathrm{TM}_0$ 无截止）。衰减以导体为主（$\propto\sqrt{f}$），介质衰减用 $\alpha_d=27.3\frac{\varepsilon_r}{\sqrt{\varepsilon_e}}\frac{\varepsilon_e-1}{\varepsilon_r-1}\frac{\tan\delta}{\lambda_0}\ \mathrm{dB}$；$h/\lambda_0>0.1$ 时须考虑色散。
+
+5. **耦合微带线。** 通过 $L_{ab}$、$C_{ab}$ 耦合，方程为式 (4-5-1)。任意激励分解为**偶模（等幅同相，磁壁）+ 奇模（等幅反相，电壁）**；$C_e=C_a-C_{ab}$、$C_o=C_a+C_{ab}$，故 **$Z_{0e}>Z_{0o}$**（偶模时耦合电容上无电荷，等效电容小，阻抗大）。空气填充时 $Z_{0e}^aZ_{0o}^a=(Z_0^a)^2$、$k=K$；微带型耦合线因 $\varepsilon_{ee}\ne\varepsilon_{eo}$ 存在两模式相速差，是串扰与耦合器方向性变差的原因。
+
+6. **介质波导与光纤。** 没有金属壁，靠折射率差与**全反射**约束电磁波，波为表面波／混合模（$\mathrm{HE}_{mn}$、$\mathrm{EH}_{mn}$）；主模 $\mathrm{HE}_{11}$ 的 $f_c=0$，第一高次模（$\mathrm{TE}_{01}$／$\mathrm{TM}_{01}$ 简并）的归一化截止频率为 $2.405$，故**单模条件为 $V=\dfrac{2\pi a}{\lambda}\mathrm{NA}<2.405$**。光纤参数 $\Delta$、$\mathrm{NA}=n_1\sqrt{2\Delta}$、分布因子 $g$；三个低损耗窗口 $0.85/1.31/1.55\ \mu\mathrm{m}$（$3.0/0.5/0.2\ \mathrm{dB/km}$）；三种色散（材料、波导、模间）；五大优点（带宽大、损耗低、抗电磁干扰、体积小重量轻、原材料丰富）。**微波与光波在麦克斯韦方程下完全统一**，光纤通信的起点是低损耗，高锟因提出光纤通信设想而获 2009 年诺贝尔物理学奖。
+
+一句话收束：**本章的每一个结论都来自麦克斯韦方程在不同边界条件下的解——金属壁给出波导，双导体给出 TEM 线，介质界面给出准 TEM 与表面波，折射率差给出光纤。** 掌握"场—路—尺寸—性能"这条链条，就掌握了微波传输线的设计方法。
+
+---
+
+## 自测题
+
+### 一、选择与填空（每题 4 分，共 20 分）
+
+**1.（选择）** 同轴线在下列哪种内外径比下**导体衰减最小**？
+A. $b/a=1.65$　B. $b/a=2.30$　C. $b/a=2.72$　D. $b/a=3.59$
+
+**2.（填空）** 微带线的有效介电常数 $\varepsilon_e$ 的取值范围是 ______，其特性阻抗与"全空气微带线"特性阻抗 $Z_{0a}$ 的关系是 $Z_0=$ ______。
+
+**3.（选择）** 下列关于带状线与微带线的说法中，**正确**的是：
+A. 两者都是严格 TEM 传输线
+B. 带状线无色散而微带线存在色散
+C. 微带线的相速小于同介质的带状线相速
+D. 带状线的主模存在截止频率
+
+**4.（填空）** 耦合微带线在偶模激励时，对称面等效为 ______，此时等效电容 $C_e=$ ______；在奇模激励时，对称面等效为 ______，$C_o=$ ______；两种模式特性阻抗的大小关系是 ______。
+
+**5.（选择）** 石英光纤的最低损耗窗口及其典型损耗为：
+A. $0.85\ \mu\mathrm{m}$，$3.0\ \mathrm{dB/km}$　B. $1.31\ \mu\mathrm{m}$，$0.5\ \mathrm{dB/km}$
+C. $1.55\ \mu\mathrm{m}$，$0.2\ \mathrm{dB/km}$　D. $1.55\ \mu\mathrm{m}$，$3.0\ \mathrm{dB/km}$
+
+**答案与解析**
+
+1. **D。** 最小衰减要求 $\dfrac{1/a+1/b}{\ln(b/a)}$ 最小，即满足 $1+a/b=\ln(b/a)$，解得 $b/a=3.5911\approx3.59$，此时 $Z_0=60\ln3.591=76.7\ \Omega$。$1.65$ 对应功率容量最大（$30\ \Omega$），$2.72$ 对应耐压最高（$60\ \Omega$），$2.30$ 对应 $50\ \Omega$ 通用型。
+
+2. **$1<\varepsilon_e<\varepsilon_r$；$Z_0=Z_{0a}/\sqrt{\varepsilon_e}$。** 因为场一部分在空气中（使 $\varepsilon_e>1$）、一部分在介质中（使 $\varepsilon_e<\varepsilon_r$）；由 $C=\varepsilon_eC_0$、$Z_{0a}=1/(cC_0)$ 与 $Z_0=\sqrt{L/C}$ 可推出 $Z_0=Z_{0a}/\sqrt{\varepsilon_e}$。注意：$\varepsilon_e$ **不等于** $\varepsilon_r$，也不等于 $(\varepsilon_r+1)/2$（后者只是窄导带极限值）。
+
+3. **B。** 带状线介质均匀填充，是**严格 TEM**、无色散（$v_p$、$Z_0$ 与频率无关）；微带线是**准 TEM**，$\varepsilon_e$ 随频率变化，存在色散，故 B 正确、A 错误。C 错误：微带线 $\varepsilon_e<\varepsilon_r$，故 $v_p=c/\sqrt{\varepsilon_e}>c/\sqrt{\varepsilon_r}$，微带线相速**大于**同介质带状线。D 错误：两者都无截止频率（$f_c=0$）。
+
+4. **理想磁导体（磁壁，PMC）；$C_a-C_{ab}$；理想电导体（电壁，PEC，相当于接地）；$C_a+C_{ab}$；$Z_{0e}>Z_{0o}$。** 偶模两线等电位，耦合电容上无电荷，等效电容减小，阻抗增大；奇模两线等幅反相，耦合电容上有电荷，等效电容增大，阻抗减小。若采用电容矩阵记号（$C_{12}=-C_{ab}$），则 $C_e=C_{11}+C_{12}$、$C_o=C_{11}-C_{12}$，结论不变。
+
+5. **C。** 三个窗口分别是 $0.85\ \mu\mathrm{m}$（$3.0\ \mathrm{dB/km}$，短距离低速）、$1.31\ \mu\mathrm{m}$（$0.5\ \mathrm{dB/km}$，零色散、中距离高速）、$1.55\ \mu\mathrm{m}$（$0.2\ \mathrm{dB/km}$，最低损耗、长距离高速，配合 EDFA）。
+
+### 二、计算题（共 30 分）
+
+**【计算 1】（10 分）** 某空气绝缘同轴线要求特性阻抗 $Z_0=50\ \Omega$，且以 TEM 单模工作到 $18\ \mathrm{GHz}$。求内导体半径 $a$ 与外导体内半径 $b$。
+
+**解：**
+（1）单模条件：最低高次模 $\mathrm{TE}_{11}$ 的截止波长为 $\lambda_c=\pi(a+b)$，要求
+$$f_{\max}<\frac{c}{\pi(a+b)}\ \Longrightarrow\ a+b=\frac{c}{\pi f_{\max}}=\frac{3\times10^{8}}{\pi\times18\times10^{9}}=\frac{9.549\times10^{7}}{1.8\times10^{10}}=5.305\times10^{-3}\ \mathrm{m}=5.305\ \mathrm{mm}$$
+（2）阻抗条件：$Z_0=\dfrac{60}{\sqrt{\varepsilon_r}}\ln\dfrac{b}{a}=50$（空气 $\varepsilon_r=1$）
+$$\ln\frac{b}{a}=\frac{50}{60}=0.8333\ \Longrightarrow\ \frac{b}{a}=e^{0.8333}=2.301$$
+（3）联立：$b=2.301a$，$a+b=3.301a=5.305\ \mathrm{mm}$
+$$a=\frac{5.305}{3.301}=1.607\ \mathrm{mm},\qquad b=5.305-1.607=3.698\ \mathrm{mm}$$
+**答：** $a=1.61\ \mathrm{mm}$，$b=3.70\ \mathrm{mm}$。
+**讨论：** 校核 $b/a=3.698/1.607=2.301$ ✓，$Z_0=60\ln2.301=50.0\ \Omega$ ✓。若改为"衰减最小"设计，则 $b/a=3.59$，$a=5.305/4.59=1.156\ \mathrm{mm}$、$b=4.149\ \mathrm{mm}$，$Z_0=76.7\ \Omega$。
+
+**【计算 2】（10 分）** 设计一段 $50\ \Omega$ 微带线：基片 $\varepsilon_r=2.2$、$h=0.5\ \mathrm{mm}$、$t\to0$。求导带宽度 $w$，并给出该线的 $\varepsilon_e$ 与 $10\ \mathrm{GHz}$ 时的 $\lambda_g$。
+
+**解：**
+（1）用 Hammerstad 综合公式求 $w/h$。先算辅助量
+$$A=\frac{Z_0}{60}\sqrt{\frac{\varepsilon_r+1}{2}}+\frac{\varepsilon_r-1}{\varepsilon_r+1}\left(0.23+\frac{0.11}{\varepsilon_r}\right)$$
+$$A=\frac{50}{60}\sqrt{1.6}+\frac{1.2}{3.2}\left(0.23+\frac{0.11}{2.2}\right)=0.8333\times1.2649+0.375\times(0.23+0.05)=1.054+0.105=1.159$$
+$$\frac{w}{h}=\frac{8e^{A}}{e^{2A}-2}=\frac{8\times3.187}{10.16-2}=\frac{25.50}{8.16}=3.125$$
+（2）所以
+$$w=3.125\times0.5=1.56\ \mathrm{mm}$$
+（3）由 $w/h=3.125>1$，用宽导带公式
+$$\varepsilon_e=\frac{2.2+1}{2}+\frac{2.2-1}{2}\left(1+\frac{12}{3.125}\right)^{-1/2}=1.6+0.6\times(4.84)^{-1/2}=1.6+0.6\times0.4545=1.873$$
+（4）正向验算（校核设计是否正确）：
+$$Z_0=\frac{120\pi/\sqrt{1.873}}{3.125+1.393+0.667\ln(3.125+1.444)}
+=\frac{376.99/1.3686}{4.518+0.667\times1.5194}
+=\frac{275.5}{5.532}=49.8\ \Omega$$
+与 $50\ \Omega$ 相差 $0.4\%$，满足工程要求（$w$ 微调至 $1.57\ \mathrm{mm}$ 即可精确到 $50.0\ \Omega$）。
+（5）波长：$\lambda_g=\dfrac{\lambda_0}{\sqrt{\varepsilon_e}}$，$10\ \mathrm{GHz}$ 时 $\lambda_0=30\ \mathrm{mm}$，故
+$$\lambda_g=\frac{30}{1.3686}=21.9\ \mathrm{mm},\qquad \frac{\lambda_g}{4}=5.48\ \mathrm{mm}$$
+**答：** $w\approx1.56\ \mathrm{mm}$，$\varepsilon_e\approx1.87$，$\lambda_g\approx21.9\ \mathrm{mm}$。
+**讨论：** $\varepsilon_e=1.87$ 远小于 $\varepsilon_r=2.2$，说明该宽导带线的场仍有约 $1/3$ 分布在空气中（因为 $\varepsilon_r$ 本身较小、基片较薄）。若换成 $\varepsilon_r=9.6$、$h=1\ \mathrm{mm}$ 的陶瓷基片，同样的 $50\ \Omega$ 只需 $w\approx0.8\ \mathrm{mm}$（见例题 4-6），尺寸缩小近一半——**这就是高介电常数基片的价值**。
+
+**【计算 3】（10 分）** 某石英单模光纤：$\lambda=1.31\ \mu\mathrm{m}$，纤芯 $n_1=1.458$，包层 $n_2=1.452$。求（1）相对折射率差 $\Delta$ 与数值孔径 $\mathrm{NA}$；（2）单模条件下纤芯半径 $a$ 与直径 $D$ 的上限；（3）该光纤的截止波长。
+
+**解：**
+（1）相对折射率差与数值孔径：
+$$\Delta=\frac{n_1-n_2}{n_1}=\frac{1.458-1.452}{1.458}=\frac{0.006}{1.458}=4.12\times10^{-3}$$
+$$\mathrm{NA}=\sqrt{n_1^{2}-n_2^{2}}=\sqrt{(1.458-1.452)(1.458+1.452)}=\sqrt{0.006\times2.910}=\sqrt{0.01746}=0.132$$
+校核：$\mathrm{NA}=n_1\sqrt{2\Delta}=1.458\times\sqrt{2\times4.12\times10^{-3}}=1.458\times0.0908=0.132$ ✓
+（2）单模条件 $V=\dfrac{2\pi a}{\lambda}\mathrm{NA}<2.405$：
+$$a<\frac{2.405\lambda}{2\pi\,\mathrm{NA}}=\frac{2.405\times1.31\times10^{-6}}{2\pi\times0.132}=\frac{3.151\times10^{-6}}{0.8294}=3.80\times10^{-6}\ \mathrm{m}=3.80\ \mu\mathrm{m}$$
+$$D=2a<7.60\ \mu\mathrm{m}$$
+（3）截止波长（即 $V=2.405$ 对应的波长）：
+$$\lambda_c=\frac{2\pi a\,\mathrm{NA}}{2.405}=\frac{2\pi\times3.80\times10^{-6}\times0.132}{2.405}=\frac{3.151\times10^{-6}}{2.405}=1.31\times10^{-6}\ \mathrm{m}=1.31\ \mu\mathrm{m}$$
+即 $a$ 取上限 $3.80\ \mu\mathrm{m}$ 时，截止波长恰为工作波长 $1.31\ \mu\mathrm{m}$。
+**答：** $\Delta=4.12\times10^{-3}$，$\mathrm{NA}=0.132$；$a<3.80\ \mu\mathrm{m}$、$D<7.6\ \mu\mathrm{m}$；按上限设计时 $\lambda_c=1.31\ \mu\mathrm{m}$。
+**讨论：** 工程上单模光纤的**截止波长必须设计得略小于工作波长**（例如工作在 $1.31\ \mu\mathrm{m}$ 时，把 $\lambda_c$ 定在 $1.10\sim1.28\ \mu\mathrm{m}$），以保证实际工作波长下严格单模（$V<2.405$），同时又不过分缩小纤芯（否则耦合效率下降、弯曲损耗增大）。本题中若 $a$ 取 $3.5\ \mu\mathrm{m}$，则 $\lambda_c=1.21\ \mu\mathrm{m}<1.31\ \mu\mathrm{m}$，满足单模要求，是合理的设计点。
+
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>专题推导一：无耗网络 [Z] 矩阵的性质 · 微波技术基础学习指南</title>
+<meta name="description" content="从平均功率为零出发，证明无耗网络 [Z] 为反厄米矩阵；互易时退化为纯虚对称矩阵">
+<meta name="author" content="微波技术基础学习指南">
+<meta property="og:type" content="website">
+<meta property="og:title" content="专题推导一：无耗网络 [Z] 矩阵的性质 · 微波技术基础学习指南">
+<meta property="og:description" content="从平均功率为零出发，证明无耗网络 [Z] 为反厄米矩阵；互易时退化为纯虚对称矩阵">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6fdb'/%3E%3Cpath d='M4 21c3-8 5-8 8 0s5 8 8 0 5-8 8 0' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>
+(function(){try{var s=localStorage.getItem('mwguide-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-btn" id="menuBtn" aria-label="打开目录">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+  </button>
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">μ</span>
+    <span class="brand-text">
+      <span class="brand-title">微波技术基础</span>
+      <span class="brand-sub">LEARNING GUIDE</span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="search-wrap">
+    <svg class="sicon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="search" type="search" placeholder="搜索知识点、公式、例题…  (Ctrl K)" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="切换主题">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <span>深色</span>
+  </button>
+</header><div class="backdrop" id="backdrop"></div><aside class="sidebar" id="sidebar" aria-label="站点导航"><nav class="sidebar-nav" id="sidebarNav"><a class="nav-link" href="index.html"><span class="nav-num">00</span><span class="nav-label">首页 · 学习总览</span></a><a class="nav-link" href="roadmap.html"><span class="nav-num">01</span><span class="nav-label">学习路线图</span></a><a class="nav-link" href="formulas.html"><span class="nav-num">02</span><span class="nav-label">公式速查手册</span></a><a class="nav-link" href="exam.html"><span class="nav-num">03</span><span class="nav-label">考点总纲</span></a><a class="nav-link" href="smith.html"><span class="nav-num">04</span><span class="nav-label">史密斯圆图交互工具</span></a><a class="nav-link" href="quiz.html"><span class="nav-num">05</span><span class="nav-label">综合自测题</span></a><a class="nav-link" href="resources.html"><span class="nav-num">06</span><span class="nav-label">课件与视频资源</span></a><div class="nav-group"><div class="nav-heading">章节目录</div><a class="nav-link" href="ch01.html"><span class="nav-num">1</span><span class="nav-label">绪论</span></a><a class="nav-link" href="ch02.html"><span class="nav-num">2</span><span class="nav-label">传输线理论</span></a><a class="nav-link" href="ch03.html"><span class="nav-num">3</span><span class="nav-label">金属波导</span></a><a class="nav-link" href="ch04.html"><span class="nav-num">4</span><span class="nav-label">传输线类型</span></a><a class="nav-link" href="ch05.html"><span class="nav-num">5</span><span class="nav-label">微波网络</span></a><a class="nav-link" href="ch06.html"><span class="nav-num">6</span><span class="nav-label">无源器件</span></a><a class="nav-link active" href="ch07.html"><span class="nav-num">7</span><span class="nav-label">专题·Z 矩阵</span></a><a class="nav-link" href="ch08.html"><span class="nav-num">8</span><span class="nav-label">专题·S 矩阵</span></a></div></nav></aside><div class="shell"><main class="article loading" id="article"><div class="spinner" role="status" aria-label="加载中"></div><div id="chapterShell" hidden><div class="chapter-eyebrow" id="eyebrow">第 7 章</div><div class="md" id="md"></div><nav class="pager" id="pager" aria-label="章节导航"></nav></div></main><aside class="toc" id="toc"><div class="toc-heading">本页目录</div><div class="toc-list" id="tocList"></div></aside></div><footer class="footer">
+  <div>《微波技术基础》在线学习指南 · 共 6 章 + 2 个专题推导</div>
+  <div>
+    <a href="../formulas.html">公式速查</a> ·
+    <a href="../exam.html">考点总纲</a> ·
+    <a href="../resources.html">课件资源</a>
+  </div>
+</footer>
+<script src="../assets/js/search-index.js"></script>
+<script id="chapterCfg" type="application/json">{"n":7,"file":"ch07","src":"content/ch07.md","title":"专题推导一：无耗网络 [Z] 矩阵的性质"}</script>
+<script id="preContent" type="text/plain">---
+chapter: 7
+title: 专题推导一：无耗网络 [Z] 矩阵的性质
+short: 专题·Z 矩阵无耗性
+desc: 从平均功率为零出发，证明无耗网络 [Z] 为反厄米矩阵；互易时退化为纯虚对称矩阵
+minutes: 90
+---
+
+# 专题推导一：无耗网络 [Z] 矩阵的性质
+
+> **【考点】**
+> 本专题是「证明题」的高频来源，典型设问有四种：
+> 1. 直接证明无耗 $N$ 端口网络满足 $[Z]^+=-[Z]$（★★★★，8～12 分）；
+> 2. 只证明对角元 $\mathrm{Re}[Z_{nn}]=0$（★★，4 分）；
+> 3. 由 $[Z]^+=-[Z]$ 再叠加互易条件，推出 $[Z]$ 为纯虚对称矩阵（★★★，6 分）；
+> 4. 给出具体 $3\times3$ 数值矩阵，判别其无耗性与互易性（★★★，计算型证明）。
+> 得分的分水岭不在结论，而在 **"$a$、$b$ 可独立取任意值"** 这一句论证是否写清楚。
+
+---
+
+## 7.1 问题的提出
+
+### 7.1.1 为什么要专门研究无耗网络的 $[Z]$ 性质
+
+阻抗矩阵 $[Z]$ 是微波网络最基本的参数之一，它把各端口的电压与电流线性地联系起来。可是在工程中，读出一个 $3\times3$ 甚至 $6\times6$ 的复矩阵，并不能马上告诉我们**这个网络是不是有耗的**：矩阵里有 9 个复数、18 个实自由度，究竟哪些组合代表"能量被吃掉了"，哪些只是"能量被搬来搬去"？
+
+这个专题要回答的正是这个问题。它有四个方面的价值。
+
+第一，**它是一个可判定的判据**。给定一个实测或计算得到的 $[Z]$，只需做一次共轭转置并取负，就能断定网络是否有耗。这比逐点计算功率、逐段检查电阻要快得多。
+
+第二，**它把自由度数砍掉一半**。一旦确认网络无耗又互易，$N$ 端口网络的独立实参数就从 $2N^2$ 个（一般复矩阵）降到 $\dfrac{N(N+1)}{2}$ 个（纯虚对称矩阵）。对二端口来说，从 8 个降到 3 个。这在后续的级联、匹配设计中是决定性的简化。
+
+第三，**它是第六章器件分析的工具**。E-T 接头、H-T 接头、魔 T、定向耦合器，这些器件的特性全靠"无耗 + 互易 + 对称"三件事反解出来。本专题给出的 $[Z]^+=-[Z]$ 就是"无耗"这一件事在阻抗参数下的精确表达。
+
+第四，**它建立起一整套矩阵性质的横向网络**。同一个物理事实（无耗）在 $[Z]$、$[Y]$、$[S]$、$[A]$ 四种参数下有不同的数学形态（反厄米、反厄米、幺正、实虚分离），把这张对照表理清楚，考场上无论命题人用哪种参数出题，都能照方抓药。
+
+### 7.1.2 "无耗"的精确定义
+
+> **【核心概念】**
+> **无耗网络（lossless network）**：网络内部既不含电阻元件、也不含任何吸能（或产能）媒质，即
+> - 所有元件都是理想的电抗元件（电感、电容）或理想传输线；
+> - 填充媒质是无耗介质（$\sigma=0$，$\mu$、$\varepsilon$ 为实数）；
+> - 网络既不消耗功率，也不产生功率——是**无源且无耗**的。
+>
+> 三个等价的说法，考试中都可以用来作为推导起点：
+> 1. 网络各端口流入的**平均功率总和恒为零**；
+> 2. 网络内部**没有有功分量**，只有无功的储能与交换；
+> 3. 散射矩阵**幺正**，即 $[S]^+[S]=[I]$。
+>
+> 本专题从说法 1 出发，最后证明它与说法 3 完全等价。
+
+要特别注意"不产生功率"这四个字。若只写"不消耗功率"，则含有负电阻（有源）的网络也满足，它的 $[Z]$ 实部为负而非零，性质完全不同。无源无耗意味着功率方程是一个**恒等式为零**，而不是"小于等于零"。这个区别是全部推导的立足点。
+
+### 7.1.3 待证命题
+
+> **【核心概念】**
+> **命题（本专题主定理）**：设 $N$ 端口网络无耗，其阻抗矩阵为 $[Z]$，则
+> $$[Z]^+=-[Z]$$
+> 即 $[Z]$ 是**反厄米矩阵**（anti-Hermitian matrix），等价地 $[Z]^+ + [Z]=[O]$。
+>
+> **推论**：若该网络还是互易的，则 $[Z]$ 退化为**纯虚对称矩阵**，即 $Z_{mn}=jX_{mn}$（$X_{mn}$ 全为实数）且 $X_{mn}=X_{nm}$。
+
+下面我们先备齐工具，再一步步证。
+
+---
+
+## 7.2 预备知识
+
+### 7.2.1 阻抗矩阵的定义
+
+对 $N$ 端口网络，取各端口电压、电流为独立变量。在**正弦稳态**下用相量（phasor）表示，电压列矢量 $\mathbf{U}=[U_1,U_2,\dots,U_N]^T$，电流列矢量 $\mathbf{I}=[I_1,I_2,\dots,I_N]^T$，定义
+
+$$
+\mathbf{U}=[Z]\mathbf{I},\qquad\text{即}\qquad U_m=\sum_{n=1}^{N}Z_{mn}I_n
+\tag{7-2-1}
+$$
+
+其中
+
+$$
+Z_{mn}=\left.\frac{U_m}{I_n}\right|_{I_k=0,\ k\ne n}
+\tag{7-2-2}
+$$
+
+**逐项解释**：
+
+- $Z_{nn}$ 称为**自阻抗**（self-impedance / driving-point impedance），是"其余端口全部开路时，端口 $n$ 的电压与电流之比"，也就是从端口 $n$ 看进去的**开路输入阻抗**。
+- $Z_{mn}$（$m\ne n$）称为**转移阻抗**（transfer impedance），是"在端口 $n$ 注入电流 $I_n$、其余端口开路时，在端口 $m$ 上感应出的开路电压"。它描述端口之间的**耦合强度**。
+
+**为什么必须"其余端口开路"**：因为 $[Z]$ 的自变量是电流、因变量是电压，要让 $Z_{mn}$ 有唯一确定的值，必须把除 $n$ 以外的所有电流"钉死"为零。这与导纳矩阵要求"其余端口短路"是对偶的。这一点在 7.4 节会被反复用到。
+
+### 7.2.2 平均功率（复功率）公式——本专题的出发点
+
+这是全部推导中最关键、也最容易写错的一步，必须把它彻底说清楚。
+
+> **【核心概念】**
+> 正弦稳态下，$N$ 端口网络从各端口**净流入**的**复功率**为
+> $$P_{\mathrm{av}}+jQ=\frac{1}{2}\mathbf{U}^T\mathbf{I}^*$$
+> 其中 $\mathbf{U}$、$\mathbf{I}$ 为相量列矢量，$1/2$ 来自时间平均（$\cos^2\omega t$ 的平均值为 $1/2$），$\mathbf{U}^T\mathbf{I}^*$ 是矢量点积 $\sum_m U_mI_m^*$。真正代表能量损耗的是它的**实部**：
+> $$P_{\mathrm{av}}=\frac{1}{2}\mathrm{Re}\left[\mathbf{U}^T\mathbf{I}^*\right]=\frac{1}{2}\mathrm{Re}\left[\sum_{m=1}^{N}U_mI_m^*\right]$$
+
+**关键一问：怎样把 $\mathbf{U}=[Z]\mathbf{I}$ 代进去？**
+
+很多同学会顺手写成 $\mathbf{I}^T[Z]\mathbf{I}^*$，这一步其实**需要条件**。我们来严格地走一遍。
+
+由 $\mathbf{U}=[Z]\mathbf{I}$，转置得
+
+$$
+\mathbf{U}^T=\left([Z]\mathbf{I}\right)^T=\mathbf{I}^T[Z]^T
+\tag{7-2-3}
+$$
+
+这里用到转置的"反序"性质：$(AB)^T=B^TA^T$，而 $\mathbf{I}$ 是列矢量，$\mathbf{I}^T$ 是行矢量，所以 $( [Z]\mathbf{I} )^T=\mathbf{I}^T[Z]^T$。注意**转置不取共轭**，所以 $[Z]^T$ 中的元素仍是原来的 $Z_{mn}$，不是 $Z_{mn}^*$。
+
+代入复功率公式：
+
+$$
+P_{\mathrm{av}}+jQ=\frac{1}{2}\mathbf{U}^T\mathbf{I}^*
+=\frac{1}{2}\mathbf{I}^T[Z]^T\mathbf{I}^*
+\tag{7-2-4}
+$$
+
+**统一约定（本专题全程遵守）**：
+
+> **【易错点】**
+> 严谨的出发式是
+> $$P_{\mathrm{av}}=\frac{1}{2}\mathrm{Re}\left[\mathbf{I}^T[Z]^T\mathbf{I}^*\right]$$
+> 只有当 $[Z]$ **对称**（即 $[Z]^T=[Z]$，物理上对应**互易**网络）时，才能写成大家熟悉的
+> $$P_{\mathrm{av}}=\frac{1}{2}\mathrm{Re}\left[\mathbf{I}^T[Z]\mathbf{I}^*\right]$$
+> 教材上大量使用后一种写法，是因为讨论的多是互易网络，并非这一写法普遍成立。
+>
+> **本专题的处理办法**：我们在 7.3 节**直接按分量形式展开** $\sum_m\sum_n I_mZ_{mn}I_n^*$。请读者自己验证：分量形式和式 $\sum_m\sum_n I_mZ_{mn}I_n^*$ 与 $\mathbf{I}^T[Z]\mathbf{I}^*$ 是同一个东西（因为 $\mathbf{I}^T[Z]\mathbf{I}^*=\sum_m I_m\left(\sum_n Z_{mn}I_n^*\right)$），而它恰恰等于 $\sum_m U_mI_m^*$——也就是说，**分量定义式本身就是严谨的**，不依赖 $[Z]$ 是否对称。只有"先写矢量式 $\mathbf{U}^T\mathbf{I}^*$ 再机械地替换"这个动作需要小心。
+>
+> 结论：**凡是用分量双重求和 $\sum_m\sum_n I_mZ_{mn}I_n^*$ 书写，永远正确；凡是用矢量形式书写，牢记真正的形式是 $\mathbf{I}^T[Z]^T\mathbf{I}^*$，而 $[Z]^T=[Z]$ 只在互易时成立。** 好在本专题的最终结论会表明：无耗网络的 $[Z]^T$ 与 $[Z]$ 之差是反对称的，而反对称部分对二次型 $\mathbf{I}^T(\cdot)\mathbf{I}^*$ 的贡献恰好为零（见 7.5 节末尾的补充讨论），因此对无耗网络两种写法给出同一个数值。
+
+**实部与虚部的物理意义**：
+
+- $P_{\mathrm{av}}=\dfrac{1}{2}\mathrm{Re}[\mathbf{U}^T\mathbf{I}^*]$：**有功功率**，被网络真正吸收（或发出）的功率，单位为 $\mathrm{W}$；它由 $[Z]$ 的**实部**决定。
+- $Q=\dfrac{1}{2}\mathrm{Im}[\mathbf{U}^T\mathbf{I}^*]$：**无功功率**，在网络与电源之间来回交换、被电抗元件暂存的功率，单位为 $\mathrm{var}$；它由 $[Z]$ 的**虚部**决定。
+
+> **【记忆技巧】**
+> **"实部吃能量，虚部搬能量。"** 无耗 = 只搬不吃 = $[Z]$ 的实部整体"消失"（对角实部为零，交叉实部反对称）。
+
+### 7.2.3 复数与共轭的运算规则
+
+以下四条是 7.5 节展开时的全部工具，请务必记牢：
+
+1. **实部提取**：对任意复数 $z$，
+   $$\mathrm{Re}[z]=\frac{z+z^*}{2},\qquad \mathrm{Im}[z]=\frac{z-z^*}{2j}$$
+2. **共轭的分配律**：
+   $$(z_1z_2)^*=z_1^*z_2^*,\qquad (z_1+z_2)^*=z_1^*+z_2^*,\qquad (z^*)^*=z$$
+3. **虚数单位与实部／虚部的关系**（本专题最容易翻车的一条）：
+   $$\mathrm{Re}[jz]=-\mathrm{Im}[z],\qquad \mathrm{Im}[jz]=\mathrm{Re}[z]$$
+   验证：设 $z=x+jy$，则 $jz=jx+j^2y=-y+jx$，实部为 $-y$、虚部为 $x$。$\square$
+4. **实数的共轭**：$\mathrm{Re}[z]$、$\mathrm{Im}[z]$ 本身是实数，故 $\overline{\mathrm{Re}[z]}=\mathrm{Re}[z]$。
+
+### 7.2.4 四类特殊矩阵的定义
+
+设 $[A]$ 为 $N\times N$ 复方阵，记 $[A]^+ = ([A]^*)^T$ 为**共轭转置**（conjugate transpose，又称 Hermite 转置），$[A]^T$ 为纯转置，$[A]^*$ 为逐元素取共轭。
+
+| 名称 | 英文 | 定义式 | 元素形式 | 实自由度 |
+|---|---|---|---|---|
+| 对称矩阵 | symmetric | $[A]^T=[A]$ | $A_{mn}=A_{nm}$ | — |
+| 反对称矩阵 | skew-symmetric | $[A]^T=-[A]$ | $A_{mn}=-A_{nm}$，$A_{nn}=0$ | — |
+| 厄米矩阵 | Hermitian | $[A]^+=[A]$ | $A_{mn}=A_{nm}^*$，$\mathrm{Im}[A_{nn}]=0$ | $N^2$ |
+| **反厄米矩阵** | **anti-Hermitian** | $[A]^+=-[A]$ | $A_{mn}=-A_{nm}^*$，$\mathrm{Re}[A_{nn}]=0$ | $N^2$ |
+| 纯虚矩阵 | purely imaginary | $[A]=j[B]$，$[B]$ 为实矩阵 | $\mathrm{Re}[A_{mn}]=0\ \forall m,n$ | — |
+| 幺正矩阵 | unitary | $[A]^+[A]=[A][A]^+=[I]$ | 各行（列）正交归一 | $N^2$ |
+
+**读表要点**：
+
+- **厄米**与**反厄米**只差一个负号，如同实数中"对称"与"反对称"的关系。$[A]^+=-[A]$ 展开成分量就是 $A_{mn}^*=-A_{nm}$，即 $A_{mn}=-A_{nm}^*$。
+- 反厄米矩阵的**对角元必为纯虚数**（取 $m=n$ 得 $A_{nn}=-A_{nn}^*$，即 $2\mathrm{Re}[A_{nn}]=0$）；厄米矩阵的对角元必为**实数**。这与后面 7.4 节的结论完全对应。
+- **反厄米矩阵不一定是纯虚矩阵**。纯虚矩阵要求**全部**元素实部为零（包括非对角元）；反厄米只要求非对角元的实部**反对称**，可以不为零。这个区别是本专题最大的易错点，7.6 节会专门展开。
+- 幺正矩阵与反厄米矩阵的实自由度数目相同（都是 $N^2$），这并非巧合——它们描述的是同一个物理约束（无耗），只是参数化方式不同。
+
+### 7.2.5 $-Z^*$ 的含义与 $[Z]^+$ 的定义
+
+- $[Z]^+$ 的定义：**先取共轭，再取转置**，
+  $$[Z]^+=\left([Z]^*\right)^T,\qquad \left([Z]^+\right)_{mn}=Z_{nm}^*$$
+  注意下标顺序被交换了：**$[Z]^+$ 的第 $m$ 行第 $n$ 列元素是 $Z_{nm}$ 的共轭**，不是 $Z_{mn}$ 的共轭。这是最容易写错的一步。顺带记住 $([Z]^+)^+=[Z]$。
+- 单个复数 $Z_{mn}$ 的 $-Z_{mn}^*$ 的含义：在复平面上，$Z^*$ 是 $Z$ 关于**实轴**的镜像，$-Z^*$ 则是先镜像再关于原点反射（等价于关于**虚轴**镜像后再关于原点反射，见 7.5 节图）。若 $Z_{mn}=R+jX$，则 $-Z_{mn}^*=-R+jX$：**实部变号，虚部不变**。
+
+> **【核心概念】**
+> 于是命题 $[Z]^+=-[Z]$ 逐元素展开，就是三条：
+> 1. 对角元：$Z_{nn}=-Z_{nn}^*$，即 $\mathrm{Re}[Z_{nn}]=0$；
+> 2. 非对角元：$Z_{nm}^*=-Z_{mn}$，即 $Z_{mn}=-Z_{nm}^*$；
+> 3. 写成实部虚部：$\mathrm{Re}[Z_{mn}]=-\mathrm{Re}[Z_{nm}]$（实部反对称），$\mathrm{Im}[Z_{mn}]=\mathrm{Im}[Z_{nm}]$（虚部对称）。
+>
+> 这三条就是本专题要证的全部内容。
+
+---
+
+## 7.3 推导：从平均功率为零出发
+
+### 7.3.1 第一步：写出"无耗"的数学表达
+
+网络无耗 ⇒ 既不吸收也不产生净功率 ⇒ 各端口流入网络的**平均功率总和恒为零**。用相量写出双重求和：
+
+$$
+P_{\mathrm{av}}=\frac{1}{2}\mathrm{Re}\left[\sum_{m=1}^{N}\sum_{n=1}^{N}I_mZ_{mn}I_n^*\right]
+=\frac{1}{2}\mathrm{Re}\left[\mathbf{I}^T[Z]\mathbf{I}^*\right]=0
+\tag{7-3-1}
+$$
+
+**理由逐步说明**：
+
+- $\sum_m U_mI_m^*$ 中第 $m$ 项 $U_mI_m^*$ 是端口 $m$ 的复功率（的两倍）。把它对全部端口求和，得到从外部输入整个网络的复功率。取实部即平均（有功）功率。
+- 用 $U_m=\sum_n Z_{mn}I_n$ 代入，得到 $U_mI_m^*=\sum_n Z_{mn}I_nI_m^*$；注意 $I_n$ 与 $I_m^*$ 的搭配：**电压上的下标 $m$ 配电流的共轭 $I_m^*$**。若把 $Z_{mn}$ 的下标顺序弄反，整个推导的结论会变成"厄米"而不是"反厄米"，差一个负号。
+- "无耗"给的是**恒等于零**（而非"$\le 0$"），因为无源保证了 $P_{\mathrm{av}}\ge 0$，无耗又排除了 $P_{\mathrm{av}}>0$，两头一夹只能是零。
+
+### 7.3.2 第二步：展开双重和，分离对角项与交叉项
+
+把双重求和按 $m=n$ 与 $m\ne n$ 拆开：
+
+$$
+\sum_{m=1}^{N}\sum_{n=1}^{N}I_mZ_{mn}I_n^*
+=\underbrace{\sum_{n=1}^{N}I_nZ_{nn}I_n^*}_{m=n:\ \text{对角项}}
++\underbrace{\sum_{m\ne n}I_mZ_{mn}I_n^*}_{m\ne n:\ \text{交叉项}}
+\tag{7-3-2}
+$$
+
+- **对角项**：每个端口自己"电压乘自己的电流共轭"，共 $N$ 项。由于 $I_nI_n^*=|I_n|^2$ 是实数，这一项可以直接化简为 $\sum_n |I_n|^2Z_{nn}$，**不需要任何额外假设**就能看出它只与 $Z_{nn}$ 有关。
+- **交叉项**：端口 $m$ 的电压（由端口 $n$ 的电流贡献）乘以端口 $m$ 电流的共轭，共 $N(N-1)$ 项。注意是一个**成对**的结构：只要 $I_m$、$I_n$ 都不为零，$I_mZ_{mn}I_n^*$ 与 $I_nZ_{nm}I_m^*$ 就成对出现。
+
+### 7.3.3 第三步：关键论证——为什么对角项与交叉项可以"分别"为零
+
+这是整个证明的逻辑枢纽，绝不能一句"显然"带过。
+
+> **【公式推导】**
+> 式 (7-3-1) 要求：**对任意一组端口电流 $\{I_1,I_2,\dots,I_N\}$（任意复数值）**，都有
+> $$\mathrm{Re}\left[\sum_{m}\sum_{n}I_mZ_{mn}I_n^*\right]=0$$
+> 注意 $[Z]$ 是网络自身的固有属性，与外部所加电流无关；而 $\{I_n\}$ 是**任意的、可以由我们自由指定的**激励。
+>
+> **第一步：用特殊情况定对角项。**
+> 取一组特殊的激励：只让端口 $n$ 有电流，其余端口全部开路（$I_k=0$，$k\ne n$）。这是合法的激励方式（可以实际做实验，也可以在心里构造）。此时双重和只剩一项：
+> $$P_{\mathrm{av}}=\frac{1}{2}\mathrm{Re}\left[I_nZ_{nn}I_n^*\right]=\frac{1}{2}|I_n|^2\mathrm{Re}[Z_{nn}]=0$$
+> 由此立刻得到 $\mathrm{Re}[Z_{nn}]=0$。对每个 $n$ 重复一次，$N$ 个对角元全部搞定（见 7.4 节）。
+>
+> **第二步：用一般情况定交叉项。**
+> 既然每个 $\mathrm{Re}[Z_{nn}]=0$ 已经确定，就在**任意**电流分布下把对角项的实部扔掉（它们现在已知为零），剩下的条件就必须由交叉项独自承担：
+> $$\mathrm{Re}\left[\sum_{m\ne n}I_mZ_{mn}I_n^*\right]=0,\qquad\text{对任意}\ \{I_n\}\ \text{成立}$$
+> 再取"只有端口 $m$、$n$ 有电流"的特殊激励，把交叉项压缩成两项，就得到 7.5 节的核心结论。
+
+**为什么要这样分两步**：如果一上来就用一般电流分布，双重和里 $N^2$ 项纠缠在一起，无从下手。先"一个一个端口单独试"把对角元分离出来，再"两个两个端口试"把交叉元分离出来——这正是**线性代数中"用特殊激励提取矩阵元素"的标准手法**，与 (7-2-2) 式中 $Z_{mn}$ 的定义（其余端口开路）一脉相承。
+
+<figure class="fig">
+<svg viewBox="0 0 720 300" role="img" aria-label="无耗N端口网络的功率流示意">
+  <defs>
+    <marker id="ar7a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <text x="360" y="26" text-anchor="middle" font-size="15" fill="var(--ink)">无耗 N 端口网络：各端口流入的平均功率之和恒为零</text>
+
+  <rect x="270" y="70" width="180" height="170" rx="10" fill="none" stroke="var(--brand)" stroke-width="2"/>
+  <text x="360" y="150" text-anchor="middle" font-size="16" fill="var(--brand)">无耗</text>
+  <text x="360" y="172" text-anchor="middle" font-size="16" fill="var(--brand)">N 端口网络</text>
+  <text x="360" y="196" text-anchor="middle" font-size="13" fill="var(--ink-2)">内部无电阻、无吸能媒质</text>
+  <text x="360" y="218" text-anchor="middle" font-size="13" fill="var(--ink-2)">U = [Z] I</text>
+
+  <line x1="120" y1="98" x2="266" y2="98" stroke="var(--warn)" stroke-width="2" marker-end="url(#ar7a)"/>
+  <text x="112" y="94" text-anchor="end" font-size="13" fill="var(--ink)">端口 1</text>
+  <text x="180" y="90" text-anchor="middle" font-size="12" fill="var(--warn)">P₁</text>
+
+  <line x1="120" y1="155" x2="266" y2="155" stroke="var(--warn)" stroke-width="2" marker-end="url(#ar7a)"/>
+  <text x="112" y="151" text-anchor="end" font-size="13" fill="var(--ink)">端口 m</text>
+  <text x="180" y="147" text-anchor="middle" font-size="12" fill="var(--warn)">P_m</text>
+
+  <line x1="120" y1="212" x2="266" y2="212" stroke="var(--warn)" stroke-width="2" marker-end="url(#ar7a)"/>
+  <text x="112" y="208" text-anchor="end" font-size="13" fill="var(--ink)">端口 N</text>
+  <text x="180" y="204" text-anchor="middle" font-size="12" fill="var(--warn)">P_N</text>
+
+  <text x="200" y="272" text-anchor="middle" font-size="12" fill="var(--ink-2)">…（中间端口同理）…</text>
+
+  <rect x="500" y="96" width="196" height="122" rx="8" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="598" y="124" text-anchor="middle" font-size="13" fill="var(--accent)">能量守恒（无耗）</text>
+  <text x="598" y="152" text-anchor="middle" font-size="13" fill="var(--ink)">P₁ + P₂ + … + P_N = 0</text>
+  <text x="598" y="180" text-anchor="middle" font-size="13" fill="var(--ink)">Σ_m Σ_n I_m Z_mn I_n* 为纯虚数</text>
+  <text x="598" y="204" text-anchor="middle" font-size="12" fill="var(--ink-2)">实部为零 ⇒ [Z] 反厄米</text>
+</svg>
+<figcaption>图 7-1　无耗 $N$ 端口网络的功率流：流入各端口的有功功率总和为零，全部能量只在电抗元件中往复交换</figcaption>
+</figure>
+
+---
+
+## 7.4 对角项：$\mathrm{Re}[Z_{nn}]=0$
+
+### 7.4.1 推导
+
+取只有端口 $n$ 有电流的激励：$I_n\ne0$，$I_k=0$（$k\ne n$）。此时由 (7-3-1)：
+
+$$
+P_{\mathrm{av}}=\frac{1}{2}\mathrm{Re}\left[I_nZ_{nn}I_n^*\right]
+=\frac{1}{2}\mathrm{Re}\left[|I_n|^2Z_{nn}\right]
+=\frac{1}{2}|I_n|^2\mathrm{Re}[Z_{nn}]
+\tag{7-4-1}
+$$
+
+**第二步用了一条性质**：$|I_n|^2=I_nI_n^*$ 是**非负实数**，实数可以从 $\mathrm{Re}[\cdot]$ 中提出来，即 $\mathrm{Re}[c\,z]=c\,\mathrm{Re}[z]$（$c$ 为实数）。若 $I_n$ 是复数，绝不能把 $I_n$ 直接提出去。
+
+网络无耗 ⇒ (7-4-1) 为零；又因所选激励满足 $I_n\ne0$ ⇒ $|I_n|^2>0$。两个因子相乘为零而其中一个非零，只能是另一个为零：
+
+$$
+\boxed{\mathrm{Re}[Z_{nn}]=0\qquad(n=1,2,\dots,N)}
+\tag{7-4-2}
+$$
+
+这也可以写成 $Z_{nn}=-Z_{nn}^*$（即 $Z_{nn}=jX_{nn}$，$X_{nn}$ 为实数）。
+
+### 7.4.2 物理意义
+
+> **【核心概念】**
+> $Z_{nn}$ 是端口 $n$ 的**自阻抗**，也就是"其余端口全部开路"时从端口 $n$ 看进去的**输入阻抗**。它的**实部就是该端口看进去的耗散电阻**（把网络内部的所有损耗折算到端口 $n$ 上的等效电阻），虚部是等效电抗。
+>
+> 无耗 ⇒ $\mathrm{Re}[Z_{nn}]=0$ ⇒ **从任何一个端口看进去，网络的输入阻抗都是纯电抗**，端口上只表现为电感性的或电容性的储能元件，没有任何电阻性消耗。
+
+这与第二章的重要结论完全呼应：
+
+- 无耗传输线的**短路负载**（$Z_l=0$）的输入阻抗为 $Z_{\mathrm{in}}=jZ_0\tan\beta z$，纯电抗；
+- **开路负载**（$Z_l\to\infty$）的输入阻抗为 $Z_{\mathrm{in}}=-jZ_0\cot\beta z$，纯电抗；
+- 任意**纯电抗负载**（$Z_l=jX$）的输入阻抗也是纯电抗。
+
+原因是同一件事：无耗传输线段本身是无耗二端口网络，它的 $Z_{11}$ 就是"终端开路（或短路）时从输入端看进去的阻抗"，按 (7-4-2) 必然是纯虚数。
+
+### 7.4.3 与 $[S]$ 的对照验证：无耗单口网络的 $|\Gamma|=1$
+
+对一个无耗**单端口**网络（比如一段无耗传输线接纯电抗负载），从端口看进去的归一化阻抗 $\bar Z=Z/Z_0$ 与反射系数 $\Gamma$ 的关系为
+
+$$
+\bar Z=\frac{1+\Gamma}{1-\Gamma}
+\tag{7-4-3}
+$$
+
+反过来，由 $\Gamma$ 求 $Z$：
+
+$$
+Z=Z_0\frac{1+\Gamma}{1-\Gamma}
+\tag{7-4-4}
+$$
+
+**验证 $\mathrm{Re}[Z]=0\iff|\Gamma|=1$**。把 $\Gamma$ 写成 $\Gamma=|\Gamma|e^{j\theta}$，则
+
+$$
+Z=Z_0\frac{1+|\Gamma|e^{j\theta}}{1-|\Gamma|e^{j\theta}}
+$$
+
+用"分子分母同乘分母的共轭"来提取实部：
+
+$$
+Z=Z_0\frac{(1+|\Gamma|e^{j\theta})(1-|\Gamma|e^{-j\theta})}{|1-|\Gamma|e^{j\theta}|^2}
+=Z_0\frac{1-|\Gamma|^2+j|\Gamma|(e^{j\theta}-e^{-j\theta})}{|1-|\Gamma|e^{j\theta}|^2}
+=Z_0\frac{1-|\Gamma|^2+j\,2|\Gamma|\sin\theta}{|1-|\Gamma|e^{j\theta}|^2}
+$$
+
+因此
+
+$$
+\mathrm{Re}[Z]=Z_0\frac{1-|\Gamma|^2}{|1-|\Gamma|e^{j\theta}|^2}
+\tag{7-4-5}
+$$
+
+$Z_0>0$，分母 $>0$（除非 $|\Gamma|=1$ 且 $\theta=0$，那对应短路、$Z=0$，仍无耗）。于是
+
+$$
+\mathrm{Re}[Z]=0\iff 1-|\Gamma|^2=0\iff|\Gamma|=1
+\tag{7-4-6}
+$$
+
+**结论**：无耗单口网络的反射系数模恒为 1，能量全部被反射回去，只是相位 $e^{j\theta}$ 随频率变化。这与 (7-4-2) 从功率出发得到的结论完全一致——**同一个物理事实（无耗），在阻抗参数下说"实部为零"，在散射参数下说"模为 1"**。这条对照在 7.7 节会推广成一张大表。
+
+---
+
+## 7.5 交叉项：$Z_{mn}=-Z_{nm}^*$
+
+这是本专题的核心推导，我们一步不跳。
+
+### 7.5.1 第二步：隔离出交叉项
+
+取"只有端口 $m$、$n$ 有电流"的激励（$m\ne n$ 固定）：$I_m\ne0$，$I_n\ne0$，其余 $I_k=0$。此时双重求和只剩四项：
+
+$$
+2P_{\mathrm{av}}=\mathrm{Re}\Big[\underbrace{I_mZ_{mm}I_m^*}_{\text{对角}}\underbrace{+I_mZ_{mn}I_n^*}_{\text{交叉}}\underbrace{+I_nZ_{nm}I_m^*}_{\text{交叉}}\underbrace{+I_nZ_{nn}I_n^*}_{\text{对角}}\Big]=0
+\tag{7-5-1}
+$$
+
+由 7.4 节已知 $\mathrm{Re}[Z_{mm}]=\mathrm{Re}[Z_{nn}]=0$，而 $|I_m|^2$、$|I_n|^2$ 为实数，故两个对角项的实部
+
+$$
+\mathrm{Re}\left[I_mZ_{mm}I_m^*\right]=|I_m|^2\mathrm{Re}[Z_{mm}]=0,\qquad
+\mathrm{Re}\left[I_nZ_{nn}I_n^*\right]=|I_n|^2\mathrm{Re}[Z_{nn}]=0
+\tag{7-5-2}
+$$
+
+**于是对角项可以放心扔掉**，剩下的条件就是交叉项本身必须实部为零：
+
+$$
+\boxed{\ \mathrm{Re}\left[I_mZ_{mn}I_n^*+I_nZ_{nm}I_m^*\right]=0\ }
+\tag{7-5-3}
+$$
+
+注意这是**对所有复数 $I_m$、$I_n$ 都成立**的条件（只要 $m\ne n$、两个电流都可以任取）。这一点马上要用。
+
+### 7.5.2 复数记号设定
+
+> **【公式推导】**
+> 设
+> $$Z_{mn}=R_{mn}+jX_{mn},\qquad Z_{nm}=R_{nm}+jX_{nm}$$
+> 其中 $R$、$X$ 均为**实数**（分别代表实部与虚部）。
+> 再设
+> $$I_mI_n^*=a+jb,\qquad a,b\in\mathbb{R}$$
+> 由于 $I_nI_m^*=\left(I_mI_n^*\right)^*$（乘积的共轭等于共轭的乘积，且交换次序不影响复数乘法），故
+> $$I_nI_m^*=a-jb$$
+
+**为什么要引入 $a$、$b$**：式 (7-5-3) 中有未知的电流 $I_m$、$I_n$ 和待求的阻抗元素 $Z_{mn}$、$Z_{nm}$ 两类量。直接把 $I_m=|I_m|e^{j\phi_m}$、$I_n=|I_n|e^{j\phi_n}$ 代入会产生 4 个实参数（两个模、两个相位），比较繁琐。用 $a+jb$ 一次性打包 $I_mI_n^*$，只留**两个**实参数，且 $a$、$b$ 的**任意性**（下文 7.5.4 证明）恰好是提取结论的钥匙。
+
+### 7.5.3 逐步展开（一步不跳）
+
+**第一项**：
+
+$$
+\begin{aligned}
+I_mZ_{mn}I_n^*&=\left(I_mI_n^*\right)Z_{mn}=(a+jb)(R_{mn}+jX_{mn})\\
+&=aR_{mn}+a\,jX_{mn}+jbR_{mn}+j^2bX_{mn}\\
+&=\underbrace{(aR_{mn}-bX_{mn})}_{\text{实部}}+j\underbrace{(bR_{mn}+aX_{mn})}_{\text{虚部}}
+\end{aligned}
+\tag{7-5-4}
+$$
+
+**第二项**：
+
+$$
+\begin{aligned}
+I_nZ_{nm}I_m^*&=\left(I_nI_m^*\right)Z_{nm}=(a-jb)(R_{nm}+jX_{nm})\\
+&=aR_{nm}+a\,jX_{nm}-jbR_{nm}-j^2bX_{nm}\\
+&=\underbrace{(aR_{nm}+bX_{nm})}_{\text{实部}}+j\underbrace{(aX_{nm}-bR_{nm})}_{\text{虚部}}
+\end{aligned}
+\tag{7-5-5}
+$$
+
+**第二步的细节**：$(a-jb)(R+jX)=aR+jaX-jbR-j^2bX=aR+jaX-jbR+bX$。注意最后一项 $-j^2bX=+bX$ 是**实部**，符号为正——这里最容易丢负号或丢 $j^2=-1$。
+
+**两项相加取实部**（(7-5-4) 与 (7-5-5) 的实部相加）：
+
+$$
+\mathrm{Re}\left[I_mZ_{mn}I_n^*+I_nZ_{nm}I_m^*\right]
+=(aR_{mn}-bX_{mn})+(aR_{nm}+bX_{nm})=0
+$$
+
+**按 $a$、$b$ 整理**（同项合并，这是关键的一步"提公因式"）：
+
+$$
+a\left(R_{mn}+R_{nm}\right)+b\left(X_{nm}-X_{mn}\right)=0
+\tag{7-5-6}
+$$
+
+注意第二项的括号是 $X_{nm}-X_{mn}$，顺序反了就会得到相反符号的结论。检验办法：把 $b$ 项的来源追溯一遍——$b$ 的两项分别是 $-bX_{mn}$（来自第一项）和 $+bX_{nm}$（来自第二项），合并得 $b(X_{nm}-X_{mn})$，正确。
+
+### 7.5.4 关键论据：$a$、$b$ 是独立任意的
+
+> **【公式推导】**
+> 式 (7-5-6) 必须对**任意**的 $I_m$、$I_n$ 成立，因此对其诱导出的 $a=\mathrm{Re}[I_mI_n^*]$、$b=\mathrm{Im}[I_mI_n^*]$ 也必须"任取"。
+>
+> **严格论证分三步**：
+>
+> **(1) $a$、$b$ 可以各自取到任意实数值。** 固定 $I_n=1$（任意指定，合法），令 $I_m=a+jb$，则 $I_mI_n^*=(a+jb)\cdot1=a+jb$。于是只要取 $I_m=a+jb$，就得到任意指定的 $(a,b)$。**这一步说明 $(a,b)$ 能覆盖整个实平面**，式 (7-5-6) 是对全平面的恒等式。
+>
+> **(2) 因而可以取特殊值分离系数。**
+> - 取 $b=0$、$a=1$（即 $I_m=1$，$I_n=1$）：式 (7-5-6) 变为 $R_{mn}+R_{nm}=0$；
+> - 取 $a=0$、$b=1$（即 $I_m=j$，$I_n=1$）：式 (7-5-6) 变为 $X_{nm}-X_{mn}=0$。
+>
+> **(3) 结论**：
+> $$R_{mn}+R_{nm}=0\ \Longrightarrow\ \boxed{R_{mn}=-R_{nm}}\qquad\text{（实部反对称）}$$
+> $$X_{nm}-X_{mn}=0\ \Longrightarrow\ \boxed{X_{mn}=X_{nm}}\qquad\text{（虚部对称）}$$
+>
+> **只写"$a$、$b$ 一般不为零"是不够严谨的**。因为 (7-5-6) 是一个二元一次齐次方程，即使 $a$、$b$ 都非零，只要它们的比值固定，方程组也只是"一维"的，解不出两个独立的等式。真正需要的是"$a$、$b$ **可独立、任意地**取值"，即 $(a,b)$ 遍历全平面——这才迫使**两个系数分别为零**。考场上把第 (1) 步写出来，才叫完整证明。
+
+### 7.5.5 综合结论
+
+把 7.4 节与 7.5 节的结果并列：
+
+$$
+\mathrm{Re}[Z_{nn}]=0\quad\text{（对角元纯虚）}
+\tag{7-5-7}
+$$
+
+$$
+\mathrm{Re}[Z_{mn}]=-\mathrm{Re}[Z_{nm}],\qquad \mathrm{Im}[Z_{mn}]=\mathrm{Im}[Z_{nm}]\quad(m\ne n)
+\tag{7-5-8}
+$$
+
+**用单个等式表达**：记 $Z_{mn}=R_{mn}+jX_{mn}$，则由 $R_{nm}=-R_{mn}$、$X_{nm}=X_{mn}$，
+
+$$
+Z_{nm}=R_{nm}+jX_{nm}=-R_{mn}+jX_{mn}=-\left(R_{mn}-jX_{mn}\right)=-Z_{mn}^*
+\tag{7-5-9}
+$$
+
+即
+
+$$
+\boxed{Z_{mn}=-Z_{nm}^*\qquad(m\ne n)}
+\tag{7-5-10}
+$$
+
+对角元部分：$\mathrm{Re}[Z_{nn}]=0$ 意味着 $Z_{nn}=jX_{nn}$，而 $jX_{nn}=-\overline{jX_{nn}}=-Z_{nn}^*$，所以 (7-5-10) 这个式子**对 $m=n$ 也自动成立**。统一写成
+
+$$
+\boxed{[Z]^+=-[Z]}
+\tag{7-5-11}
+$$
+
+**最后一步的理由**：$[Z]^+$ 的第 $(m,n)$ 元素按定义是 $Z_{nm}^*$，而由 (7-5-10) $Z_{nm}^*=-Z_{mn}$，即 $([Z]^+)_{mn}=-Z_{mn}=(-[Z])_{mn}$，逐元素相等故矩阵相等。$\blacksquare$
+
+### 7.5.6 矩阵形式展示（以三端口为例）
+
+无耗三端口网络的阻抗矩阵必须具有如下形状：
+
+$$
+[Z]=\begin{bmatrix}
+jX_{11} & R_{12}+jX_{12} & R_{13}+jX_{13}\\
+-R_{12}+jX_{12} & jX_{22} & R_{23}+jX_{23}\\
+-R_{13}+jX_{13} & -R_{23}+jX_{23} & jX_{33}
+\end{bmatrix}
+\tag{7-5-12}
+$$
+
+**结构三条规律**（请对着矩阵看）：
+
+1. **主对角线全是纯虚数**（$jX_{nn}$，没有实部）；
+2. **关于主对角线"实部反对称、虚部对称"**：$Z_{12}$ 与 $Z_{21}$ 的虚部都是 $X_{12}$（相同），实部是 $+R_{12}$ 与 $-R_{12}$（相反）；
+3. 因此矩阵**不是**纯虚矩阵（除非所有 $R_{mn}=0$），但它是反厄米的。
+
+**验证**：取共轭转置。先共轭：
+
+$$
+[Z]^*=\begin{bmatrix}
+-jX_{11} & R_{12}-jX_{12} & R_{13}-jX_{13}\\
+-R_{12}-jX_{12} & -jX_{22} & R_{23}-jX_{23}\\
+-R_{13}-jX_{13} & -R_{23}-jX_{23} & -jX_{33}
+\end{bmatrix}
+$$
+
+再转置：
+
+$$
+[Z]^+=\begin{bmatrix}
+-jX_{11} & -R_{12}-jX_{12} & -R_{13}-jX_{13}\\
+R_{12}-jX_{12} & -jX_{22} & -R_{23}-jX_{23}\\
+R_{13}-jX_{13} & R_{23}-jX_{23} & -jX_{33}
+\end{bmatrix}
+$$
+
+对比 (7-5-12)：$(1,2)$ 元由 $R_{12}+jX_{12}$ 变成 $-R_{12}-jX_{12}=-(R_{12}+jX_{12})$，取负号成立；$(2,1)$ 元由 $-R_{12}+jX_{12}$ 变成 $R_{12}-jX_{12}=S_{21}$ 的负值，$-( -R_{12}+jX_{12})=R_{12}-jX_{12}$，成立；$(1,1)$ 元 $jX_{11}\to -jX_{11}$，成立。故 $[Z]^+=-[Z]$ 对所有元素验证通过。$\blacksquare$
+
+<figure class="fig">
+<svg viewBox="0 0 727 320" role="img" aria-label="Zmn与Znm在复平面上的对称关系">
+  <defs>
+    <marker id="ar7b" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <text x="360" y="24" text-anchor="middle" font-size="15" fill="var(--ink)">Z_mn 与 Z_nm 在复平面上的位置关系：关于虚轴对称（Z_nm = −Z_mn*）</text>
+
+  <line x1="60" y1="190" x2="390" y2="190" stroke="var(--line)" stroke-width="1.4" marker-end="url(#ar7b)"/>
+  <line x1="225" y1="300" x2="225" y2="50" stroke="var(--line)" stroke-width="1.4" marker-end="url(#ar7b)"/>
+  <text x="386" y="208" font-size="12" fill="var(--ink-2)">Re</text>
+  <text x="232" y="58" font-size="12" fill="var(--ink-2)">Im</text>
+
+  <line x1="225" y1="50" x2="225" y2="300" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 5" opacity="0.7"/>
+
+  <circle cx="310" cy="110" r="4.5" fill="var(--brand)"/>
+  <line x1="225" y1="190" x2="310" y2="110" stroke="var(--brand)" stroke-width="1.6" marker-end="url(#ar7b)"/>
+  <text x="318" y="106" font-size="13" fill="var(--brand)">Z_mn = R + jX</text>
+
+  <circle cx="140" cy="110" r="4.5" fill="var(--warn)"/>
+  <line x1="225" y1="190" x2="140" y2="110" stroke="var(--warn)" stroke-width="1.6" marker-end="url(#ar7b)"/>
+  <text x="132" y="106" text-anchor="end" font-size="13" fill="var(--warn)">Z_nm = −R + jX</text>
+
+  <circle cx="310" cy="270" r="3.5" fill="var(--ink-2)" opacity="0.7"/>
+  <text x="318" y="284" font-size="12" fill="var(--ink-2)">Z_mn* （共轭，关于实轴镜像）</text>
+  <line x1="310" y1="110" x2="310" y2="270" stroke="var(--ink-2)" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+
+  <line x1="140" y1="110" x2="310" y2="110" stroke="var(--ink-2)" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+  <text x="225" y="102" text-anchor="middle" font-size="11" fill="var(--ink-2)">2|R|</text>
+
+  <circle cx="225" cy="110" r="3.5" fill="var(--accent)"/>
+  <text x="215" y="126" text-anchor="end" font-size="11" fill="var(--accent)">虚轴（纯虚）</text>
+
+  <rect x="430" y="70" width="266" height="176" rx="8" fill="none" stroke="var(--line)" stroke-width="1.4"/>
+  <text x="446" y="98" font-size="13" fill="var(--ink)">三条结论的几何读法：</text>
+  <text x="446" y="126" font-size="12.5" fill="var(--ink-2)">① 对角元 Z_nn 落在虚轴上 ⇒ 纯电抗</text>
+  <text x="446" y="152" font-size="12.5" fill="var(--ink-2)">② 非对角元成对镜像于虚轴 ⇒ 横向位置相反</text>
+  <text x="446" y="178" font-size="12.5" fill="var(--ink-2)">③ 纵坐标相同 ⇒ X_mn = X_nm（虚部对称）</text>
+  <text x="446" y="204" font-size="12.5" fill="var(--ink-2)">④ 横坐标相反 ⇒ R_mn = −R_nm（实部反对称）</text>
+  <text x="446" y="230" font-size="12.5" fill="var(--brand)">⑤ 若互易 Z_mn = Z_nm ⇒ 必落在虚轴上，R = 0</text>
+
+  <text x="60" y="48" font-size="12" fill="var(--ink-2)">复平面 (Re, Im)</text>
+</svg>
+<figcaption>图 7-2　$Z_{mn}$ 与 $Z_{nm}$ 关于虚轴对称：实部反号、虚部相同，这正是反厄米性的几何图像</figcaption>
+</figure>
+
+### 7.5.7 两个补充说明
+
+**补充一：为什么"反对称实部"对二次型的实部没有贡献。** 前文提到严谨的功率式是 $\mathbf{I}^T[Z]^T\mathbf{I}^*$，而教材常写 $\mathbf{I}^T[Z]\mathbf{I}^*$。二者的差别是 $\mathbf{I}^T([Z]^T-[Z])\mathbf{I}^*$，即 $[Z]$ 的"转置反对称部分"
+
+$$
+[Z]^T-[Z]\ \text{的第}\ (m,n)\ \text{元}=Z_{nm}-Z_{mn}=R_{nm}-R_{mn}+j(X_{nm}-X_{mn})=-2R_{mn}+j\,0
+$$
+
+对无耗网络，由 (7-5-8) 这个矩阵是**实的反对称矩阵**，而任何实反对称矩阵 $[A]$ 都满足 $\mathbf{I}^T[A]\mathbf{I}^*=0$：把双重和 $\sum_m\sum_n A_{mn}I_mI_n^*$ 按 $(m,n)$ 与 $(n,m)$ 配对，得到 $A_{mn}I_mI_n^*+A_{nm}I_nI_m^*=A_{mn}I_mI_n^*-A_{mn}I_mI_n^*=0$。所以对无耗网络，$\mathbf{I}^T[Z]\mathbf{I}^*$ 与 $\mathbf{I}^T[Z]^T\mathbf{I}^*$ 相差一个纯虚数或零，**实部完全相同**。这就解释了为什么教材的简化写法在无耗网络这个题目下是安全的。
+
+**补充二：$a$、$b$ 的物理含义。** $a+jb=I_mI_n^*$，其模为 $|I_m||I_n|$，辐角为 $\phi_m-\phi_n$。$a=|I_m||I_n|\cos(\phi_m-\phi_n)$ 代表两端口电流"同相分量"的大小，$b=|I_m||I_n|\sin(\phi_m-\phi_n)$ 代表"正交分量"的大小。说 $a$、$b$ 任意，物理上就是"两端口电流的幅度与相对相位都可以任意调节"——这正是微波工程中可以通过移相器、衰减器自由实现的。
+
+### 7.5.8 易错点清单
+
+> **【易错点】**
+> 1. **把 $[Z]^+=-[Z]$ 误当作"$[Z]$ 是纯虚矩阵"。**
+>    前者对所有无耗网络成立；后者要求**全部元素实部为零**，只在网络还**互易**时才成立。反例：式 (7-5-12) 中 $R_{12}\ne0$ 时矩阵仍然反厄米，但不是纯虚矩阵。
+> 2. **漏掉对角项的单独讨论。**
+>    交叉项的推导用到了 $\mathrm{Re}[Z_{mm}]=\mathrm{Re}[Z_{nn}]=0$ 才能把对角项扔掉。若不做 7.4 节，7.5 节的推导就没有依据。反过来，$m=n$ 时代入 (7-5-10) 会得到 $Z_{nn}=-Z_{nn}^*$，虽然也对，但**必须**先单独证过一遍才严谨（因为交叉项推导中用了 $m\ne n$ 的假设）。
+> 3. **$a$、$b$ 独立性论证不完整。**
+>    只写"$a$、$b$ 一般不为零"是不够的（见 7.5.4 的说明）。要写"$a$、$b$ 可独立取任意实数"并给出构造（如固定 $I_n=1$、令 $I_m=a+jb$）。
+> 4. **下标顺序写反。**
+>    $([Z]^+)_{mn}=Z_{nm}^*$，不是 $Z_{mn}^*$。转置会交换下标，这一步错了，最终会得到"$Z_{mn}=-Z_{mn}^*$"这种明显荒谬的结论。
+> 5. **把 $\mathrm{Re}[jz]$ 写成 $\mathrm{Im}[z]$。**
+>    正确关系是 $\mathrm{Re}[jz]=-\mathrm{Im}[z]$。在展开 $(a+jb)(R+jX)$ 时，$-j^2bX=+bX$ 属于实部，符号别丢。
+
+---
+
+## 7.6 结论与推广
+
+### 7.6.1 主结论
+
+> **【核心概念】**
+> **无耗 $N$ 端口网络的阻抗矩阵是反厄米矩阵**：
+> $$[Z]^+=-[Z]$$
+> 等价说法（四条，考场上任写其一都算对，但内部要自洽）：
+> 1. $[Z]^+ + [Z]=[O]$；
+> 2. 对角元纯虚：$\mathrm{Re}[Z_{nn}]=0$；非对角元满足 $Z_{mn}=-Z_{nm}^*$；
+> 3. 实部矩阵 $\mathrm{Re}[Z]$ 是**实反对称**矩阵，虚部矩阵 $\mathrm{Im}[Z]$ 是**实对称**矩阵；
+> 4. $j[Z]$ 是**厄米**矩阵（因为 $(j[Z])^+=j^*[Z]^+=-j(-[Z])=j[Z]$）。
+
+第 4 条非常有用：它把"无耗阻抗矩阵"与"厄米矩阵"这对熟悉的对象联系起来，而厄米矩阵的二次型恒为实数、可以对角化、特征值全为实数——这些性质可以整体搬过来用。
+
+### 7.6.2 加上互易条件：退化为纯虚对称矩阵
+
+> **【核心概念】**
+> **互易性（reciprocity）**：网络媒质各向同性（不含铁氧体等非互易材料）、不含受控源，则
+> $$[Z]=[Z]^T,\qquad\text{即}\qquad Z_{mn}=Z_{nm}$$
+> 物理上：在端口 $n$ 加电流 $I$，测得端口 $m$ 的开路电压，与在端口 $m$ 加同样电流、测端口 $n$ 的电压，结果相同。
+
+现在把互易条件叠加到反厄米性上。由 (7-5-9)（或直接由实部虚部结论）：
+
+$$
+Z_{mn}=Z_{nm}\ \text{（互易）}\quad\text{且}\quad Z_{mn}=-Z_{nm}^*\ \text{（无耗）}
+$$
+
+两式联立，把第一式代入第二式得
+
+$$
+Z_{mn}=-Z_{mn}^*\quad\Longrightarrow\quad 2\mathrm{Re}[Z_{mn}]=0\quad\Longrightarrow\quad \mathrm{Re}[Z_{mn}]=0\qquad(\forall m,n)
+\tag{7-6-1}
+$$
+
+于是
+
+$$
+R_{mn}=0\ (\forall m,n),\qquad X_{mn}=X_{nm}
+$$
+
+即
+
+$$
+\boxed{[Z]=j[X],\quad [X]=[X]^T\ \text{为实对称矩阵}}
+\tag{7-6-2}
+$$
+
+**无耗互易网络的 $[Z]$ 是纯虚对称矩阵**。它仍然满足反厄米性：$[Z]^+= (j[X])^+=j^*[X]^+= -j[X]^T=-j[X]=-[Z]$ ✓。所以"纯虚对称"是"反厄米"的**特例**（加上了实部为零的额外约束）。
+
+**进一步：互易 + 无耗二端口的独立实参数只有 3 个**（$X_{11}$、$X_{12}=X_{21}$、$X_{22}$）；无耗非互易二端口有 4 个（$X_{11}$、$R_{12}$、$X_{12}$、$X_{22}$）；而一般（有耗）二端口有 8 个。**这就是无耗性＋互易性带来的计算量削减**。
+
+### 7.6.3 能量解释
+
+> **【核心概念】**
+> 把 $[Z]$ 分解为实部与虚部两部分：$[Z]=\mathrm{Re}[Z]+j\,\mathrm{Im}[Z]$。
+> - **实部** $\mathrm{Re}[Z]$：描述网络的**耗散**（有功）行为。它出现在 $P_{\mathrm{av}}$ 的表达式中，代表真正被吸收的功率。实部越大，损耗越大。
+> - **虚部** $\mathrm{Im}[Z]$：描述网络的**储能与能量交换**（无功）行为。它对应网络内部电场能与磁场能的存储与相互转换（电抗元件），不消耗能量。
+>
+> 无耗 ⇒ $\mathrm{Re}[Z]$ 中所有"能被二次型探测到"的部分为零。严格地说，$\mathrm{Re}[Z]$ 被证明是**实反对称矩阵**，而对任意实电流矢量 $\mathbf{i}$，$\mathbf{i}^T[A]\mathbf{i}=0$（$[A]$ 实反对称）恒成立——所以实部的对角线为零、非对角线成对抵消，**网络对外的有功分量整体消失**。
+
+这个解释还有一层意思：$\mathrm{Re}[Z]$ 的实反对称结构意味着"从端口 $m$ 到端口 $n$ 的正向耦合"与"从端口 $n$ 到端口 $m$ 的反向耦合"在有功上是**互相抵消**的。这正是铁氧体环行器这类非互易无耗器件的特征——它能单向传输功率，但从任何一个端口看进去都不消耗功率。
+
+### 7.6.4 推广到导纳矩阵 $[Y]$
+
+对偶地，对同一网络定义导纳矩阵 $\mathbf{I}=[Y]\mathbf{U}$，$[Y]=[Z]^{-1}$（当 $[Z]$ 可逆时）。由
+
+$$
+[Y]=[Z]^{-1}\ \Longrightarrow\ [Y]^+=\left([Z]^{-1}\right)^+=\left([Z]^+\right)^{-1}
+$$
+
+（因为 $(A^{-1})^+=(A^+)^{-1}$）。代入 $[Z]^+=-[Z]$：
+
+$$
+[Y]^+=\left(-[Z]\right)^{-1}=-[Z]^{-1}=-[Y]
+\tag{7-6-3}
+$$
+
+> **【核心概念】**
+> **无耗网络的导纳矩阵同样是反厄米矩阵**：$[Y]^+=-[Y]$。若再互易，则 $[Y]$ 也是纯虚对称矩阵，$[Y]=j[B]$，$[B]=[B]^T$，其中 $B_{mn}$ 称为**电纳**（susceptance）。
+
+更进一步，对无耗网络，$j[Z]$ 与 $j[Y]$ 都是厄米正定（或半正定）矩阵，它们都是"电抗/电纳矩阵"的实数化形式。这就是为什么微波电路综合中大量使用 $X_{mn}$、$B_{mn}$ 这些实参数。
+
+### 7.6.5 判据用途：三个数值判别例
+
+> **【考点】**
+> 给定 $[Z]$，判别三步走：
+> 1. **查无耗**：算 $[Z]^+$，看是否等于 $-[Z]$。等价地查两条：对角元是否纯虚？非对角元是否满足 $Z_{mn}=-Z_{nm}^*$？
+> 2. **查互易**：看是否 $[Z]=[Z]^T$（即矩阵关于主对角线"数值相等"，而非共轭相等）。
+> 3. **查对称（结构）**：看是否 $Z_{11}=Z_{22}$（对二端口），再结合其他元素判断。
+>
+> **必须记住的从属关系**：无耗 + 互易 ⇒ 纯虚对称；纯虚对称 ⇒ 无耗（因为 $-Z^*_{nm}=-(jX_{nm})^*=jX_{nm}=Z_{mn}$，对应对称时 $Z_{mn}=jX_{mn}$ 有 $Z_{mn}=-Z_{nm}^*$ ✓）。**纯虚对称与"无耗且互易"是等价的**（在 $[Z]$ 存在的前提下）。
+
+**例 A**：$[Z]=\begin{bmatrix}j20&10+j5\\-10+j5&j30\end{bmatrix}$。
+
+- 对角元 $j20$、$j30$ 均为纯虚 ✓；
+- $Z_{21}=-10+j5$，$-Z_{12}^*=-(10+j5)^*=-10+j5$ ✓（等于 $Z_{21}$）；
+- 故 $[Z]^+=-[Z]$，网络**无耗**；
+- 但 $Z_{12}=10+j5\ne Z_{21}=-10+j5$，**非互易**；
+- 结论：**无耗非互易网络**（例如含铁氧体的器件）。
+
+**例 B**：$[Z]=\begin{bmatrix}j20&j15\\j15&j30\end{bmatrix}$。
+
+- 对角元纯虚 ✓；$Z_{12}=Z_{21}=j15$，$-Z_{21}^*=-(-j15)=j15=Z_{12}$ ✓；
+- 无耗 ✓；且 $[Z]=[Z]^T$，互易 ✓；
+- 结论：**无耗互易网络**，$[Z]$ 为纯虚对称矩阵。
+
+**例 C**：$[Z]=\begin{bmatrix}20&10\\10&30\end{bmatrix}$。
+
+- 对角元 $20$、$30$ 是实数，$\mathrm{Re}[Z_{nn}]\ne0$ ⇒ **有耗**；
+- 且 $[Z]=[Z]^T$ ⇒ 互易；
+- 结论：**互易有耗网络**（如电阻衰减器）。
+
+**例 D**：$[Z]=\begin{bmatrix}j20&j15\\-j15&j30\end{bmatrix}$。
+
+- 对角元纯虚 ✓；$Z_{12}=j15$，$-Z_{21}^*=-(-j15)^*=j15$ ✓ 无耗；
+- $Z_{12}\ne Z_{21}$（互易要求二者相等，这里差一个符号）⇒ **非互易**。
+- 结论：**无耗非互易网络**。有趣的是这里的"非互易"表现为纯虚的反对称结构，正是理想环行器类器件的特征。
+
+---
+
+## 7.7 与 $[S]$、$[Y]$、$[A]$ 矩阵性质的横向对照
+
+### 7.7.1 大表
+
+| 矩阵 | 定义 | 无耗条件 | 互易条件 | 无耗 + 互易 | 结构对称 | 独立实参数（二端口） |
+|---|---|---|---|---|---|---|
+| $[Z]$ | $\mathbf{U}=[Z]\mathbf{I}$ | $[Z]^+=-[Z]$（反厄米） | $[Z]=[Z]^T$ | 纯虚对称 $[Z]=j[X]$ | $Z_{11}=Z_{22}$ | 3（无耗互易）／8（一般） |
+| $[Y]$ | $\mathbf{I}=[Y]\mathbf{U}$ | $[Y]^+=-[Y]$（反厄米） | $[Y]=[Y]^T$ | 纯虚对称 $[Y]=j[B]$ | $Y_{11}=Y_{22}$ | 3／8 |
+| $[A]$ | $\begin{bmatrix}U_1\\I_1\end{bmatrix}=[A]\begin{bmatrix}U_2\\-I_2\end{bmatrix}$ | $A,D$ 实数，$B,C$ 纯虚，$AD-BC=1$ | $AD-BC=1$ | —（互易已含在 $-I_2$ 定义中） | $A=D$ | 3（无耗） |
+| $[S]$ | $\mathbf{b}=[S]\mathbf{a}$ | $[S]^+[S]=[I]$（幺正） | $[S]=[S]^T$ | 幺正 + 对称 | $S_{11}=S_{22}$ | 3／8 |
+
+**表的读法（三句话）**：
+
+1. **无耗条件的形态随参数而变**，但都是"某个矩阵方程"。$[Z]$、$[Y]$ 是无量纲的$\pm$型条件（反厄米），$[S]$ 是模为 1 型条件（幺正），$[A]$ 是实虚分离型条件。它们描述的是**同一个物理事实**。
+2. **互易条件的形态不变**：永远是"转置等于自身"（$[Z]=[Z]^T$、$[Y]=[Y]^T$、$[S]=[S]^T$）。因为互易性说的是"激励与响应可以互换"，与用哪个参数无关。$[A]$ 矩阵的互易条件 $AD-BC=1$ 是因为它的定义中已经用了 $-I_2$（方向约定），严格说 $[A]$ 的"互易"恒成立条件就是行列式为 1。
+3. **无耗与互易是两条独立的约束**，可以只有一条、可以都有、可以都没有。而"对称（$Z_{11}=Z_{22}$、$S_{11}=S_{22}$）"又是**第三条**独立的约束。三者的正交关系是本专题与下一专题的共同主题。
+
+关于 $[A]$ 矩阵的无耗条件的简要说明：对无耗二端口，级联矩阵满足 $A$、$D$ 为实数，$B$、$C$ 为纯虚数。这可以从"网络互易且无耗 ⇒ 用 T 型等效电路的三个纯电抗表示"直接看出来：T 型网络的 $A=1+Z_a/Z_c$、$B=Z_a+Z_b+Z_aZ_b/Z_c$、$C=1/Z_c$、$D=1+Z_b/Z_c$。当 $Z_a$、$Z_b$、$Z_c$ 全为纯电抗时，$A=1+$（纯虚之比）$=1+$实数 $=$ 实数 ✓，$B=$（纯虚）$+$（纯虚）$+$（纯虚）$=$纯虚 ✓，$C=1/($纯虚$)=$纯虚 ✓，$D$ 同理为实数 ✓。
+
+<figure class="fig">
+<svg viewBox="0 0 720 400" role="img" aria-label="四种网络参数矩阵的无耗互易对称性质对照总览">
+  <defs>
+    <marker id="ar7c" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <text x="360" y="26" text-anchor="middle" font-size="15" fill="var(--ink)">同一物理事实（无耗）在四种网络参数下的不同数学形态</text>
+
+  <rect x="252" y="52" width="216" height="52" rx="8" fill="none" stroke="var(--brand)" stroke-width="2"/>
+  <text x="360" y="74" text-anchor="middle" font-size="14" fill="var(--brand)">物理约束</text>
+  <text x="360" y="94" text-anchor="middle" font-size="12.5" fill="var(--ink-2)">无耗：不吸收也不产生净功率</text>
+
+  <line x1="360" y1="104" x2="360" y2="128" stroke="var(--ink-2)" stroke-width="1.4"/>
+  <line x1="110" y1="128" x2="610" y2="128" stroke="var(--ink-2)" stroke-width="1.4"/>
+  <line x1="110" y1="128" x2="110" y2="150" stroke="var(--ink-2)" stroke-width="1.4" marker-end="url(#ar7c)"/>
+  <line x1="277" y1="128" x2="277" y2="150" stroke="var(--ink-2)" stroke-width="1.4" marker-end="url(#ar7c)"/>
+  <line x1="443" y1="128" x2="443" y2="150" stroke="var(--ink-2)" stroke-width="1.4" marker-end="url(#ar7c)"/>
+  <line x1="610" y1="128" x2="610" y2="150" stroke="var(--ink-2)" stroke-width="1.4" marker-end="url(#ar7c)"/>
+
+  <rect x="30" y="154" width="160" height="86" rx="8" fill="none" stroke="var(--brand)" stroke-width="1.6"/>
+  <text x="110" y="178" text-anchor="middle" font-size="15" fill="var(--brand)">[Z] 阻抗</text>
+  <text x="110" y="204" text-anchor="middle" font-size="13" fill="var(--ink)">[Z]⁺ = −[Z]</text>
+  <text x="110" y="226" text-anchor="middle" font-size="12" fill="var(--ink-2)">反厄米 · 实部反对称</text>
+
+  <rect x="197" y="154" width="160" height="86" rx="8" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <text x="277" y="178" text-anchor="middle" font-size="15" fill="var(--accent)">[Y] 导纳</text>
+  <text x="277" y="204" text-anchor="middle" font-size="13" fill="var(--ink)">[Y]⁺ = −[Y]</text>
+  <text x="277" y="226" text-anchor="middle" font-size="12" fill="var(--ink-2)">反厄米 · 电纳纯虚</text>
+
+  <rect x="363" y="154" width="160" height="86" rx="8" fill="none" stroke="var(--warn)" stroke-width="1.6"/>
+  <text x="443" y="178" text-anchor="middle" font-size="15" fill="var(--warn)">[A] 级联</text>
+  <text x="443" y="204" text-anchor="middle" font-size="13" fill="var(--ink)">A,D 实 · B,C 纯虚</text>
+  <text x="443" y="226" text-anchor="middle" font-size="12" fill="var(--ink-2)">AD − BC = 1</text>
+
+  <rect x="530" y="154" width="160" height="86" rx="8" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <text x="610" y="178" text-anchor="middle" font-size="15" fill="var(--brand)">[S] 散射</text>
+  <text x="610" y="204" text-anchor="middle" font-size="13" fill="var(--ink)">[S]⁺[S] = [I]</text>
+  <text x="610" y="226" text-anchor="middle" font-size="12" fill="var(--ink-2)">幺正 · |Γ| = 1</text>
+
+  <rect x="30" y="262" width="660" height="118" rx="8" fill="none" stroke="var(--line)" stroke-width="1.4"/>
+  <text x="46" y="286" font-size="13.5" fill="var(--ink)">互易性（三条同形，与参数无关）：</text>
+  <text x="46" y="310" font-size="13" fill="var(--ink-2)">[Z] = [Z]ᵀ　　[Y] = [Y]ᵀ　　[S] = [S]ᵀ　　[A]：AD − BC = 1</text>
+  <text x="46" y="338" font-size="13.5" fill="var(--ink)">叠加互易后的退化形式：</text>
+  <text x="46" y="362" font-size="13" fill="var(--ink-2)">[Z] → 纯虚对称 j[X]　[Y] → 纯虚对称 j[B]　[S] → 幺正且对称（S₁₂ = S₂₁）</text>
+</svg>
+<figcaption>图 7-3　$[Z]$、$[Y]$、$[A]$、$[S]$ 四种参数下"无耗"与"互易"的对应表现：无耗的形态随参数变化，互易的形态始终是"转置不变"</figcaption>
+</figure>
+
+### 7.7.2 打通 $[Z]$ 与 $[S]$：证明 $[Z]^+=-[Z]\Longrightarrow[S]^+[S]=[I]$
+
+这是本专题最漂亮的一步：它证明了 7.1.2 节列的三种"无耗"说法中的说法 1（功率为零）与说法 3（$[S]$ 幺正）是同一件事。
+
+**已知**：网络各端口传输线特性阻抗相同为实数 $Z_0$，定义
+
+$$
+[S]=\left([Z]+Z_0[E]\right)^{-1}\left([Z]-Z_0[E]\right)
+\tag{7-7-1}
+$$
+
+其中 $[E]$ 为 $N$ 阶单位矩阵。（7-7-1）式的来历将在下一专题详细推导；这里先作为已知引用，但我们会在 7.7.4 节末给出一个"快速验证"。
+
+**记** $[T]=\left([Z]+Z_0[E]\right)^{-1}Z_0$。由
+
+$$
+\left([Z]+Z_0[E]\right)^{-1}Z_0=\left([Z]+Z_0[E]\right)^{-1}\left(\left([Z]+Z_0[E]\right)-[Z]\right)=[E]-\left([Z]+Z_0[E]\right)^{-1}[Z]
+$$
+
+得到
+
+$$
+[S]=[E]-2[T],\qquad [T]=\left([Z]+Z_0[E]\right)^{-1}Z_0
+\tag{7-7-2}
+$$
+
+> **【公式推导】**
+> 验证 (7-7-2)：$[E]-2[T]=[E]-2\left([Z]+Z_0[E]\right)^{-1}Z_0$。而
+> $$\left([Z]+Z_0[E]\right)^{-1}\left([Z]-Z_0[E]\right)=\left([Z]+Z_0[E]\right)^{-1}\left([Z]+Z_0[E]-2Z_0[E]\right)=[E]-2\left([Z]+Z_0[E]\right)^{-1}Z_0$$
+> 两者相等 ✓（这一步只用了矩阵分配律和逆矩阵的定义，无需任何可交换性）。
+
+**核心引理**：若 $[Z]^+=-[Z]$ 且 $Z_0$ 为实数，则
+
+$$
+[T]+[T]^+=2[T]^+[T]
+\tag{7-7-3}
+$$
+
+**证明**：
+
+$$
+[T]=\left([Z]+Z_0[E]\right)^{-1}Z_0
+$$
+
+取共轭转置（$Z_0$ 为实标量，与共轭转置可交换）：
+
+$$
+[T]^+=Z_0\left(\left([Z]+Z_0[E]\right)^{-1}\right)^+=Z_0\left(\left([Z]+Z_0[E]\right)^+\right)^{-1}=Z_0\left([Z]^++Z_0[E]\right)^{-1}
+$$
+
+代入 $[Z]^+=-[Z]$：
+
+$$
+[T]^+=Z_0\left(-[Z]+Z_0[E]\right)^{-1}=-\left([Z]-Z_0[E]\right)^{-1}Z_0
+$$
+
+现在计算 (7-7-3) 的左端：
+
+$$
+[T]+[T]^+=Z_0\left([Z]+Z_0[E]\right)^{-1}-\left([Z]-Z_0[E]\right)^{-1}Z_0
+$$
+
+**统一右乘**。注意 $([Z]-Z_0[E])^{-1}Z_0=Z_0([Z]-Z_0[E])^{-1}$（实标量与矩阵可交换），所以
+
+$$
+[T]+[T]^+=Z_0\left[\left([Z]+Z_0[E]\right)^{-1}-\left([Z]-Z_0[E]\right)^{-1}\right]
+$$
+
+再看 (7-7-3) 的右端：
+
+$$
+[T]^+[T]=\left(-\left([Z]-Z_0[E]\right)^{-1}Z_0\right)\left(\left([Z]+Z_0[E]\right)^{-1}Z_0\right)=-Z_0^2\left([Z]-Z_0[E]\right)^{-1}\left([Z]+Z_0[E]\right)^{-1}
+$$
+
+**关键化简**：$([Z]-Z_0[E])^{-1}([Z]+Z_0[E])^{-1}=\left(([Z]+Z_0[E])([Z]-Z_0[E])\right)^{-1}$（因为 $(AB)^{-1}=B^{-1}A^{-1}$）。而
+
+$$
+\left([Z]+Z_0[E]\right)\left([Z]-Z_0[E]\right)=[Z]^2-Z_0^2[E]
+$$
+
+（这里用到 $[Z]$ 与 $Z_0[E]$ **必然可交换**，因为单位矩阵与任何矩阵可交换；展开时交叉项 $\pm Z_0[Z]$ 相消。）于是
+
+$$
+[T]^+[T]=-Z_0^2\left([Z]^2-Z_0^2[E]\right)^{-1}
+$$
+
+另一方面
+
+$$
+\left([Z]+Z_0[E]\right)^{-1}-\left([Z]-Z_0[E]\right)^{-1}
+$$
+
+用公式 $A^{-1}-B^{-1}=A^{-1}(B-A)B^{-1}$，取 $A=[Z]+Z_0[E]$、$B=[Z]-Z_0[E]$，则 $B-A=-2Z_0[E]$，于是
+
+$$
+\left([Z]+Z_0[E]\right)^{-1}-\left([Z]-Z_0[E]\right)^{-1}=-2Z_0\left([Z]+Z_0[E]\right)^{-1}\left([Z]-Z_0[E]\right)^{-1}
+$$
+
+**再用一次反序可交换性**：由于 $([Z]+Z_0E)([Z]-Z_0E)=([Z]-Z_0E)([Z]+Z_0E)=[Z]^2-Z_0^2E$（同一个矩阵），故
+
+$$
+\left([Z]+Z_0[E]\right)^{-1}\left([Z]-Z_0[E]\right)^{-1}=\left([Z]-Z_0[E]\right)^{-1}\left([Z]+Z_0[E]\right)^{-1}=\left([Z]^2-Z_0^2[E]\right)^{-1}
+$$
+
+因此
+
+$$
+[T]+[T]^+=-2Z_0^2\left([Z]^2-Z_0^2[E]\right)^{-1}=2[T]^+[T]
+$$
+
+引理 (7-7-3) 得证。$\blacksquare$
+
+**收尾**：由 (7-7-2)，$[S]=[E]-2[T]$，于是
+
+$$
+[S]^+[S]=\left([E]-2[T]\right)^+\left([E]-2[T]\right)=\left([E]-2[T]^+\right)\left([E]-2[T]\right)
+$$
+
+展开：
+
+$$
+[S]^+[S]=[E]-2[T]-2[T]^++4[T]^+[T]
+$$
+
+代入引理 $[T]+[T]^+=2[T]^+[T]$，即 $-2[T]-2[T]^++4[T]^+[T]=-2\left([T]+[T]^+-2[T]^+[T]\right)=0$，得
+
+$$
+\boxed{[S]^+[S]=[E]=[I]}
+\tag{7-7-4}
+$$
+
+**结论**：$[Z]^+=-[Z]\Longrightarrow[S]^+[S]=[I]$。**反厄米性与幺正性是同一物理事实（无耗）在不同参数下的表现**，本专题的出发点（功率为零）与第六章反复使用的 $[S]$ 幺正性在这里被严格打通。
+
+**逆命题也成立**（证明参见 7.8 题 5），因此二者**等价**。附带说明：推导中用到了 $([Z]\pm Z_0[E])$ 可逆（否则 $[S]$ 不存在），这在物理上对应"网络不是理想短路/开路的极端情形"，对实际网络总成立。
+
+### 7.7.3 物理意义的统一表述
+
+> **【核心概念】**
+> "无耗"这一条物理约束，用不同参数表达出来是：
+> - 阻抗语言：**没有有功分量** $\Rightarrow$ $[Z]$ 反厄米；
+> - 导纳语言：**没有有功分量** $\Rightarrow$ $[Y]$ 反厄米；
+> - 散射语言：**入射功率等于反射功率之和** $\Rightarrow$ $[S]$ 幺正，$[S]^+[S]=[I]$；
+> - 级联语言：**电抗元件串联/并联** $\Rightarrow$ $A$、$D$ 实，$B$、$C$ 纯虚。
+>
+> 四个条件互相等价（在各自的适用条件下），都是能量守恒的矩阵化表述。**考试中如果题目给了其中一种，其他三种都可以推出来。**
+
+---
+
+## 7.8 例题与证明题训练
+
+> **【例题 7-1】**
+> **题目**：已知某三端口网络的阻抗矩阵
+> $$[Z]=\begin{bmatrix}j20 & 10+j5 & 0\\ -10+j5 & j30 & 10+j8\\ 0 & -10+j8 & j25\end{bmatrix}\quad(\Omega)$$
+> 判断该网络是否无耗、是否互易，并说明器件类型。
+>
+> **思路**：
+> "无耗"检验两条：对角元是否全为纯虚？非对角元是否满足 $Z_{mn}=-Z_{nm}^*$？
+> "互易"检验一条：是否 $Z_{mn}=Z_{nm}$（直接比较复数本身）？
+>
+> **详细步骤**：
+>
+> **第一步，检验对角元**：$Z_{11}=j20$、$Z_{22}=j30$、$Z_{33}=j25$，全部为纯虚数，$\mathrm{Re}[Z_{nn}]=0$ ✓。
+>
+> **第二步，检验非对角元**（逐对检查 $Z_{mn}=-Z_{nm}^*$）：
+> - $Z_{12}=10+j5$，$Z_{21}=-10+j5$。计算 $-Z_{21}^*=-(-10+j5)^*=-(-10-j5)=10+j5=Z_{12}$ ✓
+> - $Z_{13}=0$，$Z_{31}=0$。$-Z_{31}^*=0=Z_{13}$ ✓
+> - $Z_{23}=10+j8$，$Z_{32}=-10+j8$。计算 $-Z_{32}^*=-(-10+j8)^*=-(-10-j8)=10+j8=Z_{23}$ ✓
+>
+> 三条全部满足，且对角元纯虚，故 $[Z]^+=-[Z]$，**网络无耗** ✓。
+>
+> **第三步，检验互易性**：互易要求 $Z_{mn}=Z_{nm}$。比较 $Z_{12}=10+j5$ 与 $Z_{21}=-10+j5$：实部 $+10\ne-10$，故 $Z_{12}\ne Z_{21}$。**网络非互易**。
+>
+> **结果**：**无耗、非互易**网络。
+>
+> **讨论/拓展**：
+> - 该网络是"无耗但非互易"的典型代表：$[Z]$ 反厄米（从而无耗），但转置不等于自身（从而非互易）。物理上对应含**铁氧体**（旋磁材料）的微波器件，如环行器、隔离器。
+> - 检查一下这个矩阵的实部：$\mathrm{Re}[Z]=\begin{bmatrix}0&10&0\\-10&0&10\\0&-10&0\end{bmatrix}$，是一个**实反对称矩阵**。这正是 7.6.3 节所说的"实部对应耗散、但反对称的实部在二次型中整体抵消"。
+> - **陷阱**：有人见到"对角元纯虚"就断言无耗，这不够（还要查非对角元）；也有人见到"$Z_{12}\ne Z_{21}$"就断言有耗，这也是错的（非互易不等于有耗）。**无耗与互易是两个独立判据。**
+
+> **【例题 7-2】**
+> **题目**：证明无耗二端口网络的 $Z_{11}$、$Z_{22}$ 为纯虚数，且 $Z_{12}=-Z_{21}^*$。
+>
+> **思路**：这是 7.4 与 7.5 两节结论在 $N=2$ 时的直接特例。虽然可以直接引用 $N$ 端口的一般结论，但作为证明题，建议**从头重做一遍**（用二端口的功率表达式），这样能体现推导能力，也避免"引用未证结论"的扣分。
+>
+> **详细步骤**：
+>
+> **第一步，写出二端口网络流入的平均功率**。端口 1、2 的电压电流为 $U_1,I_1,U_2,I_2$，由 $U_m=Z_{m1}I_1+Z_{m2}I_2$：
+> $$U_1=Z_{11}I_1+Z_{12}I_2,\qquad U_2=Z_{21}I_1+Z_{22}I_2$$
+> 净流入的平均功率
+> $$P_{\mathrm{av}}=\frac{1}{2}\mathrm{Re}\left[U_1I_1^*+U_2I_2^*\right]=\frac{1}{2}\mathrm{Re}\left[Z_{11}|I_1|^2+Z_{12}I_2I_1^*+Z_{21}I_1I_2^*+Z_{22}|I_2|^2\right]$$
+>
+> **第二步，取 $I_2=0$**（端口 2 开路），得
+> $$P_{\mathrm{av}}=\frac{1}{2}|I_1|^2\mathrm{Re}[Z_{11}]=0\ \Longrightarrow\ \mathrm{Re}[Z_{11}]=0$$
+> 对称地取 $I_1=0$ 得 $\mathrm{Re}[Z_{22}]=0$。故 $Z_{11}=jX_{11}$、$Z_{22}=jX_{22}$ 为**纯虚数**。（这里用了 $|I_1|^2\ne0$，因为取的是 $I_1\ne0$ 的激励。）
+>
+> **第三步，取 $I_1\ne0$、$I_2\ne0$**。此时已知对角项实部为零，故
+> $$\mathrm{Re}\left[Z_{12}I_2I_1^*+Z_{21}I_1I_2^*\right]=0$$
+> 记 $Z_{12}=R_{12}+jX_{12}$、$Z_{21}=R_{21}+jX_{21}$、$I_1I_2^*=a+jb$（于是 $I_2I_1^*=a-jb$），逐项展开：
+> $$Z_{12}I_2I_1^*=(R_{12}+jX_{12})(a-jb)=\left(aR_{12}+bX_{12}\right)+j\left(aX_{12}-bR_{12}\right)$$
+> $$Z_{21}I_1I_2^*=(R_{21}+jX_{21})(a+jb)=\left(aR_{21}-bX_{21}\right)+j\left(bR_{21}+aX_{21}\right)$$
+> 实部相加并令零：
+> $$a\left(R_{12}+R_{21}\right)+b\left(X_{12}-X_{21}\right)=0$$
+> 因 $I_1$、$I_2$ 独立任意，$(a,b)$ 可取遍实平面（固定 $I_2=1$、令 $I_1=a+jb$ 即可），故两个系数分别为零：
+> $$R_{21}=-R_{12},\qquad X_{21}=X_{12}$$
+> 于是
+> $$Z_{21}=R_{21}+jX_{21}=-R_{12}+jX_{12}=-\left(R_{12}-jX_{12}\right)=-Z_{12}^*$$
+> 即 $Z_{12}=-Z_{21}^*$。
+>
+> **结果**：$\mathrm{Re}[Z_{11}]=\mathrm{Re}[Z_{22}]=0$，$Z_{12}=-Z_{21}^*$，故
+> $$[Z]=\begin{bmatrix}jX_{11} & R_{12}+jX_{12}\\ -R_{12}+jX_{12} & jX_{22}\end{bmatrix},\qquad [Z]^+=\begin{bmatrix}-jX_{11} & -R_{12}-jX_{12}\\ R_{12}-jX_{12} & -jX_{22}\end{bmatrix}=-[Z]\ \checkmark$$
+>
+> **讨论/拓展**：
+> - 注意我们**没有**假设互易。若再假设互易（$Z_{12}=Z_{21}$），则由 $Z_{12}=-Z_{21}^*$ 得 $Z_{12}=-Z_{12}^*$，即 $R_{12}=0$，矩阵化为 $\begin{bmatrix}jX_{11}&jX_{12}\\jX_{12}&jX_{22}\end{bmatrix}$，即纯虚对称。
+> - 二端口的情形有一个额外的便利：$[Z]^+=-[Z]$ 只需**三个**独立实参数（$X_{11}$、$X_{22}$、再加一对 $R_{12},X_{12}$ 中的两个，共 4 个），这比 $N$ 端口的一般计数（$N^2$ 个）少得多。
+
+> **【例题 7-3】**
+> **题目**：已知某无耗互易网络的 $Z_{11}=j50\ \Omega$、$Z_{12}=Z_{21}=j30\ \Omega$，端口特性阻抗 $Z_0=50\ \Omega$，求 $Z_{22}$ 的可能取值范围。
+>
+> **思路**：无耗 + 互易 ⇒ $[Z]=j[X]$ 且 $[X]$ 实对称。设 $Z_{22}=jX_{22}$（$X_{22}$ 待定，实）。约束来自 $[S]^+[S]=[I]$——最方便的是用"$|S_{11}|\le1$"（等价于 $|S_{12}|\le1$）。
+>
+> **详细步骤**：
+>
+> **第一步，写出矩阵**：
+> $$[Z]=\begin{bmatrix}j50 & j30\\ j30 & jX_{22}\end{bmatrix},\qquad [z]=\frac{[Z]}{Z_0}=\begin{bmatrix}j1 & j0.6\\ j0.6 & jx\end{bmatrix},\quad x=\frac{X_{22}}{50}$$
+>
+> **第二步，由 $[S]$ 的显式公式写出 $S_{11}$**（公式来自下一专题 8.3，此处直接引用）：
+> $$S_{11}=\frac{(z_{11}-1)(z_{22}+1)-z_{12}z_{21}}{(z_{11}+1)(z_{22}+1)-z_{12}z_{21}}$$
+> 代入 $z_{11}=j1$、$z_{12}=z_{21}=j0.6$、$z_{22}=jx$：
+> - $(z_{11}-1)=j1-1=-1+j$
+> - $(z_{11}+1)=j1+1=1+j$
+> - $(z_{22}+1)=1+jx$，$(z_{22}-1)=-1+jx$
+> - $z_{12}z_{21}=(j0.6)^2=-0.36$
+> 分子：$(-1+j)(1+jx)+0.36=-1-jx+j+j^2x+0.36=-1-jx+j-x+0.36=(-0.64-x)+j(1-x)$
+> 分母：$(1+j)(1+jx)+0.36=1+jx+j+j^2x+0.36=1+jx+j-x+0.36=(1.36-x)+j(1+x)$
+> 故
+> $$S_{11}=\frac{(-0.64-x)+j(1-x)}{(1.36-x)+j(1+x)}$$
+>
+> **第三步，先明确"代数约束"是什么**。反厄米 + 互易对 $[Z]$ 的**全部**要求就是"纯虚 + 对称"：
+> $$[Z]=\begin{bmatrix}jX_{11} & jX_{12}\\ jX_{12} & jX_{22}\end{bmatrix}\ \Longrightarrow\ [Z]^+=\begin{bmatrix}-jX_{11} & -jX_{12}\\ -jX_{12} & -jX_{22}\end{bmatrix}=-[Z]\ \checkmark$$
+> 只要 $X_{22}$ 是**实数**就成立。所以单看"无耗 + 互易"这两条，$X_{22}$ 可以取**任意实数**。
+>
+> **第四步，用幺正性做交叉验证**。无耗还等价于 $[S]$ 幺正，即 $|S_{11}|^2+|S_{12}|^2=1$。有了这个等式，$S_{11}$ 的分母中出现的 $x$ 就被"锁"住了。
+> $$S_{12}=\frac{2z_{12}}{\Delta},\qquad \Delta=(1+j)(1+jx)+0.36=(1.36-x)+j(1+x)$$
+> $$|S_{12}|^2=\frac{4\times0.36}{(1.36-x)^2+(1+x)^2}=\frac{1.44}{2x^2-0.72x+2.8496}$$
+>
+> **第五步，检验 $|S_{11}|\le1$ 给出什么**。由第三步的展开：
+> 分子模平方 $=(-0.64-x)^2+(1-x)^2=2x^2-0.72x+1.4096$
+> 分母模平方 $=(1.36-x)^2+(1+x)^2=2x^2-0.72x+2.8496$
+> 两者之差恒为 $1.44=|2z_{12}|^2>0$，于是
+> $$|S_{11}|^2=1-\frac{1.44}{\text{分母模平方}}<1\ \text{对一切实数}\ x\ \text{成立}$$
+> 这与第四步的 $|S_{12}|^2=1-|S_{11}|^2$ 完全吻合 ✓。**结论：幺正条件本身也不再限制 $x$**。
+>
+> **结果**：$Z_{22}=jX_{22}$，仅由"无耗 + 互易"出发，**$X_{22}$ 为任意实数**（$Z_{22}$ 为任意纯虚数）。之所以看起来"约束太松"，是因为 $[Z]$ 的两个非对角元已经用掉了大部分自由度，剩下的 $X_{22}$ 由网络的具体结构（各段传输线的电长度）决定，无耗条件管不到它。
+>
+> **讨论/拓展**：
+> - **加上无源条件（工程默认）就紧起来了**。无源网络的 $j[Z]$ 必须是**半正定**的（"电抗矩阵"的标准条件，来源于无源网络对任意激励吸收功率非负）。即要求 $\begin{bmatrix}X_{11}&X_{12}\\X_{12}&X_{22}\end{bmatrix}$ 半正定，条件为 $X_{11}\ge0$、$X_{22}\ge0$、$X_{11}X_{22}-X_{12}^2\ge0$。代入 $X_{11}=50$、$X_{12}=30$：
+> $$50X_{22}-900\ge0\ \Longrightarrow\ X_{22}\ge18\ \Omega$$
+> - **考点提示**：题目若只说"无耗互易"，答"任意纯虚数"；若强调"**无源**无耗互易"，则答 $Z_{22}=jX_{22}$，$X_{22}\ge18\ \Omega$。答题时把两种情况分别说明并指出无源条件的作用，是拿满分的关键。
+> - 注意 $X_{22}=18\ \Omega$ 这个边界值的物理含义：此时 $\det[X]=0$，网络处于"临界"状态，$|S_{11}|\to1$、$|S_{12}|\to0$，即网络变成一个纯反射的谐振结构（能量完全被反射，但内部仍无耗）。
+
+> **【例题 7-4】**
+> **题目**：已知 $Z_{12}=-Z_{21}^*$ 且 $[Z]$ 对称（$[Z]=[Z]^T$），证明 $\mathrm{Re}[Z_{12}]=0$。
+>
+> **思路**：两条结论联立，直接代数消元即可。要注意"$[Z]$ 对称"给出的是 $Z_{12}=Z_{21}$（复数本身相等），而 $Z_{12}=-Z_{21}^*$ 给出的是"与共轭有关"的关系，两者结合即可。
+>
+> **详细步骤**：
+>
+> **第一步，由对称性**：
+> $$[Z]=[Z]^T\ \Longrightarrow\ Z_{12}=Z_{21}\quad(\text{复数相等，实部虚部都相等})$$
+>
+> **第二步，代入反厄米关系**：
+> $$Z_{12}=-Z_{21}^*=-Z_{12}^*\quad(\text{把}\ Z_{21}=Z_{12}\ \text{代入})$$
+>
+> **第三步，设 $Z_{12}=R+jX$**（$R,X$ 为实数），代入 $Z_{12}=-Z_{12}^*$：
+> $$R+jX=-\left(R+jX\right)^*=-\left(R-jX\right)=-R+jX$$
+> 比较实部：$R=-R$，即 $2R=0$，故 $R=0$；比较虚部：$X=X$，自动成立。
+>
+> **第四步，结论**：
+> $$\mathrm{Re}[Z_{12}]=R=0\ \Longrightarrow\ Z_{12}=jX\ \text{为纯虚数}\ \blacksquare$$
+>
+> **结果**：$\mathrm{Re}[Z_{12}]=0$，即 $Z_{12}$ 是纯虚数。
+>
+> **讨论/拓展**：
+> - 这道题实际上是 7.6.2 节"无耗 + 互易 ⇒ 纯虚矩阵"证明中的一小步。完整版本还要证明 $Z_{11}$、$Z_{22}$ 也纯虚（由 7.4 节完成），从而**全部元素**纯虚。
+> - **另一种写法**：$Z_{12}=Z_{21}$ 意味着矩阵是对称的；$Z_{12}=-Z_{21}^*$ 意味着矩阵的"实部反对称、虚部对称"。一个矩阵同时"实部对称"（对称性给出 $\mathrm{Re}[Z_{12}]=\mathrm{Re}[Z_{21}]$）和"实部反对称"（反厄米给出 $\mathrm{Re}[Z_{12}]=-\mathrm{Re}[Z_{21}]$），唯一可能是实部为零。这种"同一量既等于 $x$ 又等于 $-x$"的论证方式，在矩阵性质题中非常常见。
+> - **一般结论**：**"对称"与"反厄米"的交集 = "纯虚对称"**。用集合语言说：$\{对称矩阵\}\cap\{反厄米矩阵\}=\{纯虚对称矩阵\}$。
+> - **反向验证（充分性）**：若 $Z_{12}=jX$（纯虚）、$Z_{21}=jX$（由对称性），则 $-Z_{21}^*=-(-jX)=jX=Z_{12}$ ✓ 满足反厄米关系。所以两条性质是**互相蕴含**的。
+
+> **【例题 7-5】**
+> **题目**：证明 $[Z]^+=-[Z]$ 与 $[S]^+[S]=[I]$ 等价（已知 $[S]=([Z]+Z_0[E])^{-1}([Z]-Z_0[E])$，$Z_0$ 为实数；设 $[Z]+Z_0[E]$ 与 $[Z]-Z_0[E]$ 可逆）。
+>
+> **思路**：正向（$[Z]^+=-[Z]\Rightarrow[S]^+[S]=[I]$）已在 7.7.2 严格证明。这里给出**反向**的完整证明：由 $[S]^+[S]=[I]$ 反推 $[Z]^+=-[Z]$。关键技巧是把 $[S]$ 的表达式中"$\pm$"的结构提出来，转化成"$[S]$ 是两个可交换因子的商"，再从幺正性导出 $[Z]$ 的反厄米性。
+>
+> **详细步骤**：
+>
+> **第一步，重新组织 $[S]$ 的表达式**。记 $[M]=[Z]+Z_0[E]$、$[N]=[Z]-Z_0[E]$，则 $[S]=[M]^{-1}[N]$。
+>
+> **第二步，关键恒等式**：证明 $[M]^{-1}[N]=[N][M]^{-1}$，即 $[M]$ 与 $[N]$ 互换位置不改变乘积。
+>
+> 注意 $[M]$、$[N]$ 都是同一个矩阵 $[Z]$ 的"多项式"：
+> $$[M]=[Z]+Z_0[E],\qquad [N]=[Z]-Z_0[E]$$
+> 两个关于同一矩阵的多项式必然可交换（因为 $[Z]$ 与 $[E]$ 可交换，展开乘法时 $[Z]$ 与 $[E]$ 的次序无关）：
+> $$[M][N]=([Z]+Z_0[E])([Z]-Z_0[E])=[Z]^2-Z_0^2[E]=([Z]-Z_0[E])([Z]+Z_0[E])=[N][M]$$
+> 两边左乘 $[M]^{-1}$、右乘 $[M]^{-1}$（或更直接地：由 $[M][N]=[N][M]$，左乘 $[M]^{-1}$ 得 $[N]=[M]^{-1}[N][M]$，再右乘 $[M]^{-1}$ 得 $[N][M]^{-1}=[M]^{-1}[N]$）：
+> $$\boxed{[S]=[M]^{-1}[N]=[N][M]^{-1}}$$
+>
+> **这一步同时证明了 8.2 节要讨论的"两种形式是否等价"的问题**：对**任意** $[Z]$，$([Z]+Z_0[E])^{-1}([Z]-Z_0[E])=([Z]-Z_0[E])([Z]+Z_0[E])^{-1}$ **恒成立**！因为 $[Z]+Z_0[E]$ 与 $[Z]-Z_0[E]$ 是同一矩阵的两个多项式，必然可交换。
+>
+> **第三步，由幺正性导出反厄米性**。由 $[S]=[M]^{-1}[N]$ 和 $[N]=[Z]-Z_0[E]=[M]-2Z_0[E]$：
+> $$[S]=[M]^{-1}\left([M]-2Z_0[E]\right)=[E]-2Z_0[M]^{-1}$$
+> 于是
+> $$[E]-[S]=2Z_0[M]^{-1}=2Z_0\left([Z]+Z_0[E]\right)^{-1}$$
+> **对上式取共轭转置**（$Z_0$ 实数、$[E]$ 实）：
+> $$[E]-[S]^+=2Z_0\left(\left([Z]+Z_0[E]\right)^+\right)^{-1}=2Z_0\left([Z]^++Z_0[E]\right)^{-1}$$
+>
+> **第四步，利用幺正性化简**。由 $[S]^+[S]=[E]$，两边左乘 $[S]^+$ 不好用；改成如下处理：由 $[S]^+[S]=[E]$ 得 $[S]^+=S^{-1}$，于是
+> $$[S]-[S]^+=[S]-[S]^{-1}=[S]^{-1}\left([S]^2-[E]\right)=\left([S]-[E]\right)\left([S]+[E]\right)[S]^{-1}$$
+> 但更简洁的路子是利用第三步的结果直接比较。由第三步：
+> $$[Z]+Z_0[E]=\frac{2Z_0}{[E]-[S]}\ \Longrightarrow\ [Z]=\frac{2Z_0}{[E]-[S]}-Z_0[E]=\frac{2Z_0-Z_0[E]\left([E]-[S]\right)}{[E]-[S]}=\frac{Z_0\left([E]+[S]\right)}{[E]-[S]}$$
+> 即
+> $$[Z]=Z_0\left([E]-[S]\right)^{-1}\left([E]+[S]\right)$$
+> 同样由共轭转置：
+> $$[Z]^+=Z_0\left([E]+[S]^+\right)\left([E]-[S]^+\right)^{-1}=Z_0\left([E]+[S]^{-1}\right)\left([E]-[S]^{-1}\right)^{-1}$$
+> 用 $[S]^{-1}$ 右乘括号内各项以便合并。先处理 $[E]-[S]^{-1}$：
+> $$[E]-[S]^{-1}=[S]^{-1}\left([S]-[E]\right)\ \Longrightarrow\ \left([E]-[S]^{-1}\right)^{-1}=\left([S]-[E]\right)^{-1}[S]$$
+> $$[E]+[S]^{-1}=[S]^{-1}\left([S]+[E]\right)$$
+> 于是
+> $$[Z]^+=Z_0\,[S]^{-1}\left([S]+[E]\right)\left([S]-[E]\right)^{-1}[S]=\left([S]+[E]\right)\left([S]-[E]\right)^{-1}$$
+> （中间两步用到 $[S]^{-1}$ 与 $[S]$ 可交换，以及与 $([S]\pm[E])$ 的关系。）
+>
+> **第五步，比较 $[Z]$ 与 $[Z]^+$**：
+> $$[Z]=Z_0\left([E]-[S]\right)^{-1}\left([E]+[S]\right)=-Z_0\left([S]-[E]\right)^{-1}\left([S]+[E]\right)$$
+> $$[Z]^+=Z_0\left([S]+[E]\right)\left([S]-[E]\right)^{-1}$$
+> 两式对照：由于 $([S]+[E])$ 与 $([S]-[E])$ 是同一矩阵 $[S]$ 的多项式，**可交换**，故
+> $$\left([S]+[E]\right)\left([S]-[E]\right)^{-1}=\left([S]-[E]\right)^{-1}\left([S]+[E]\right)$$
+> 于是
+> $$[Z]^+=Z_0\left([S]-[E]\right)^{-1}\left([S]+[E]\right)=-Z_0\left([E]-[S]\right)^{-1}\left([E]+[S]\right)=-[Z]$$
+> 即
+> $$\boxed{[Z]^+=-[Z]}\ \blacksquare$$
+>
+> **结果**：$[S]^+[S]=[I]\Longrightarrow[Z]^+=-[Z]$，结合 7.7.2 的正向证明，二者**等价**。
+>
+> **讨论/拓展**：
+> - 本题的证明路子与 7.7.2 不同，但用到的核心工具一样：**"$[Z]\pm Z_0[E]$ 是同一矩阵的多项式，故可交换"**。这个观察在整章里反复出现，值得单独记住。
+> - 更简短的等价证明（对做熟了的同学）：由第二步 $[S]=[E]-2Z_0([Z]+Z_0[E])^{-1}=[E]-2[T]$，其中 $[T]=\left([Z]+Z_0[E]\right)^{-1}Z_0$。于是
+> $$[T]+[T]^+=2[T]^+[T]\iff\left([E]-[T]\right)^+\left([E]-[T]\right)=[E]\iff[S]^+[S]=[E]$$
+> （第一个等价是把 (7-7-3) 移项整理：$[T]+[T]^+-2[T]^+[T]=0$，而 $([E]-[T])^+([E]-[T])=[E]-[T]-[T]^++[T]^+[T]$，令其等于 $[E]$ 即得。）所以**只要证明 $[T]+[T]^+=2[T]^+[T]\iff[Z]^+=-[Z]$ 即可**。把 $[T]=([Z]+Z_0[E])^{-1}Z_0$ 代入并用可交换性整理，即可完成双向证明。
+> - **物理总结**：$[Z]^+=-[Z]$ 与 $[S]^+[S]=[I]$ 是**同一件事的两种语言**。考试中若题目给出其中一条而要证另一条，最快的路是**构造 $[T]$ 并验证引理 (7-7-3)**。
+
+---
+
+## 本章小结
+
+1. **无耗的定义与出发点**：无耗网络既不消耗也不产生功率，因此各端口净流入的平均功率**恒等于零**：$P_{\mathrm{av}}=\dfrac{1}{2}\mathrm{Re}\left[\sum_m\sum_n I_mZ_{mn}I_n^*\right]=0$。这是全部推导的唯一物理输入。
+2. **对角项**：取只有端口 $n$ 通电（其余开路）的特殊激励，得 $P_{\mathrm{av}}=\dfrac{1}{2}|I_n|^2\mathrm{Re}[Z_{nn}]=0$，故 $\mathrm{Re}[Z_{nn}]=0$——**各端口自阻抗为纯虚数**，从任一端口看进去只表现为纯电抗。这与第二章"纯电抗负载的输入阻抗为纯电抗"、与无耗单口网络 $|\Gamma|=1$ 完全一致。
+3. **交叉项**：取 $m$、$n$ 两端口通电，用 7.4 的结论扔掉对角项；令 $Z_{mn}=R_{mn}+jX_{mn}$、$Z_{nm}=R_{nm}+jX_{nm}$、$I_mI_n^*=a+jb$，逐步展开两项的实部并相加，得 $a(R_{mn}+R_{nm})+b(X_{nm}-X_{mn})=0$。
+4. **关键论据**：$I_m$、$I_n$ 是相互独立的任意复数，固定 $I_n=1$ 令 $I_m=a+jb$ 即知 $(a,b)$ 遍历整个实平面，**两个系数必须分别为零**：$R_{mn}=-R_{nm}$、$X_{mn}=X_{nm}$，即 $Z_{mn}=-Z_{nm}^*$。
+5. **主结论**：综合对角与非对角结论，无耗 $N$ 端口网络满足 $[Z]^+=-[Z]$，即 $[Z]$ 为**反厄米矩阵**；等价地，$\mathrm{Re}[Z]$ 实反对称、$\mathrm{Im}[Z]$ 实对称，$j[Z]$ 为厄米矩阵。
+6. **叠加互易**：若网络还互易（$[Z]=[Z]^T$），则 $Z_{mn}=-Z_{mn}^*\Rightarrow\mathrm{Re}[Z_{mn}]=0$，$[Z]$ 退化为**纯虚对称矩阵** $j[X]$，独立实参数由 $2N^2$ 降到 $\dfrac{N(N+1)}{2}$（二端口由 8 个降到 3 个）。
+7. **横向对照**：无耗在 $[Z]$、$[Y]$ 下是反厄米，在 $[S]$ 下是幺正 $[S]^+[S]=[I]$，在 $[A]$ 下是"$A,D$ 实、$B,C$ 纯虚"；而互易在四种参数下形态统一为"转置不变"。四者是同一物理事实的不同语言。
+8. **两大性质打通**：通过 $[S]=[E]-2[T]$（$[T]=([Z]+Z_0[E])^{-1}Z_0$）与引理 $[T]+[T]^+=2[T]^+[T]$，可以双向证明 $[Z]^+=-[Z]\iff[S]^+[S]=[I]$。核心工具是"$[Z]\pm Z_0[E]$ 是同一矩阵的多项式，必然可交换"。
+
+一句话收束：**无耗就是"实部不干活"**——对角实部为零、交叉实部反对称，用矩阵语言写出来就是 $[Z]^+=-[Z]$；再叠加互易这只手，把反对称的实部也一并抹去，网络就只剩下一张纯虚对称的"电抗地图"。
+
+---
+
+## 自测题
+
+### 一、选择／填空
+
+**题 1**　无耗 $N$ 端口网络的阻抗矩阵满足 $[Z]^+=\underline{\qquad}$；若该网络还互易，则 $[Z]$ 是 $\underline{\qquad}$ 矩阵。
+
+**题 2**　（选择）下列关于无耗网络 $[Z]$ 的说法，正确的是：
+A. $[Z]$ 一定是纯虚矩阵
+B. $[Z]$ 的对角元一定为零
+C. $\mathrm{Re}[Z]$ 是实反对称矩阵
+D. $[Z]$ 一定是对称矩阵
+
+**题 3**　（选择）"$[Z]$ 为纯虚对称矩阵"与下列哪一条等价？
+A. 网络互易
+B. 网络无耗
+C. 网络无耗且互易
+D. 网络结构对称
+
+**题 4**　（填空）无耗互易二端口网络的独立实参数个数为 $\underline{\qquad}$ 个；一般（有耗、非互易）二端口为 $\underline{\qquad}$ 个。
+
+**题 5**　（选择）在 7.5 节的推导中，得出 $R_{mn}=-R_{nm}$ 与 $X_{mn}=X_{nm}$ 的关键依据是：
+A. $[Z]$ 是对称矩阵
+B. $a$、$b$ 一般不为零
+C. $a$、$b$ 可以独立地取任意实数值
+D. $I_m$、$I_n$ 的模相等
+
+### 二、证明／计算
+
+**题 6**　证明：无耗网络的导纳矩阵满足 $[Y]^+=-[Y]$（提示：利用 $[Y]=[Z]^{-1}$ 与 $(A^{-1})^+=(A^+)^{{-}1}$）。若网络还互易，$[Y]$ 化成什么形式？
+
+**题 7**　已知某二端口网络的阻抗矩阵
+$$[Z]=\begin{bmatrix}j30 & 5-j12\\ -5-j12 & j45\end{bmatrix}\ \Omega$$
+判断该网络是否无耗、是否互易，并写出 $j[Z]$，验证它是否为厄米矩阵。
+
+**题 8**　证明：若 $[Z]$ 为反厄米矩阵（$[Z]^+=-[Z]$），则 $j[Z]$ 是厄米矩阵；反之，若 $j[Z]$ 是厄米矩阵，则 $[Z]$ 是反厄米矩阵。
+
+---
+
+### 答案与详解
+
+**题 1 答案**：$-[Z]$；纯虚对称（即 $[Z]=j[X]$，$[X]$ 为实对称矩阵）。
+
+**题 2 答案**：**C**。
+解析：A 错，纯虚矩阵要求**全部**元素实部为零，而无耗只要求对角元实部为零、非对角元实部反对称；只有再叠加互易才是纯虚。B 错，对角元是**纯虚**（$jX_{nn}$），一般不为零。C 对，由 $Z_{mn}=-Z_{nm}^*$ 取实部得 $\mathrm{Re}[Z_{mn}]=-\mathrm{Re}[Z_{nm}]$，正是"实部反对称"（对角线由 $\mathrm{Re}[Z_{nn}]=0$ 自动满足反对称矩阵对角元为零的要求）。D 错，对称性来自互易，与无耗无关。
+
+**题 3 答案**：**C**。
+解析：无耗 ⇒ 反厄米；互易 ⇒ 转置不变。两者都成立时，$\mathrm{Re}[Z_{mn}]=-\mathrm{Re}[Z_{nm}]=\mathrm{Re}[Z_{nm}]$（第二个等号用互易），故 $\mathrm{Re}[Z_{mn}]=0$，$[Z]$ 纯虚。反之纯虚对称矩阵必满足反厄米（$-Z_{nm}^*=-(jX_{nm})^*=jX_{nm}=jX_{mn}=Z_{mn}$ ✓）与互易（$Z_{mn}=Z_{nm}$ ✓），故等价。
+
+**题 4 答案**：3；8。
+解析：无耗互易二端口 $[Z]=\begin{bmatrix}jX_{11}&jX_{12}\\jX_{12}&jX_{22}\end{bmatrix}$，独立实参数 $X_{11}$、$X_{12}$、$X_{22}$ 共 3 个。一般二端口 $[Z]$ 有 4 个复数元素、每个 2 个实自由度，共 8 个。
+
+**题 5 答案**：**C**。
+解析：式 $a(R_{mn}+R_{nm})+b(X_{nm}-X_{mn})=0$ 是一个二元一次齐次方程。若 $a$、$b$ 只是"非零"但固定了比值，则只给出一维约束，解不出两个独立等式。只有 $a$、$b$ 能**独立任意**取值（$(a,b)$ 遍历 $\mathbb{R}^2$），才能迫使两个系数分别为零。B 是常见的不完整写法（见 7.5.4）。
+
+**题 6 答案**：
+
+证明：设网络无耗且 $[Z]$ 可逆，则 $[Y]=[Z]^{-1}$。取共轭转置：
+$$[Y]^+=\left([Z]^{-1}\right)^+=\left([Z]^+\right)^{-1}$$
+（理由：$[Z]^{-1}[Z]=[E]$，取共轭转置得 $[Z]^+\left([Z]^{-1}\right)^+=[E]$，故 $\left([Z]^{-1}\right)^+=\left([Z]^+\right)^{-1}$。）
+代入 $[Z]^+=-[Z]$：
+$$[Y]^+=\left(-[Z]\right)^{-1}=-\left([Z]\right)^{-1}=-[Y]\ \blacksquare$$
+即 $[Y]$ 也是反厄米矩阵。
+
+若网络还互易：互易 ⇒ $[Z]=[Z]^T$ ⇒ $[Y]=\left([Z]^T\right)^{-1}=\left([Z]^{-1}\right)^T=[Y]^T$，即 $[Y]$ 也是对称的。结合反厄米性：$\mathrm{Re}[Y_{mn}]=0$（对一切 $m,n$），故
+$$[Y]=j[B],\qquad [B]=[B]^T\ \text{实对称}$$
+即**纯虚对称矩阵**，$B_{mn}$ 为实电纳。
+
+**题 7 答案**：
+
+**无耗性检验**：
+- 对角元：$Z_{11}=j30$、$Z_{22}=j45$，均纯虚 ✓；
+- $Z_{12}=5-j12$，$Z_{21}=-5-j12$。计算 $-Z_{21}^*=-(-5-j12)^*=-(-5+j12)=5-j12=Z_{12}$ ✓；
+- 故 $[Z]^+=-[Z]$，网络**无耗**。
+
+**互易性检验**：$Z_{12}=5-j12$，$Z_{21}=-5-j12$，实部 $5\ne-5$，故 $Z_{12}\ne Z_{21}$，网络**非互易**。
+
+**验证 $j[Z]$ 的厄米性**：逐元素计算
+$$j[Z]=\begin{bmatrix}j\cdot j30 & j(5-j12)\\ j(-5-j12) & j\cdot j45\end{bmatrix}
+=\begin{bmatrix}-30 & 12+j5\\ 12-j5 & -45\end{bmatrix}$$
+（其中 $j\cdot j30=j^2\cdot30=-30$；$j(5-j12)=j5-j^2\cdot12=12+j5$；$j(-5-j12)=-j5-j^2\cdot12=12-j5$；$j\cdot j45=-45$。）
+取共轭转置：先共轭得 $\begin{bmatrix}-30 & 12-j5\\ 12+j5 & -45\end{bmatrix}$，再转置得 $\begin{bmatrix}-30 & 12+j5\\ 12-j5 & -45\end{bmatrix}=j[Z]$ ✓。
+
+**结论**：$j[Z]$ 确为**厄米矩阵**（对角元为实数，非对角元互为共轭），这与 $[Z]$ 反厄米完全一致；网络**无耗、非互易**（典型的铁氧体器件阻抗矩阵形态）。
+
+**题 8 答案**：
+
+**正向**：设 $[Z]^+=-[Z]$。记 $[H]=j[Z]$，则
+$$[H]^+=j^*[Z]^+=-j\cdot\left(-[Z]\right)=j[Z]=[H]$$
+（用到 $(cA)^+=c^*A^+$，$c=j$ 时 $c^*=-j$。）故 $[H]=j[Z]$ 是厄米矩阵 ✓。
+
+**反向**：设 $[H]=j[Z]$ 是厄米矩阵，即 $[H]^+=[H]$。则
+$$j[Z]=\left(j[Z]\right)^+=j^*[Z]^+=-j[Z]^+$$
+两边同除以 $j$（$j\ne0$）：
+$$[Z]=-[Z]^+\ \Longrightarrow\ [Z]^+=-[Z]$$
+故 $[Z]$ 是反厄米矩阵 ✓。
+
+**结论**：**"$[Z]$ 反厄米"与"$j[Z]$ 厄米"是同一命题的两种说法**（差一个因子 $j$ 的旋转）。这一等价关系把无耗阻抗矩阵的问题转化为厄米矩阵问题，从而可以直接使用厄米矩阵的全部成熟结论：特征值全为实数、可酉对角化、二次型恒为实数。$\blacksquare$
+
+**补充说明（为什么这个等价有用）**：物理上，$j[Z]$ 正是"电抗矩阵"的实化形式。厄米矩阵特征值为实，对应网络的谐振频率全为实数；厄米矩阵可对角化，对应于可以把 $N$ 端口网络解耦成 $N$ 个独立的谐振回路。这就是第六章用模式（本征模）方法分析对称器件的理论根据。
+</script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

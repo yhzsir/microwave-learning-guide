@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>综合自测题 · 微波技术基础学习指南</title>
+<meta name="description" content="覆盖 6 章 + 2 专题的 60 道模拟题：选择、填空、判断、计算、证明，全部附详解">
+<meta name="author" content="微波技术基础学习指南">
+<meta property="og:type" content="website">
+<meta property="og:title" content="综合自测题 · 微波技术基础学习指南">
+<meta property="og:description" content="覆盖 6 章 + 2 专题的 60 道模拟题：选择、填空、判断、计算、证明，全部附详解">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6fdb'/%3E%3Cpath d='M4 21c3-8 5-8 8 0s5 8 8 0 5-8 8 0' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+(function(){try{var s=localStorage.getItem('mwguide-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-btn" id="menuBtn" aria-label="打开目录">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+  </button>
+  <a class="brand" href="index.html">
+    <span class="brand-mark">μ</span>
+    <span class="brand-text">
+      <span class="brand-title">微波技术基础</span>
+      <span class="brand-sub">LEARNING GUIDE</span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="search-wrap">
+    <svg class="sicon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="search" type="search" placeholder="搜索知识点、公式、例题…  (Ctrl K)" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="切换主题">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <span>深色</span>
+  </button>
+</header><div class="backdrop" id="backdrop"></div><aside class="sidebar" id="sidebar" aria-label="站点导航"><nav class="sidebar-nav" id="sidebarNav"><a class="nav-link" href="index.html"><span class="nav-num">00</span><span class="nav-label">首页 · 学习总览</span></a><a class="nav-link" href="roadmap.html"><span class="nav-num">01</span><span class="nav-label">学习路线图</span></a><a class="nav-link" href="formulas.html"><span class="nav-num">02</span><span class="nav-label">公式速查手册</span></a><a class="nav-link" href="exam.html"><span class="nav-num">03</span><span class="nav-label">考点总纲</span></a><a class="nav-link" href="smith.html"><span class="nav-num">04</span><span class="nav-label">史密斯圆图交互工具</span></a><a class="nav-link active" href="quiz.html"><span class="nav-num">05</span><span class="nav-label">综合自测题</span></a><a class="nav-link" href="resources.html"><span class="nav-num">06</span><span class="nav-label">课件与视频资源</span></a><div class="nav-group"><div class="nav-heading">章节目录</div><a class="nav-link" href="ch01.html"><span class="nav-num">1</span><span class="nav-label">绪论</span></a><a class="nav-link" href="ch02.html"><span class="nav-num">2</span><span class="nav-label">传输线理论</span></a><a class="nav-link" href="ch03.html"><span class="nav-num">3</span><span class="nav-label">金属波导</span></a><a class="nav-link" href="ch04.html"><span class="nav-num">4</span><span class="nav-label">传输线类型</span></a><a class="nav-link" href="ch05.html"><span class="nav-num">5</span><span class="nav-label">微波网络</span></a><a class="nav-link" href="ch06.html"><span class="nav-num">6</span><span class="nav-label">无源器件</span></a><a class="nav-link" href="ch07.html"><span class="nav-num">7</span><span class="nav-label">专题·Z 矩阵</span></a><a class="nav-link" href="ch08.html"><span class="nav-num">8</span><span class="nav-label">专题·S 矩阵</span></a></div></nav></aside><div class="shell"><main class="article loading" id="article"><div class="spinner" role="status" aria-label="加载中"></div><div id="chapterShell" hidden><div class="md" id="md"></div></div></main><aside class="toc" id="toc"><div class="toc-heading">本页目录</div><div class="toc-list" id="tocList"></div></aside></div><footer class="footer">
+  <div>《微波技术基础》在线学习指南 · 共 6 章 + 2 个专题推导</div>
+  <div>
+    <a href="formulas.html">公式速查</a> ·
+    <a href="exam.html">考点总纲</a> ·
+    <a href="resources.html">课件资源</a>
+  </div>
+</footer>
+<script src="assets/js/search-index.js"></script>
+<script id="chapterCfg" type="application/json">{"n":0,"file":"quiz","src":"content/quiz.md","title":"综合自测题"}</script>
+<script id="preContent" type="text/plain">---
+chapter: 0
+title: 综合自测题
+short: 综合自测题
+desc: 覆盖 6 章 + 2 专题的 60 道模拟题：选择、填空、判断、计算、证明，全部附详解
+minutes: 180
+---
+
+# 综合自测题
+
+## 使用说明
+
+本页共 **112 道自测题**（覆盖第 1～8 章，含两个专题推导）加 **一套完整模拟卷**，每道题都附有详细解析。
+
+### 一、自测的三步方法
+
+1. **限时闭卷做。** 按"每章自测 40～60 分钟、模拟卷 180 分钟"计时。做题时把公式速查手册合上、把章节页关掉，桌上只留草稿纸与计算器。只有这样才能暴露真实的掌握程度。
+2. **逐题对答案。** 对完之后把错题分成两类：**知识性错误**（公式记错、概念混淆、适用条件遗漏）与**操作性错误**（代数算错、单位换算错、抄错数字）。前者必须回章节页重读对应小节，后者只能靠重复练习消除。
+3. **隔周重做。** 错题在本子上做记号，隔一周再做一遍。只有第二次仍然做对，才算真正掌握。
+
+### 二、正确率参考线
+
+| 正确率 | 结论 | 下一步动作 |
+|---|---|---|
+| 不低于 90% | 该章已扎实掌握 | 进入下一章，本章只在考前扫一眼 |
+| 75%～90% | 基本掌握，存在薄弱点 | 定位错题所属小节，重读该节并重做该节例题 |
+| 60%～75% | 存在系统性漏洞 | 重读全章，重做本章全部例题，再做一遍自测 |
+| 低于 60% | 需要重新学习 | 回到章节页，从"本章考点地图"开始重新走一遍 |
+
+### 三、题型与分值参考
+
+| 题型 | 每题参考分值 | 主要考查 |
+|---|---|---|
+| 选择题 | 2 分 | 概念辨析、量级判断、公式形式 |
+| 填空题 | 2 分 | 公式默写、单位、适用条件 |
+| 判断题 | 2 分 | 条件与结论的对应关系 |
+| 计算题 | 8～10 分 | 数值过程、单位、最终结论 |
+| 证明题／简答题 | 8～12 分 | 推导步骤、物理图像 |
+
+> **【考点】**
+> 题号规则是"**章号-题号**"，例如"例题 2-14"表示第 2 章的第 14 题。若某题做错，可据此直接回到对应章节的对应小节复习。
+>
+> 全卷最该反复练的是四类题：**第 2 章的 $Z_{\mathrm{in}}$／$\Gamma$／$\rho$ 换算与匹配设计**、**第 3 章的 $\lambda_c$／$\lambda_g$ 计算与单模设计**、**第 5 章的 $[S]$ 性质判别与转换**、**第 7、8 章的两个专题证明**。
+
+---
+
+## 第 1 章 自测
+
+### 一、选择题
+
+**1.** 微波的频率范围是（　　）。
+
+(A) $30\ \mathrm{MHz}\sim300\ \mathrm{MHz}$
+(B) $300\ \mathrm{MHz}\sim3000\ \mathrm{GHz}$
+(C) $3\ \mathrm{GHz}\sim30\ \mathrm{GHz}$
+(D) $300\ \mathrm{GHz}\sim3000\ \mathrm{GHz}$
+
+**2.** 关于传输线的"长线／短线"，下列说法正确的是（　　）。
+
+(A) 几何长度超过 $1\ \mathrm{m}$ 的传输线一定是长线
+(B) 只有微波频段的传输线才可能是长线
+(C) 判断依据是电长度 $l/\lambda$，一般当 $l/\lambda\gtrsim0.1$ 时按长线处理
+(D) 长线上各点的电压、电流处处相等
+
+**3.** 铜导体的趋肤深度 $\delta$ 与频率 $f$ 的关系是（　　）。
+
+(A) $\delta\propto f$
+(B) $\delta\propto1/f$
+(C) $\delta\propto1/\sqrt{f}$
+(D) $\delta$ 与 $f$ 无关
+
+**4.** 关于微波的五大特点，下列说法**错误**的是（　　）。
+
+(A) 似光性来源于微波的波长与物体尺寸可比拟，因而能定向、聚焦、近似直线传播
+(B) 微波能穿透电离层，这是卫星通信得以实现的基础
+(C) 微波频率高，在相对带宽一定时绝对带宽宽，因而可承载的信息容量大
+(D) 微波不能引起介质的热效应，微波加热依靠的是辐射传热
+
+### 二、填空题
+
+**5.** 微波的频率范围是________，对应的真空波长范围是________。频率为 $3\ \mathrm{GHz}$ 的电磁波，其真空波长为________。
+
+**6.** 三种分析方法中，"路分析法"以________为出发点，对应第________章；"场分析法"以________为出发点，对应第________章；"网络分析法"用________矩阵描述网络功能，对应第________章。
+
+**7.** 铜在 $f=10\ \mathrm{GHz}$ 时的趋肤深度约为________（取 $\rho=1.72\times10^{-8}\ \Omega\cdot\mathrm{m}$，$\mu_r=1$）。由此可知，微波传输线的表面应________，以减小导体损耗。
+
+### 三、判断题
+
+**8.** 只要电磁波的波长落在 $0.1\ \mathrm{mm}\sim1\ \mathrm{m}$ 区间内，它就一定是微波。（　　）
+
+**9.** 微波频段的两个端点 $300\ \mathrm{MHz}$ 与 $3000\ \mathrm{GHz}$ 是由麦克斯韦方程组决定的物理边界。（　　）
+
+**10.** 微波频段同一根导线的单位长度电阻远大于低频时，其根本原因是电流集中在表面薄层内，有效导电面积显著减小。（　　）
+
+### 四、计算题
+
+**11.** 某电磁波在真空中的频率为 $f=6\ \mathrm{GHz}$。求：(1) 真空波长；(2) 若该波进入 $\varepsilon_r=2.25$、$\mu_r=1$ 的无耗介质，求介质中的相速与波长；(3) 判断该波在真空与介质中是否都属于微波频段。
+
+**12.** 一根铜导线半径 $r_0=1\ \mathrm{mm}$，$\rho=1.72\times10^{-8}\ \Omega\cdot\mathrm{m}$，$\mu_r=1$。求：(1) 直流时的单位长度电阻；(2) $f=1\ \mathrm{GHz}$ 时的趋肤深度与高频单位长度电阻；(3) 两者之比，并说明比值随频率的变化规律。
+
+### 五、简答题
+
+**13.** 为什么"微波是波长与物体尺寸可比拟的电磁波"这一句话可以解释微波的五大特点？请逐条说明。
+
+### 参考答案与详解
+
+#### 一、选择题
+
+**1. B。** 微波的频率范围为 $300\ \mathrm{MHz}\sim3000\ \mathrm{GHz}$，对应真空中波长 $1\ \mathrm{m}\sim0.1\ \mathrm{mm}$。(A) 只是米波（VHF）的一小段；(C) 只是厘米波（SHF）的一部分；(D) 是亚毫米波／太赫兹频段。**知识点**：微波的定义（第 1 章）。
+
+**2. C。** "长线／短线"由**电长度** $l/\lambda$ 决定，与几何长度、频段名称都无关。判据 $l/\lambda\gtrsim0.1$ 的物理含义是沿线相位差达到约 $36^{\circ}$，集总参数模型误差已不可忽略。(A) 错在把电长度当成几何长度；(B) 错在 $50\ \mathrm{Hz}$ 的输电线在数千公里量级时 $l/\lambda$ 也可超过 0.1；(D) 错在长线上电压电流呈驻波分布，沿线是变化的。**知识点**：长线判据（第 1 章）。
+
+**3. C。** 由 $\delta=\sqrt{\rho/(\pi f\mu)}$ 得 $\delta\propto1/\sqrt{f}$，即频率越高趋肤深度越薄。这也是高频导体电阻按 $\sqrt{f}$ 上升的原因。**知识点**：趋肤效应（第 1 章）。
+
+**4. D。** 微波加热的机理是**介质的极化损耗**（极性分子转向极化跟不上电场的变化，把电磁能转化为热能），不是"辐射传热"。水的介质损耗与穿透深度在 $2.45\ \mathrm{GHz}$ 附近适中，这正是微波炉选此频率的原因之一。(A)(B)(C) 均正确。**知识点**：五大特点（第 1 章）。
+
+#### 二、填空题
+
+**5.** 依次为：$300\ \mathrm{MHz}\sim3000\ \mathrm{GHz}$；$0.1\ \mathrm{mm}\sim1\ \mathrm{m}$；$0.1\ \mathrm{m}$（即 $10\ \mathrm{cm}$）。
+计算：$\lambda=c/f=3\times10^{8}/(3\times10^{9})=0.1\ \mathrm{m}$。两端点验算：$f=300\ \mathrm{MHz}$ 时 $\lambda=1\ \mathrm{m}$；$f=3000\ \mathrm{GHz}$ 时 $\lambda=0.1\ \mathrm{mm}$，与定义自洽。
+
+**6.** 依次为：**传输线方程（电报方程）**；**二**（均匀传输线理论）；**麦克斯韦方程组**；**三**（规则金属波导）；**$S$**（或 $Z$、$Y$、$A$ 散射／阻抗／导纳／转移矩阵）；**五**（微波网络基础）。
+
+**7.** 趋肤深度约 $0.66\ \mu\mathrm{m}$；表面应**镀银（或镀金）并抛光**，使表面粗糙度远小于趋肤深度。
+计算：
+$$\delta=\sqrt{\frac{\rho}{\pi f\mu}}=\sqrt{\frac{1.72\times10^{-8}}{\pi\times10^{10}\times4\pi\times10^{-7}}}\approx6.6\times10^{-7}\ \mathrm{m}=0.66\ \mu\mathrm{m}$$
+
+#### 三、判断题
+
+**8. ×。** 微波的定义中"**电磁波**"是前提条件，波长区间只是限定条件。空气中 $401\ \mathrm{Hz}\sim20\ \mathrm{kHz}$ 的声波波长覆盖了 $17\ \mathrm{m}\sim1.7\ \mathrm{cm}$，会落进微波的波长区间，但它是声波（$v=340\ \mathrm{m/s}\neq c$）而不是微波。**判断"是不是微波"必须先确认是电磁波。**
+
+**9. ×。** $300\ \mathrm{MHz}$ 与 $3000\ \mathrm{GHz}$ 是**人为划定**的工程约定，其依据是"集总参数电路是否失效"（约 $300\ \mathrm{MHz}$ 是集中参数与分布参数的分水岭）以及十进制波段命名习惯与太赫兹领域的技术分工，没有任何物理定律规定这两个数。
+
+**10. √。** 趋肤深度 $\delta$ 与 $\sqrt{f}$ 成反比，高频时 $\delta\ll r_0$，电流集中在薄层内，等效导电面积约 $2\pi r_0\delta$，而直流时是 $\pi r_0^{2}$，两者相差 $r_0/(2\delta)$ 倍。这正是"微波传输线要镀银抛光"的根本原因。
+
+#### 四、计算题
+
+> **【例题 1-11】**
+> **解：**
+> **(1) 真空波长**
+> $$\lambda_0=\frac{c}{f}=\frac{3\times10^{8}}{6\times10^{9}}=5.0\times10^{-2}\ \mathrm{m}=5.0\ \mathrm{cm}$$
+> **(2) 介质中的相速与波长**
+> $$v_p=\frac{c}{\sqrt{\varepsilon_r\mu_r}}=\frac{3\times10^{8}}{\sqrt{2.25\times1}}=\frac{3\times10^{8}}{1.5}=2.0\times10^{8}\ \mathrm{m/s}$$
+> $$\lambda=\frac{v_p}{f}=\frac{2.0\times10^{8}}{6\times10^{9}}=3.33\times10^{-2}\ \mathrm{m}=3.33\ \mathrm{cm}$$
+> **(3) 频段判断**
+> 频率 $f=6\ \mathrm{GHz}$ 落在 $300\ \mathrm{MHz}\sim3000\ \mathrm{GHz}$ 之内，故属微波；介质中的波长 $3.33\ \mathrm{cm}$ 也落在 $0.1\ \mathrm{mm}\sim1\ \mathrm{m}$ 之内。
+> **答：** （1）$\lambda_0=5.0\ \mathrm{cm}$；（2）$v_p=2.0\times10^{8}\ \mathrm{m/s}$，$\lambda=3.33\ \mathrm{cm}$；（3）属于微波。
+> **讨论：** 频率不随介质改变，波长随介质改变（$\lambda=v_p/f$）。因此**判断"是不是微波"应以频率（或真空波长）为准**；介质中波长变短意味着同样物理长度的电路电长度更大，这是介质填充结构能实现小型化的原理。
+
+> **【例题 1-12】**
+> **解：**
+> **(1) 直流单位长度电阻**
+> $$s=\pi r_0^{2}=\pi(1\times10^{-3})^{2}=3.142\times10^{-6}\ \mathrm{m^{2}}$$
+> $$R_{0,\mathrm{DC}}=\frac{\rho}{s}=\frac{1.72\times10^{-8}}{3.142\times10^{-6}}\approx5.47\times10^{-3}\ \Omega/\mathrm{m}$$
+> **(2) $f=1\ \mathrm{GHz}$ 时的趋肤深度与高频电阻**
+> $$\delta=\sqrt{\frac{\rho}{\pi f\mu}}=\sqrt{\frac{1.72\times10^{-8}}{\pi\times10^{9}\times4\pi\times10^{-7}}}
+> =\sqrt{\frac{1.72\times10^{-8}}{3.948\times10^{3}}}\approx2.09\times10^{-6}\ \mathrm{m}=2.09\ \mu\mathrm{m}$$
+> 因 $\delta=2.09\ \mu\mathrm{m}\ll r_0=1\ \mathrm{mm}$，处于强趋肤效应区，等效导电面积为 $2\pi r_0\delta$，故
+> $$R_{0,\mathrm{HF}}=\frac{1}{2\pi r_0}\sqrt{\pi f\mu\rho}
+> =\frac{\sqrt{3.948\times10^{3}\times1.72\times10^{-8}}}{2\pi\times10^{-3}}
+> =\frac{8.24\times10^{-3}}{6.283\times10^{-3}}\approx1.31\ \Omega/\mathrm{m}$$
+> **(3) 比值与规律**
+> $$\frac{R_{0,\mathrm{HF}}}{R_{0,\mathrm{DC}}}=\frac{1.31}{5.47\times10^{-3}}\approx2.4\times10^{2}$$
+> 即增大约 $240$ 倍。由于 $R_{0,\mathrm{HF}}=R_{0,\mathrm{DC}}\dfrac{r_0}{2\delta}$ 且 $\delta\propto f^{-1/2}$，故
+> $$R_{0,\mathrm{HF}}\propto\sqrt{f}$$
+> **答：** （1）$5.47\times10^{-3}\ \Omega/\mathrm{m}$；（2）$\delta\approx2.09\ \mu\mathrm{m}$，$R_{0,\mathrm{HF}}\approx1.31\ \Omega/\mathrm{m}$；（3）约 $240$ 倍，且比值按 $\sqrt{f}$ 增长。
+> **讨论：** 高频损耗按 $\sqrt{f}$ 而非线性上升，这一条解释了三个工程事实：①微波传输线要镀银／镀金并抛光（表面粗糙度须远小于 $\delta$）；②微波不宜用普通导线远距离输送能量；③导体衰减常数 $\alpha_c\propto\sqrt{f}$，是选择传输结构时必须权衡的因素。
+
+#### 五、简答题
+
+**13. 答案要点：**
+"波长与物体尺寸可比拟"这一个前提，同时打开了五扇门：
+
+1. **似光性**：$\lambda$ 与天线口径、障碍物、透镜尺寸可比拟，于是电磁波可以被"定向、聚焦、遮挡、反射"，传播近似直线（视距传播），并能获得高的角分辨率。雷达与射电望远镜的口径 $D\propto\lambda$ 都是这一条的推论。
+2. **波动性（高频性）**：$\lambda$ 与电路、元件的尺寸可比拟，于是"同一时刻沿线电压电流相等"这一集总参数前提失效，必须引入分布参数 $R$、$L$、$C$、$G$ 并求解传输线方程或麦克斯韦方程组；同时出现趋肤效应与辐射效应。
+3. **穿透性**：微波的波长足够长，能穿透电离层而不被反射（这是短波通信与卫星通信的分界）；又足够短，能在干燥介质与等离子体中保持可用的穿透深度，于是有了卫星通信、微波遥感、无损检测与微波加热。
+4. **信息性**：载波频率高，在相对带宽一定（例如 10%）时绝对带宽可达数百 $\mathrm{MHz}$ 至数 $\mathrm{GHz}$，可承载的信息速率远高于低频段，这是移动通信从 1G 演进到 6G 的物理动因。
+5. **能量性**：微波可以在小口径天线上形成高功率密度，通过介质的极化损耗产生热效应（$E=P\cdot t$），于是有了微波加热、消毒、干燥、无线输能与高功率微波武器。
+
+**收束：** 五大特点并非五条独立的事实，而是"**波长与尺度可比拟**"这一句话在"传播—电路—介质—信息—能量"五个方面的展开。
+
+---
+
+## 第 2 章 自测
+
+### 一、选择题
+
+**1.** 一无耗均匀传输线的分布电感 $L=0.25\ \mu\mathrm{H/m}$，分布电容 $C=100\ \mathrm{pF/m}$，则其特性阻抗与相速分别为（　　）。
+
+(A) $50\ \Omega$、$2\times10^{8}\ \mathrm{m/s}$
+(B) $50\ \Omega$、$3\times10^{8}\ \mathrm{m/s}$
+(C) $100\ \Omega$、$2\times10^{8}\ \mathrm{m/s}$
+(D) $50\ \Omega$、$1\times10^{8}\ \mathrm{m/s}$
+
+**2.** 一无耗传输线 $Z_0=50\ \Omega$，终端接纯电阻负载 $Z_l=100\ \Omega$，则终端反射系数 $\Gamma_l$ 与驻波比 $\rho$ 分别为（　　）。
+
+(A) $1/3$、$2$
+(B) $1/3$、$1.5$
+(C) $1/2$、$3$
+(D) $-1/3$、$2$
+
+**3.** 一无耗传输线终端短路，线长 $l=\lambda/4$，则从输入端看进去的阻抗为（　　）。
+
+(A) $0$（短路）
+(B) $\infty$（开路）
+(C) $Z_0$
+(D) $2Z_0$
+
+**4.** 关于行波、驻波与行驻波，下列说法正确的是（　　）。
+
+(A) 纯驻波状态下，沿线没有有功功率传输
+(B) 行驻波状态下，$|\Gamma_l|=0$
+(C) 行波状态下，$\rho=0$
+(D) 纯驻波状态下，电压波腹与波节处的输入阻抗都等于 $Z_0$
+
+**5.** 一无耗传输线的驻波比 $\rho=3$，若终端接纯电阻负载，则负载反射系数的模值与归一化负载阻抗可能为（　　）。
+
+(A) $|\Gamma_l|=0.5$，$z_l=3$ 或 $z_l=1/3$
+(B) $|\Gamma_l|=0.5$，$z_l=2$ 或 $z_l=0.5$
+(C) $|\Gamma_l|=2/3$，$z_l=3$ 或 $z_l=1/3$
+(D) $|\Gamma_l|=0.5$，$z_l=3$（只此一值）
+
+### 二、填空题
+
+**6.** 无耗均匀传输线的电报方程为 $\dfrac{\mathrm{d}U}{\mathrm{d}z}=$________、$\dfrac{\mathrm{d}I}{\mathrm{d}z}=$________；其特性阻抗 $Z_0=$________，相移常数 $\beta=$________，相速 $v_p=$________。
+
+**7.** 无耗传输线上电压波腹处的输入阻抗为________，电压波节处的输入阻抗为________（用 $Z_0$、$\rho$ 表示）。若 $\rho=2$、$Z_0=50\ \Omega$，则波腹处阻抗为________，波节处阻抗为________。
+
+**8.** 一段无耗传输线终端接 $Z_l=Z_0$，则 $|\Gamma_l|=$________，$\rho=$________，线上电压、电流呈________波分布，线上各点的输入阻抗均等于________。
+
+### 三、判断题
+
+**9.** 无耗传输线上 $|\Gamma(z)|$ 沿线不变，因此驻波比 $\rho$ 也沿线不变。（　　）
+
+**10.** 无耗传输线上任意位置的输入阻抗 $Z_{\mathrm{in}}(z)$ 一定或者是纯电阻、或者是纯电抗。（　　）
+
+**11.** 无耗传输线终端接纯电抗负载时，线上出现纯驻波，$|\Gamma_l|=1$，沿线不传输有功功率。（　　）
+
+### 四、计算题
+
+**12.** 一段 $Z_0=50\ \Omega$ 的无耗传输线，终端接负载 $Z_l=100+j50\ \Omega$。求：(1) 终端反射系数 $\Gamma_l$；(2) 驻波比 $\rho$；(3) 距终端 $\lambda/8$ 处的输入阻抗；(4) 第一个电压波腹点与第一个电压波节点距终端的距离。
+
+**13.** 一 $Z_0=300\ \Omega$ 的无耗空气传输线，终端接负载 $Z_l=600\ \Omega$，工作频率 $f=300\ \mathrm{MHz}$。(1) 用 $\lambda/4$ 阻抗变换器实现匹配，求变换器的特性阻抗与物理长度；(2) 求匹配前后线上的驻波比；(3) 若负载改为 $Z_l=50+j50\ \Omega$，说明为什么 $\lambda/4$ 变换器不能直接使用。
+
+**14.** 一无耗传输线 $Z_0=50\ \Omega$，终端接负载 $Z_l=25-j25\ \Omega$，工作频率 $f=1\ \mathrm{GHz}$，线上相速 $v_p=2\times10^{8}\ \mathrm{m/s}$。用**并联短路单枝节**在距负载 $d$ 处实现匹配。求：(1) 匹配位置 $d$；(2) 短路枝节的长度 $l$。
+
+### 五、证明题
+
+**15.** 证明：对无耗均匀传输线，任意位置处的输入阻抗 $Z_{\mathrm{in}}(z)$ 与距该点 $\lambda/4$ 处的输入阻抗 $Z_{\mathrm{in}}(z+\lambda/4)$ 满足
+
+$$Z_{\mathrm{in}}(z)\cdot Z_{\mathrm{in}}(z+\lambda/4)=Z_0^{2}$$
+
+### 参考答案与详解
+
+#### 一、选择题
+
+**1. A。** 无耗线的特性阻抗与相速分别为
+$$Z_0=\sqrt{\frac{L}{C}}=\sqrt{\frac{0.25\times10^{-6}}{100\times10^{-12}}}=\sqrt{2500}=50\ \Omega$$
+$$v_p=\frac{1}{\sqrt{LC}}=\frac{1}{\sqrt{0.25\times10^{-6}\times100\times10^{-12}}}=\frac{1}{5\times10^{-9}}=2\times10^{8}\ \mathrm{m/s}$$
+(B) 的相速用了光速 $3\times10^{8}\ \mathrm{m/s}$，只有在真空或空气介质中才近似成立；(C) 的 $Z_0$ 算错；(D) 的相速算错。**知识点**：$Z_0=\sqrt{L/C}$、$v_p=1/\sqrt{LC}$（第 2 章）。
+
+**2. A。**
+$$\Gamma_l=\frac{Z_l-Z_0}{Z_l+Z_0}=\frac{100-50}{100+50}=\frac{1}{3},\qquad
+\rho=\frac{1+|\Gamma_l|}{1-|\Gamma_l|}=\frac{1+1/3}{1-1/3}=\frac{4/3}{2/3}=2$$
+(B) 把 $\rho$ 算成 $1+|\Gamma_l|$ 的某种变形；(C) 把 $\Gamma_l$ 的分子算成 $Z_l$；(D) 的 $\Gamma_l$ 符号错（纯电阻负载且 $Z_l>Z_0$ 时 $\Gamma_l>0$，是正实数）。**知识点**：$\Gamma_l$ 与 $\rho$（第 2 章）。
+
+**3. B。** 终端短路线（$Z_l=0$）的输入阻抗为 $Z_{\mathrm{in}}=jZ_0\tan\beta l$。当 $l=\lambda/4$ 时
+$$\beta l=\frac{2\pi}{\lambda}\cdot\frac{\lambda}{4}=\frac{\pi}{2},\qquad \tan\frac{\pi}{2}\to\infty\ \Longrightarrow\ Z_{\mathrm{in}}\to\infty$$
+即**短路线经 $\lambda/4$ 变成开路**（"$\lambda/4$ 阻抗反演"）。**知识点**：$\lambda/4$ 变换性（第 2 章）。
+
+**4. A。** 纯驻波（$|\Gamma_l|=1$）时反射波与入射波等幅，合成波的功率为
+$$P=\frac{|U^{+}|^{2}}{2Z_0}\left(1-|\Gamma_l|^{2}\right)=0$$
+故**不传输有功功率**，能量只在电场与磁场（或线与负载电抗）之间来回交换。(B) 错，行驻波是 $0<|\Gamma_l|<1$；(C) 错，行波时 $\rho=\dfrac{1+0}{1-0}=1$，$\rho$ 的最小值就是 1，永远不会是 0；(D) 错，波腹处 $Z_{\mathrm{in}}=Z_0\rho$、波节处 $Z_{\mathrm{in}}=Z_0/\rho$，两者只有在 $\rho=1$ 时才都等于 $Z_0$。**知识点**：三种工作状态（第 2 章）。
+
+**5. A。** 由 $\rho$ 求 $|\Gamma_l|$：
+$$|\Gamma_l|=\frac{\rho-1}{\rho+1}=\frac{3-1}{3+1}=0.5$$
+对**纯电阻**负载，$\Gamma_l$ 为实数，故 $z_l$ 只能取 $\rho$ 或 $1/\rho$ 之一，即
+$$z_l=\rho=3\quad\text{或}\quad z_l=\frac{1}{\rho}=\frac{1}{3}$$
+(C) 把 $|\Gamma_l|$ 算成 $\rho/(\rho+1)$；(D) 漏掉了 $z_l=1/3$ 这一支；(B) 的 $z_l$ 值不满足 $\rho=3$。**知识点**：$\rho$ 与 $z_l$ 的关系（第 2 章）。
+
+#### 二、填空题
+
+**6.** 依次为：$-j\omega LI$；$-j\omega CU$；$\sqrt{L/C}$；$\omega\sqrt{LC}$；$1/\sqrt{LC}$。
+完整无耗电报方程为
+$$\frac{\mathrm{d}U}{\mathrm{d}z}=-j\omega LI,\qquad \frac{\mathrm{d}I}{\mathrm{d}z}=-j\omega CU$$
+若含损耗，则把 $-j\omega L$ 换成 $-(R+j\omega L)$、$-j\omega C$ 换成 $-(G+j\omega C)$ 即可。
+
+**7.** 依次为：$Z_0\rho$；$Z_0/\rho$；$100\ \Omega$；$25\ \Omega$。
+波腹处电压最大、电流最小，等效为纯电阻 $R_{\max}=Z_0\rho$；波节处电压最小、电流最大，等效为 $R_{\min}=Z_0/\rho$。代入得 $50\times2=100\ \Omega$ 与 $50/2=25\ \Omega$。
+
+**8.** 依次为：$0$；$1$；**行波**；$Z_0$。
+$Z_l=Z_0$ 时无反射，$\Gamma_l=0$、$\rho=1$，线上只有入射波，$Z_{\mathrm{in}}(z)\equiv Z_0$ 处处相等。
+
+#### 三、判断题
+
+**9. √。** 无耗线上 $\Gamma(z)=\Gamma_l e^{-j2\beta z}$，模值为 $|\Gamma(z)|=|\Gamma_l|$，与 $z$ 无关。由 $\rho=\dfrac{1+|\Gamma|}{1-|\Gamma|}$ 知 $\rho$ 也沿线不变。**这正是"驻波比是线上任意点都能测的量"的原因**——矢量网络分析仪在任意参考面测得的驻波比相同。注意：变化的只是 $\Gamma$ 的**相位**，相位决定波腹波节的位置。
+
+**10. ×。** 一般情况下 $Z_{\mathrm{in}}(z)$ 是**复数**，既不是纯电阻也不是纯电抗。只有当负载为纯电阻且观察点恰在波腹或波节处（此时 $Z_{\mathrm{in}}$ 为纯电阻），或负载为纯电抗且观察点恰在波腹或波节之间特定位置时，才会退化为纯阻或纯抗。**判据**：$Z_{\mathrm{in}}=Z_0\dfrac{1+\Gamma(z)}{1-\Gamma(z)}$，只有在 $\Gamma(z)$ 为实数（纯阻）或模为 1（纯抗）时才退化。
+
+**11. √。** 纯电抗负载 $Z_l=jX$ 满足 $|\Gamma_l|=\left|\dfrac{jX-Z_0}{jX+Z_0}\right|=1$，故 $\rho\to\infty$，线上形成纯驻波，$P=\dfrac{|U^{+}|^{2}}{2Z_0}(1-|\Gamma_l|^{2})=0$，不传输有功功率。此时线的作用是"把负载电抗变换成另一种电抗"，可等效为一段长度 $\Delta z$ 的短路或开路线段。
+
+#### 四、计算题
+
+> **【例题 2-12】**
+> **解：**
+> 归一化负载阻抗
+> $$z_l=\frac{Z_l}{Z_0}=\frac{100+j50}{50}=2+j1$$
+> **(1) 终端反射系数**
+> $$\Gamma_l=\frac{z_l-1}{z_l+1}=\frac{1+j1}{3+j1}
+> =\frac{(1+j)(3-j)}{(3+j)(3-j)}=\frac{3-j+3j-j^{2}}{9+1}=\frac{4+j2}{10}=0.4+j0.2$$
+> 验算：$|\Gamma_l|=\sqrt{0.4^{2}+0.2^{2}}=\sqrt{0.2}=0.4472$；
+> 也可由 $|\Gamma_l|=\dfrac{|z_l-1|}{|z_l+1|}=\dfrac{|1+j1|}{|3+j1|}=\dfrac{1.4142}{3.1623}=0.4472$ ✓
+> 相位 $\varphi_l=\arctan\dfrac{0.2}{0.4}=26.57^{\circ}$。
+> **(2) 驻波比**
+> $$\rho=\frac{1+|\Gamma_l|}{1-|\Gamma_l|}=\frac{1+0.4472}{1-0.4472}=\frac{1.4472}{0.5528}=2.618$$
+> **(3) 距终端 $\lambda/8$ 处的输入阻抗**
+> $$\beta z=\frac{2\pi}{\lambda}\cdot\frac{\lambda}{8}=\frac{\pi}{4},\qquad \tan\beta z=1$$
+> $$Z_{\mathrm{in}}=Z_0\frac{Z_l+jZ_0\tan\beta z}{Z_0+jZ_l\tan\beta z}
+> =50\times\frac{(100+j50)+j50}{50+j(100+j50)}
+> =50\times\frac{100+j100}{50+j100-50}$$
+> 注意 $j(100+j50)=j100+j^{2}50=j100-50$，故分母为 $50+j100-50=j100$：
+> $$Z_{\mathrm{in}}=50\times\frac{100+j100}{j100}=50\times\frac{1+j}{j}=50(1-j)=50-j50\ \Omega$$
+> **(4) 波腹点与波节点位置**
+> 电压波腹出现在 $\Gamma(z)$ 为正实数处，即相位满足
+> $$\varphi_l-2\beta z=0\ \Longrightarrow\ \beta z=\frac{\varphi_l}{2}=\frac{0.4636}{2}=0.2318\ \mathrm{rad}$$
+> 换算成波长：
+> $$\frac{z_{\max}}{\lambda}=\frac{\beta z}{2\pi}=\frac{0.2318}{6.2832}=0.0369$$
+> 即第一个电压波腹点在距终端 $0.0369\lambda$ 处。第一个电压波节点在波腹点再往后 $\lambda/4$：
+> $$z_{\min}=0.0369\lambda+0.25\lambda=0.2869\lambda$$
+> **答：** （1）$\Gamma_l=0.4+j0.2=0.4472\angle26.57^{\circ}$；（2）$\rho\approx2.62$；（3）$Z_{\mathrm{in}}=50-j50\ \Omega$（容性）；（4）$z_{\max}\approx0.037\lambda$，$z_{\min}\approx0.287\lambda$。
+> **讨论：**
+> ① 检验 (3)：$Z_{\mathrm{in}}=50-j50\ \Omega$ 的归一化值为 $1-j1$，其模 $|1-j1|=\sqrt2$，而 $Z_0/\rho=50/2.618=19.1\ \Omega$，$Z_0\rho=130.9\ \Omega$——$|Z_{\mathrm{in}}|$ 应落在两者之间，确实如此（$|50-j50|=70.7\ \Omega$）✓
+> ② 一般规律：**从负载向电源方向移动，输入阻抗沿等 $|\Gamma|$ 圆顺时针旋转**；$\lambda/4$ 之后 $Z_{\mathrm{in}}$ 的实部与虚部都会变号再取倒数关系，$\lambda/2$ 之后完全重复。
+> ③ 波腹点位置只由 $\Gamma_l$ 的**相位**决定，与 $|\Gamma_l|$（即 $\rho$）无关。这是"知道驻波比还不够，还要知道波节位置"的原因。
+
+> **【例题 2-13】**
+> **解：**
+> **(1) 变换器的特性阻抗与长度**
+> $\lambda/4$ 阻抗变换器把实负载 $Z_l$ 变换为 $Z_0$ 的条件是
+> $$Z_{0}'=\sqrt{Z_0Z_l}=\sqrt{300\times600}=\sqrt{1.8\times10^{5}}=424.3\ \Omega$$
+> 长度（空气线，$v_p=c$）：
+> $$\lambda=\frac{c}{f}=\frac{3\times10^{8}}{3\times10^{8}}=1.0\ \mathrm{m},\qquad
+> l=\frac{\lambda}{4}=0.25\ \mathrm{m}$$
+> **(2) 匹配前后的驻波比**
+> 匹配前：负载为纯电阻且 $Z_l>Z_0$，故
+> $$\rho_1=\frac{Z_l}{Z_0}=\frac{600}{300}=2.0$$
+> 匹配后：$Z_{\mathrm{in}}=Z_0$，$\Gamma=0$，
+> $$\rho_2=1.0$$
+> **(3) 负载为 $Z_l=50+j50\ \Omega$ 时为什么不能直接用**
+> $\lambda/4$ 变换器的原理是
+> $$Z_{\mathrm{in}}=\frac{Z_{0}'^{2}}{Z_l}$$
+> 它要求 $Z_l$ 为**纯电阻**，此时 $Z_{0}'=\sqrt{Z_0Z_l}$ 才是实数，可以用一段特性阻抗为实数的传输线实现。当
+> $$Z_l=50+j50\ \Omega$$
+> 时 $\sqrt{Z_0Z_l}$ 是复数，而实际传输线的特性阻抗 $Z_{0}'$ 在无耗时必为正实数（$Z_0=\sqrt{L/C}$），无法取值。工程上的做法是先加一段线或加一个电抗元件把 $Z_l$ **变到纯电阻**（例如用一段线把负载变换到某个纯阻点），再用 $\lambda/4$ 变换器，或者直接改用枝节匹配器。
+> **答：** （1）$Z_{0}'=424.3\ \Omega$，$l=0.25\ \mathrm{m}$；（2）匹配前 $\rho=2$，匹配后 $\rho=1$；（3）因为含电抗的负载使 $\sqrt{Z_0Z_l}$ 成为复数，而实数特性阻抗无法实现。
+> **讨论：** $\lambda/4$ 变换器有三个必须记住的限制：①**只能匹配纯电阻负载**；②**窄带**（只有在设计频率上 $\beta l=\pi/2$，频率偏移即失配）；③变换段的特性阻抗 $Z_{0}'$ 与主线的 $Z_0$ 不同，需要用不同截面尺寸（波导中改变 $b$、同轴线中改变 $b/a$、微带中改变 $w$）来实现，因而两端必然存在台阶状的**结构不连续**，会引入寄生电抗。带宽要求高时应改用多节阶梯阻抗变换器。
+
+> **【例题 2-14】**
+> **解：**
+> 波长
+> $$\lambda=\frac{v_p}{f}=\frac{2\times10^{8}}{1\times10^{9}}=0.2\ \mathrm{m}=200\ \mathrm{mm}$$
+> 归一化负载阻抗与导纳
+> $$z_l=\frac{25-j25}{50}=0.5-j0.5,\qquad
+> y_l=\frac{1}{z_l}=\frac{1}{0.5-j0.5}=\frac{0.5+j0.5}{0.5^{2}+0.5^{2}}=\frac{0.5+j0.5}{0.5}=1+j1$$
+> **(1) 匹配位置 $d$**
+> 沿线导纳的变换式为
+> $$y(d)=\frac{y_l+j\tan\beta d}{1+jy_l\tan\beta d}$$
+> 记 $t=\tan\beta d$，代入 $y_l=1+j$：
+> $$y(d)=\frac{(1+j)+jt}{1+j(1+j)t}=\frac{1+j(1+t)}{1+jt+j^{2}t}=\frac{1+j(1+t)}{(1-t)+jt}$$
+> 并联枝节只能补偿**电纳**，故要求 $\mathrm{Re}[y(d)]=1$。计算
+> $$|(1-t)+jt|^{2}=(1-t)^{2}+t^{2}=1-2t+2t^{2}$$
+> $$\mathrm{Re}\left\{\left[1+j(1+t)\right]\left[(1-t)-jt\right]\right\}
+> =(1-t)+t(1+t)=1+t^{2}$$
+> 因此
+> $$\mathrm{Re}[y(d)]=\frac{1+t^{2}}{1-2t+2t^{2}}=1\ \Longrightarrow\ t^{2}-2t=0\ \Longrightarrow\ t=0\ \text{或}\ t=2$$
+> - $t=0$：$\beta d=0$（即枝节接在负载处）或 $\beta d=\pi$（$d=\lambda/2$）；
+> - $t=2$：$\beta d=\arctan2=63.43^{\circ}=1.107\ \mathrm{rad}$，故
+> $$d=\lambda\times\frac{63.43^{\circ}}{360^{\circ}}=0.2\times0.17621=0.03524\ \mathrm{m}\approx35.2\ \mathrm{mm}$$
+> 取 $t=2$ 的解（这就是通常所说的"第一个匹配位置"）。
+> **(2) 短路枝节的长度 $l$**
+> 此时该处的导纳为
+> $$y(d)=\underbrace{1}_{}+j\frac{1-t-t^{2}}{1-2t+2t^{2}}
+> =1+j\frac{1-2-4}{1-4+8}=1+j\frac{-5}{5}=1-j1$$
+> 短路枝节的输入导纳为
+> $$y_{\text{stub}}=-j\cot\beta l$$
+> 并联后总导纳应为 1，故要求
+> $$-j\cot\beta l=+j1\ \Longrightarrow\ \cot\beta l=-1\ \Longrightarrow\ \beta l=135^{\circ}$$
+> $$l=\lambda\times\frac{135^{\circ}}{360^{\circ}}=0.2\times0.375=0.075\ \mathrm{m}=75\ \mathrm{mm}$$
+> **验算：** $y(d)+y_{\text{stub}}=(1-j1)+(+j1)=1$ ✓ 匹配。
+> **答：** （1）$d\approx0.03524\ \mathrm{m}=35.2\ \mathrm{mm}$（即 $0.176\lambda$）；（2）$l=0.075\ \mathrm{m}=75\ \mathrm{mm}$（即 $0.375\lambda$）。
+> **讨论：**
+> ① 本例中 $y(d)=1-j1$ 是**容性**电纳，因此需要枝节提供**感性**电纳（$+j1$）。短路线在 $0<\beta l<\lambda/2$ 范围内的 $\cot$ 可以取任意负值，故短路枝节总能提供所需的正电纳——这是"短路枝节比开路枝节更常用"的原因（开路枝节在高频下辐射强、不稳定）。
+> ② 用圆图求解的步骤：把 $z_l$ 化为 $y_l=1+j1$，沿等 $|\Gamma|$ 圆向电源方向转，与 $g=1$ 圆交于两点，第一点得 $d=0.176\lambda$、该点电纳为 $-1$；再从短路点（$y\to\infty$）沿外圆转到 $y=+j1$ 处，得 $l=0.375\lambda$。
+> ③ 若取 $d=0$ 的解，相当于把枝节直接接在负载两端，工程上不易实现，通常取离负载最近的可行位置。
+
+#### 五、证明题
+
+> **【例题 2-15】**
+> **证明：**
+> **第一步，用反射系数表示输入阻抗。** 对无耗均匀传输线，任意位置处的电压、电流可写成入射波与反射波之和：
+> $$U(z)=U^{+}\left(1+\Gamma(z)\right),\qquad I(z)=\frac{U^{+}}{Z_0}\left(1-\Gamma(z)\right)$$
+> 相除得输入阻抗与反射系数的关系
+> $$Z_{\mathrm{in}}(z)=\frac{U(z)}{I(z)}=Z_0\frac{1+\Gamma(z)}{1-\Gamma(z)}$$
+> **第二步，写出 $\lambda/4$ 处的反射系数。** 无耗线上
+> $$\Gamma(z)=\Gamma_l e^{-j2\beta z},\qquad \beta=\frac{2\pi}{\lambda}$$
+> 于是
+> $$\Gamma\!\left(z+\frac{\lambda}{4}\right)=\Gamma_l e^{-j2\beta z}e^{-j2\beta\cdot\frac{\lambda}{4}}
+> =\Gamma(z)\,e^{-j\frac{\beta\lambda}{2}}=\Gamma(z)\,e^{-j\pi}=-\Gamma(z)$$
+> 其中用了 $\dfrac{\beta\lambda}{2}=\dfrac{2\pi}{\lambda}\cdot\dfrac{\lambda}{2}=\pi$，$e^{-j\pi}=-1$。
+> **第三步，代入并相乘。**
+> $$Z_{\mathrm{in}}\!\left(z+\frac{\lambda}{4}\right)=Z_0\frac{1+\Gamma(z+\lambda/4)}{1-\Gamma(z+\lambda/4)}
+> =Z_0\frac{1-\Gamma(z)}{1+\Gamma(z)}$$
+> 两式相乘：
+> $$Z_{\mathrm{in}}(z)\cdot Z_{\mathrm{in}}\!\left(z+\frac{\lambda}{4}\right)
+> =Z_0^{2}\cdot\frac{1+\Gamma(z)}{1-\Gamma(z)}\cdot\frac{1-\Gamma(z)}{1+\Gamma(z)}=Z_0^{2}$$
+> 证毕。$\blacksquare$
+>
+> **数值验算（取 $Z_0=50\ \Omega$、$Z_l=100\ \Omega$、$z=\lambda/8$）：**
+> $$Z_{\mathrm{in}}(\lambda/8)=50\times\frac{100+j50}{50+j100}=40-j30\ \Omega$$
+> $$Z_{\mathrm{in}}(3\lambda/8)=50\times\frac{100-j50}{50-j100}=40+j30\ \Omega$$
+> $$(40-j30)(40+j30)=1600+900=2500=50^{2}\ \checkmark$$
+>
+> **讨论：**
+> ① 结论的物理含义是"**$\lambda/4$ 线把阻抗反演**"：$Z_{\mathrm{in}}(z+\lambda/4)=\dfrac{Z_0^{2}}{Z_{\mathrm{in}}(z)}$。这就是 $\lambda/4$ 阻抗变换器的理论基础——若想让 $Z_{\mathrm{in}}=Z_0$，只需让 $Z_{\mathrm{in}}(z)=Z_0$（自匹配）或让 $\lambda/4$ 段的特性阻抗取 $Z_{0}'=\sqrt{Z_0Z_l}$。
+> ② 特例：**终端短路**（$Z_{\mathrm{in}}=0$）经 $\lambda/4$ 成为**开路**（$Z_{\mathrm{in}}\to\infty$）；**终端开路**经 $\lambda/4$ 成为**短路**。这正是"短路线可以当电抗元件用"的原理。
+> ③ 另一条常用的等价形式：**$\lambda/2$ 处阻抗复现**，即 $Z_{\mathrm{in}}(z+\lambda/2)=Z_{\mathrm{in}}(z)$。可由 $\Gamma$ 经 $\lambda/2$ 的相移为 $e^{-j2\pi}=1$ 直接看出。
+> ④ 本题也可用 $Z_{\mathrm{in}}(z)=Z_0\dfrac{Z_l+jZ_0\tan\beta z}{Z_0+jZ_l\tan\beta z}$ 与 $\tan(\beta z+\pi/2)=-\cot\beta z$ 直接相乘证明，但会出现 $\tan\beta z=0$ 的例外需要单独讨论；用 $\Gamma$ 的相位关系证明**既简洁又无例外**。
+
+---
+
+## 第 3 章 自测
+
+### 一、选择题
+
+**1.** 关于矩形波导中的 $TE_{10}$ 模，下列说法正确的是（　　）。
+
+(A) $TE_{10}$ 模的电场只有纵向分量 $E_z$
+(B) $TE_{10}$ 模的截止波长为 $\lambda_c=2a$
+(C) $TE_{10}$ 模的磁场只有横向分量
+(D) $TE_{10}$ 模可以在任意频率下传输
+
+**2.** 空心金属波导中不能传输 TEM 波，其根本原因是（　　）。
+
+(A) TEM 波的相速太慢，跟不上波导中的相位变化
+(B) TEM 波要求横截面内存在两个彼此绝缘的导体以维持电场的电位差，而空心波导只有一个导体
+(C) TEM 波的衰减常数太大
+(D) TEM 波的截止频率太高，工程上无法实现
+
+**3.** 某矩形波导 $a=22.86\ \mathrm{mm}$、$b=10.16\ \mathrm{mm}$，$TE_{10}$ 模的截止频率约为（　　）。
+
+(A) $6.56\ \mathrm{GHz}$
+(B) $13.1\ \mathrm{GHz}$
+(C) $3.28\ \mathrm{GHz}$
+(D) $14.8\ \mathrm{GHz}$
+
+**4.** 工作频率 $f$ 越高于截止频率 $f_c$，$TE_{10}$ 模的波导波长 $\lambda_g$ 与相速 $v_p$ 分别（　　）。
+
+(A) 越接近自由空间波长 $\lambda$ 与光速 $c$
+(B) 越大
+(C) 越小
+(D) 保持不变
+
+**5.** 关于矩形波导中 $TE_{10}$ 模的衰减常数随频率的变化，下列说法正确的是（　　）。
+
+(A) 随频率单调增大
+(B) 随频率单调减小
+(C) 在靠近截止频率处急剧增大，随频率升高先减小后增大，存在一个衰减最小的频率
+(D) 与频率完全无关
+
+### 二、填空题
+
+**6.** 矩形波导中 $TE_{mn}$ 模的截止波长为 $\lambda_c=$________；$TE_{10}$ 模的截止波长为________，$TE_{11}$ 模（设 $a>b$）的截止波长为________。
+
+**7.** 矩形波导 $a=22.86\ \mathrm{mm}$、$b=10.16\ \mathrm{mm}$，填充空气，工作频率 $f=10\ \mathrm{GHz}$。$TE_{10}$ 模的 $\lambda_g\approx$________，相速 $v_p\approx$________，群速 $v_g\approx$________，波阻抗 $\eta_{TE}\approx$________。
+
+**8.** 矩形波导实现 $TE_{10}$ 单模传输的条件是________。对宽边 $a=22.86\ \mathrm{mm}$、窄边 $b=a/2$ 的空气填充波导，单模工作的频率范围为________。
+
+### 三、判断题
+
+**9.** 矩形波导的截止波长 $\lambda_c$ 只与截面尺寸和模式有关，与工作频率无关。（　　）
+
+**10.** 矩形波导中 $TE_{10}$ 模的相速 $v_p>c$，说明波导中的信号可以超光速传递信息。（　　）
+
+**11.** 同一工作频率下，波导中的波导波长 $\lambda_g$ 大于自由空间波长 $\lambda_0$。（　　）
+
+### 四、计算题
+
+**12.** 矩形波导 $a\times b=22.86\times10.16\ \mathrm{mm}^{2}$，填充空气。求：(1) $TE_{10}$、$TE_{20}$、$TE_{01}$、$TE_{11}$ 四个模式的截止波长与截止频率；(2) 若要求 $TE_{10}$ 单模传输，工作频率的允许范围；(3) 当 $f=9\ \mathrm{GHz}$ 时，$TE_{10}$ 模的 $\lambda_g$、$v_p$、$v_g$ 与波阻抗 $\eta_{TE}$。
+
+**13.** 一矩形波导宽边 $a=22.86\ \mathrm{mm}$，填充 $\varepsilon_r=2.25$、$\mu_r=1$ 的无耗介质。求：(1) $TE_{10}$ 模的截止波长与截止频率；(2) 与空气填充时相比截止频率如何变化，并说明原因；(3) 当 $f=10\ \mathrm{GHz}$ 时 $TE_{10}$ 模的波导波长 $\lambda_g$。
+
+**14.** 要求用窄边 $b=a/2$ 的矩形波导传输 $f=9.5\ \mathrm{GHz}$ 的 $TE_{10}$ 单模。求：(1) 宽边 $a$ 的允许范围；(2) 若取 $a=25\ \mathrm{mm}$，校核能否单模工作；(3) 此时 $TE_{10}$ 模的波导波长 $\lambda_g$。
+
+### 五、证明题
+
+**15.** 证明：空心金属波导中不能存在 TEM 波。
+
+### 参考答案与详解
+
+#### 一、选择题
+
+**1. B。** $TE_{10}$ 模（$m=1$、$n=0$）的截止波长为
+$$\lambda_c=\frac{2}{\sqrt{(m/a)^{2}+(n/b)^{2}}}=2a$$
+(A) 错：$TE$ 模的定义就是 $E_z=0$，即电场**没有**纵向分量；(C) 错：$TE$ 模的 $H_z\ne0$，磁场**有**纵向分量（这正是"横电波"的含义——电场横向、磁场不横向）；(D) 错：只有 $f>f_c$ 时才能传输，否则 $\beta$ 为纯虚数、场沿纵向指数衰减（截止）。**知识点**：$TE_{10}$ 主模（第 3 章）。
+
+**2. B。** TEM 波要求电场线在横截面内起于正电荷、止于负电荷，因此横截面上必须存在**两个彼此绝缘的导体**分别充当正、负电位。空心金属波导只有一个导体（内壁＋外壁构成单一导体），无法维持横截面内的电位差。严格证明见例题 3-15。(A)(C)(D) 都不是根本原因，且 (D) 的说法本身不成立——TEM 波的截止频率为零。**知识点**：三类波型（第 3 章）。
+
+**3. A。**
+$$\lambda_c=2a=2\times22.86=45.72\ \mathrm{mm}$$
+$$f_c=\frac{c}{\lambda_c}=\frac{3\times10^{8}}{0.04572}=6.562\times10^{9}\ \mathrm{Hz}\approx6.56\ \mathrm{GHz}$$
+(B) 是 $TE_{20}$ 模的截止频率（$\lambda_c=a$）；(C) 是 $TE_{10}$ 截止波长按 $4a$ 计算的结果；(D) 是 $TE_{01}$ 模的截止频率（$\lambda_c=2b=20.32\ \mathrm{mm}$）。**知识点**：$\lambda_c$ 与 $f_c$（第 3 章）。
+
+**4. A。** 由
+$$\lambda_g=\frac{\lambda}{\sqrt{1-(\lambda/\lambda_c)^{2}}},\qquad
+v_p=\frac{c}{\sqrt{1-(f_c/f)^{2}}}$$
+当 $f\gg f_c$ 时 $\lambda/\lambda_c=f_c/f\to0$，故 $\lambda_g\to\lambda$、$v_p\to c$。反之，$f\to f_c^{+}$ 时 $\lambda_g\to\infty$、$v_p\to\infty$，这是"截止"的标志。(B)(C)(D) 均与公式矛盾。**知识点**：$\lambda_g$、色散（第 3 章）。
+
+**5. C。** 波导衰减由两部分组成：**导体衰减** $\alpha_c$ 与**介质衰减** $\alpha_d$。空气填充时只有 $\alpha_c$，它正比于 $\dfrac{1+2(b/a)(f_c/f)^{2}}{\sqrt{1-(f_c/f)^{2}}}$：靠近截止时（$f\to f_c^{+}$）分母趋于 0，衰减急剧增大；远离截止时导体表面的电流分布趋于均匀、分母趋于 1，衰减转为上升。因此存在**衰减最小的频率**（对 $TE_{10}$ 模、$b\approx a/2$，约为 $f\approx\sqrt{3}f_c$ 附近）。(A)(B)(D) 都忽略了截止区的发散行为。**知识点**：波导衰减与最佳频率（第 3 章）。
+
+#### 二、填空题
+
+**6.** 依次为：
+$$\lambda_c=\frac{2}{\sqrt{(m/a)^{2}+(n/b)^{2}}};\qquad TE_{10}:\ \lambda_c=2a;\qquad TE_{11}:\ \lambda_c=\frac{2ab}{\sqrt{a^{2}+b^{2}}}$$
+注意 $TE_{mn}$ 与 $TM_{mn}$ 的截止波长表达式**完全相同**（同一 $m$、$n$ 的 $TE_{mn}$ 与 $TM_{mn}$ 简并），但 $TE_{m0}$、$TE_{0n}$ 型模式没有对应的 TM 模。
+
+**7.** 依次约为：$39.8\ \mathrm{mm}$；$3.98\times10^{8}\ \mathrm{m/s}$；$2.26\times10^{8}\ \mathrm{m/s}$；$499\ \Omega$。
+计算：$\lambda_0=3\times10^{8}/10^{10}=30\ \mathrm{mm}$，$\lambda_c=2a=45.72\ \mathrm{mm}$，故
+$$\frac{\lambda_0}{\lambda_c}=\frac{30}{45.72}=0.6562,\qquad
+\sqrt{1-0.6562^{2}}=\sqrt{1-0.4306}=0.7546$$
+$$\lambda_g=\frac{30}{0.7546}=39.76\ \mathrm{mm},\qquad v_p=\frac{3\times10^{8}}{0.7546}=3.98\times10^{8}\ \mathrm{m/s}$$
+$$v_g=3\times10^{8}\times0.7546=2.26\times10^{8}\ \mathrm{m/s},\qquad
+\eta_{TE}=\frac{376.73}{0.7546}=499\ \Omega$$
+验算：$v_pv_g=3.98\times10^{8}\times2.26\times10^{8}=9.0\times10^{16}=c^{2}$ ✓
+
+**8.** 条件为
+$$f_{c,TE10}<f<f_{c,TE20}\quad\left(\text{等价地}\ a<\lambda_0<2a\right)$$
+（若 $b$ 不是 $a/2$，上限应取 $\min\{f_{c,TE20},\ f_{c,TE01}\}$。）
+对 $a=22.86\ \mathrm{mm}$、$b=a/2=11.43\ \mathrm{mm}$ 的空气填充波导：$f_{c,TE10}=6.56\ \mathrm{GHz}$，$f_{c,TE20}=13.12\ \mathrm{GHz}$，$f_{c,TE01}=c/(2b)=13.12\ \mathrm{GHz}$，故单模频率范围为
+$$6.56\ \mathrm{GHz}<f<13.12\ \mathrm{GHz}$$
+（工程上标准波导 BJ-100 的推荐工作频段为 $8.2\sim12.4\ \mathrm{GHz}$，两端各留了约 20% 的余量。）
+
+#### 三、判断题
+
+**9. √。** $\lambda_c=\dfrac{2}{\sqrt{(m/a)^{2}+(n/b)^{2}}}$ 只含截面尺寸 $a$、$b$ 与模数 $m$、$n$，与频率无关。**注意区分**：$\lambda_c$ 与介质无关，但 $f_c=\dfrac{c}{\lambda_c\sqrt{\varepsilon_r\mu_r}}$ 与介质有关——这是最常见的混淆点（见例题 3-13）。
+
+**10. ×。** 相速 $v_p=\omega/\beta$ 描述的是**等相位面的移动速度**，它不是一个可以承载能量或信息的物理实体的速度。波导中 $v_p>c$ 并不违反相对论，因为能量与信息按**群速** $v_g=\mathrm{d}\omega/\mathrm{d}\beta$ 传播，而 $v_g=c\sqrt{1-(f_c/f)^{2}}<c$，且 $v_pv_g=c^{2}$。信号（波包的包络）始终以 $v_g<c$ 前进。
+
+**11. √。** 由 $\lambda_g=\dfrac{\lambda_0}{\sqrt{1-(\lambda_0/\lambda_c)^{2}}}$ 且 $(\lambda_0/\lambda_c)^{2}<1$，分母小于 1，故 $\lambda_g>\lambda_0$。物理上可理解为：波在波导内走"之"字形路径，沿轴向每前进一个"波导波长"需要更大的距离才能累积 $2\pi$ 的相位。这也意味着**同样物理长度的波导，其电长度比自由空间更大**。
+
+#### 四、计算题
+
+> **【例题 3-12】**
+> **解：**
+> **(1) 各模式的截止波长与截止频率**（$\lambda_c=\dfrac{2}{\sqrt{(m/a)^{2}+(n/b)^{2}}}$，$f_c=c/\lambda_c$）
+> | 模式 | $\lambda_c$ 计算 | $\lambda_c$ | $f_c$ |
+> |---|---|---|---|
+> | $TE_{10}$ | $2a=2\times22.86$ | $45.72\ \mathrm{mm}$ | $6.56\ \mathrm{GHz}$ |
+> | $TE_{20}$ | $a=22.86$ | $22.86\ \mathrm{mm}$ | $13.12\ \mathrm{GHz}$ |
+> | $TE_{01}$ | $2b=2\times10.16$ | $20.32\ \mathrm{mm}$ | $14.76\ \mathrm{GHz}$ |
+> | $TE_{11}$／$TM_{11}$ | $\dfrac{2ab}{\sqrt{a^{2}+b^{2}}}=\dfrac{2\times22.86\times10.16}{25.016}$ | $18.57\ \mathrm{mm}$ | $16.16\ \mathrm{GHz}$ |
+> 其中 $\sqrt{a^{2}+b^{2}}=\sqrt{22.86^{2}+10.16^{2}}=\sqrt{522.6+103.2}=\sqrt{625.8}=25.016\ \mathrm{mm}$。
+> **(2) 单模工作频率范围**
+> $TE_{10}$ 是最低次模（主模），第一个高次模是 $TE_{20}$（$f_c=13.12\ \mathrm{GHz}$），其次为 $TE_{01}$（$14.76\ \mathrm{GHz}$）。故单模条件为
+> $$f_{c,TE10}<f<\min\{f_{c,TE20},f_{c,TE01}\}
+> \Longrightarrow 6.56\ \mathrm{GHz}<f<13.12\ \mathrm{GHz}$$
+> **(3) $f=9\ \mathrm{GHz}$ 时 $TE_{10}$ 模的参数**
+> $$\lambda_0=\frac{c}{f}=\frac{3\times10^{8}}{9\times10^{9}}=33.33\ \mathrm{mm}$$
+> $$\frac{\lambda_0}{\lambda_c}=\frac{33.33}{45.72}=0.7291,\qquad
+> \sqrt{1-0.7291^{2}}=\sqrt{1-0.5316}=0.6844$$
+> $$\lambda_g=\frac{33.33}{0.6844}=48.70\ \mathrm{mm}$$
+> $$v_p=\frac{c}{0.6844}=4.38\times10^{8}\ \mathrm{m/s},\qquad
+> v_g=c\times0.6844=2.05\times10^{8}\ \mathrm{m/s}$$
+> $$\eta_{TE}=\frac{\eta_0}{\sqrt{1-(\lambda_0/\lambda_c)^{2}}}=\frac{376.73}{0.6844}=550\ \Omega$$
+> **答：** （1）$\lambda_c$ 依次为 $45.72$、$22.86$、$20.32$、$18.57\ \mathrm{mm}$；$f_c$ 依次为 $6.56$、$13.12$、$14.76$、$16.16\ \mathrm{GHz}$；（2）$6.56\sim13.12\ \mathrm{GHz}$；（3）$\lambda_g=48.7\ \mathrm{mm}$，$v_p=4.38\times10^{8}\ \mathrm{m/s}$，$v_g=2.05\times10^{8}\ \mathrm{m/s}$，$\eta_{TE}=550\ \Omega$。
+> **讨论：**
+> ① 校验 $v_pv_g=4.38\times10^{8}\times2.05\times10^{8}=8.98\times10^{16}\approx c^{2}=9.0\times10^{16}$ ✓
+> ② $f=9\ \mathrm{GHz}$ 落在单模区间内，且 $\lambda_g=48.7\ \mathrm{mm}$ 大于 $\lambda_0=33.3\ \mathrm{mm}$，符合"$\lambda_g>\lambda_0$"的一般规律。
+> ③ 注意 $TE_{20}$ 与 $TE_{01}$ 的截止频率相差不大（$13.12$ 与 $14.76\ \mathrm{GHz}$），这是因为 $b\approx a/2$。若 $b$ 明显小于 $a/2$，$TE_{01}$ 的截止频率会升高，单模带宽由 $TE_{20}$ 决定。
+
+> **【例题 3-13】**
+> **解：**
+> **(1) 介质填充时的截止波长与截止频率**
+> 截止波长只由截面尺寸与模式决定，填充介质不改变它：
+> $$\lambda_c=2a=2\times22.86=45.72\ \mathrm{mm}$$
+> 介质中的相速为 $v_p=\dfrac{c}{\sqrt{\varepsilon_r\mu_r}}=\dfrac{3\times10^{8}}{1.5}=2\times10^{8}\ \mathrm{m/s}$，故
+> $$f_c=\frac{v_p}{\lambda_c}=\frac{c}{\lambda_c\sqrt{\varepsilon_r\mu_r}}
+> =\frac{3\times10^{8}}{0.04572\times1.5}=\frac{3\times10^{8}}{0.06858}=4.374\times10^{9}\ \mathrm{Hz}\approx4.37\ \mathrm{GHz}$$
+> **(2) 与空气填充的比较**
+> 空气填充时 $f_c=6.56\ \mathrm{GHz}$，介质填充后降至
+> $$f_c=6.56\times\frac{1}{\sqrt{2.25}}=6.56\times0.6667=4.37\ \mathrm{GHz}$$
+> 即**截止频率降为原来的 $1/\sqrt{\varepsilon_r}$ 倍**。原因是：截止条件由"沿横向必须形成半个驻波"决定，这给出**截止波长** $\lambda_c$；而频率与波长的关系 $f=v/\lambda$ 中的相速因介质填充而降为 $c/\sqrt{\varepsilon_r}$，所以同样的 $\lambda_c$ 对应的频率更低。**填充介质使波导的截止频率下降、单模工作频带整体下移**，这正是"介质填充波导可以缩小截面尺寸"的原理。
+> **(3) $f=10\ \mathrm{GHz}$ 时的波导波长**
+> 介质中的**无界介质波长**
+> $$\lambda=\frac{v_p}{f}=\frac{2\times10^{8}}{10^{10}}=20.0\ \mathrm{mm}$$
+> $$\frac{\lambda}{\lambda_c}=\frac{20.0}{45.72}=0.4374,\qquad
+> \sqrt{1-0.4374^{2}}=\sqrt{1-0.1913}=0.8993$$
+> $$\lambda_g=\frac{\lambda}{\sqrt{1-(\lambda/\lambda_c)^{2}}}=\frac{20.0}{0.8993}=22.24\ \mathrm{mm}$$
+> **答：** （1）$\lambda_c=45.72\ \mathrm{mm}$，$f_c=4.37\ \mathrm{GHz}$；（2）降为原来的 $1/\sqrt{\varepsilon_r}=2/3$，因为截止波长不变而相速降低；（3）$\lambda_g=22.2\ \mathrm{mm}$。
+> **讨论：**
+> ① **必须记住的两句话**："截止波长 $\lambda_c$ 只由尺寸与模式决定，与介质无关"；"截止频率 $f_c$ 与介质有关，$f_c\propto1/\sqrt{\varepsilon_r\mu_r}$"。
+> ② 三者的正确关系是 $\lambda_g>\lambda>\lambda_c$ 中"$\lambda$ 与 $\lambda_c$"的大小决定能否传输：$\lambda<\lambda_c$（即 $f>f_c$）才能传。本例中 $\lambda=20.0\ \mathrm{mm}<\lambda_c=45.72\ \mathrm{mm}$ ✓ 可传。
+> ③ 若把介质填充波导用于同一频率，则工作波长变短、尺寸可以缩小 $1/\sqrt{\varepsilon_r}$ 倍，代价是介质损耗增加、功率容量下降。
+
+> **【例题 3-14】**
+> **解：**
+> **(1) 宽边 $a$ 的允许范围**
+> $$f=9.5\ \mathrm{GHz}\ \Longrightarrow\ \lambda_0=\frac{c}{f}=\frac{3\times10^{8}}{9.5\times10^{9}}=31.58\ \mathrm{mm}$$
+> 单模条件为 $a<\lambda_0<2a$：
+> - 由 $a<\lambda_0$ 得 $a<31.58\ \mathrm{mm}$；
+> - 由 $\lambda_0<2a$ 得 $a>15.79\ \mathrm{mm}$。
+>
+> 又因为 $b=a/2$，$TE_{01}$ 模的截止波长 $\lambda_{c,TE01}=2b=a$，与 $TE_{20}$ 模的截止波长 $\lambda_{c,TE20}=a$ **相同**，不构成额外限制。故
+> $$15.79\ \mathrm{mm}<a<31.58\ \mathrm{mm}$$
+> **(2) 校核 $a=25\ \mathrm{mm}$**
+> $15.79<25<31.58$ ✓ 落在允许范围内。更直接地：
+> $$f_{c,TE10}=\frac{c}{2a}=\frac{3\times10^{8}}{0.05}=6.0\ \mathrm{GHz},\qquad
+> f_{c,TE20}=\frac{c}{a}=12.0\ \mathrm{GHz}$$
+> $6.0\ \mathrm{GHz}<9.5\ \mathrm{GHz}<12.0\ \mathrm{GHz}$ ✓ **可以单模工作**。
+> **(3) $TE_{10}$ 模的波导波长**
+> $$\lambda_c=2a=50\ \mathrm{mm},\qquad
+> \frac{\lambda_0}{\lambda_c}=\frac{31.58}{50}=0.6316$$
+> $$\sqrt{1-0.6316^{2}}=\sqrt{1-0.3989}=0.7753$$
+> $$\lambda_g=\frac{\lambda_0}{0.7753}=\frac{31.58}{0.7753}=40.73\ \mathrm{mm}$$
+> **答：** （1）$15.79\ \mathrm{mm}<a<31.58\ \mathrm{mm}$；（2）$a=25\ \mathrm{mm}$ 时可以单模工作；（3）$\lambda_g=40.7\ \mathrm{mm}$。
+> **讨论：**
+> ① 单模设计题的标准三步：**写判据（$a<\lambda_0<2a$）→ 解不等式 → 校核**。判据中的 $\lambda_0$ 应用**工作频段的最高与最低频率各算一次**，取交集才是真正的"单模带宽"。
+> ② 工程上 $a$ 通常取在区间中部偏高的位置（如 $a\approx0.7\lambda_0$），这样两端都留有余量：下限有约 30% 的余量防止接近截止（衰减急剧上升），上限有约 30% 的余量防止激发 $TE_{20}$。
+> ③ 若取 $b=a/2$，则 $TE_{01}$ 与 $TE_{20}$ 同时到达截止，单模带宽最大（$f_{\text{高}}/f_{\text{低}}=2$）。这就是标准波导取 $a:b\approx2:1$ 的原因之一。
+
+#### 五、证明题
+
+> **【例题 3-15】**
+> **证明（反证＋唯一性定理）：**
+> **第一步，设 TEM 波存在并写出其电场。** TEM 波的定义是 $E_z=0$、$H_z=0$，电场与磁场全部位于横截面内。设场沿 $+z$ 方向传播：
+> $$\boldsymbol{E}(x,y,z)=\boldsymbol{E}_t(x,y)e^{-j\beta z}$$
+> **第二步，证明横截面内电场无旋。** 由麦克斯韦方程 $\nabla\times\boldsymbol{E}=-j\omega\mu\boldsymbol{H}$ 的 $z$ 分量为
+> $$\frac{\partial E_y}{\partial x}-\frac{\partial E_x}{\partial y}=-j\omega\mu H_z=0$$
+> 因为 $H_z=0$，故横截面内电场的旋度为零：
+> $$\nabla_t\times\boldsymbol{E}_t=0$$
+> 无旋场可以写成标量位函数的梯度：
+> $$\boldsymbol{E}_t=-\nabla_t\Phi(x,y)$$
+> **第三步，导出二维拉普拉斯方程。** 在无源区 $\nabla\cdot\boldsymbol{D}=0$，对均匀介质即 $\nabla\cdot\boldsymbol{E}=0$。取 $z$ 分量以外的部分：
+> $$\nabla_t\cdot\boldsymbol{E}_t=-\nabla_t^{2}\Phi=0\ \Longrightarrow\ \nabla_t^{2}\Phi(x,y)=0$$
+> 即电位函数 $\Phi$ 在波导横截面内满足**二维拉普拉斯方程**。
+> **第四步，代入边界条件。** 波导内壁是理想导体，其表面为等位面，故
+> $$\Phi\big|_{\text{内壁}}=\text{const}=\Phi_0$$
+> 于是 $\Phi$ 在整个横截面（含边界）上满足**第一类边值问题**（Dirichlet 问题）。
+> **第五步，用解的唯一性得到矛盾。** 二维拉普拉斯方程在第一类边界条件下的解是唯一的。而 $\Phi\equiv\Phi_0$（常数）显然满足方程与边界条件，故它就是唯一解：
+> $$\Phi(x,y)\equiv\Phi_0\quad\Longrightarrow\quad \boldsymbol{E}_t=-\nabla_t\Phi\equiv\boldsymbol{0}$$
+> 电场在横截面内恒为零，波场不存在，无法传输电磁能量。这与"TEM 波存在"的假设矛盾。
+> **结论：空心金属波导中不存在 TEM 波。** $\blacksquare$
+>
+> **物理图像（一句话解释）：** TEM 波要求横截面上有电场线从正电位指向负电位，因此必须有**两个彼此绝缘的导体**分别提供正、负电位（这就是"双导体传输线"的含义）。空心波导只有一个导体，内壁上处处同电位，横向电场无处"落脚"，所以传不了 TEM 波。**同轴线有内导体与外导体两个导体，故能传 TEM 波**——这是同轴线与空心波导最本质的差别。
+>
+> **讨论：**
+> ① 上述推理的关键是"边界只有一条闭合曲线"（单连通、单导体）。同轴线横截面有**两条**互不相连的边界（内导体外表面与外导体内表面），各自可以取不同电位，Dirichlet 问题不再有"常数唯一解"，TEM 波因而存在。
+> ② 由此还能理解为什么波导中**截止频率最低的模式不是 TEM**（TEM 的 $f_c=0$），而是 $TE_{10}$。正因为 TEM 被禁戒，波导才有一个"非零的截止频率"，才有多模与单模带宽的概念。
+> ③ 若把波导内部插入一个导体并使其绝缘（例如脊波导中的金属脊通过介质支撑），结构在电学上接近"双导体"，就可以支持类 TEM 模（脊波导的基模常被称为"准 TEM"或 $TE_{10}$ 变形），**脊波导的单模带宽比矩形波导宽正是这个原因**。
+
+---
+
+## 第 4 章 自测
+
+### 一、选择题
+
+**1.** 空气填充同轴线为获得**最大功率容量**，内外导体半径比 $b/a$ 应取（　　）。
+
+(A) $1.65$
+(B) $2.30$
+(C) $3.59$
+(D) $1.00$
+
+**2.** 同轴线中传输的主模是（　　）。
+
+(A) $TE_{11}$
+(B) $TM_{01}$
+(C) $TEM$
+(D) $TE_{10}$
+
+**3.** 微带线的有效介电常数 $\varepsilon_e$ 满足（　　）。
+
+(A) $\varepsilon_e=\varepsilon_r$
+(B) $\varepsilon_e=1$
+(C) $1<\varepsilon_e<\varepsilon_r$
+(D) $\varepsilon_e>\varepsilon_r$
+
+**4.** 对同一介质基片，微带线导带宽度 $w$ 增大时，其特性阻抗 $Z_0$ 与有效介电常数 $\varepsilon_e$ 分别（　　）。
+
+(A) $Z_0$ 减小，$\varepsilon_e$ 增大
+(B) $Z_0$ 增大，$\varepsilon_e$ 减小
+(C) $Z_0$ 与 $\varepsilon_e$ 都增大
+(D) $Z_0$ 与 $\varepsilon_e$ 都减小
+
+### 二、填空题
+
+**5.** 同轴线的特性阻抗 $Z_0=$________（用 $a$、$b$、$\varepsilon_r$ 表示）。当 $b/a=$________时具有最大功率容量（此时 $Z_0\approx$________$\Omega$）；当 $b/a=$________时具有最小衰减（此时 $Z_0\approx$________$\Omega$）；工程上最常用的 $b/a\approx2.30$ 对应 $Z_0\approx$________$\Omega$。
+
+**6.** 微带线中的"准 TEM 波"是指________。有效介电常数 $\varepsilon_e$ 的物理意义是________。当 $w/h\to\infty$ 时 $\varepsilon_e\to$________；当 $w/h\to0$ 时 $\varepsilon_e\to$________。
+
+**7.** 同轴线中第一个高次模是________模，其截止波长近似为________（用 $a$、$b$ 表示）。因此同轴线的最高工作频率受________限制。
+
+### 三、判断题
+
+**8.** 同轴线的特性阻抗与频率无关，因此同轴线可以在任意高的频率上以纯 TEM 模传输。（　　）
+
+**9.** 带状线是双导体结构，可以传输严格的 TEM 波，且其特性阻抗随 $w/b$ 增大而减小。（　　）
+
+**10.** 耦合微带线的偶模阻抗 $Z_{0e}$ 大于奇模阻抗 $Z_{0o}$。（　　）
+
+### 四、计算题
+
+**11.** 一同轴线填充 $\varepsilon_r=2.25$ 的介质，内导体半径 $a=0.5\ \mathrm{mm}$。求：(1) 当要求 $Z_0=50\ \Omega$ 时外导体的内半径 $b$；(2) 该同轴线 $TE_{11}$ 高次模的截止频率；(3) 判断 $f=10\ \mathrm{GHz}$ 时能否只传输 TEM 模；(4) 若要提高最高工作频率，应如何改变尺寸。
+
+**12.** 一微带线的介质基片 $\varepsilon_r=9.6$、厚度 $h=0.8\ \mathrm{mm}$，导带宽度 $w=0.6\ \mathrm{mm}$。用 Hammerstad 公式求：(1) 有效介电常数 $\varepsilon_e$；(2) 特性阻抗 $Z_0$；(3) 校核最高工作频率为 $10\ \mathrm{GHz}$ 时基片厚度是否满足抑制表面波的条件。
+
+### 五、简答题
+
+**13.** 试从结构形式、传输模式、特性阻抗范围、损耗特性、集成难易程度与适用频段六个方面，比较同轴线、带状线与微带线。
+
+### 参考答案与详解
+
+#### 一、选择题
+
+**1. A。** 三个"最佳 $b/a$"要分清：
+
+| 优化目标 | $b/a$ | 对应 $Z_0$ |
+|---|---|---|
+| 最大功率容量 | $1.65$ | 约 $30\ \Omega$ |
+| 最小衰减 | $3.59$ | 约 $76.7\ \Omega$ |
+| 综合折中（工程常用） | $2.30$ | 约 $50\ \Omega$ |
+
+(B) $2.30$ 是"兼顾功率与衰减、并与 $50\ \Omega$ 系统匹配"的工程折中值；(C) $3.59$ 是最小衰减；(D) $b/a=1$ 意味着内外导体相碰，退化不存在。**知识点**：同轴线的最佳 $b/a$（第 4 章）。
+
+**2. C。** 同轴线由内、外两个导体构成，横截面上有两条互不相连的边界，可以支持 TEM 波；TEM 波的截止频率为零，故它是同轴线的**主模**。$TE_{11}$ 是同轴线的**第一个高次模**（不是主模），$TE_{10}$ 是矩形波导的主模而与同轴线无关，$TM_{01}$ 是同轴线的更高次模。**知识点**：同轴线的模式（第 4 章）。
+
+**3. C。** 微带线的场一部分在空气中（$\varepsilon=1$）、一部分在介质基片中（$\varepsilon=\varepsilon_r$），等效介电常数介于两者之间，故 $1<\varepsilon_e<\varepsilon_r$。极限情况下：$w/h\to\infty$ 时场几乎全部集中在基片内，$\varepsilon_e\to\varepsilon_r$；$w/h\to0$ 时场约一半在空气、一半在基片，$\varepsilon_e\to(\varepsilon_r+1)/2$。**知识点**：$\varepsilon_e$（第 4 章）。
+
+**4. A。** 导带越宽，分布电容 $C_1$ 越大，由 $Z_0=1/(v_pC_1)$（或 $Z_0\propto\sqrt{\varepsilon_e}/C$ 的定性关系）可知 $Z_0$ **减小**；同时导带越宽，场越向基片集中，参与介质的部分增多，$\varepsilon_e$ **增大**。(B) 把两个趋势都记反了——这是最典型的错误；(C)(D) 只对一半。**知识点**：微带线 $Z_0$ 与 $\varepsilon_e$ 的变化趋势（第 4 章）。
+
+#### 二、填空题
+
+**5.** 依次为：
+$$Z_0=\frac{60}{\sqrt{\varepsilon_r}}\ln\frac{b}{a};\qquad 1.65\ (Z_0\approx30\ \Omega);\qquad 3.59\ (Z_0\approx76.7\ \Omega);\qquad 2.30\ (Z_0\approx50\ \Omega)$$
+验算：$Z_0=60\ln1.65=60\times0.5008=30.0\ \Omega$；$Z_0=60\ln3.59=60\times1.2782=76.7\ \Omega$；$Z_0=60\ln2.30=60\times0.8329=50.0\ \Omega$（均按空气填充 $\varepsilon_r=1$）。
+
+**6.** 依次为：
+- "准 TEM 波"是指：由于微带线的介质基片上方是空气、下方是介质，**空气—介质分界面使严格的 TEM 解不存在**（TEM 要求横截面内介质均匀），场除横向分量外还有少量纵向分量；但在频率不太高时纵向分量很小，可近似当作 TEM 波处理，故称"准 TEM 波"。
+- $\varepsilon_e$ 的物理意义：**用一个均匀介质（相对介电常数为 $\varepsilon_e$）完全填充该微带线的横截面，使其相速与原微带线相同时所对应的介电常数**。等价定义 $\varepsilon_e=C/C_0$，其中 $C$ 是考虑介质后的分布电容、$C_0$ 是把介质换成空气时的分布电容。
+- $w/h\to\infty$ 时 $\varepsilon_e\to\varepsilon_r$；$w/h\to0$ 时 $\varepsilon_e\to\dfrac{\varepsilon_r+1}{2}$。
+
+**7.** 依次为：$TE_{11}$；$\lambda_c\approx\pi(a+b)$；**为避免激发 $TE_{11}$ 高次模，工作波长必须大于该截止波长**，即
+$$f_{\max}<\frac{c}{\pi(a+b)\sqrt{\varepsilon_r}}$$
+（更严格地应考虑 $TM_{01}$ 等模式，工程上通常再留 $5\%\sim10\%$ 的余量。）
+
+#### 三、判断题
+
+**8. ×。** 前半句正确：TEM 模下同轴线的 $Z_0$ 确实与频率无关。但后半句错误：**同轴线只能在 $TE_{11}$ 模截止频率以下以纯 TEM 模传输**。频率升高后会激励起 $TE_{11}$、$TM_{01}$ 等高次模，线上变成 TEM 与高次模的混合波，$Z_0$ 不再唯一、损耗与驻波急剧恶化。因此同轴线的最高工作频率由 $\lambda_c\approx\pi(a+b)$ 决定。
+
+**9. √。** 带状线由"上接地板—导带—下接地板"构成，是双导体结构；介质（通常完全填充）均匀，故可以传输**严格的 TEM 波**。导带越宽（$w/b$ 越大），分布电容越大，$Z_0$ 越小，与微带线的定性趋势一致。此外带状线全封闭、无辐射，Q 值高于微带线，但需要多层工艺、不便调测。
+
+**10. √。** 奇模激励时两导带上的电流方向相反，两导带之间电位为零（等效"电壁"），导带对地的电容中包含导带间的互电容，**等效电容大**，故 $Z_{0o}$ **小**；偶模激励时两导带电流同向，两导带之间为"磁壁"，互电容不参与对地充电，**等效电容小**，故 $Z_{0e}$ **大**。耦合系数定义为
+$$k=\frac{Z_{0e}-Z_{0o}}{Z_{0e}+Z_{0o}}$$
+另外，$Z_0=\sqrt{Z_{0e}Z_{0o}}$ 是耦合线在弱耦合极限下退化为单根线的特性阻抗。
+
+#### 四、计算题
+
+> **【例题 4-11】**
+> **解：**
+> **(1) 由 $Z_0=50\ \Omega$ 求 $b$**
+> $$Z_0=\frac{60}{\sqrt{\varepsilon_r}}\ln\frac{b}{a}=\frac{60}{1.5}\ln\frac{b}{a}=40\ln\frac{b}{a}=50$$
+> $$\ln\frac{b}{a}=\frac{50}{40}=1.25\ \Longrightarrow\ \frac{b}{a}=e^{1.25}=3.490$$
+> $$b=3.490\,a=3.490\times0.5=1.745\ \mathrm{mm}$$
+> **(2) $TE_{11}$ 模的截止频率**
+> $$\lambda_{c,TE11}\approx\pi(a+b)=\pi(0.5+1.745)=3.1416\times2.245=7.053\ \mathrm{mm}$$
+> 介质中 TEM 波的相速
+> $$v_p=\frac{c}{\sqrt{\varepsilon_r}}=\frac{3\times10^{8}}{1.5}=2.0\times10^{8}\ \mathrm{m/s}$$
+> $$f_{c,TE11}=\frac{v_p}{\lambda_{c,TE11}}=\frac{2.0\times10^{8}}{7.053\times10^{-3}}=2.836\times10^{10}\ \mathrm{Hz}\approx28.4\ \mathrm{GHz}$$
+> **(3) $f=10\ \mathrm{GHz}$ 时的判断**
+> $$10\ \mathrm{GHz}<28.4\ \mathrm{GHz}\ \checkmark$$
+> 工作频率远低于 $TE_{11}$ 的截止频率，**可以只传输 TEM 模**。
+> **(4) 如何提高最高工作频率**
+> $Z_0=50\ \Omega$ 这一条件把 $b/a$ 锁定为 $3.49$，因此只能**成比例缩小 $a$ 与 $b$**：
+> $$\lambda_{c,TE11}\approx\pi(a+b)=\pi a(1+3.49)=14.11a$$
+> 可见 $\lambda_{c,TE11}\propto a$，缩小 $a$ 就提高 $f_{c,TE11}$。例如把 $a$ 减半为 $0.25\ \mathrm{mm}$，则 $b=0.872\ \mathrm{mm}$，$\lambda_{c,TE11}$ 减半、$f_{c,TE11}$ 加倍至约 $56.7\ \mathrm{GHz}$。
+> **答：** （1）$b=1.745\ \mathrm{mm}$；（2）$f_{c,TE11}\approx28.4\ \mathrm{GHz}$；（3）可以只传 TEM 模；（4）保持 $b/a$ 不变而成比例缩小截面尺寸。
+> **讨论：**
+> ① **$Z_0$（即 $b/a$）与最高工作频率是两个互相独立的指标**：前者决定比值，后者决定绝对尺寸。设计时先由 $Z_0$ 定比值，再由最高频率定绝对尺寸。
+> ② 缩小尺寸的代价：**功率容量按 $a^{2}$ 下降、导体损耗按 $1/a$ 上升、加工公差要求更严**。这就是毫米波同轴线又细又贵、且常被波导或微带取代的原因。
+> ③ 若介质不是空气，$f_{c,TE11}$ 还要乘 $1/\sqrt{\varepsilon_r}$（本例已计入）。实际设计中通常再留 $5\%\sim10\%$ 余量，取 $f_{\max}\approx0.9f_{c,TE11}\approx25.5\ \mathrm{GHz}$。
+
+> **【例题 4-12】**
+> **解：**
+> 判定分支：$\dfrac{w}{h}=\dfrac{0.6}{0.8}=0.75\le1$，故用 Hammerstad 公式的 $w/h\le1$ 一支。
+> **(1) 有效介电常数**
+> $$\varepsilon_e=\frac{\varepsilon_r+1}{2}+\frac{\varepsilon_r-1}{2}\left[\left(1+12\frac{h}{w}\right)^{-1/2}+0.04\left(1-\frac{w}{h}\right)^{2}\right]$$
+> 逐项计算：
+> $$1+12\frac{h}{w}=1+12\times\frac{0.8}{0.6}=1+16=17,\qquad 17^{-1/2}=0.2425$$
+> $$0.04\left(1-0.75\right)^{2}=0.04\times0.0625=0.0025$$
+> $$\varepsilon_e=\frac{9.6+1}{2}+\frac{9.6-1}{2}\left(0.2425+0.0025\right)=5.3+4.3\times0.2450=5.3+1.054=6.354$$
+> 检验：$1<6.354<9.6$ ✓ 符合 $\varepsilon_e$ 的取值范围。
+> **(2) 特性阻抗**
+> $$Z_0=\frac{60}{\sqrt{\varepsilon_e}}\ln\left(\frac{8h}{w}+\frac{w}{4h}\right)$$
+> $$\frac{8h}{w}=\frac{8\times0.8}{0.6}=10.667,\qquad \frac{w}{4h}=\frac{0.6}{4\times0.8}=0.1875$$
+> $$\frac{8h}{w}+\frac{w}{4h}=10.667+0.1875=10.854,\qquad \ln10.854=2.3846$$
+> $$\sqrt{\varepsilon_e}=\sqrt{6.354}=2.5207$$
+> $$Z_0=\frac{60}{2.5207}\times2.3846=23.803\times2.3846=56.76\ \Omega$$
+> **(3) 最高工作频率 $10\ \mathrm{GHz}$ 时的尺寸校核**
+> $$\lambda_{\min}=\frac{c}{f_{\max}}=\frac{3\times10^{8}}{10\times10^{9}}=30.0\ \mathrm{mm}$$
+> TM$_0$ 表面波条件：
+> $$2h\sqrt{\varepsilon_r}=2\times0.8\times\sqrt{9.6}=1.6\times3.0984=4.96\ \mathrm{mm}<30.0\ \mathrm{mm}\ \checkmark$$
+> TE$_1$ 表面波条件：
+> $$4h\sqrt{\varepsilon_r-1}=4\times0.8\times\sqrt{8.6}=3.2\times2.9326=9.38\ \mathrm{mm}<30.0\ \mathrm{mm}\ \checkmark$$
+> 两个条件都满足，基片厚度 $h=0.8\ \mathrm{mm}$ 在 $10\ \mathrm{GHz}$ 下**可用**。
+> **答：** （1）$\varepsilon_e=6.35$；（2）$Z_0=56.8\ \Omega$；（3）满足抑制表面波的条件（$4.96\ \mathrm{mm}$ 与 $9.38\ \mathrm{mm}$ 均小于 $30.0\ \mathrm{mm}$）。
+> **讨论：**
+> ① **$Z_0$ 与 $w$ 的单调关系**：$w$ 增大 → $\varepsilon_e$ 增大（分母变大）、$\ln(\cdot)$ 中的 $8h/w$ 减小（对数变小），两个因素都使 $Z_0$ **减小**。若设计要求 $50\ \Omega$，应把 $w$ 略微加宽（约 $0.68\ \mathrm{mm}$ 量级）。
+> ② **$h$ 的上限由表面波决定，下限由加工精度与导体损耗决定**：$h$ 太小则导带过细（$50\ \Omega$ 时 $w$ 也随之变小），蚀刻公差占比过大、导体损耗上升；$h$ 太大则易激发表面波与辐射。工程上 $h$ 通常取 $0.2\sim1.0\ \mathrm{mm}$，在高频段取更小值。
+> ③ 计算 $\varepsilon_e$ 时务必先判断 $w/h$ 属于哪一支，**两支的修正项不同**（$w/h\le1$ 有 $0.04(1-w/h)^{2}$ 修正项，$w/h>1$ 没有），这是最容易出错的一步。
+
+#### 五、简答题
+
+**13. 答案要点：**
+
+| 比较项 | 同轴线 | 带状线 | 微带线 |
+|---|---|---|---|
+| **结构形式** | 内导体圆柱 + 外导体圆管（同轴），介质为空气或填充介质 | 导带夹在上下两块接地板之间的介质中，全封闭平面结构 | 导带在介质基片上表面，下表面为接地板，上方是空气，属开放式结构 |
+| **传输模式** | 主模 **TEM**（严格）；第一个高次模 $TE_{11}$ | 主模 **TEM**（严格，因介质均匀） | **准 TEM**（严格 TEM 解不存在，有少量纵向分量） |
+| **特征阻抗范围** | 约 $10\sim100\ \Omega$（常用 $50\ \Omega$／$75\ \Omega$） | 约 $20\sim120\ \Omega$（常用 $50\ \Omega$） | 约 $20\sim120\ \Omega$（常用 $50\ \Omega$） |
+| **损耗特性** | 导体损耗与介质损耗都小；同尺寸下 Q 值最高 | 损耗比微带小（无辐射、无表面波），Q 值居中 | 损耗最大：除导体与介质损耗外还有辐射损耗与表面波损耗 |
+| **集成难易** | 难平面集成，需要接头与机械加工，体积与重量大 | 可用多层／LTCC 工艺集成，但**不便调测**（元件埋在介质中） | **最易集成**：单面工艺、便于贴装与调测、成本最低 |
+| **适用频段** | 直流至约 $40\ \mathrm{GHz}$（受 $TE_{11}$ 限制；小尺寸可达更高） | 约 $1\sim20\ \mathrm{GHz}$ 的平面电路 | 约 $1\sim100\ \mathrm{GHz}$ 的混合微波集成电路 |
+
+**要点归纳（可在答题时写成一段话）：**
+工程选型的三条经验是：**要高功率、低损耗、长距离 → 选同轴线（或波导）**；**要平面集成、低辐射、高 Q → 选带状线**；**要低成本、易加工、易与有源器件连接 → 选微带线**。三种线在系统里常常混用：同轴线做机箱之间的连接，微带线做板级电路，带状线（或基片集成波导）做需要屏蔽的滤波与耦合网络。
+
+---
+
+## 第 5 章 自测
+
+### 一、选择题
+
+**1.** 二端口网络 $[Z]$ 参数中，$Z_{21}$ 的测量条件是（　　）。
+
+(A) 端口 2 开路（$I_2=0$），测量 $U_2/I_1$
+(B) 端口 2 短路（$U_2=0$），测量 $U_2/I_1$
+(C) 端口 1 开路（$I_1=0$），测量 $U_2/I_1$
+(D) 端口 1 短路（$U_1=0$），测量 $U_2/I_1$
+
+**2.** 关于 $[A]$（转移）矩阵，下列说法**错误**的是（　　）。
+
+(A) 定义中使用 $-I_2$ 而不是 $I_2$，即 $\begin{bmatrix}U_1\\I_1\end{bmatrix}=[A]\begin{bmatrix}U_2\\-I_2\end{bmatrix}$
+(B) 互易网络满足 $AD-BC=1$
+(C) 无耗网络的 $A$、$D$ 为实数，$B$、$C$ 为纯虚数
+(D) 结构对称网络满足 $B=C$
+
+**3.** 无耗二端口网络的散射矩阵满足（　　）。
+
+(A) $[S]^{T}=[S]$
+(B) $[S]^{+}[S]=[E]$
+(C) $[S]^{-1}=[S]^{T}$
+(D) $[S]=[S]^{*}$
+
+**4.** 互易二端口网络的 $[S]$ 矩阵满足（　　）。
+
+(A) $S_{12}=S_{21}$
+(B) $S_{12}=-S_{21}$
+(C) $S_{11}=S_{22}$
+(D) $S_{12}=S_{21}^{*}$
+
+**5.** 某互易无耗二端口的 $S_{11}=0.6\angle60^{\circ}$，则 $|S_{21}|$ 等于（　　）。
+
+(A) $0.4$
+(B) $0.8$
+(C) $0.6$
+(D) $1.0$
+
+### 二、填空题
+
+**6.** 二端口网络 $[Z]$ 与 $[Y]$ 矩阵的定义式分别为 $\begin{bmatrix}U_1\\U_2\end{bmatrix}=$________ 与 $\begin{bmatrix}I_1\\I_2\end{bmatrix}=$________；两者互为________矩阵，即 $[Z][Y]=$________。
+
+**7.** 设两端口的特性阻抗均为 $Z_0$，则 $[A]\to[S]$ 的转换为：$S_{11}=$________，$S_{21}=$________。
+
+**8.** 无耗网络的 $[S]$ 矩阵满足________，称为________矩阵；此时由幺正性可得 $\sum_{k}|S_{ki}|^{2}=$________。互易网络的 $[S]$ 矩阵满足________。
+
+### 三、判断题
+
+**9.** 端口参考面向外移动电角度 $\theta$ 时，$S_{11}$ 的相位改变 $-2\theta$，而 $S_{21}$ 的相位改变 $-\theta$。（　　）
+
+**10.** 无耗二端口网络满足 $|S_{11}|+|S_{12}|\le1$。（　　）
+
+**11.** "网络互易"与"网络结构对称"是两个互相独立的条件。（　　）
+
+**12.** 端口参考面的移动会同时改变 $S$ 参数的模值与相位。（　　）
+
+### 四、计算题
+
+**13.** 已知某二端口网络的归一化阻抗矩阵为 $[z]=\begin{bmatrix}0.5&0.2\\0.2&0.5\end{bmatrix}$，端口特性阻抗 $Z_0=50\ \Omega$。求：(1) 非归一化 $[Z]$；(2) 判断该网络是否互易、是否对称；(3) 求 $[S]$；(4) 求非归一化 $[A]$，并验证 $AD-BC=1$。
+
+**14.** 某二端口网络的散射矩阵为（以 $Z_0=50\ \Omega$ 归一化）
+$$[S]=\begin{bmatrix}0.2\angle0^{\circ}&0.9\angle-90^{\circ}\\0.9\angle-90^{\circ}&0.2\angle0^{\circ}\end{bmatrix}$$
+求：(1) 判断该网络是否互易、是否无耗；(2) 输出端接匹配负载时输入端的驻波比；(3) 把端口 1 的参考面向外移动 $\lambda/8$ 后新的 $S'_{11}$；(4) 若该网络是有耗的，计算耗散功率占输入功率的比例。
+
+**15.** 两个二端口网络级联：$[A_1]=\begin{bmatrix}1&j50\\0&1\end{bmatrix}$（串联阻抗 $j50\ \Omega$），$[A_2]=\begin{bmatrix}1&0\\j0.02&1\end{bmatrix}$（并联导纳 $j0.02\ \mathrm{S}$），两端口的特性阻抗均为 $Z_0=50\ \Omega$。求：(1) 级联后的 $[A]$；(2) $S_{11}$ 与 $S_{21}$；(3) 验证该网络的互易性与无耗性。
+
+### 五、证明题
+
+**16.** 证明：无耗二端口网络的散射矩阵满足 $[S]^{+}[S]=[E]$。
+
+**17.** 证明：互易无耗二端口网络满足 $|S_{11}|=|S_{22}|$。
+
+### 参考答案与详解
+
+#### 一、选择题
+
+**1. A。** $[Z]$ 的定义为 $\begin{bmatrix}U_1\\U_2\end{bmatrix}=\begin{bmatrix}Z_{11}&Z_{12}\\Z_{21}&Z_{22}\end{bmatrix}\begin{bmatrix}I_1\\I_2\end{bmatrix}$，故
+$$Z_{21}=\left.\frac{U_2}{I_1}\right|_{I_2=0}$$
+条件是**端口 2 开路**（$I_2=0$）。(B) 中"端口 2 短路"对应的是 $[Y]$ 参数的测量条件（$Y_{21}=I_2/U_1\big|_{U_2=0}$）；(C) 把激励端弄反了；(D) 与 $[Z]$ 的定义不符。**知识点**：$[Z]$ 的定义与测量条件（第 5 章）。
+
+**2. D。** 结构对称的条件是 $A=D$（因为两个端口互换后转移关系不变，归一化后有 $a_e=d_e$）。**$B=C$ 不是对称条件**。(A) ✓，这是 $[A]$ 的定义中最容易被忽略的一点，正是这个 $-I_2$ 使级联变成简单的矩阵相乘；(B) ✓，互易（无源、各向同性）时成立；(C) ✓，无耗时 T 型等效电路的三个臂全为纯电抗，可推出 $A$、$D$ 实、$B$、$C$ 纯虚。**知识点**：$[A]$ 矩阵的性质（第 5 章）。
+
+**3. B。** 无耗即不吸收功率，各端口流入的净功率之和为零，对任意入射波 $\mathbf{a}$ 成立，由此推出 $[S]^{+}[S]=[E]$，即 $[S]$ 为**幺正矩阵**（见例题 5-16）。(A) 是互易条件；(C) 对幺正矩阵确实成立（$[S]^{-1}=[S]^{+}$），但它把共轭转置写成了普通转置，只有实矩阵才等价；(D) 是无耗非互易网络**不**满足的条件。**知识点**：无耗 ↔ 幺正（第 5 章、专题 7）。
+
+**4. A。** 互易性（媒质各向同性、无受控源）给出 $S_{ij}=S_{ji}$，即 $[S]=[S]^{T}$。(B) 是某些非互易器件的特殊形态，不是互易条件；(C) 是对称（结构）条件，与互易无关；(D) 是无耗条件的组成部分，不是互易条件。**知识点**：互易 ↔ 转置不变（第 5 章）。
+
+**5. B。** 无耗 ⇒ $[S]^{+}[S]=[E]$，取第一列的对角元得
+$$|S_{11}|^{2}+|S_{21}|^{2}=1\ \Longrightarrow\ |S_{21}|=\sqrt{1-0.6^{2}}=\sqrt{0.64}=0.8$$
+(A) 误用 $1-|S_{11}|=0.4$；(C) 误认为 $|S_{21}|=|S_{11}|$；(D) 忽略了回波损耗。**知识点**：幺正性的能量守恒含义（第 5 章）。
+
+#### 二、填空题
+
+**6.** 依次为：$[Z]\begin{bmatrix}I_1\\I_2\end{bmatrix}$；$[Y]\begin{bmatrix}U_1\\U_2\end{bmatrix}$；**逆**；$[E]$（单位矩阵）。
+即
+$$\begin{bmatrix}U_1\\U_2\end{bmatrix}=\begin{bmatrix}Z_{11}&Z_{12}\\Z_{21}&Z_{22}\end{bmatrix}\begin{bmatrix}I_1\\I_2\end{bmatrix},\qquad
+\begin{bmatrix}I_1\\I_2\end{bmatrix}=\begin{bmatrix}Y_{11}&Y_{12}\\Y_{21}&Y_{22}\end{bmatrix}\begin{bmatrix}U_1\\U_2\end{bmatrix}$$
+且 $[Y]=[Z]^{-1}$、$[Z][Y]=[E]$。
+
+**7.** 依次为：
+$$S_{11}=\frac{A+B/Z_0-CZ_0-D}{A+B/Z_0+CZ_0+D},\qquad
+S_{21}=\frac{2}{A+B/Z_0+CZ_0+D}$$
+若用归一化转移矩阵 $[\bar A]$（$\bar A=a_e=A$、$\bar B=b_e=B/Z_0$、$\bar C=c_e=CZ_0$、$\bar D=d_e=D$），公式可写成更整齐的形式
+$$S_{11}=\frac{\bar A+\bar B-\bar C-\bar D}{\bar A+\bar B+\bar C+\bar D},\qquad
+S_{21}=\frac{2}{\bar A+\bar B+\bar C+\bar D}$$
+其余元素为 $S_{12}=\dfrac{2(AD-BC)}{\bar A+\bar B+\bar C+\bar D}$、$S_{22}=\dfrac{-\bar A+\bar B-\bar C+\bar D}{\bar A+\bar B+\bar C+\bar D}$。
+**校核**：串联阻抗 $Z$ 的 $[A]=\begin{bmatrix}1&Z\\0&1\end{bmatrix}$，代入得 $S_{11}=\dfrac{Z/Z_0}{2+Z/Z_0}=\dfrac{Z}{2Z_0+Z}$ ✓ 与教科书一致。
+
+**8.** 依次为：$[S]^{+}[S]=[E]$；**幺正**（酉，unitary）；$1$；$[S]=[S]^{T}$（即 $S_{ij}=S_{ji}$）。
+
+#### 三、判断题
+
+**9. √。** 参考面从端口向外移动电角度 $\theta$，各元素的相位修正为
+$$S'_{ii}=S_{ii}e^{-j2\theta_i},\qquad S'_{ij}=S_{ij}e^{-j(\theta_i+\theta_j)}$$
+故 $S_{11}$ 的相位改变 $-2\theta$，而 $S_{21}$ 涉及端口 1 与端口 2 各一次，相位改变 $-\theta$。
+
+**10. ×。** 正确的关系是**模的平方和**不大于 1，即
+$$|S_{11}|^{2}+|S_{12}|^{2}\le1$$
+（无耗时取等号）。写成模之和 $|S_{11}|+|S_{12}|\le1$ 是错的：例如 $|S_{11}|=|S_{12}|=0.7$ 时平方和为 $0.98\le1$ 成立，但模之和为 $1.4>1$。**这是把"能量守恒"误写成"幅度守恒"的典型错误。**
+
+**11. √。** 互易说的是"激励与响应可以互换"，来源是媒质的各向同性，数学形态是 $[S]=[S]^{T}$；结构对称说的是"两个端口看进去一样"，来源是几何或电路的镜像／旋转对称，数学形态是 $S_{11}=S_{22}$。存在**互易但不对称**的网络（例如一段渐变线），也存在**对称但非互易**的网络（含铁氧体、两端口反射相同但传输方向性不同）。
+
+**12. ×。** 参考面移动只改变 $S$ 参数的**相位**，不改变其**模值**（因为 $|e^{-j(\theta_i+\theta_j)}|=1$）。这一条非常重要：**驻波比、$|S_{21}|$（插入损耗）、隔离度等幅度型指标与参考面选取无关**，而 $S_{11}$ 与 $S_{21}$ 的相位差、以及相位型指标（如群时延）则与参考面密切相关。这也是"相位测量必须标定参考面"的原因。
+
+#### 四、计算题
+
+> **【例题 5-13】**
+> **解：**
+> **(1) 非归一化 $[Z]$**
+> $$[Z]=Z_0[z]=50\times\begin{bmatrix}0.5&0.2\\0.2&0.5\end{bmatrix}=\begin{bmatrix}25&10\\10&25\end{bmatrix}\ \Omega$$
+> **(2) 互易性与对称性**
+> - 互易判据 $Z_{12}=Z_{21}$：$10=10$ ✓ **互易**；
+> - 对称判据 $Z_{11}=Z_{22}$：$25=25$ ✓ **结构对称**。
+>
+> **(3) 求 $[S]$**
+> $$[z]+[E]=\begin{bmatrix}1.5&0.2\\0.2&1.5\end{bmatrix},\qquad
+> [z]-[E]=\begin{bmatrix}-0.5&0.2\\0.2&-0.5\end{bmatrix}$$
+> $$\Delta=\det\left([z]+[E]\right)=1.5\times1.5-0.2\times0.2=2.25-0.04=2.21$$
+> $$\left([z]+[E]\right)^{-1}=\frac{1}{2.21}\begin{bmatrix}1.5&-0.2\\-0.2&1.5\end{bmatrix}$$
+> $$[S]=\frac{1}{2.21}\begin{bmatrix}1.5&-0.2\\-0.2&1.5\end{bmatrix}\begin{bmatrix}-0.5&0.2\\0.2&-0.5\end{bmatrix}$$
+> 逐元素计算：
+> $$S_{11}=\frac{1.5\times(-0.5)+(-0.2)\times0.2}{2.21}=\frac{-0.75-0.04}{2.21}=\frac{-0.79}{2.21}=-0.3575$$
+> $$S_{12}=\frac{1.5\times0.2+(-0.2)\times(-0.5)}{2.21}=\frac{0.30+0.10}{2.21}=\frac{0.40}{2.21}=0.1810$$
+> $$S_{21}=\frac{(-0.2)\times(-0.5)+1.5\times0.2}{2.21}=0.1810,\qquad
+> S_{22}=\frac{(-0.2)\times0.2+1.5\times(-0.5)}{2.21}=-0.3575$$
+> $$[S]=\begin{bmatrix}-0.3575&0.1810\\0.1810&-0.3575\end{bmatrix}$$
+> **(4) 非归一化 $[A]$**
+> 由 $[Z]\to[A]$ 的转换（$A=Z_{11}/Z_{21}$、$B=\Delta_Z/Z_{21}$、$C=1/Z_{21}$、$D=Z_{22}/Z_{21}$，$\Delta_Z=Z_{11}Z_{22}-Z_{12}Z_{21}$）：
+> $$\Delta_Z=25\times25-10\times10=625-100=525$$
+> $$A=\frac{25}{10}=2.5,\qquad B=\frac{525}{10}=52.5,\qquad C=\frac{1}{10}=0.1,\qquad D=\frac{25}{10}=2.5$$
+> $$[A]=\begin{bmatrix}2.5&52.5\\0.1&2.5\end{bmatrix}$$
+> 验证：
+> $$AD-BC=2.5\times2.5-52.5\times0.1=6.25-5.25=1\ \checkmark$$
+> **答：** （1）$[Z]=\begin{bmatrix}25&10\\10&25\end{bmatrix}\ \Omega$；（2）既互易又对称；（3）$S_{11}=S_{22}=-0.358$、$S_{12}=S_{21}=0.181$；（4）$A=D=2.5$、$B=52.5$、$C=0.1$，$AD-BC=1$ ✓
+> **讨论：**
+> ① **三条判据的"三看"**：互易看非对角（$Z_{12}=Z_{21}$）、对称看对角（$Z_{11}=Z_{22}$）、无耗看整体（$[Z]^+=-[Z]$ 或 $[S]^+[S]=[E]$）。本例中 $|S_{11}|^{2}+|S_{21}|^{2}=0.1278+0.0328=0.1606\ne1$，故网络**有耗**（一致于 $[z]$ 为实矩阵而非纯虚矩阵）。
+> ② 若把实矩阵的 $[z]$ 改成纯虚的（例如 $[z]=\begin{bmatrix}j0.5&j0.2\\j0.2&j0.5\end{bmatrix}$），网络就变成无耗，此时必有 $|S_{11}|^{2}+|S_{21}|^{2}=1$、且 $|S_{11}|=|S_{22}|$。
+> ③ 注意本例中 $S_{11}=S_{22}$ 恰好成立，这**不是巧合**：因为 $z_{11}=z_{22}$，由专题二的结论必有 $S_{11}=S_{22}$。反过来，如果题目只给"$S_{11}=S_{22}$"而要求的 $z_{11}$、$z_{22}$ 未知，则由母公式 $S_{11}-S_{22}=\dfrac{2(z_{11}-z_{22})}{\Delta}$（$\Delta$ 有限非零）可推出 $z_{11}=z_{22}$。
+
+> **【例题 5-14】**
+> **解：**
+> **(1) 互易性与无耗性判别**
+> **互易**：$S_{12}=S_{21}=0.9\angle-90^{\circ}$ ✓ **互易**（$[S]=[S]^{T}$）。
+> **无耗**：检验幺正性。由于 $[S]$ 对称，$[S]^{+}=[S]^{*}$，故
+> $$\left([S]^{+}[S]\right)_{11}=S_{11}^{*}S_{11}+S_{21}^{*}S_{21}=|S_{11}|^{2}+|S_{21}|^{2}=0.2^{2}+0.9^{2}=0.04+0.81=0.85$$
+> 幺正性要求该元素等于 1，而 $0.85\ne1$，故 $[S]^{+}[S]\ne[E]$，网络**有耗**。
+> 物理含义：输入功率中 $|S_{11}|^{2}=4\%$ 被反射、$|S_{21}|^{2}=81\%$ 被传输，其余 $15\%$ 被网络耗散。
+> **(2) 输入端的驻波比**
+> 输出端接匹配负载（$a_2=0$）时，输入端的反射系数就是 $S_{11}$，故
+> $$\rho=\frac{1+|S_{11}|}{1-|S_{11}|}=\frac{1+0.2}{1-0.2}=\frac{1.2}{0.8}=1.5$$
+> **(3) 端口 1 参考面向外移动 $\lambda/8$ 后的 $S'_{11}$**
+> $$\theta_1=\beta\cdot\frac{\lambda}{8}=\frac{2\pi}{\lambda}\cdot\frac{\lambda}{8}=\frac{\pi}{4}=45^{\circ}$$
+> $$S'_{11}=S_{11}e^{-j2\theta_1}=0.2\angle0^{\circ}\cdot e^{-j90^{\circ}}=0.2\angle-90^{\circ}$$
+> **(4) 耗散功率比例**
+> $$\frac{P_{\text{耗散}}}{P_{\text{输入}}}=1-\left(|S_{11}|^{2}+|S_{21}|^{2}\right)=1-0.85=0.15=15\%$$
+> **答：** （1）互易、有耗（$|S_{11}|^{2}+|S_{21}|^{2}=0.85$）；（2）$\rho=1.5$；（3）$S'_{11}=0.2\angle-90^{\circ}$；（4）$15\%$。
+> **讨论：**
+> ① **"有耗"的准确含义**：$[S]^{+}[S]\ne[E]$ 说明"输出的功率之和小于输入的功率之和"，差值即被吸收。对匹配的有耗二端口（衰减器），通常 $S_{11}=S_{22}=0$、$|S_{21}|=|S_{12}|<1$，此时 $|S_{21}|^{2}+|S_{11}|^{2}=|S_{21}|^{2}<1$，与幺正性的偏离直接给出衰减量。
+> ② 参考面移动只改相位、不改模值：$|S'_{11}|=|S_{11}|=0.2$，因此**驻波比不变**（$\rho$ 仍为 1.5）。这是"幅度指标与参考面无关"的最好例证。
+> ③ 反之，若题目给出的是 $S_{11}$ 与 $S_{21}$ 的**相位差**，那么参考面必须明确标定，否则数值没有意义。
+
+> **【例题 5-15】**
+> **解：**
+> **(1) 级联后的 $[A]$**
+> 级联网络的转移矩阵是各级转移矩阵按信号流向**依次相乘**：
+> $$[A]=[A_1][A_2]=\begin{bmatrix}1&j50\\0&1\end{bmatrix}\begin{bmatrix}1&0\\j0.02&1\end{bmatrix}$$
+> $$A=1\times1+j50\times j0.02=1+j^{2}\times1=1-1=0$$
+> $$B=1\times0+j50\times1=j50,\qquad C=0\times1+1\times j0.02=j0.02,\qquad D=0+1\times1=1$$
+> $$[A]=\begin{bmatrix}0&j50\\j0.02&1\end{bmatrix}$$
+> **(2) 求 $S_{11}$ 与 $S_{21}$**
+> 归一化元素：
+> $$\bar A=A=0,\qquad \bar B=\frac{B}{Z_0}=\frac{j50}{50}=j,\qquad
+> \bar C=CZ_0=j0.02\times50=j,\qquad \bar D=D=1$$
+> $$\Sigma=\bar A+\bar B+\bar C+\bar D=0+j+j+1=1+j2$$
+> $$S_{11}=\frac{\bar A+\bar B-\bar C-\bar D}{\Sigma}=\frac{0+j-j-1}{1+j2}=\frac{-1}{1+j2}$$
+> $$=-\frac{1-j2}{1^{2}+2^{2}}=-\frac{1-j2}{5}=-0.2+j0.4$$
+> $$S_{21}=\frac{2}{\Sigma}=\frac{2}{1+j2}=\frac{2(1-j2)}{5}=0.4-j0.8$$
+> **(3) 验证互易性与无耗性**
+> **互易性**：$AD-BC=0\times1-j50\times j0.02=0-j^{2}\times1=1$ ✓ 满足 $AD-BC=1$，网络**互易**。
+> **无耗性**：无耗要求 $A$、$D$ 为实数、$B$、$C$ 为纯虚数。$A=0$、$D=1$ 为实数 ✓；$B=j50$、$C=j0.02$ 为纯虚数 ✓，故网络**无耗**。
+> 用 $[S]$ 复核：
+> $$|S_{11}|^{2}+|S_{21}|^{2}=\left[(-0.2)^{2}+0.4^{2}\right]+\left[0.4^{2}+(-0.8)^{2}\right]=0.2+0.8=1.0\ \checkmark$$
+> **答：** （1）$[A]=\begin{bmatrix}0&j50\\j0.02&1\end{bmatrix}$；（2）$S_{11}=-0.2+j0.4=0.4472\angle116.6^{\circ}$，$S_{21}=0.4-j0.8=0.8944\angle-63.4^{\circ}$；（3）互易（$AD-BC=1$）且无耗（$|S_{11}|^{2}+|S_{21}|^{2}=1$）。
+> **讨论：**
+> ① **级联法的优势**：$[A]$ 的级联就是矩阵相乘，比用 $[S]$ 级联（需要 $[T]$ 矩阵及其反变换）方便得多。因此**多级网络的正向计算首选 $[A]$，测量与系统指标计算首选 $[S]$**，两者用标准公式互换。
+> ② 本例中 $A=0$ 是"串联 $j50$ 与并联 $j0.02$ 恰好互相抵消"的结果：$j50\times j0.02=j^{2}\times1=-1$。若两个电抗之一的数值稍有变化，$A\ne0$、$S_{11}$ 的模就会显著改变——这说明**电抗元件的容差对匹配的影响极其敏感**。
+> ③ 校验 $S_{11}$：由 $\rho=\dfrac{1+0.4472}{1-0.4472}=2.618$，与例题 2-12 的驻波比相同——这不是巧合，而是同一组"串联＋并联纯电抗"构成的二端口在两种方法下的必然一致。
+
+#### 五、证明题
+
+> **【例题 5-16】**
+> **证明：**
+> **第一步，写出功率守恒式。** 设端口 $i$ 的归一化入射波为 $a_i$、反射波为 $b_i$，归一化使 $|a_i|^{2}/2$ 与 $|b_i|^{2}/2$ 分别是该端口的入射功率与反射功率。记列矢量
+> $$\mathbf{a}=\begin{bmatrix}a_1\\a_2\end{bmatrix},\qquad \mathbf{b}=\begin{bmatrix}b_1\\b_2\end{bmatrix}$$
+> 网络无耗意味着**既不吸收也不产生功率**，因此流入各端口的净平均功率之和恒为零：
+> $$P=\frac{1}{2}\sum_{i=1}^{2}\left(|a_i|^{2}-|b_i|^{2}\right)=0$$
+> **第二步，写成矩阵形式。**
+> $$P=\frac{1}{2}\left(\mathbf{a}^{+}\mathbf{a}-\mathbf{b}^{+}\mathbf{b}\right)=0
+> \ \Longrightarrow\ \mathbf{a}^{+}\mathbf{a}=\mathbf{b}^{+}\mathbf{b}$$
+> **第三步，代入散射关系 $\mathbf{b}=[S]\mathbf{a}$。**
+> $$\mathbf{b}^{+}=\left([S]\mathbf{a}\right)^{+}=\mathbf{a}^{+}[S]^{+}$$
+> 代入得
+> $$\mathbf{a}^{+}\mathbf{a}=\mathbf{a}^{+}[S]^{+}[S]\mathbf{a}$$
+> $$\mathbf{a}^{+}\left([E]-[S]^{+}[S]\right)\mathbf{a}=0$$
+> **第四步，由 $\mathbf{a}$ 的任意性推出矩阵等式。** 上式对**任意**入射波列矢量 $\mathbf{a}$ 都成立（各端口的激励可以独立、任意地选取）。取 $\mathbf{a}=\mathbf{e}_m$（第 $m$ 个分量为 1、其余为 0 的单位矢量），得
+> $$\left([E]-[S]^{+}[S]\right)_{mm}=0\qquad(m=1,2)$$
+> 取 $\mathbf{a}=\mathbf{e}_m+\mathbf{e}_n$（$m\ne n$），利用已证的对角元为零，得
+> $$\left([E]-[S]^{+}[S]\right)_{mn}+\left([E]-[S]^{+}[S]\right)_{nm}=0$$
+> 再取 $\mathbf{a}=\mathbf{e}_m+j\mathbf{e}_n$，得
+> $$\left([E]-[S]^{+}[S]\right)_{mn}-\left([E]-[S]^{+}[S]\right)_{nm}=0$$
+> 两式联立给出 $\left([E]-[S]^{+}[S]\right)_{mn}=0$。因此矩阵的全部元素为零：
+> $$[E]-[S]^{+}[S]=[O]\ \Longrightarrow\ \boxed{[S]^{+}[S]=[E]}$$
+> 即 $[S]$ 为**幺正矩阵**。证毕。$\blacksquare$
+>
+> **推论：**
+> ① 由 $[S]^{+}[S]=[E]$ 得 $[S]^{+}=[S]^{-1}$，故 $[S][S]^{+}=[E]$ 也成立。
+> ② 逐元素展开 $\sum_{k}S_{ki}^{*}S_{kj}=\delta_{ij}$：
+> - $i=j$（对角元）给出
+> $$\sum_{k}|S_{ki}|^{2}=1$$
+> 即**每一列的模平方和为 1**，物理含义是"从端口 $i$ 入射的功率，全部从各端口出去，一点也没被吸收"；
+> - $i\ne j$（非对角元）给出
+> $$\sum_{k}S_{ki}^{*}S_{kj}=0$$
+> 即**不同列之间正交**。
+> ③ 对二端口取 $i=j=1$ 得 $|S_{11}|^{2}+|S_{21}|^{2}=1$——这就是"回波损耗与插入损耗互补"的定量表达：匹配越好，透射越多；全反射（$|S_{11}|=1$）必然全无透射（$|S_{21}|=0$）。
+> ④ 若网络有耗，则 $P<0$，相应变为 $[S]^{+}[S]\preceq[E]$（半正定差），此时 $\sum_k|S_{ki}|^{2}<1$，差值就是"被吸收的比例"。
+>
+> **讨论：** 本命题与专题七的 $[Z]^+=-[Z]$ 是**同一物理事实（无耗）在两种参数下的表现**。可以证明二者严格等价：由 $[S]=([z]+[E])^{-1}([z]-[E])$ 出发，正向可由 $[Z]^+=-[Z]$ 推出 $[S]^{+}[S]=[E]$，反向也可由幺正性推出反厄米性。
+
+> **【例题 5-17】**
+> **证明：**
+> **第一步，写出两条已知条件。** 设
+> - **无耗**：$[S]^{+}[S]=[E]$，逐元素展开为
+> $$\sum_{k=1}^{2}S_{ki}^{*}S_{kj}=\delta_{ij}\qquad(i,j=1,2)$$
+> - **互易**：$S_{12}=S_{21}$。
+>
+> **第二步，取出幺正性的两个对角元方程。** 取 $i=j=1$ 与 $i=j=2$：
+> $$|S_{11}|^{2}+|S_{21}|^{2}=1\qquad\text{（第 1 列）}$$
+> $$|S_{12}|^{2}+|S_{22}|^{2}=1\qquad\text{（第 2 列）}$$
+> **第三步，用互易性使两式可比。** 由 $S_{12}=S_{21}$ 得 $|S_{12}|=|S_{21}|$，故两式相减：
+> $$\left(|S_{11}|^{2}+|S_{21}|^{2}\right)-\left(|S_{12}|^{2}+|S_{22}|^{2}\right)=|S_{11}|^{2}-|S_{22}|^{2}=0$$
+> 即
+> $$|S_{11}|^{2}=|S_{22}|^{2}\ \Longrightarrow\ \boxed{|S_{11}|=|S_{22}|}$$
+> 非负数的平方相等蕴含本身相等，故结论成立。证毕。$\blacksquare$
+>
+> **讨论：**
+> ① **结论的适用边界**：本结论要求"**无耗 + 互易**"两条**同时**成立。
+> - 只有互易（有耗）时 $\Rightarrow$ 不成立（如例题 5-14，虽然本例恰好 $|S_{11}|=|S_{22}|=0.2$，但那是结构对称带来的，不是本定理保证的）；
+> - 只有无耗（非互易）时 $\Rightarrow$ 不成立（含铁氧体的器件可以做到 $|S_{11}|\ne|S_{22}|$）。
+> ② **与专题八的关系**：专题八证明的是"$z_{11}=z_{22}\Rightarrow S_{11}=S_{22}$"，讲的是**复数的严格相等**（含相位），来源是**结构对称**；本题证明的是 $|S_{11}|=|S_{22}|$，讲的是**模值相等**，来源是**无耗 + 互易**。二者是两个不同层次的结论：
+> - 结构对称 $\Rightarrow$ $S_{11}=S_{22}$ $\Rightarrow$ $|S_{11}|=|S_{22}|$（更强，蕴含后者）；
+> - 无耗 + 互易 $\Rightarrow$ $|S_{11}|=|S_{22}|$（较弱，不蕴含相位相等）。
+> **答题时把这一点写出来，是拿满分的关键。**
+> ③ 常用的等价形式：对无耗互易二端口，还可证明
+> $$S_{11}S_{12}^{*}+S_{12}S_{11}^{*}=0$$
+> 即两个列向量正交。由此可得一个非常有用的相位关系：若记 $S_{11}=|S_{11}|e^{j\theta_{11}}$、$S_{12}=|S_{12}|e^{j\theta_{12}}$，则
+> $$\theta_{11}+\theta_{12}=\pm\frac{\pi}{2}\ (\text{mod}\ \pi)$$
+> 即两个散射参数的相位相差 $90^{\circ}$ 的奇数倍。这一条在设计 $90^{\circ}$ 电桥与正交耦合器时是基础工具。
+
+---
+
+## 第 6 章 自测
+
+### 一、选择题
+
+**1.** 关于理想匹配负载与理想短路负载，下列说法正确的是（　　）。
+
+(A) 匹配负载 $Z_l=Z_0$，故 $\Gamma_l=0$、$\rho=1$，入射功率全部被负载吸收
+(B) 短路负载 $Z_l=0$，故 $\Gamma_l=-1$、$\rho=1$，入射功率全部被反射回电源
+(C) 匹配负载的 $\Gamma_l=1$、$\rho\to\infty$，短路负载的 $\Gamma_l=0$、$\rho=1$
+(D) 短路负载的 $\rho\to\infty$，说明短路处电压最大、电流为零
+
+**2.** 某二端口网络的散射矩阵满足 $S_{11}=S_{22}=0$、$|S_{12}|=|S_{21}|=0.1$，则该网络（　　）。
+
+(A) 无耗，插入损耗为 $0.1\ \mathrm{dB}$
+(B) 有耗，插入损耗为 $20\ \mathrm{dB}$，耗散功率占输入功率的 $99\%$
+(C) 有耗，插入损耗为 $10\ \mathrm{dB}$，耗散功率占输入功率的 $50\%$
+(D) 无耗，因为 $S_{11}=S_{22}=0$ 已经说明两个端口都匹配
+
+**3.** 关于波导螺钉调配器，下列说法**错误**的是（　　）。
+
+(A) 螺钉从波导宽边中央插入，轴线平行于 $\mathrm{TE}_{10}$ 主模的电场，等效为跨接在等效传输线上的并联电纳
+(B) 插入深度满足 $l<\lambda/4$ 时螺钉呈容性，实际调配器工作在容性区，以避免螺钉尖端电场过强而打火
+(C) 标准波导的窄边满足 $b\approx\lambda_g/4$，因此螺钉的插入深度受 $l<b\approx\lambda_g/4$ 的约束
+(D) 螺钉插入越深引入的等效电阻越大，所以螺钉调配器的功率容量比阶梯阻抗变换器高
+
+**4.** 关于 E-T 接头（E 面 T 形接头）与 H-T 接头（H 面 T 形接头），下列说法正确的是（　　）。
+
+(A) E-T 接头的分支臂输入时，端口 1、2 等幅同相输出，即 $S_{13}=S_{23}$
+(B) H-T 接头的分支臂输入时，端口 1、2 等幅反相输出，即 $S_{13}=-S_{23}$
+(C) E-T 接头又称差臂，分支臂输入时端口 1、2 等幅反相，即 $S_{13}=-S_{23}$
+(D) 两者的差别只是分支臂开口位置不同，$[S]$ 矩阵完全相同
+
+**5.** 关于波导魔 T，下列说法正确的是（　　）。
+
+(A) 魔 T 是四端口网络，但仍然不能做到四个端口同时匹配
+(B) 魔 T 的端口 1、2（主波导两端）相互隔离（$S_{12}=0$）；从 H 臂输入时端口 1、2 等幅同相输出，从 E 臂输入时等幅反相输出
+(C) 魔 T 的端口 3、4 之间不隔离，$|S_{34}|=1/\sqrt2$
+(D) 魔 T 因为有四个端口，所以必然是有耗网络
+
+### 二、填空题
+
+**6.** 理想匹配负载的归一化阻抗 $z_l=$________，终端反射系数 $\Gamma_l=$________，驻波比 $\rho=$________，入射功率________（填"全部被吸收"或"全部被反射"）；理想短路负载的 $\Gamma_l=$________，$\rho\to$________，距短路面 $\lambda/4$ 处的输入阻抗为________。
+
+**7.** 某匹配衰减器的散射矩阵为 $[S]=\begin{bmatrix}0&S_{12}\\S_{21}&0\end{bmatrix}$，且 $|S_{12}|=|S_{21}|=k<1$。此时 $|S_{11}|^{2}+|S_{21}|^{2}=$________，它________（填"满足"或"不满足"）幺正条件 $[S]^{+}[S]=[E]$，故该网络是________网络；理想相移器的 $[S]=$________，其 $|S_{21}|=$________，且满足 $[S]^{+}[S]=[E]$，属于________网络。
+
+**8.** 扼流法兰是在法兰面上开一圈深度约为________的短路槽。由 $\lambda/4$ 线的阻抗变换性，从法兰面看进去的输入阻抗为________，射频电流在此处趋于________，因此即使两法兰之间存在机械缝隙与接触电阻，也不会引起________和________；由于 $\lambda/4$ 的条件只在设计频率附近成立，扼流法兰的主要缺点是________。
+
+**9.** 波导魔 T 的端口约定为：①、② 为共线的主波导两端，③ 为 H 臂（和臂），④ 为 E 臂（差臂），则其散射矩阵 $[S]=$________。魔 T 的四条性质依次是________、________、________、________。对定向耦合器，耦合度 $C=$________ $\mathrm{dB}$，隔离度 $I=$________ $\mathrm{dB}$，定向度 $D=$________；若 $|S_{31}|=0.1$、$|S_{41}|=10^{-3}$，则 $C=$________ $\mathrm{dB}$、$I=$________ $\mathrm{dB}$、$D=$________ $\mathrm{dB}$。
+
+### 三、判断题
+
+**10.** 某衰减器的两个端口均已匹配，且 $|S_{21}|=|S_{12}|=0.5$，则它耗散的功率占输入功率的 $75\%$。（　　）
+
+**11.** 对于无耗、互易的三端口网络，只要精心设计，就可以使三个端口同时实现匹配。（　　）
+
+**12.** 定向耦合器的定向度满足 $D=I-C$；若 $|S_{31}|=0.316$、$|S_{41}|=0.01$，则 $C=10\ \mathrm{dB}$、$I=40\ \mathrm{dB}$、$D=30\ \mathrm{dB}$。（　　）
+
+### 四、计算题
+
+**13.** 某匹配衰减器（两端口的特性阻抗均为 $Z_0$）的散射矩阵为
+
+$$[S]=\begin{bmatrix}0&0.3162\\0.3162&0\end{bmatrix}$$
+
+求：(1) 该衰减器的衰减量（插入损耗）；(2) 被耗散的功率占输入功率的百分比；(3) 判断它是否满足幺正条件，并说明其物理意义；(4) 某相移器由一段无耗传输线构成，工作频率 $f=1\ \mathrm{GHz}$、线上相速 $v_p=2\times10^{8}\ \mathrm{m/s}$，要求相移量为 $90^{\circ}$，求该线段的物理长度并写出相移器的 $[S]$。
+
+**14.** 某矩形波导的宽边 $a=19.05\ \mathrm{mm}$、窄边 $b=9.525\ \mathrm{mm}$，工作频率 $f=11\ \mathrm{GHz}$，采用三螺钉调配器。求：(1) 波导波长 $\lambda_g$；(2) 校核 $b\approx\lambda_g/4$，并给出螺钉最大插入深度的设计值；(3) 给出三螺钉的推荐间距；(4) 若改在 $f=15\ \mathrm{GHz}$ 使用，说明会带来哪些问题。
+
+**15.** 某定向耦合器的散射参数为 $|S_{31}|=0.1$、$|S_{41}|=0.001$，输入功率为 $100\ \mathrm{W}$。求：(1) 耦合度 $C$、隔离度 $I$ 与定向度 $D$；(2) 耦合端与隔离端的输出功率。某波导魔 T 的端口约定为：①、② 为主线两端，③ 为 H 臂，④ 为 E 臂。求：(3) 从端口 ③ 输入 $10\ \mathrm{W}$ 时，各端口的输出功率与端口 1、2 的相位关系；(4) 从端口 ① 输入 $10\ \mathrm{W}$ 时，各端口的输出功率；(5) 端口 ①、② 分别输入 $5\ \mathrm{W}$ 的等幅同相信号以及等幅反相信号时，端口 ③、④ 的输出功率。
+
+### 五、证明题
+
+**16.** 证明：无耗、互易的三端口网络不可能三个端口同时匹配；并给出工程推论——当该网络还有一个"端口 1、2 结构对称"的条件时，若端口 3 匹配，则端口 1、2 的反射系数模必为 $1/2$（对应 $\rho=3$）。
+
+**17.** 已知理想魔 T 满足：① 四个端口全部匹配；② 网络无耗、互易；③ 端口 1、2 结构对称，使得 H 臂激励时 $S_{13}=S_{23}$、E 臂激励时 $S_{14}=-S_{24}$；④ 端口 1 与端口 2 相互隔离，即 $S_{12}=S_{21}=0$。证明理想魔 T 的散射矩阵为
+
+$$[S]=\frac{1}{\sqrt2}\begin{bmatrix}0&0&1&1\\0&0&1&-1\\1&1&0&0\\1&-1&0&0\end{bmatrix}$$
+
+并说明端口 3、4 之间的隔离（$S_{34}=0$）是幺正性的必然推论。
+
+### 参考答案与详解
+
+#### 一、选择题
+
+**1. A。** 匹配负载满足 $Z_l=Z_0$，故
+
+$$\Gamma_l=\frac{Z_l-Z_0}{Z_l+Z_0}=0,\qquad \rho=\frac{1+|\Gamma_l|}{1-|\Gamma_l|}=\frac{1+0}{1-0}=1$$
+
+线上为纯行波，入射功率全部进入负载并被吸收（转化为热），这正是"匹配负载"作为**假天线**、吸收式功率计与隔离端终端的原理。(B) 错：短路负载的 $\Gamma_l=-1$ 正确，但 $\rho=\dfrac{1+1}{1-1}\to\infty$ 而不是 $1$；(C) 把两者完全弄反；(D) 错：短路处电压为零、电流最大（电压**波节**），$\rho\to\infty$ 表示的不是"电压最大"而是"驻波最剧烈"。**知识点**：匹配负载与短路负载（第 6 章）。
+
+**2. B。** 插入损耗与耗散比例分别为
+
+$$L_i=-20\lg|S_{21}|=-20\lg0.1=20\ \mathrm{dB}$$
+
+$$\frac{P_{\text{耗散}}}{P_{\text{输入}}}=1-\left(|S_{11}|^{2}+|S_{21}|^{2}\right)=1-\left(0+0.1^{2}\right)=1-0.01=0.99=99\%$$
+
+即输入功率中只有 $|S_{21}|^{2}=1\%$ 从端口 2 输出，其余 $99\%$ 被网络吸收。(A) 把 dB 与线性比值混淆；(C) 把 $20\ \mathrm{dB}$ 误算成 $10\ \mathrm{dB}$；(D) 错在"两端匹配"只说明 $S_{11}=S_{22}=0$，与无耗无关——判别有耗的唯一可靠依据是 $[S]^{+}[S]\ne[E]$。**知识点**：衰减器与有耗判别（第 6 章）。
+
+**3. D。** 螺钉调配器的缺点恰恰是**有损耗、功率容量低、机械调节慢**：螺钉尖端电场集中，容易打火（击穿），插入深度越大、尖端场强越高，功率容量越低。而阶梯阻抗变换器是**改变波导截面尺寸**实现的，结构上没有细小的金属尖端，功率容量高得多。(A)(B)(C) 均正确，其中 (C) 的推理链条是"标准波导 $a=2b$ → 单模条件 $\lambda/2<a<\lambda$ → $\lambda/4<b<\lambda/2$ → 工作频带中段 $b\approx\lambda_g/4$"。**知识点**：螺钉调配器（第 6 章）。
+
+**4. C。** E-T 接头的分支臂开在宽边（波导的 $E$ 面）上，分支臂轴线平行于 $\mathrm{TE}_{10}$ 主模的电场方向，等效为**串联**支路；从分支臂（端口 3）输入时，主波导中心对称面两侧的电场相对于分支臂的参考方向相反，故端口 1、2 **等幅反相**输出：
+
+$$S_{13}=-S_{23}$$
+
+E-T 因而又称**差臂（difference arm）**、串联接头，可用于"求和抑制、取差输出"。(A)(B) 把两种接头的相位关系写反；(D) 错在两者的 $[S]$ 矩阵在符号结构上不同（E-T 为 $S_{13}=-S_{23}$，H-T 为 $S_{13}=S_{23}$，且 H-T 有 $S_{11}=-S_{12}$）。**知识点**：E-T 与 H-T 接头（第 6 章）。
+
+**5. B。** 魔 T 是双 T 接头经内部匹配销／膜片把四个端口的自反射全部消除后得到的**四端口全匹配**接头，因此 (A) 错、也说明"三端口不能同时匹配"这一限制可以用"增加一个端口"来突破。(B) 正确：端口 1、2 关于分支平面对称，从端口 1 入射的波在 H 臂平面呈偶对称（全部进入 H 臂）、在 E 臂平面呈奇对称（全部进入 E 臂），故端口 2 无输出，$S_{12}=0$；H 臂激励时端口 1、2 同相（和臂），E 臂激励时反相（差臂）。(C) 错：$S_{34}=0$，E 臂与 H 臂互相隔离。(D) 错：理想魔 T 是无耗网络，$[S]^{+}[S]=[E]$。**知识点**：魔 T 的四条性质（第 6 章）。
+
+#### 二、填空题
+
+**6.** 依次为：$1$；$0$；$1$；**全部被吸收**；$-1$；$\infty$；**无穷大（开路）**。
+
+匹配负载是把吸收材料做成**劈形、圆锥形或薄膜片**放在波导／同轴末端，使入射波在其中被逐渐吸收而无反射，工程指标为 $\rho\le1.05\sim1.1$。短路负载的 $Z_{\mathrm{in}}=jZ_0\tan\beta l$，当 $l=\lambda/4$ 时 $\beta l=\pi/2$、$\tan\beta l\to\infty$，故输入阻抗为**开路**——"短路经 $\lambda/4$ 变开路"是扼流活塞、扼流法兰、$\lambda/4$ 变换器的共同基础。
+
+**7.** 依次为：$|S_{21}|^{2}=k^{2}$；**不满足**；**有耗**；
+
+$$[S]_{\text{相移器}}=\begin{bmatrix}0&e^{-j\theta}\\e^{-j\theta}&0\end{bmatrix};\qquad 1;\qquad \textbf{无耗}$$
+
+衰减器（$k<1$）的能量关系为
+
+$$|S_{11}|^{2}+|S_{21}|^{2}=k^{2}<1\ne1$$
+
+故 $[S]^{+}[S]\ne[E]$，不满足幺正性，是**有耗**网络，缺失的那部分功率 $1-k^{2}$ 被衰减器吸收（转化为热）。相移器由一段**无耗**传输线构成，$|S_{21}|=1$，两列模的平方和为 1，故 $[S]^{+}[S]=[E]$ 成立，是**无耗**网络。**区分两者的唯一依据就是幺正性能否成立。**
+
+**8.** 依次为：$\lambda/4$；**无穷大（开路）**；**零**；**附加损耗**；**缝隙辐射／打火（击穿）**；**工作频带窄**。
+
+扼流法兰的物理图像是：射频电流从波导内壁流向法兰接触面之前，必须先经过"法兰面—扼流槽—槽底短路面"这条路径。槽深为 $\lambda/4$，则从法兰面看进去的输入阻抗为
+
+$$Z_{\mathrm{in}}=jZ_0\tan\left(\frac{2\pi}{\lambda}\cdot\frac{\lambda}{4}\right)\to\infty$$
+
+即**开路**，电流在此处趋于零。既然没有电流流过机械接触面，接触电阻与氧化层就不会产生附加损耗，缝隙也不会因电流集中而打火。代价是 $\lambda/4$ 只在单一频率严格成立，故扼流法兰是**窄带**元件（波导中严格地说应按中心频率的 $\lambda_g/4$ 设计）。
+
+**9.** 依次为：
+
+$$[S]=\frac{1}{\sqrt2}\begin{bmatrix}0&0&1&1\\0&0&1&-1\\1&1&0&0\\1&-1&0&0\end{bmatrix}$$
+
+**匹配性**（$S_{11}=S_{22}=S_{33}=S_{44}=0$）；**隔离性**（$S_{12}=S_{34}=0$）；**均分性**（$|S_{ij}|=1/\sqrt2$，即 3 dB 等分）；**相位关系**（H 臂输入时端口 1、2 同相，E 臂输入时反相）。定向耦合器的三个参数为
+
+$$C=-20\lg|S_{31}|\ \mathrm{dB},\qquad I=-20\lg|S_{41}|\ \mathrm{dB},\qquad D=I-C$$
+
+代入 $|S_{31}|=0.1$、$|S_{41}|=10^{-3}$：
+
+$$C=-20\lg0.1=20\ \mathrm{dB},\qquad I=-20\lg10^{-3}=60\ \mathrm{dB},\qquad D=60-20=40\ \mathrm{dB}$$
+
+#### 三、判断题
+
+**10. √。** 两个端口匹配意味着 $|S_{11}|=|S_{22}|=0$，回波损耗为无穷大。输入功率的去向只有两条：透射与耗散，故
+
+$$|S_{21}|^{2}+|S_{11}|^{2}=0.25+0=0.25\ \Longrightarrow\ \frac{P_{\text{耗散}}}{P_{\text{输入}}}=1-0.25=0.75=75\%$$
+
+注意 $|S_{21}|=0.5$ 对应衰减量 $-20\lg0.5=6\ \mathrm{dB}$，而耗散比例是**功率**之比 $1-0.5^{2}=75\%$，不是 $1-0.5=50\%$——**功率必须用模的平方**。
+
+**11. ×。** 这是一道"定理型"判断题。无耗互易三端口网络**不可能**三个端口同时匹配：若三端口全匹配，幺正性同时要求 $|S_{12}|^{2}+|S_{13}|^{2}=1$、$|S_{12}|^{2}+|S_{23}|^{2}=1$、$|S_{13}|^{2}+|S_{23}|^{2}=1$（三列的模平方和）与 $S_{13}^{*}S_{23}=S_{12}^{*}S_{13}=S_{12}^{*}S_{23}=0$（两两正交），后者迫使 $S_{12}$、$S_{13}$、$S_{23}$ 中至少两个为零，与前者矛盾。正是这一限制迫使功率分配器件要么"牺牲一个端口的匹配"（E-T／H-T，$\rho=3$），要么"增加一个端口"（魔 T，四端口全匹配）。完整证明见例题 6-16。
+
+**12. √。** 由定义
+
+$$C=-20\lg0.316=10.0\ \mathrm{dB},\qquad I=-20\lg0.01=40.0\ \mathrm{dB}$$
+
+$$D=I-C=40-10=30.0\ \mathrm{dB}$$
+
+（$0.316\approx10^{-0.5}$，故 $C\approx10\ \mathrm{dB}$。）物理含义：耦合端取走输入功率的 $10\%$，隔离端只泄漏 $10^{-4}$，方向性分辨达 $30\ \mathrm{dB}$，即耦合端的功率是隔离端的 $1000$ 倍。**记住 $D=I-C$ 这个"只做减法"的关系**，考试中三条定义只要记住两条，第三条即可推出。
+
+#### 四、计算题
+
+> **【例题 6-13】**
+> **解：**
+> **(1) 衰减量**
+> $$L=-20\lg|S_{21}|=-20\lg0.3162=-20\times(-0.5000)=10.0\ \mathrm{dB}$$
+> （若按"衰减量"定义为 $L=-20\lg|S_{21}|$ 的反号形式，则应写成"衰减 10 dB"，数值不变。）
+> **(2) 耗散功率比例**
+> $$|S_{21}|^{2}=0.3162^{2}=0.1000,\qquad |S_{11}|^{2}=0$$
+> $$\frac{P_{\text{耗散}}}{P_{\text{输入}}}=1-\left(|S_{11}|^{2}+|S_{21}|^{2}\right)=1-0.1000=0.9000=90.0\%$$
+> 即输入功率的 $10\%$ 从端口 2 输出、$90\%$ 被衰减器吸收转化为热。
+> **(3) 幺正性判别**
+> $$[S]^{+}[S]=\begin{bmatrix}0&0.3162\\0.3162&0\end{bmatrix}\begin{bmatrix}0&0.3162\\0.3162&0\end{bmatrix}
+> =\begin{bmatrix}0.1000&0\\0&0.1000\end{bmatrix}=0.1[E]\ne[E]$$
+> 等价判据（取第 1 列）：
+> $$|S_{11}|^{2}+|S_{21}|^{2}=0+0.1=0.1<1$$
+> 故**不满足幺正性，网络有耗**。物理意义：输出功率之和小于输入功率，差额被网络吸收；偏离 1 的程度 $1-0.1=0.9$ 就是**耗散比例**。反之，若某二端口满足 $|S_{11}|^{2}+|S_{21}|^{2}=1$，它可以是无耗的（如理想相移器、理想传输线段）。
+> **(4) 移相器的长度与 $[S]$**
+> 波长
+> $$\lambda=\frac{v_p}{f}=\frac{2\times10^{8}}{1\times10^{9}}=0.2\ \mathrm{m}=200\ \mathrm{mm}$$
+> 一段无耗线在匹配（$Z_0'=Z_0$）条件下有 $S_{11}=S_{22}=0$、$S_{21}=S_{12}=e^{-j\theta}$，其中 $\theta=\beta l$。要求 $\theta=90^{\circ}=\pi/2$：
+> $$l=\frac{\lambda}{4}=\frac{200}{4}=50.0\ \mathrm{mm}$$
+> $$[S]_{\text{相移器}}=\begin{bmatrix}0&e^{-j90^{\circ}}\\e^{-j90^{\circ}}&0\end{bmatrix}=\begin{bmatrix}0&-j\\-j&0\end{bmatrix}$$
+> 校验幺正性：
+> $$[S]^{+}[S]=\begin{bmatrix}0&j\\j&0\end{bmatrix}\begin{bmatrix}0&-j\\-j&0\end{bmatrix}=\begin{bmatrix}1&0\\0&1\end{bmatrix}=[E]\ \checkmark$$
+> **答：**（1）$10.0\ \mathrm{dB}$；（2）$90.0\%$；（3）$|S_{11}|^{2}+|S_{21}|^{2}=0.1<1$，不满足幺正性，网络有耗，被耗散的比例为 $90\%$；（4）$l=50.0\ \mathrm{mm}$，$[S]=\begin{bmatrix}0&-j\\-j&0\end{bmatrix}$，该相移器无耗。
+> **讨论：** ① **判别有耗／无耗只看幺正性**，不要看 $S_{11}$ 是否为 0：本例 $S_{11}=S_{22}=0$（完全匹配）却仍有耗。② 衰减器是"**以耗散换衰减**"的元件（吸收式），而同轴电缆、波导段是"**以失配与反射换衰减**"的元件（反射式），后者会恶化系统驻波比。③ 相移器的相移量 $\theta=\beta l=2\pi l/\lambda$ 与频率近似成正比，因此**固定长度的线型相移器也是窄带的**；宽带相移要用开关线、加载线或铁氧体／PIN 二极管移相器。④ 注意 $S_{11}=S_{22}=0$、$S_{12}=S_{21}$ 的衰减器同时是**互易、对称、有耗**网络，这是"三条性质相互独立"的又一个例证。
+
+> **【例题 6-14】**
+> **解：**
+> **(1) 波导波长**
+> $$\lambda_0=\frac{c}{f}=\frac{3\times10^{8}}{11\times10^{9}}=27.27\ \mathrm{mm},\qquad \lambda_c=2a=2\times19.05=38.10\ \mathrm{mm}$$
+> $$\frac{\lambda_0}{\lambda_c}=\frac{27.27}{38.10}=0.7158,\qquad \left(\frac{\lambda_0}{\lambda_c}\right)^{2}=0.5124$$
+> $$\sqrt{1-0.5124}=\sqrt{0.4876}=0.6983$$
+> $$\lambda_g=\frac{\lambda_0}{0.6983}=\frac{27.27}{0.6983}=39.06\ \mathrm{mm}$$
+> **(2) 校核 $b\approx\lambda_g/4$ 与螺钉最大插入深度**
+> $$\frac{\lambda_g}{4}=\frac{39.06}{4}=9.765\ \mathrm{mm}$$
+> 与 $b=9.525\ \mathrm{mm}$ 相比
+> $$\frac{9.765-9.525}{9.525}=2.5\%$$
+> 两者相差不到 $3\%$，验证了"标准波导在工作频带中段满足 $b\approx\lambda_g/4$"这一工程结论。由于螺钉不能穿透波导（且插入深度超过 $\lambda_g/4$ 会越过串联谐振点而变成感性），螺钉最大插入深度应取
+> $$l<b\approx\frac{\lambda_g}{4}\approx9.5\ \mathrm{mm}$$
+> 实际设计时通常再留余量，取 $l_{\max}\approx8\sim9\ \mathrm{mm}$。
+> **(3) 三螺钉的推荐间距**
+> 三螺钉调配器常用"$\lambda_g/4$ 与 $\lambda_g/8$ 组合"：
+> $$d_{12}=\frac{\lambda_g}{4}=9.77\ \mathrm{mm},\qquad d_{23}=\frac{\lambda_g}{8}=4.88\ \mathrm{mm}$$
+> 理由：$\lambda_g/4$ 对应圆图上 $180^{\circ}$ 的旋转，能把阻抗圆图上相距最远的两类负载都"够到"；$\lambda_g/8$ 对应 $90^{\circ}$ 的旋转，使两个螺钉的作用区间正交，配合第三个螺钉即可覆盖几乎整个阻抗圆图，消除双螺钉在 $\lambda_g/4$ 间距下的**盲区**。
+> **(4) $f=15\ \mathrm{GHz}$ 时的问题**
+> $$\lambda_0=\frac{3\times10^{8}}{15\times10^{9}}=20.0\ \mathrm{mm},\qquad \frac{\lambda_0}{\lambda_c}=\frac{20.0}{38.10}=0.5249$$
+> $$\sqrt{1-0.5249^{2}}=\sqrt{1-0.2755}=0.8511,\qquad \lambda_g=\frac{20.0}{0.8511}=23.50\ \mathrm{mm}$$
+> $$\frac{\lambda_g}{4}=5.87\ \mathrm{mm}<b=9.525\ \mathrm{mm}$$
+> 由此产生三个问题：
+> ① **螺钉深度上限必须收紧到 $5.9\ \mathrm{mm}$**。若仍按原来的习惯拧到 $9.5\ \mathrm{mm}$，螺钉长度已超过 $\lambda_g/4$，电抗从**容性**越过串联谐振点变成**感性**，甚至进入半波谐振区，螺钉尖端的电场急剧增强，极易**打火击穿**，功率容量大幅下降；
+> ② **原设计间距的电长度发生漂移**。$d_{12}=9.77\ \mathrm{mm}$ 在 $15\ \mathrm{GHz}$ 下对应的电角度为
+> $$360^{\circ}\times\frac{9.77}{23.50}=149.6^{\circ}\ne90^{\circ}$$
+> 盲区位置随之移动，可匹配范围可能缩小甚至出现无解区；
+> ③ **接近多模工作**。该波导 $TE_{20}$ 模的截止频率为
+> $$f_{c,TE20}=\frac{c}{a}=\frac{3\times10^{8}}{0.01905}=15.75\ \mathrm{GHz}$$
+> $15\ \mathrm{GHz}$ 距它只有约 $5\%$，波导内很可能同时激励 $TE_{20}$ 高次模，螺钉引入的不连续性正是高次模的激发源。
+> **答：**（1）$\lambda_g=39.1\ \mathrm{mm}$；（2）$\lambda_g/4=9.77\ \mathrm{mm}\approx b=9.525\ \mathrm{mm}$（差 $2.5\%$），取 $l<9.5\ \mathrm{mm}$；（3）$d_{12}=9.77\ \mathrm{mm}$、$d_{23}=4.88\ \mathrm{mm}$；（4）$\lambda_g/4$ 降到 $5.87\ \mathrm{mm}$ 而 $b$ 不变，螺钉深度失去"安全余量"，原间距电长度漂移到 $149.6^{\circ}$、盲区移动，且 $15\ \mathrm{GHz}$ 已接近 $TE_{20}$ 截止频率（$15.75\ \mathrm{GHz}$）而易激发高次模。
+> **讨论：** 本题集中体现了螺钉调配器"**窄带元件**"的本质：**所有尺寸约束都是电长度约束**，频率一变、几何尺寸不变而电长度改变，性能必然漂移。与之相反，若把匹配元件换成**阶梯阻抗变换器**（改变波导截面尺寸的多节结构），则可以在一个倍频程甚至更宽的频带内保持 $\rho$ 指标。
+
+> **【例题 6-15】**
+> **解：**
+> **(1) 定向耦合器的三个参数**
+> $$C=-20\lg|S_{31}|=-20\lg0.1=20.0\ \mathrm{dB}$$
+> $$I=-20\lg|S_{41}|=-20\lg10^{-3}=60.0\ \mathrm{dB}$$
+> $$D=I-C=60.0-20.0=40.0\ \mathrm{dB}$$
+> （也可直接算 $D=-20\lg\left|\dfrac{S_{41}}{S_{31}}\right|=-20\lg10^{-2}=40.0\ \mathrm{dB}$，与 $I-C$ 一致 ✓）
+> **(2) 耦合端与隔离端的输出功率**
+> $$P_3=P_1|S_{31}|^{2}=100\times0.1^{2}=1.00\ \mathrm{W}$$
+> $$P_4=P_1|S_{41}|^{2}=100\times(10^{-3})^{2}=1.00\times10^{-4}\ \mathrm{W}=0.100\ \mathrm{mW}$$
+> 校核：直通端拿走 $P_2\approx99\ \mathrm{W}$，三项之和 $99+1+10^{-4}\approx100\ \mathrm{W}$ ✓
+> **(3) 从魔 T 端口 ③（H 臂）输入 $10\ \mathrm{W}$**
+> 端口 1、2 端接匹配负载，故
+> $$P_1=10\times\left|\frac{1}{\sqrt2}\right|^{2}=5.00\ \mathrm{W},\qquad P_2=10\times\left|\frac{1}{\sqrt2}\right|^{2}=5.00\ \mathrm{W}$$
+> 端口 4（E 臂）输出为 0（$S_{43}=0$），端口 3 无反射（$S_{33}=0$）。由 $S_{13}=S_{23}>0$ 知端口 1、2 输出**等幅同相**（相位差 $0^{\circ}$）。能量校核：$5.00+5.00=10.0\ \mathrm{W}$ ✓
+> **(4) 从端口 ① 输入 $10\ \mathrm{W}$**
+> $$P_2=10|S_{21}|^{2}=0\quad(\text{端口 1、2 完全隔离})$$
+> $$P_3=10|S_{31}|^{2}=10\times\frac{1}{2}=5.00\ \mathrm{W},\qquad P_4=10|S_{41}|^{2}=10\times\frac{1}{2}=5.00\ \mathrm{W}$$
+> 反射功率为 0（$S_{11}=0$）。能量校核：$5.00+5.00+0+0=10.0\ \mathrm{W}$ ✓
+> **(5) 端口 ①、② 等幅输入**
+> 取 $|a_1|^{2}=|a_2|^{2}=5\ \mathrm{W}$，即 $a_1=\sqrt5$、$a_2=\pm\sqrt5$。
+> **同相**（$a_1=a_2=\sqrt5$）：
+> $$b_3=S_{31}a_1+S_{32}a_2=\frac{1}{\sqrt2}\sqrt5+\frac{1}{\sqrt2}\sqrt5=\sqrt2\sqrt5=\sqrt{10}$$
+> $$P_3=|b_3|^{2}=10.0\ \mathrm{W}$$
+> $$b_4=S_{41}a_1+S_{42}a_2=\frac{1}{\sqrt2}\sqrt5+\left(-\frac{1}{\sqrt2}\right)\sqrt5=0\ \Longrightarrow\ P_4=0$$
+> **反相**（$a_1=\sqrt5$、$a_2=-\sqrt5$）：
+> $$b_3=\frac{1}{\sqrt2}\sqrt5+\frac{1}{\sqrt2}\left(-\sqrt5\right)=0\ \Longrightarrow\ P_3=0$$
+> $$b_4=\frac{1}{\sqrt2}\sqrt5+\left(-\frac{1}{\sqrt2}\right)\left(-\sqrt5\right)=\sqrt{10}\ \Longrightarrow\ P_4=10.0\ \mathrm{W}$$
+> **答：**（1）$C=20.0\ \mathrm{dB}$、$I=60.0\ \mathrm{dB}$、$D=40.0\ \mathrm{dB}$；（2）$P_3=1.00\ \mathrm{W}$、$P_4=1.00\times10^{-4}\ \mathrm{W}$；（3）端口 1、2 各 $5.00\ \mathrm{W}$ 且同相，端口 4 为 0；（4）端口 2 为 0、端口 3 与 4 各 $5.00\ \mathrm{W}$；（5）同相输入时端口 3 得 $10.0\ \mathrm{W}$、端口 4 得 $0$；反相输入时端口 3 得 $0$、端口 4 得 $10.0\ \mathrm{W}$。
+> **讨论：** ① 第 (3)(4) 问体现魔 T 的"**均分 + 隔离**"：从任一端口输入，功率等分给一对端口，另一对端口中的一个完全无输出。② 第 (5) 问体现魔 T 作为"**和差器**"的本质：H 臂输出**和信号**、E 臂输出**差信号**，这正是单脉冲雷达测角、平衡混频器与本振噪声抵消的基础。③ **注意功率不能直接相加**：两路各 $5\ \mathrm{W}$ 同相合成后是 $(\sqrt5+\sqrt5)^{2}=20\ \mathrm{W}$ 的"波幅平方"吗？不是——经过 $1/\sqrt2$ 的分配后实际得到 $10\ \mathrm{W}$。计算必须"先算波幅之和（差），再取模平方"，不能把功率先相加再乘系数。
+
+#### 五、证明题
+
+> **【例题 6-16】**
+> **证明：**
+> **第一步，写出待证反命题的矩阵形式。** 设三端口网络**无耗**且**互易**，并假设三个端口**同时匹配**，即
+> $$S_{11}=S_{22}=S_{33}=0$$
+> 由互易性 $S_{ij}=S_{ji}$，此时
+> $$[S]=\begin{bmatrix}0&S_{12}&S_{13}\\S_{12}&0&S_{23}\\S_{13}&S_{23}&0\end{bmatrix}$$
+> **第二步，写出无耗性的数学表达。** 无耗 $\iff$ $[S]$ 为幺正矩阵：
+> $$[S]^{+}[S]=[E]\qquad\Longleftrightarrow\qquad \sum_{k=1}^{3}S_{ki}^{*}S_{kj}=\delta_{ij}$$
+> **第三步，由第 3 列的模平方和得到"不能同时为零"。** 取 $i=j=3$：
+> $$|S_{13}|^{2}+|S_{23}|^{2}+|S_{33}|^{2}=|S_{13}|^{2}+|S_{23}|^{2}=1$$
+> 故 $S_{13}$ 与 $S_{23}$ **不可能同时为零**（否则左边为 $0\ne1$）。
+> **第四步，由两列的正交条件得到"至少有一个为零"。** 取 $i=1$、$j=2$：
+> $$\sum_{k=1}^{3}S_{k1}^{*}S_{k2}=S_{11}^{*}S_{12}+S_{21}^{*}S_{22}+S_{31}^{*}S_{32}=0+0+S_{13}^{*}S_{23}=0$$
+> 故 $S_{13}$ 与 $S_{23}$ **至少有一个为零**。
+> **第五步，两者联立得到矛盾。** 由第三步二者不能同时为零，由第四步二者至少有一个为零，故恰有一个为零。不妨设
+> $$S_{23}=0,\qquad S_{13}\ne0$$
+> 代入第三步得
+> $$|S_{13}|^{2}=1\ \Longrightarrow\ |S_{13}|=1$$
+> 再取第 1 列的模平方和（$i=j=1$）：
+> $$|S_{11}|^{2}+|S_{21}|^{2}+|S_{31}|^{2}=|S_{12}|^{2}+|S_{13}|^{2}=1$$
+> 因 $|S_{13}|=1$，故
+> $$|S_{12}|=0\ \Longrightarrow\ S_{12}=0$$
+> 最后取第 2 列的模平方和（$i=j=2$）：
+> $$|S_{12}|^{2}+|S_{22}|^{2}+|S_{32}|^{2}=|S_{12}|^{2}+|S_{23}|^{2}=0+0=0$$
+> 但幺正性要求它等于 $1$，即 $0=1$，**矛盾**。（若设 $S_{13}=0$，则完全对称地可推出同样的矛盾。）
+> **结论：无耗、互易的三端口网络不可能三个端口同时匹配。** 换言之，三端口网络中**至少有一个端口是失配的**。 $\blacksquare$
+>
+> **推论（E-T／H-T 情形）：** 若在此基础上再增加"端口 1、2 结构对称"的条件（$S_{11}=S_{22}$，且分支臂激励时两端口等幅同相或等幅反相，即 $S_{13}=\pm S_{23}$），并设分支臂（端口 3）已匹配（$S_{33}=0$），则端口 1、2 的反射系数模必为 $1/2$。以 H-T 接头（$S_{13}=S_{23}$）为例：
+> $$[S]=\begin{bmatrix}S_{11}&S_{12}&S_{13}\\S_{12}&S_{11}&S_{13}\\S_{13}&S_{13}&0\end{bmatrix}$$
+> 由第 3 行自身的幺正性：
+> $$|S_{13}|^{2}+|S_{13}|^{2}+0=1\ \Longrightarrow\ |S_{13}|=\frac{1}{\sqrt2}$$
+> 由第 1 行与第 3 行的正交性：
+> $$S_{11}S_{13}^{*}+S_{12}S_{13}^{*}+0=S_{13}^{*}\left(S_{11}+S_{12}\right)=0\ \Longrightarrow\ S_{12}=-S_{11}$$
+> 由第 1 行自身的幺正性：
+> $$|S_{11}|^{2}+|S_{12}|^{2}+|S_{13}|^{2}=2|S_{11}|^{2}+\frac{1}{2}=1\ \Longrightarrow\ |S_{11}|=|S_{12}|=\frac{1}{2}$$
+> 于是
+> $$\rho=\frac{1+|S_{11}|}{1-|S_{11}|}=\frac{1+0.5}{1-0.5}=3.00$$
+> 这就是 E-T／H-T 接头**固有失配**（$\rho=3$）的来源，也是必须用"魔 T（四端口全匹配）"来替代三端口功率分配器的根本原因。
+>
+> **补充说明（一个必须澄清的边界）：** 上面的推论**必须**加上"端口 1、2 结构对称"这一条件。仅仅"一个端口匹配"并不足以保证另两个端口的 $|S_{ii}|=1/2$。反例：
+> $$[S]=\begin{bmatrix}0&0&1\\0&e^{j\varphi}&0\\1&0&0\end{bmatrix}$$
+> 它是无耗、互易的，端口 3 匹配（$S_{33}=0$），但端口 1 的 $|S_{11}|=0$、端口 2 的 $|S_{22}|=1$（全反射），并不等于 $1/2$。**答题时把"三端口不能同时匹配"与"一端匹配后另两端 $|S_{ii}|=1/2$"这两个结论的条件分别写清楚，才能拿满分。**
+
+> **【例题 6-17】**
+> **证明：**
+> **第一步，写出由已知条件确定的矩阵形式。**
+> - 由**全匹配**：$S_{11}=S_{22}=S_{33}=S_{44}=0$；
+> - 由**互易**：$S_{ij}=S_{ji}$，矩阵对称；
+> - 由**结构对称（端口 1、2 对称）**：H 臂激励时端口 1、2 等幅同相 $\Rightarrow S_{13}=S_{23}$；E 臂激励时等幅反相 $\Rightarrow S_{14}=-S_{24}$；
+> - 由**端口 1、2 隔离**：$S_{12}=S_{21}=0$。
+>
+> 于是（记 $S_{13}=a$、$S_{14}=b$、$S_{34}=q$）
+> $$[S]=\begin{bmatrix}0&0&a&b\\0&0&a&-b\\a&a&0&q\\b&-b&q&0\end{bmatrix}$$
+> **第二步，用幺正性确定各元素的模。**
+> 取第 1 列自身的模平方和（$(S^{+}S)_{11}=1$）：
+>
+>$$
+>|a|^{2}+|b|^{2}=1 \tag{①}$$
+> 取第 1 列与第 4 列的正交条件（$(S^{+}S)_{14}=0$）：
+> $$\sum_{k=1}^{4}S_{k1}^{*}S_{k4}=S_{11}^{*}S_{14}+S_{21}^{*}S_{24}+S_{31}^{*}S_{34}+S_{41}^{*}S_{44}=0+0+a^{*}q+0=a^{*}q=0$$
+> 因 $a\ne0$（见 ①），故
+> $$q=0\ \Longrightarrow\ S_{34}=S_{43}=0$$
+> 即 **E 臂与 H 臂相互隔离是幺正性的必然推论**，不需要额外假设。
+> 取第 3 列自身的模平方和（$(S^{+}S)_{33}=1$）：
+> $$|a|^{2}+|a|^{2}+|q|^{2}=1\ \Longrightarrow\ 2|a|^{2}=1\ \Longrightarrow\ |a|=\frac{1}{\sqrt2}$$
+> 代入 ①：
+> $$|b|^{2}=1-\frac{1}{2}=\frac{1}{2}\ \Longrightarrow\ |b|=\frac{1}{\sqrt2}$$
+> （也可由第 1 列与第 2 列的正交性 $|a|^{2}-|b|^{2}=0$ 直接得到 $|a|=|b|$，两种途径一致 ✓）
+> **第三步，适当选取参考面使矩阵元素成为正实数。** 端口 $i$ 的参考面向外移动电角度 $\theta_i$ 时，矩阵元素按
+> $$S'_{ij}=S_{ij}e^{-j(\theta_i+\theta_j)}$$
+> 变化（见模拟卷证明题二的结论）。取端口 1、2 的参考面**同步**移动（$\theta_1=\theta_2=\theta_{12}$，以保持 $S_{13}=S_{23}$、$S_{14}=-S_{24}$），再分别取端口 3、4 的参考面移动 $\theta_3$、$\theta_4$，则
+> $$S'_{13}=ae^{-j(\theta_{12}+\theta_3)},\qquad S'_{14}=be^{-j(\theta_{12}+\theta_4)}$$
+> 三个相位自由度 $(\theta_{12},\theta_3,\theta_4)$ 足以把 $a$、$b$ 同时调成**正实数**：
+> $$S_{13}=S_{23}=S_{14}=\frac{1}{\sqrt2},\qquad S_{24}=-\frac{1}{\sqrt2}$$
+> **第四步，写出结果并验证。**
+> $$[S]_{\text{魔T}}=\frac{1}{\sqrt2}\begin{bmatrix}0&0&1&1\\0&0&1&-1\\1&1&0&0\\1&-1&0&0\end{bmatrix}$$
+> 逐项验证幺正性：
+> - 第 1 行自身：$0+0+\dfrac{1}{2}+\dfrac{1}{2}=1$ ✓
+> - 第 1 行与第 4 行：$0+0+\dfrac{1}{\sqrt2}\cdot0+\dfrac{1}{\sqrt2}\cdot0=0$ ✓
+> - 第 3 行与第 4 行：$\dfrac{1}{\sqrt2}\cdot\dfrac{1}{\sqrt2}+\dfrac{1}{\sqrt2}\cdot\left(-\dfrac{1}{\sqrt2}\right)+0+0=0$ ✓
+> - 第 2 行与第 3 行：$0+0+\dfrac{1}{\sqrt2}\cdot0+\left(-\dfrac{1}{\sqrt2}\right)\cdot0=0$ ✓
+> - 第 4 行自身：$\dfrac{1}{2}+\dfrac{1}{2}+0+0=1$ ✓
+>
+> 全部满足，故该矩阵确为无耗、互易、四端口全匹配网络的 $[S]$ 矩阵。 $\blacksquare$
+>
+> **讨论：**
+> ① **四条性质的来源**：匹配性与端口 1、2 的隔离性来自魔 T 的几何结构（双 T 加上内部匹配销／膜片）；均分性与相位关系来自结构对称性；$S_{34}=0$ 则**纯粹由幺正性推出**，这是本题最漂亮的一步。
+> ② **为什么魔 T 能突破"三端口不能同时匹配"的限制？** 因为它有四个端口。例题 6-16 的证明只对 $3\times3$ 成立；端口数增加到 4 以后，幺正性方程组有了"全匹配"的解。这正是"多一个隔离端口"的代价换来的回报。
+> ③ **工程上用什么实现**：波导魔 T 需要在接头内部加匹配销（matching post）、膜片（iris）或阶梯（step），用来抵消 T 形接头处高次模引入的电抗，把 $S_{11}$、$S_{33}$、$S_{44}$ 调到零附近；工程带宽一般为波导标准带宽的 $10\%\sim20\%$。微带电路中则用 3 dB 分支线电桥或 Lange 耦合器替代。
+> ④ **符号约定提示**：分支臂行、列的**整体符号**取决于该臂参考面的选取——例如把端口 3 的参考面向外移动 $\lambda_g/2$（电角度 $180^{\circ}$）就会把该行、该列全部反号，得到 $\frac{1}{\sqrt2}\begin{bmatrix}0&0&-1&1\\0&0&-1&-1\\-1&-1&0&0\\1&-1&0&0\end{bmatrix}$，它同样满足全部四条性质。因此**物理结论（匹配、隔离、均分、同相／反相）与参考面无关，而矩阵元素的绝对值不变**；答题时只要保持"$S_{13}=S_{23}$ 与 $S_{14}=-S_{24}$ 的**相对**符号关系正确"，就与分析结果一致。
+
+<\!--APPEND-->
+</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

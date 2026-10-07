@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>考点总纲 · 微波技术基础学习指南</title>
+<meta name="description" content="全课程考点矩阵、出现频率与难度分级、题型解法模板、时间分配与冲分策略">
+<meta name="author" content="微波技术基础学习指南">
+<meta property="og:type" content="website">
+<meta property="og:title" content="考点总纲 · 微波技术基础学习指南">
+<meta property="og:description" content="全课程考点矩阵、出现频率与难度分级、题型解法模板、时间分配与冲分策略">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6fdb'/%3E%3Cpath d='M4 21c3-8 5-8 8 0s5 8 8 0 5-8 8 0' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+(function(){try{var s=localStorage.getItem('mwguide-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-btn" id="menuBtn" aria-label="打开目录">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+  </button>
+  <a class="brand" href="index.html">
+    <span class="brand-mark">μ</span>
+    <span class="brand-text">
+      <span class="brand-title">微波技术基础</span>
+      <span class="brand-sub">LEARNING GUIDE</span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="search-wrap">
+    <svg class="sicon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="search" type="search" placeholder="搜索知识点、公式、例题…  (Ctrl K)" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="切换主题">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <span>深色</span>
+  </button>
+</header><div class="backdrop" id="backdrop"></div><aside class="sidebar" id="sidebar" aria-label="站点导航"><nav class="sidebar-nav" id="sidebarNav"><a class="nav-link" href="index.html"><span class="nav-num">00</span><span class="nav-label">首页 · 学习总览</span></a><a class="nav-link" href="roadmap.html"><span class="nav-num">01</span><span class="nav-label">学习路线图</span></a><a class="nav-link" href="formulas.html"><span class="nav-num">02</span><span class="nav-label">公式速查手册</span></a><a class="nav-link active" href="exam.html"><span class="nav-num">03</span><span class="nav-label">考点总纲</span></a><a class="nav-link" href="smith.html"><span class="nav-num">04</span><span class="nav-label">史密斯圆图交互工具</span></a><a class="nav-link" href="quiz.html"><span class="nav-num">05</span><span class="nav-label">综合自测题</span></a><a class="nav-link" href="resources.html"><span class="nav-num">06</span><span class="nav-label">课件与视频资源</span></a><div class="nav-group"><div class="nav-heading">章节目录</div><a class="nav-link" href="ch01.html"><span class="nav-num">1</span><span class="nav-label">绪论</span></a><a class="nav-link" href="ch02.html"><span class="nav-num">2</span><span class="nav-label">传输线理论</span></a><a class="nav-link" href="ch03.html"><span class="nav-num">3</span><span class="nav-label">金属波导</span></a><a class="nav-link" href="ch04.html"><span class="nav-num">4</span><span class="nav-label">传输线类型</span></a><a class="nav-link" href="ch05.html"><span class="nav-num">5</span><span class="nav-label">微波网络</span></a><a class="nav-link" href="ch06.html"><span class="nav-num">6</span><span class="nav-label">无源器件</span></a><a class="nav-link" href="ch07.html"><span class="nav-num">7</span><span class="nav-label">专题·Z 矩阵</span></a><a class="nav-link" href="ch08.html"><span class="nav-num">8</span><span class="nav-label">专题·S 矩阵</span></a></div></nav></aside><div class="shell"><main class="article loading" id="article"><div class="spinner" role="status" aria-label="加载中"></div><div id="chapterShell" hidden><div class="md" id="md"></div></div></main><aside class="toc" id="toc"><div class="toc-heading">本页目录</div><div class="toc-list" id="tocList"></div></aside></div><footer class="footer">
+  <div>《微波技术基础》在线学习指南 · 共 6 章 + 2 个专题推导</div>
+  <div>
+    <a href="formulas.html">公式速查</a> ·
+    <a href="exam.html">考点总纲</a> ·
+    <a href="resources.html">课件资源</a>
+  </div>
+</footer>
+<script src="assets/js/search-index.js"></script>
+<script id="chapterCfg" type="application/json">{"n":0,"file":"exam","src":"content/exam.md","title":"考点总纲"}</script>
+<script id="preContent" type="text/plain">---
+chapter: 0
+title: 考点总纲
+short: 考点总纲
+desc: 全课程考点矩阵、出现频率与难度分级、题型解法模板、时间分配与冲分策略
+minutes: 75
+---
+
+# 考点总纲
+
+这一页回答三个问题：**考什么**、**怎么考**、**时间不够时先保什么**。它以全课程 6 章 + 2 个专题推导为范围，按照"出现频率 × 分值占比"给出投入优先级的明确排序。
+
+> **【考点】**
+> 本课程 32 学时压缩后，教师已明确说明"**考点少了，要把书吃透**"。这句话的战术含义是：**深度优先于广度**。第二章（传输线）与第三章（波导）合计通常占卷面一多半分值，是必须"吃透"的两章；第五、六章的网络与器件属于"公式套用 + 矩阵推导"型，掌握模板后得分效率极高。
+
+---
+
+## 一、考点全景矩阵
+
+下表的"频率"指在历年卷面出现的稳定程度，"难度"用 ★（易）到 ★★★★★（难）表示。**投入产出比 = 频率 ÷ 难度**，是复习排序的直接依据。
+
+### 第 1 章 绪论
+
+| 考点 | 常见设问 | 题型 | 频率 | 难度 | 投入产出比 |
+|---|---|---|---|---|---|
+| 微波频段与波长范围 | 写出微波的频率/波长范围 | 填空 | 高 | ★ | ★★★★★ |
+| 波长—频率换算 | 给定 $f$ 求 $\lambda$ | 计算 | 高 | ★ | ★★★★★ |
+| 五大特点 | 逐个说出并解释 | 简答 | 中 | ★★ | ★★★★ |
+| 长线/短线判据 | $l$ 与 $\lambda$ 比较判断类型 | 选择/计算 | 中 | ★★ | ★★★★ |
+| 基尔霍夫失效的原因 | 为什么低频理论不适用 | 简答 | 中 | ★★ | ★★★★ |
+| 三种分析方法对应章节 | 路/场/网络各是什么 | 填空 | 中 | ★ | ★★★★★ |
+| 趋肤效应与高频损耗 | 说明损耗随频率增大的机理 | 简答 | 低 | ★★★ | ★★★ |
+| 发展里程碑 | 麦克斯韦预言、赫兹验证、高锟 | 填空 | 低 | ★ | ★★★★ |
+
+### 第 2 章 均匀传输线理论 —— **卷面第一大章**
+
+| 考点 | 常见设问 | 题型 | 频率 | 难度 | 投入产出比 |
+|---|---|---|---|---|---|
+| 电报方程的建立 | 从线元等效电路推导 | 证明/简答 | 高 | ★★★ | ★★★★ |
+| 特性阻抗 $Z_0$ | 定义、性质、工程公式 | 填空/简答 | 极高 | ★★ | ★★★★★ |
+| 传播常数 $\gamma=\alpha+j\beta$ | 无耗/小损耗的 $\alpha$、$\beta$ | 填空/计算 | 高 | ★★★ | ★★★★ |
+| 相速与波长、色散 | 有无色散的判别 | 选择/简答 | 高 | ★★ | ★★★★★ |
+| **输入阻抗 $Z_{\mathrm{in}}(z)$** | 给定 $Z_l,Z_0,f,z$ 求 $Z_{\mathrm{in}}$ | **计算（必考）** | **极高** | ★★★ | ★★★★★ |
+| $\lambda/2$ 重复性与 $\lambda/4$ 变换性 | 证明或应用 | 证明/计算 | 高 | ★★★ | ★★★★ |
+| 反射系数 $\Gamma$ | 终端/任意点/由 $\Gamma$ 反求 $Z$ | 计算 | 极高 | ★★ | ★★★★★ |
+| 驻波比 $\rho$ | 求 $\rho$、由 $\rho$ 求 $|\Gamma_l|$ | 计算 | 极高 | ★★ | ★★★★★ |
+| 行波/驻波/行驻波判别 | 判断状态并画波形 | 简答/作图 | 高 | ★★★ | ★★★★ |
+| 波腹/波节点位置 | 求第一波腹点、第一波节点 | **计算（高频）** | 高 | ★★★★ | ★★★★ |
+| 短路/开路线分析 | 电压电流分布、$Z_{\mathrm{in}}$ | 计算/证明 | 高 | ★★★ | ★★★★ |
+| 纯电抗负载 | 用 $\Delta z$ 等效为标准状态 | 计算 | 中 | ★★★★ | ★★★ |
+| 史密斯圆图 | 由圆图求 $Z$、$Y$、$\Gamma$、$\rho$ | **计算（必考）** | 极高 | ★★★ | ★★★★★ |
+| 传输功率与效率 | 求 $P(z)$、$\eta$ | 计算 | 中 | ★★★ | ★★★★ |
+| 回波损耗/插入损耗/dBm | 定义与换算 | 填空/计算 | 中 | ★★ | ★★★★ |
+| **阻抗匹配** | $\lambda/4$ 变换器、单枝节 $l_1,l_2$ | **计算/设计（必考）** | 高 | ★★★★ | ★★★★★ |
+
+### 第 3 章 规则金属波导 —— **卷面第二大章**
+
+| 考点 | 常见设问 | 题型 | 频率 | 难度 | 投入产出比 |
+|---|---|---|---|---|---|
+| 模 Maxwell 方程组推导亥姆霍兹方程 | 完整推导 | 证明 | 中 | ★★★★ | ★★★ |
+| 三类波型 TEM/TE/TM | 定义与判定，为何空心波导无 TEM | 简答/证明 | 高 | ★★★ | ★★★★ |
+| 横向场与纵向场的关系式 | 写出或使用 | 填空/应用 | 中 | ★★★★ | ★★★ |
+| 矩形波导 TM/TE 场的求解 | 分离变量 + 边界条件 | 证明 | 中 | ★★★★★ | ★★★ |
+| **截止波数与截止波长** | 求 $k_c$、$\lambda_c$、$f_c$ | **计算（必考）** | 极高 | ★★★ | ★★★★★ |
+| **TE$_{10}$ 主模** | 场表达式、为何是主模、壁电流 | **简答/计算** | 极高 | ★★★ | ★★★★★ |
+| 波导波长 $\lambda_g$ | 由 $\lambda_0,\lambda_c$ 求 $\lambda_g$ | 计算 | 极高 | ★★★ | ★★★★★ |
+| 相速 $v_p$ 与群速 $v_g$ | 计算并解释 $v_p>c$ | 计算/简答 | 高 | ★★★ | ★★★★ |
+| 波阻抗 $Z_{\mathrm{TE}}$、$Z_{\mathrm{TM}}$ | 计算 | 计算 | 高 | ★★★ | ★★★★ |
+| 衰减常数与最佳频率 | 解释先降后升、求最小衰减频率 | 简答/计算 | 中 | ★★★★ | ★★★ |
+| **尺寸选择三原则** | 由 $f$ 设计 $a$、$b$ | **设计（高频）** | 高 | ★★★★ | ★★★★ |
+| TE$_{10}$ 传输功率与功率容量 | 求 $P$、$P_{\max}$ | 计算 | 中 | ★★★★ | ★★★ |
+| 圆波导贝塞尔根与 $\lambda_c$ | 查表求 $\lambda_c$、判主模 | 填空/计算 | 中 | ★★★ | ★★★★ |
+| 圆波导三种常用模式 | TE$_{11}$/TE$_{01}$/TM$_{01}$ 特点与应用 | 简答 | 中 | ★★★ | ★★★★ |
+| 简并与极化简并 | 判别、解释 | 简答 | 低 | ★★★★ | ★★★ |
+| 激励与耦合三方式 | 电/磁/孔缝激励的位置原则 | 简答 | 中 | ★★ | ★★★★★ |
+
+### 第 4 章 微波传输线
+
+| 考点 | 常见设问 | 题型 | 频率 | 难度 | 投入产出比 |
+|---|---|---|---|---|---|
+| 同轴线 TEM 场与 $Z_0$ | 由 $a$、$b$、$\varepsilon_r$ 求 $Z_0$ | 计算 | 高 | ★★ | ★★★★★ |
+| 同轴线三个最佳 $b/a$ | 1.65 / 3.59 / 50 Ω 的来历 | 简答/计算 | 高 | ★★★ | ★★★★ |
+| 同轴线高次模限制 | 求 $f_{c,\mathrm{TE}_{11}}$ | 计算 | 中 | ★★★ | ★★★★ |
+| 带状线 $Z_0$ 公式 | 椭圆积分或分段近似 | 计算 | 中 | ★★★ | ★★★★ |
+| **微带线准 TEM 与 $\varepsilon_e$** | 求 $\varepsilon_e$ | **计算（高频）** | 高 | ★★★★ | ★★★★ |
+| **微带线 $Z_0$（Hammerstad）** | 正向/反向设计 $w$ | **计算/设计** | 高 | ★★★★ | ★★★★ |
+| 微带线尺寸选择 | 由 $2h\sqrt{\varepsilon_r}$、$4h\sqrt{\varepsilon_r-1}$ 定 $h$ | 计算 | 中 | ★★★★ | ★★★ |
+| 耦合线奇偶模 | $Z_{0e}$ 与 $Z_{0o}$ 谁大、耦合系数 | 简答/计算 | 中 | ★★★★ | ★★★ |
+| 光纤单模条件与 NA | 求 $V$、判断单模 | 计算 | 中 | ★★★ | ★★★★ |
+
+### 第 5 章 微波网络基础
+
+| 考点 | 常见设问 | 题型 | 频率 | 难度 | 投入产出比 |
+|---|---|---|---|---|---|
+| 等效传输线与归一化 | 归一化电压电流、功率不变性 | 简答/计算 | 中 | ★★★ | ★★★★ |
+| 波导等效 $U$、$I$、$Z_e$ | 完整推导（TE$_{10}$） | 证明/计算 | 中 | ★★★★ | ★★★★ |
+| $[Z]$、$[Y]$ 的定义与测量条件 | 写出定义、由电路求矩阵 | 计算 | 高 | ★★★ | ★★★★ |
+| **$[A]$ 矩阵与级联** | 求 $[A]$、级联相乘 | **计算（高频）** | 高 | ★★★ | ★★★★★ |
+| 基本单元的 $[A]$ 矩阵 | 串联/并联/传输线 | 填空 | 高 | ★★ | ★★★★★ |
+| **$[S]$ 矩阵的定义与物理意义** | $S_{ij}$ 的含义与测量条件 | **简答（必考）** | 极高 | ★★★ | ★★★★★ |
+| **由 $[S]$ 判别性质** | 无耗/互易/对称/有耗 | **判断/证明（必考）** | 极高 | ★★★★ | ★★★★★ |
+| $[S]$ 幺正性的推论 | 由幺正性反解未知元素 | 证明 | 高 | ★★★★ | ★★★★ |
+| 四种矩阵之间的转换 | 由 $[S]$ 求 $[Z]$ 或 $[A]$ | 计算 | 高 | ★★★★ | ★★★★ |
+| 参考面移动的影响 | 相位变换后重写 $[S]$ | 计算 | 中 | ★★★ | ★★★★ |
+| 传输矩阵 $[T]$ 与 $[S]$ 级联 | 求级联 $[S]$ | 计算 | 中 | ★★★★ | ★★★ |
+
+### 第 6 章 微波无源器件
+
+| 考点 | 常见设问 | 题型 | 频率 | 难度 | 投入产出比 |
+|---|---|---|---|---|---|
+| 匹配负载与短路负载 | $\Gamma$、$\rho$、应用 | 填空/简答 | 中 | ★★ | ★★★★ |
+| 衰减器/相移器的 $[S]$ | 写出并判别有耗/无耗 | 计算 | 中 | ★★★ | ★★★★ |
+| 螺钉调配器 | 原理、间距、深度约束 | 简答/计算 | 中 | ★★★ | ★★★★ |
+| 阶梯阻抗变换器 | 二项式/切比雪夫、节数与带宽 | 计算/设计 | 中 | ★★★★ | ★★★ |
+| **三端口不能同时匹配** | 完整证明 | **证明（必考）** | 高 | ★★★★ | ★★★★★ |
+| **E-T 与 H-T 的 $[S]$** | 写出 $[S]$、比较相位关系 | **计算/证明** | 高 | ★★★★ | ★★★★★ |
+| 双 T 接头 | 端口定义与特性 | 简答 | 中 | ★★★ | ★★★★ |
+| **魔 T 四条性质** | $[S]$ 矩阵、隔离/均分/相位 | **简答/计算（必考）** | 高 | ★★★★ | ★★★★★ |
+| 魔 T 应用 | 平衡混频器、和差器、双工器 | 简答 | 中 | ★★★ | ★★★★ |
+
+### 第 7、8 章 专题推导
+
+| 考点 | 常见设问 | 题型 | 频率 | 难度 | 投入产出比 |
+|---|---|---|---|---|---|
+| 无耗网络 $[Z]^+=-[Z]$ | 从平均功率为零完整证明 | **证明** | 高 | ★★★★ | ★★★★★ |
+| 对角项与交叉项分别讨论 | 证明 $\mathrm{Re}[Z_{nn}]=0$、$Z_{mn}=-Z_{nm}^*$ | 证明 | 高 | ★★★★ | ★★★★ |
+| 互易时 $[Z]$ 为纯虚对称 | 证明 | 证明 | 中 | ★★★ | ★★★★ |
+| $[Z]$ 与 $[S]$ 性质等价 | 证明两者互通 | 证明 | 中 | ★★★★★ | ★★★ |
+| $([z]+[E])^{-1}([z]-[E])$ 展开 | $2\times2$ 完整展开 | 证明/计算 | 高 | ★★★★ | ★★★★★ |
+| **$z_{11}=z_{22}\Rightarrow S_{11}=S_{22}$** | 完整证明 | **证明（必考）** | 高 | ★★★★ | ★★★★★ |
+| 逆命题不成立 | 举反例 | 简答 | 低 | ★★★ | ★★★ |
+| 互易 vs 对称的区别 | 数学条件与物理来源 | **简答（高频）** | 高 | ★★ | ★★★★★ |
+| 对称性 + 幺正性反解 $[S]$ | 推导三端口/四端口 $[S]$ | 证明 | 中 | ★★★★★ | ★★★ |
+
+---
+
+## 二、优先级：时间不够时先保什么
+
+按"必考核心 → 高频应用 → 深度证明 → 冷门细节"四档排序。
+
+> **【考点】第一档：无论如何必须拿满（约占卷面 50–60 分）**
+> 1. $Z_{\mathrm{in}}(z)$ 的公式与计算（含 $\beta=2\pi f\sqrt{\varepsilon_r}/c$ 的换算）
+> 2. $\Gamma_l$、$\Gamma(z)$、$\rho$ 的计算与三者互换
+> 3. 波腹点/波节点位置公式 $z_{\max}=\dfrac{\varphi_l\lambda}{4\pi}+\dfrac{n\lambda}{2}$
+> 4. 史密斯圆图四步操作
+> 5. 阻抗匹配：$\lambda/4$ 变换器公式与单枝节 $l_1,l_2$
+> 6. 矩形波导 $\lambda_c$、$\lambda_g$、$f_c$ 与单模工作区
+> 7. TE$_{10}$ 主模的场结构、为什么是主模
+> 8. $[S]$ 矩阵的物理意义、由 $[S]$ 判别无耗/互易/有耗
+
+> **【考点】第二档：高频应用，拿分效率最高**
+> 9. 电报方程的建立（从线元等效电路）
+> 10. 波导尺寸设计（$\lambda/2<a<\lambda$）
+> 11. 相速、群速、$v_pv_g=c^2$ 与 $v_p>c$ 的解释
+> 12. $[A]$ 矩阵的级联与基本单元
+> 13. 同轴线 $Z_0$ 与 $b/a$ 最佳值、高次模限制
+> 14. 微带线 $\varepsilon_e$ 与 $Z_0$（Hammerstad 两段公式）
+> 15. 魔 T 四条性质与 $[S]$ 矩阵
+
+> **【考点】第三档：深度证明题，会做就是拉分点**
+> 16. 空心单导体波导不存在 TEM 波的证明
+> 17. 三端口无耗互易网络不能同时匹配的证明
+> 18. 无耗网络 $[Z]^+=-[Z]$ 的完整证明
+> 19. $z_{11}=z_{22}\Rightarrow S_{11}=S_{22}$ 的完整证明
+> 20. $\lambda/2$ 重复性与 $\lambda/4$ 变换性的证明
+
+> **【考点】第四档：了解即可，不要在考前一晚投入**
+> 21. 圆波导贝塞尔函数的完整场表达式（只需会查根与 $\lambda_c$）
+> 22. 带状线椭圆积分公式的推导
+> 23. 阶梯阻抗变换器的切比雪夫多项式展开
+> 24. 光纤色散与非线性的定量分析
+
+---
+
+## 三、题型解法模板
+
+### 3.1 计算题：输入阻抗类
+
+**通用四步**：
+
+1. **算 $\beta$**：$\beta=\dfrac{2\pi}{\lambda}=\dfrac{2\pi f}{v}=\dfrac{2\pi f\sqrt{\varepsilon_r}}{c}$。介质填充时**不要漏掉 $\sqrt{\varepsilon_r}$**。
+2. **算 $\beta z$**（用弧度；注意 $0.75\pi$ 这类值就是最简形式，不必换成小数）。
+3. **代公式**：$Z_{\mathrm{in}}=Z_0\dfrac{Z_l+jZ_0\tan\beta z}{Z_0+jZ_l\tan\beta z}$。分子分母**同时**约去 $Z_0$ 后可用归一化形式 $\bar z_{\mathrm{in}}=\dfrac{\bar z_l+j\tan\beta z}{1+j\bar z_l\tan\beta z}$ 减少运算量。
+4. **化简为 $a+jb$**，说明结果呈感性还是容性。
+
+> **【易错点】**
+> $\tan\beta z$ 在 $\beta z=\pi/2$ 处发散（对应 $\lambda/4$，输入阻抗无穷大即开路），此时不能直接代入，要用 $\lambda/4$ 变换性 $Z_{\mathrm{in}}=Z_0^2/Z_l$。
+
+### 3.2 计算题：反射系数与驻波比类
+
+1. $\Gamma_l=\dfrac{Z_l-Z_0}{Z_l+Z_0}$，化为**模与相位**形式 $|\Gamma_l|e^{j\varphi_l}$（这是后续求波腹位置的必需量）。
+2. $\Gamma(z)=\Gamma_le^{-j2\beta z}$，只改相位不改模。
+3. $\rho=\dfrac{1+|\Gamma_l|}{1-|\Gamma_l|}$。
+4. 若要求 $Z_{\mathrm{in}}$：$Z_{\mathrm{in}}=Z_0\dfrac{1+\Gamma(z)}{1-\Gamma(z)}$。
+
+**复数除法的模与相位**：$\left|\dfrac{a}{b}\right|=\dfrac{|a|}{|b|}$，$\arg\dfrac ab=\arg a-\arg b$。用这一条可以避免展开复数除法。
+
+### 3.3 计算题：波腹/波节点位置
+
+1. 由 $\Gamma_l$ 求出 $\varphi_l$ 的**主值**（$-180^\circ<\varphi_l\le180^\circ$）。
+2. $z_{\max}=\dfrac{\varphi_l\lambda}{4\pi}+\dfrac{n\lambda}{2}$，取 $n$ 使 $z_{\max}$ 为**最小正值**。
+3. $z_{\min}=z_{\max}\pm\dfrac{\lambda}{4}$，同样取最小正值。
+4. **验算**：$z_{\max}$ 与 $z_{\min}$ 之差必为 $\lambda/4$，且 $Z_{\mathrm{in}}(z_{\max})=Z_0\rho$、$Z_{\mathrm{in}}(z_{\min})=Z_0/\rho$ 均为纯电阻，两者乘积应为 $Z_0^2$。
+
+> **【记忆技巧】**
+> 分情形记忆最快：**纯电阻负载**只有两种——$R_l<Z_0$ 时负载处即**电压波节**（$z_{\min}=0$、$z_{\max}=\lambda/4$）；$R_l>Z_0$ 时负载处即**电压波腹**（$z_{\max}=0$、$z_{\min}=\lambda/4$）。感性负载的第一波腹点向负载侧偏移（$0<z_{\max}<\lambda/4$），容性负载向电源侧偏移（$\lambda/4<z_{\max}<\lambda/2$）。
+
+### 3.4 计算题：波导类
+
+1. **先判单模**：算 $\lambda_c(\mathrm{TE}_{10})=2a$，比较工作波长 $\lambda_0$ 与 $2a$、$a$。
+2. **算 $\lambda_g$**：$\lambda_g=\dfrac{\lambda_0}{\sqrt{1-(\lambda_0/\lambda_c)^2}}$。注意根号内必须是**正数**，否则该模式被截止。
+3. **算 $v_p$、$v_g$**：$v_p=\dfrac{c}{\sqrt{1-(f_c/f)^2}}$、$v_g=\dfrac{c^2}{v_p}$。
+4. **算波阻抗**：TE 取 $\dfrac{\eta}{\sqrt{1-(f_c/f)^2}}$，TM 取 $\eta\sqrt{1-(f_c/f)^2}$。
+
+**尺寸设计题**的答题顺序（按重要性）：①单模传输 $\lambda/2<a<\lambda$；②功率容量（$a$、$b$ 尽量大）；③衰减（$b$ 大则衰减小但要防 TE$_{01}$）；④机械与工艺限制。工程取值 $a\approx0.7\lambda$、$b\approx0.4\sim0.5a$。
+
+### 3.5 证明题：网络性质类
+
+| 要证明的结论 | 起手式 | 关键步骤 |
+|---|---|---|
+| 网络无耗 | 写 $P_{av}=\frac12\mathrm{Re}[\mathbf{I}^T[Z]\mathbf{I}^*]=0$ | 分对角项（令其他电流为零）与交叉项（只留两个电流）讨论 |
+| $[Z]^+=-[Z]$ | 同上 | 交叉项展开实部得 $a(R_{mn}+R_{nm})+b(X_{nm}-X_{mn})=0$，由 $a,b$ 独立得 $R_{mn}=-R_{nm}$、$X_{mn}=X_{nm}$ |
+| 网络互易 | 洛伦兹互易定理 $\nabla\cdot(\mathbf E_1\times\mathbf H_2-\mathbf E_2\times\mathbf H_1)=0$ | 推出 $\sum_i(U_i^{(1)}I_i^{(2)}-U_i^{(2)}I_i^{(1)})=0$，代入 $a,b$ 表示得 $S_{ij}=S_{ji}$ |
+| 网络无耗（用 $[S]$） | 功率守恒 $\sum|a_i|^2=\sum|b_i|^2$ | 对任意 $a$ 成立 → $[S]^+[S]=[I]$ |
+| $S_{11}=S_{22}$ | 由 $[S]=([z]+[E])^{-1}([z]-[E])$ 展开 $2\times2$ | 代入 $z_{11}=z_{22}$，分子分母完全相同 |
+| 三端口不能同时匹配 | 设 $S_{11}=S_{22}=S_{33}=0$ | 幺正条件给三个模平方和为 1 → 每个 $=1/2$；正交条件要求至少两个为零 → 矛盾 |
+
+> **【考点】**
+> 证明题的得分点分布通常是：**起手式（写对出发点）2–3 分、关键中间步骤 3–5 分、结论 1–2 分**。即使推不到最后，把正确的出发方程与已知条件写全也能拿到一半分。**不要空白。**
+
+### 3.6 简答题：概念辨析类
+
+高频简答的"标准答案骨架"：
+
+- **空心波导为何无 TEM 波**：TEM 要求 $E_z=H_z=0$ → 横向场可由二维拉普拉斯方程的标量势 $\varphi$ 描述（$\nabla_t^2\varphi=0$）→ 金属壁为等势面 → 单导体边界下边值问题只有平凡解 → 故不存在。**结论：TEM 波必须由双导体支撑。**
+- **为什么 TE$_{10}$ 是主模**：① 截止波长最长（$2a$），单模带宽最宽；② 场结构最简单，易于激励与耦合；③ 宽边中央无纵向壁电流，可开缝用于测量与馈电；④ 衰减较小；⑤ 单模传输避免模式色散与模式耦合。
+- **为什么 $v_p>c$ 不违反相对论**：相速描述的是等相位面的移动速度，不承载能量与信息；能量传播速度是群速 $v_g<c$，且 $v_pv_g=c^2$。
+- **为什么 $\lambda_g>\lambda_0$**：波在波导中"曲折传播"，沿轴向的有效波长被拉长，$\lambda_g=\lambda_0/\sin\theta>\lambda_0$（$\theta$ 为射线与轴线的夹角）。
+- **互易与对称的区别**：互易是 $S_{12}=S_{21}$，来源是媒质各向同性；对称是 $S_{11}=S_{22}$，来源是结构几何对称。两者独立。
+- **衰减为何先降后升**：分子 $R_s\propto\sqrt f$ 随频率增长；分母 $\sqrt{1-(f_c/f)^2}$ 在 $f\to f_c$ 时趋于零使衰减发散。两者竞争产生最小值。
+
+---
+
+## 四、复习时间分配建议
+
+以"考前 3 周、每天 3 小时"为标准模型（可按比例缩放）。
+
+| 阶段 | 时长 | 任务 | 检验标准 |
+|---|---|---|---|
+| 第 1 周 | 10 h | 主攻第 2 章：通读 + 默写全部公式 + 做完课件全部例题 | 能不看公式表完成输入阻抗、反射系数、驻波比、波腹位置四类计算 |
+| 第 1 周 | 5 h | 史密斯圆图专练 + 阻抗匹配设计 | 能独立完成 3 道圆图题与 2 道单枝节设计题 |
+| 第 2 周 | 10 h | 主攻第 3 章：导波原理 + 矩形波导 + 尺寸设计 | 能默写 TE$_{10}$ 场、独立求 $\lambda_c/\lambda_g/v_p/v_g$、完成尺寸设计 |
+| 第 2 周 | 4 h | 第 4 章：同轴线、微带线公式与设计 | 能算同轴线 $Z_0$ 与单模上限、微带线 $\varepsilon_e$ 与 $Z_0$ |
+| 第 3 周 | 8 h | 第 5 章 + 专题 7、8：[S] 矩阵、性质判别、两大证明 | 能由 $[S]$ 判别性质、独立完成两个专题证明 |
+| 第 3 周 | 5 h | 第 6 章：器件 $[S]$、魔 T、三端口证明 | 能默写魔 T 矩阵与四条性质、完成三端口证明 |
+| 第 3 周 | 3 h | 第 1 章 + 全书串讲 + 模拟卷 | 概念题零失分，模拟卷限时完成 |
+
+> **【记忆技巧】**
+> 复习时遵循"**三遍法**"：第一遍**无公式表**通读并标记推导不出的地方；第二遍**只看公式表 + 例题**，把标记处的公式默写三遍；第三遍**只看目录**，在纸上复述每节的公式与结论。第三遍能过，说明真记住了。
+
+---
+
+## 五、考场策略
+
+1. **先扫全卷再动笔**（约 3 分钟）。标记出必得分题与难题，规划顺序。
+2. **按"计算 → 简答 → 证明"的顺序答题**。计算题有明确步骤、分步给分，性价比最高；证明题留到最后，但要**写满起手式与关键步骤**。
+3. **分步书写、公式先行**。每个计算题先写出所用公式（即使数值算错也有公式分），再代入数值。
+4. **单位与量纲必须写**。$\Omega$、$\mathrm{GHz}$、$\mathrm{mm}$、$\mathrm{rad/m}$、$\mathrm{Np/m}$、$\mathrm{dB}$——漏单位的扣分非常常见。
+5. **数值结果给三位有效数字**，并**说明性质**（"结果呈容性""该模式被截止""能单模传输"）。这类结论性表述往往是独立的给分点。
+6. **验算三个自洽关系**：
+   - $Z_{\mathrm{in}}(z_{\max})\cdot Z_{\mathrm{in}}(z_{\min})=Z_0^2$
+   - $v_pv_g=c^2$（无耗空气填充）
+   - $\rho=\dfrac{1+|\Gamma_l|}{1-|\Gamma_l|}$ 与 $|\Gamma_l|=\dfrac{\rho-1}{\rho+1}$ 互为反函数
+7. **圆图题一定要画出旋转方向与角度**，并在图上标出工作点。即使读数有误差，作图步骤也能得分。
+8. **证明题切忌跳步**。每一步都写"由……得……"，尤其是"因为 $a,b$ 独立取值，故各项系数分别为零"这类关键论据——这是评分点。
+
+---
+
+## 六、自测：你准备好了吗
+
+逐条打勾。全部打勾说明已达到高分线水平。
+
+**第 2 章（核心）**
+
+- [ ] 我能从线元等效电路独立推导出电报方程的两个一阶式
+- [ ] 我能说出 $Z_0$ 的定义、三条性质，并写出同轴线与双导线的工程公式
+- [ ] 我能默写 $Z_{\mathrm{in}}(z)$ 并解释它与 $Z_0$ 的本质区别
+- [ ] 我能证明 $\lambda/2$ 重复性与 $\lambda/4$ 变换性
+- [ ] 我能由 $Z_l$ 求 $\Gamma_l$、$\rho$，并反推回去
+- [ ] 我能求第一电压波腹点与第一波节点位置并验算相差 $\lambda/4$
+- [ ] 我能判别行波/驻波/行驻波，并画出三种状态的电压包络
+- [ ] 我能在史密斯圆图上完成"求 $Z_{\mathrm{in}}$、求 $Y$、求 $\rho$"三类操作
+- [ ] 我能设计 $\lambda/4$ 变换器完成实数负载匹配
+- [ ] 我能写出单枝节匹配的两组 $l_1$、$l_2$ 公式并解释为什么有两组解
+
+**第 3 章（核心）**
+
+- [ ] 我能证明空心单导体金属波导中不存在 TEM 波
+- [ ] 我能写出 $k_c^2=k^2+\gamma^2$ 并解释截止的物理含义
+- [ ] 我能默写矩形波导 $\lambda_c$、$f_c$ 公式并给出各模式的排序
+- [ ] 我能默写 TE$_{10}$ 的三个非零场分量并说明横向驻波、纵向行波
+- [ ] 我能列举 TE$_{10}$ 是主模的五条理由
+- [ ] 我能由工作频率设计矩形波导 $a$、$b$ 并给出单模工作区
+- [ ] 我能计算 $\lambda_g$、$v_p$、$v_g$、$Z_{\mathrm{TE}}$、$Z_{\mathrm{TM}}$ 并验证 $v_pv_g=c^2$
+- [ ] 我能解释 TE$_{10}$ 衰减随频率先降后升的原因
+- [ ] 我能说出圆波导主模是 TE$_{11}$ 并解释 TE$_{01}$ 的特殊价值
+- [ ] 我能解释模式简并与极化简并的区别
+
+**第 4 章**
+
+- [ ] 我能由 $a$、$b$、$\varepsilon_r$ 求同轴线 $Z_0$ 并给出单模频率上限
+- [ ] 我能解释 $b/a=1.65$（最大功率）、$3.59$（最小衰减）、$50\ \Omega$（折中）三者的关系
+- [ ] 我能区分带状线（均匀介质）与微带线（有效介电常数）的公式差别
+- [ ] 我能正向与反向使用 Hammerstad 公式设计微带线
+- [ ] 我能由 $2h\sqrt{\varepsilon_r}$ 与 $4h\sqrt{\varepsilon_r-1}$ 确定 $h$ 的上限
+- [ ] 我能说明 $Z_{0e}>Z_{0o}$ 的物理原因
+- [ ] 我能用 $V<2.405$ 判断光纤单模条件
+
+**第 5 章与专题**
+
+- [ ] 我能说出 $Z_{ij}$、$Y_{ij}$、$A/B/C/D$、$S_{ij}$ 各自的测量条件
+- [ ] 我能默写串联阻抗、并联导纳、传输线段三种基本单元的 $[A]$ 矩阵
+- [ ] 我能由 $[S]$ 判断网络是否无耗、互易、对称、有耗
+- [ ] 我能默写幺正性的两个推论并用它反解未知 $S$ 元素
+- [ ] 我能推出参考面移动后的 $[S']$
+- [ ] 我能完整证明无耗网络 $[Z]^+=-[Z]$
+- [ ] 我能完整证明 $z_{11}=z_{22}\Rightarrow S_{11}=S_{22}$
+- [ ] 我能清楚区分互易（看非对角）与对称（看对角）
+
+**第 6 章**
+
+- [ ] 我能写出匹配负载与短路负载的 $\Gamma$、$\rho$
+- [ ] 我能完整证明三端口无耗互易网络不能同时匹配
+- [ ] 我能写出 E-T 与 H-T 的 $[S]$ 并说明端口 1、2 的相位关系
+- [ ] 我能写出魔 T 的 $[S]$ 矩阵并逐条说明四条性质
+- [ ] 我能列举魔 T 的三个工程应用
+
+---
+
+> **【小结】**
+> 这份总纲的顺序就是复习的顺序：**先把第一档 8 条彻底吃透，再逐档向下推进**。第一档拿满，卷面已在及格线以上；第二档拿满，进入良好；第三档的四个证明题是区分优秀与良好的分水岭。第 2、3 章是"深度题"，第 5、6 章是"模板题"，两类题的准备方法完全不同——前者要多推、多算，后者要多默、多套。
+</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

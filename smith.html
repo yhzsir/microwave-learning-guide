@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>史密斯圆图交互工具 · 微波技术基础学习指南</title>
+<meta name="description" content="交互式史密斯圆图：拖动查看归一化阻抗、反射系数、驻波比与导纳">
+<meta name="author" content="微波技术基础学习指南">
+<meta property="og:type" content="website">
+<meta property="og:title" content="史密斯圆图交互工具 · 微波技术基础学习指南">
+<meta property="og:description" content="交互式史密斯圆图：拖动查看归一化阻抗、反射系数、驻波比与导纳">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6fdb'/%3E%3Cpath d='M4 21c3-8 5-8 8 0s5 8 8 0 5-8 8 0' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+(function(){try{var s=localStorage.getItem('mwguide-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-btn" id="menuBtn" aria-label="打开目录">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+  </button>
+  <a class="brand" href="index.html">
+    <span class="brand-mark">μ</span>
+    <span class="brand-text">
+      <span class="brand-title">微波技术基础</span>
+      <span class="brand-sub">LEARNING GUIDE</span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="search-wrap">
+    <svg class="sicon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="search" type="search" placeholder="搜索知识点、公式、例题…  (Ctrl K)" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="切换主题">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <span>深色</span>
+  </button>
+</header><div class="backdrop" id="backdrop"></div><aside class="sidebar" id="sidebar" aria-label="站点导航"><nav class="sidebar-nav" id="sidebarNav"><a class="nav-link" href="index.html"><span class="nav-num">00</span><span class="nav-label">首页 · 学习总览</span></a><a class="nav-link" href="roadmap.html"><span class="nav-num">01</span><span class="nav-label">学习路线图</span></a><a class="nav-link" href="formulas.html"><span class="nav-num">02</span><span class="nav-label">公式速查手册</span></a><a class="nav-link" href="exam.html"><span class="nav-num">03</span><span class="nav-label">考点总纲</span></a><a class="nav-link active" href="smith.html"><span class="nav-num">04</span><span class="nav-label">史密斯圆图交互工具</span></a><a class="nav-link" href="quiz.html"><span class="nav-num">05</span><span class="nav-label">综合自测题</span></a><a class="nav-link" href="resources.html"><span class="nav-num">06</span><span class="nav-label">课件与视频资源</span></a><div class="nav-group"><div class="nav-heading">章节目录</div><a class="nav-link" href="ch01.html"><span class="nav-num">1</span><span class="nav-label">绪论</span></a><a class="nav-link" href="ch02.html"><span class="nav-num">2</span><span class="nav-label">传输线理论</span></a><a class="nav-link" href="ch03.html"><span class="nav-num">3</span><span class="nav-label">金属波导</span></a><a class="nav-link" href="ch04.html"><span class="nav-num">4</span><span class="nav-label">传输线类型</span></a><a class="nav-link" href="ch05.html"><span class="nav-num">5</span><span class="nav-label">微波网络</span></a><a class="nav-link" href="ch06.html"><span class="nav-num">6</span><span class="nav-label">无源器件</span></a><a class="nav-link" href="ch07.html"><span class="nav-num">7</span><span class="nav-label">专题·Z 矩阵</span></a><a class="nav-link" href="ch08.html"><span class="nav-num">8</span><span class="nav-label">专题·S 矩阵</span></a></div></nav></aside><div class="shell"><main class="article"><div class="chapter-eyebrow">交互工具</div><h1>史密斯圆图交互工具</h1>
+<p class="lede" style="font-size:var(--fs-3);color:var(--ink-2);line-height:1.8;margin:0 0 var(--s5)">
+  在圆图上任意位置按下鼠标（或手指）拖动，即可同步读出<strong>归一化阻抗</strong>、<strong>反射系数</strong>、<strong>驻波比</strong>与<strong>归一化导纳</strong>。
+  这四组量由同一组公式互相锁定，理解它们的联动是第二章、第六章匹配设计的核心。
+</p>
+
+<div class="tool-layout">
+  <div class="tool-canvas-wrap">
+    <canvas id="smithCanvas" width="720" height="720" role="img"
+            aria-label="交互式史密斯圆图，可拖动选择归一化阻抗点"></canvas>
+    <div class="legend" style="margin-top:var(--s4)">
+      <span><i style="background:var(--ink-3)"></i>单位圆 |Γ|=1</span>
+      <span><i style="background:var(--line-2)"></i>等 r 圆 / 等 x 弧</span>
+      <span><i style="background:var(--warn)"></i>等驻波比圆</span>
+      <span><i style="background:var(--accent)"></i>当前 Γ 矢量</span>
+      <span><i style="background:var(--brand)"></i>当前工作点</span>
+    </div>
+  </div>
+
+  <div class="tool-panel">
+    <section class="panel" style="padding:var(--s4) var(--s4)">
+      <h3 style="font-size:var(--fs-2);margin-bottom:var(--s3)">输入</h3>
+      <div class="field-row">
+        <div class="field">
+          <label for="inR">归一化电阻 r</label>
+          <input id="inR" type="number" step="0.01" min="0" value="1" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="inX">归一化电抗 x</label>
+          <input id="inX" type="number" step="0.01" value="0" inputmode="decimal">
+        </div>
+      </div>
+      <div style="display:flex;gap:var(--s3);align-items:center;margin-top:var(--s3);flex-wrap:wrap">
+        <label style="display:flex;align-items:center;gap:6px;font-size:var(--fs-00);color:var(--ink-2)">
+          <input id="swrChk" type="checkbox" checked> 显示等驻波比圆
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:var(--fs-00);color:var(--ink-2)">
+          <input id="gridChk" type="checkbox" checked> 显示等 r / x 网格
+        </label>
+      </div>
+      <button class="iconbtn" id="smithReset" style="margin-top:var(--s3);width:100%;justify-content:center">
+        重置到匹配点 (r=1, x=0)
+      </button>
+    </section>
+
+    <section class="panel" style="padding:var(--s4) var(--s4)">
+      <h3 style="font-size:var(--fs-2);margin-bottom:var(--s3)">读数</h3>
+      <div class="readout">
+        <div class="ro-row"><span>归一化阻抗 z</span><span id="roZ">—</span></div>
+        <div class="ro-row"><span>归一化导纳 y</span><span id="roY">—</span></div>
+        <div class="ro-row"><span>反射系数 Γ</span><span id="roG">—</span></div>
+        <div class="ro-row"><span>|Γ|</span><span id="roGm">—</span></div>
+        <div class="ro-row"><span>∠Γ</span><span id="roAng">—</span></div>
+        <div class="ro-row"><span>驻波比 ρ</span><span id="roSwr">—</span></div>
+        <div class="ro-row"><span>R<sub>max</sub> / Z₀</span><span id="roRmax">—</span></div>
+        <div class="ro-row"><span>R<sub>min</sub> / Z₀</span><span id="roRmin">—</span></div>
+      </div>
+      <p style="font-size:var(--fs-00);color:var(--ink-3);margin:var(--s3) 0 0;line-height:1.75">
+        实际阻抗 <em>Z</em> = <em>z</em> · <em>Z</em>₀，实际导纳 <em>Y</em> = <em>y</em> / <em>Z</em>₀。
+      </p>
+    </section>
+
+    <section class="panel" style="padding:var(--s4) var(--s4)">
+      <h3 style="font-size:var(--fs-2);margin-bottom:var(--s3)">使用的公式</h3>
+      <div style="font-size:var(--fs-00);color:var(--ink-2);line-height:2">
+        <div>$$\Gamma=\frac{z-1}{z+1},\qquad z=\frac{1+\Gamma}{1-\Gamma}$$</div>
+        <div>$$\rho=\frac{1+|\Gamma|}{1-|\Gamma|},\qquad y=\frac{1-\Gamma}{1+\Gamma}=\frac1z$$</div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<hr>
+
+<h2>怎么用这张图</h2>
+
+<ol>
+  <li><strong>定标尺。</strong>实轴左端 $(-1,0)$ 是<strong>短路点</strong>（$z=0$），右端 $(1,0)$ 是<strong>开路点</strong>（$z=\infty$），圆心 $(0,0)$ 是<strong>匹配点</strong>（$z=1$）。上半平面 $x>0$ 为感性，下半平面 $x<0$ 为容性。</li>
+  <li><strong>沿等 $|\Gamma|$ 圆旋转。</strong>传输线上移动距离 $z$，对应 $\Gamma(z)=\Gamma_le^{-j2\beta z}$，在圆图上就是沿等 $|\Gamma|$ 圆旋转 $2\beta z$ 弧度。一周 $360^\circ$ 恰好对应 $\lambda/2$。向信源（$z$ 增大）顺时针转，向负载逆时针转。</li>
+  <li><strong>用驻波比圆读 $\rho$。</strong>以原点为圆心、过工作点画圆，与正实轴交点即 $R_{\max}/Z_0=\rho$；与负实轴交点即 $R_{\min}/Z_0=1/\rho$。</li>
+  <li><strong>阻抗 ↔ 导纳。</strong>把工作点绕原点旋转 $180^\circ$（即 $\Gamma\to-\Gamma$）就得到导纳点，这正是"导纳圆图 = 阻抗圆图旋转 $180^\circ$"的由来，也是并联枝节匹配设计的操作方式。</li>
+  <li><strong>做匹配设计。</strong>要让 $z$ 落到圆心，先沿等 $|\Gamma|$ 圆转到 $r=1$ 圆上（这一步用一段传输线或枝节的位置 $l_1$ 实现"电阻匹配"），再用枝节的电抗把虚部抵消（这一步用枝节长度 $l_2$ 实现"电抗匹配"）。圆图上 $r=1$ 圆与等 $|\Gamma|$ 圆的<strong>两个交点</strong>，正对应单枝节匹配的两组解。</li>
+</ol>
+
+> **【考点】**
+> 考试中史密斯圆图类题目通常分四步给分：①正确归一化；②标出负载点；③说明旋转方向与角度（$2\beta z$ 或 $z/\lambda\times720^\circ$）；④读出结果并换算回实际值。**旋转方向写错是最常见的失分点**——记住"顺时针向信源"。使用软件工具时只能顺时针转，因为软件默认 $z$ 从负载起算向信源。
+
+> **【易错点】**
+> ① 用圆图前<strong>必须先归一化</strong>（除以 $Z_0$），软件工具则已预先设定 $f$ 与 $Z_0$，不要重复归一化。
+> ② $\lambda/2$ 对应一整圈 $360^\circ$，$\lambda/4$ 对应半圈 $180^\circ$，不要记成"$\lambda$ 对应一圈"。
+> ③ $\Gamma$ 的相位是 $-2\beta z$，所以 $z$ 增大时相位减小——这是"顺时针"的数学来源。
+
+<hr>
+
+<h2>典型读数对照</h2>
+
+<p>下表列出几个特征点的全部读数，可用来检验你对公式与图形的理解是否一致。</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>工作点 $z=r+jx$</th><th>$\Gamma$</th><th>$|\Gamma|$</th><th>$\rho$</th><th>$y=g+jb$</th><th>物理含义</th></tr></thead>
+<tbody>
+<tr><td>$1+j0$</td><td>$0$</td><td>$0$</td><td>$1$</td><td>$1+j0$</td><td>完全匹配，行波，无反射</td></tr>
+<tr><td>$0+j0$</td><td>$-1$</td><td>$1$</td><td>$\infty$</td><td>$\infty$</td><td>短路，纯驻波，电流波腹</td></tr>
+<tr><td>$\infty$</td><td>$+1$</td><td>$1$</td><td>$\infty$</td><td>$0$</td><td>开路，纯驻波，电压波腹</td></tr>
+<tr><td>$0+j1$</td><td>$j1$</td><td>$1$</td><td>$\infty$</td><td>$-j1$</td><td>纯感抗，纯驻波</td></tr>
+<tr><td>$2+j0$</td><td>$1/3$</td><td>$1/3$</td><td>$2$</td><td>$0.5$</td><td>电压波腹在负载处</td></tr>
+<tr><td>$0.5+j0$</td><td>$-1/3$</td><td>$1/3$</td><td>$2$</td><td>$2$</td><td>电压波节在负载处</td></tr>
+<tr><td>$1.5+j0.5$</td><td>$\dfrac{0.5+j0.5}{2.5+j0.5}$</td><td>$\approx0.283$</td><td>$\approx1.79$</td><td>$\approx0.6-j0.2$</td><td>一般行驻波工作点</td></tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:var(--fs-00);color:var(--ink-3)">提示：把上表数值逐个输入左侧输入框，观察圆图工作点位置与读数是否与表格一致，是最快的自检方式。</p>
+</main><aside class="toc" id="toc"><div class="toc-heading">本页目录</div><div class="toc-list" id="tocList"></div></aside></div><footer class="footer">
+  <div>《微波技术基础》在线学习指南 · 共 6 章 + 2 个专题推导</div>
+  <div>
+    <a href="formulas.html">公式速查</a> ·
+    <a href="exam.html">考点总纲</a> ·
+    <a href="resources.html">课件资源</a>
+  </div>
+</footer>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/app.js"></script>
+<script>// 史密斯圆图页附加脚本：排版公式 + 目录
+(function () {
+  function boot() {
+    if (!window.MWGuide) { setTimeout(boot, 60); return; }
+    var main = document.querySelector('main.article');
+    if (main && window.MWGuide.Math) window.MWGuide.Math.typeset(main);
+
+    // 生成本页目录
+    var host = document.getElementById('tocList');
+    if (host && main) {
+      var hs = main.querySelectorAll('h2');
+      if (!hs.length) { var toc = document.getElementById('toc'); if (toc) toc.style.display = 'none'; return; }
+      var html = '';
+      Array.prototype.forEach.call(hs, function (h, i) {
+        if (!h.id) h.id = 'sec-' + i;
+        html += '<a class="toc-link lvl-2" href="#' + h.id + '">' + h.textContent.trim() + '</a>';
+      });
+      host.innerHTML = html;
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+</body>
+</html>
