@@ -37,6 +37,8 @@
     ├── build.ps1               静态站点生成器
     ├── test-render.js          渲染管线测试（21 项断言）
     ├── lint-content.js         内容结构校验（LaTeX/SVG/标签）
+    ├── test-smith.js           史密斯圆图核心数学验证（34 项断言）
+    ├── audit-terms.js          课件核心知识点覆盖度审计
     ├── normalize-equations.js  显示公式排版规范化
     ├── fix-svg-math.js         SVG 内 LaTeX → Unicode 转换
     ├── fix-svg-overflow.js     SVG 文本越界修复
@@ -81,6 +83,8 @@ powershell -ExecutionPolicy Bypass -File tools/build.ps1
 ```bash
 node tools/test-render.js    # 渲染管线测试（Markdown → HTML、公式保护、提示框、表格）
 node tools/lint-content.js   # 内容结构校验（LaTeX 配对、SVG id 唯一性、标签合法性）
+node tools/test-smith.js     # 史密斯圆图核心数学验证（正反变换、驻波比、导纳）
+node tools/audit-terms.js    # 课件核心知识点覆盖度审计
 ```
 
 ---
