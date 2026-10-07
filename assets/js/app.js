@@ -684,7 +684,7 @@
             inlineMath: [['\\(', '\\)']],
             displayMath: [['\\[', '\\]']],
             processEscapes: true,
-            tags: 'none',
+            tags: 'ams',
             macros: {
               RR: '\\mathbb{R}', ZZ: '\\mathbb{Z}',
               dd: '\\mathrm{d}', jj: '\\mathrm{j}',

@@ -411,7 +411,7 @@ html[data-theme="dark"] .md code { color: var(--brand-400); }
 }
 .md figcaption b, .md figcaption strong { color: var(--ink-2); }
 
-/* 公式 */
+/* 公式（引擎为 MathJax 3 / tex-svg，真实标签是 mjx-container，不是 .katex） */
 .katex { font-size: 1.045em; }
 .katex-display { margin: var(--s5) 0 !important; overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
 .katex-display > .katex { white-space: normal; }
@@ -422,6 +422,37 @@ html[data-theme="dark"] .md code { color: var(--brand-400); }
   border-radius: 0 var(--r-sm) var(--r-sm) 0;
 }
 html[data-theme="dark"] .md .katex-display { border-left-color: var(--brand-200); }
+
+mjx-container {
+  font-size: 1.045em !important;
+  color: inherit;
+}
+/* 行内公式：与中文/数字正文基线对齐，避免偏高或偏低 */
+mjx-container[jax="SVG"]:not([display="true"]) {
+  vertical-align: -0.1ex;
+  margin: 0 .08em;
+}
+/* 块级（display）公式：横向可滚动，左侧强调条与 KaTeX 版式保持一致 */
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  margin: var(--s5) 0 !important;
+  padding: var(--s3) var(--s4);
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: linear-gradient(var(--surface-2), var(--surface-2)) padding-box;
+  border-left: 3px solid var(--brand-200);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  text-align: center;
+}
+.md mjx-container[jax="SVG"][display="true"] > svg {
+  margin: 0 auto;
+}
+html[data-theme="dark"] mjx-container[jax="SVG"][display="true"] { border-left-color: var(--brand-200); }
+/* MathJax SVG 默认描边继承自 currentColor，暗色主题下需要跟随文字色而非固定黑色 */
+mjx-container svg { color: inherit; }
+mjx-container svg * { stroke: currentColor; }
+mjx-container svg text,
+mjx-container svg use { fill: currentColor; }
 
 /* 公式加载失败的兜底 */
 math-fallback { display: block; font-family: var(--font-mono); font-size: var(--fs-0);
