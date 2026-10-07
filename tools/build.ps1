@@ -129,9 +129,12 @@ function New-Head([string]$title, [string]$desc, [string]$rel) {
 "@
 }
 
+function New-Backdrop() {
+  return '<div class="backdrop" id="backdrop"></div>'
+}
+
 function New-Sidebar([string]$active) {
   $sb = New-Object System.Text.StringBuilder
-  [void]$sb.Append('<div class="backdrop" id="backdrop"></div>')
   [void]$sb.Append('<aside class="sidebar" id="sidebar" aria-label="站点导航">')
   [void]$sb.Append('<nav class="sidebar-nav" id="sidebarNav">')
   foreach ($t in $TOOLS) {
@@ -182,13 +185,14 @@ function Build-Chapter($c, [string[]]$allTexts) {
   $desc  = if ($fm['desc'])  { $fm['desc'] }  else { $c.title }
   $minutes = if ($fm['minutes']) { $fm['minutes'] } else { $c.minutes }
 
-  $head = New-Head "$title · 微波技术基础学习指南" $desc '..'
+  $head = New-Head "$title · 微波技术基础学习指南" $desc ''
   $side = New-Sidebar "content/$($c.file).html"
 
   $html = New-Object System.Text.StringBuilder
   [void]$html.Append($head)
-  [void]$html.Append($side)
+  [void]$html.Append((New-Backdrop))
   [void]$html.Append('<div class="shell">')
+  [void]$html.Append($side)
   [void]$html.Append('<main class="article loading" id="article">')
   [void]$html.Append('<div class="spinner" role="status" aria-label="加载中"></div>')
   [void]$html.Append('<div id="chapterShell" hidden>')
@@ -198,7 +202,7 @@ function Build-Chapter($c, [string[]]$allTexts) {
   [void]$html.Append('</div></main>')
   [void]$html.Append('<aside class="toc" id="toc"><div class="toc-heading">本页目录</div><div class="toc-list" id="tocList"></div></aside>')
   [void]$html.Append('</div>')
-  [void]$html.Append((New-Footer '..'))
+  [void]$html.Append((New-Footer ''))
 
   # 内容以 <script type="text/plain"> 预嵌入，离线也可读；app.js 优先使用它
   $tpl = '<script id="chapterCfg" type="application/json">{cfg}</script>' + "`n" +
@@ -206,7 +210,7 @@ function Build-Chapter($c, [string[]]$allTexts) {
   $cfg = '{"n":' + $c.n + ',"file":"' + $c.file + '","src":"content/' + $c.file + '.md","title":"' +
          (($title -replace '\\','\\' -replace '"','\"')) + '"}'
   $inject = $tpl.Replace('{cfg}', $cfg).Replace('{body}', (ScriptSafe $md))
-  $out = $html.ToString().Replace('<script src="../assets/js/app.js"></script>', $inject + "`n" + '<script src="../assets/js/app.js"></script>')
+  $out = $html.ToString().Replace('<script src="assets/js/app.js"></script>', $inject + "`n" + '<script src="assets/js/app.js"></script>')
 
   $outPath = Join-Path $Root "$($c.file).html"
   Write-Utf8 $outPath $out
@@ -250,8 +254,9 @@ function Build-Page([string]$mdFile, [string]$outFile, [string]$fallbackTitle, [
 
   $html = New-Object System.Text.StringBuilder
   [void]$html.Append((New-Head "$title · 微波技术基础学习指南" $desc ''))
-  [void]$html.Append((New-Sidebar $activeFile))
+  [void]$html.Append((New-Backdrop))
   [void]$html.Append('<div class="shell">')
+  [void]$html.Append((New-Sidebar $activeFile))
   [void]$html.Append('<main class="article loading" id="article">')
   [void]$html.Append('<div class="spinner" role="status" aria-label="加载中"></div>')
   [void]$html.Append('<div id="chapterShell" hidden><div class="md" id="md"></div></div></main>')
@@ -277,8 +282,9 @@ function Build-Page([string]$mdFile, [string]$outFile, [string]$fallbackTitle, [
 function Build-RawPage([string]$outFile, [string]$title, [string]$desc, [string]$body, [string]$activeFile, [string]$extraScript) {
   $html = New-Object System.Text.StringBuilder
   [void]$html.Append((New-Head "$title · 微波技术基础学习指南" $desc ''))
-  [void]$html.Append((New-Sidebar $activeFile))
+  [void]$html.Append((New-Backdrop))
   [void]$html.Append('<div class="shell">')
+  [void]$html.Append((New-Sidebar $activeFile))
   [void]$html.Append('<main class="article">')
   [void]$html.Append('<div class="chapter-eyebrow">交互工具</div>')
   [void]$html.Append($body)
