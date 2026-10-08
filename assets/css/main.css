@@ -591,6 +591,11 @@ math-fallback { display: block; font-family: var(--font-mono); font-size: var(--
 .chip--good { background: var(--good-050); color: var(--good); }
 .chip--purple { background: var(--purple-050); color: var(--purple); }
 .chip--danger { background: var(--danger-050); color: var(--danger); }
+.chip--optional { background: var(--warn-050); color: var(--warn); border: 1px dashed var(--warn-200); }
+
+/* 首页卡片：选学（非 EE5425 考试范围）标记 */
+.card--optional { border: 1px dashed var(--warn-200); background: var(--warn-050); }
+.card--optional:hover { border-color: var(--warn); }
 
 /* 学习路径 */
 .path { display: grid; gap: var(--s3); }

@@ -2,22 +2,22 @@
 chapter: 0
 title: 微波技术基础 · 在线学习指南
 short: 首页
-desc: 6 章 + 2 专题推导的完整学习指南：知识点、公式、例题、考点与讲解分析
+desc: 9 章 + 2 专题推导的完整学习指南：按 EE5425 大纲组织，知识点、公式、例题、考点与讲解分析
 minutes: 15
 ---
 
 # 欢迎使用《微波技术基础》在线学习指南
 
-本指南依据大连理工大学赵楠教授《微波技术基础》（辽宁省一流线下课程，32 学时）的完整课件体系编写，覆盖**绪论、均匀传输线理论、规则金属波导、微波传输线、微波网络基础、微波无源器件**六章正文，外加**无耗网络 $[Z]$ 矩阵**与**网络对称性**两个专题推导。
+本指南依据大连理工大学赵楠教授《微波技术基础》（辽宁省一流线下课程，32 学时）的课件体系编写，并按 **EE5425（Fundamentals of RF Circuit Engineering）** 课程大纲补充扩展为**绪论、均匀传输线理论、规则金属波导、微波传输线、微波网络基础、微波无源器件、射频放大器设计、稳定性与振荡器设计、射频测量技术**九章正文，外加**无耗网络 $[Z]$ 矩阵**与**网络对称性**两个专题推导。其中第 3、4 章及两个专题推导**不在 EE5425 大纲范围内，标记为选学**（见下方"选学"标签）。
 
 与课件不同，这里的每一节都补齐了课件因课时压缩而略去的**推导过程、物理图像与工程背景**：公式不仅给出结果，还说明它从哪来、为什么成立、什么时候不能用。
 
 <div class="hero">
   <h1>从"路"到"场"再到"网络"<br>一条主线贯穿微波工程</h1>
-  <p>微波技术有三种分析方法，它们不是三门课，而是同一套麦克斯韦方程在不同抽象层次上的投影。本指南按这三种方法的交替推进来组织内容：先用路分析法建立直觉，再用场分析法求得严格解，最后用网络分析法把复杂结构抽象成端口上的矩阵。</p>
+  <p>微波技术有三种分析方法，它们不是三门课，而是同一套麦克斯韦方程在不同抽象层次上的投影。本指南按这三种方法的交替推进来组织内容：先用路分析法建立直觉，再用场分析法求得严格解，最后用网络分析法把复杂结构抽象成端口上的矩阵，并延伸到放大器、振荡器与测量这些 EE5425 大纲要求的工程应用。</p>
   <div class="hero-tags">
-    <span class="hero-tag">8 个章节</span>
-    <span class="hero-tag">1500 分钟建议学时</span>
+    <span class="hero-tag">11 个章节</span>
+    <span class="hero-tag">按 EE5425 大纲组织</span>
     <span class="hero-tag">全部公式附成立条件</span>
     <span class="hero-tag">每章自测题含详解</span>
     <span class="hero-tag">交互式史密斯圆图</span>
@@ -57,17 +57,17 @@ minutes: 15
   <div class="card-foot"><span>电报方程</span><span>·</span><span>输入阻抗</span><span>·</span><span>驻波比</span><span>·</span><span>史密斯圆图</span><span>·</span><span>阻抗匹配</span></div>
 </a>
 
-<a class="card" href="ch03.html">
-  <div class="card-top"><span class="card-num">CHAPTER 03</span><span class="chip chip--warn">核心 · 300 min</span></div>
+<a class="card card--optional" href="ch03.html">
+  <div class="card-top"><span class="card-num">CHAPTER 03</span><span class="chip chip--optional">选学 · 300 min</span></div>
   <h3>规则金属波导</h3>
-  <p>场分析法的主战场。由亥姆霍兹方程与金属壁边界条件解出 TE、TM 全部模式，得到截止波数与截止波长；重点解析矩形波导 TE$_{10}$ 主模的场结构、单模带宽与尺寸选择，并延伸到圆波导与激励耦合。</p>
+  <p>场分析法的主战场。由亥姆霍兹方程与金属壁边界条件解出 TE、TM 全部模式，得到截止波数与截止波长；重点解析矩形波导 TE$_{10}$ 主模的场结构、单模带宽与尺寸选择，并延伸到圆波导与激励耦合。<br><b>EE5425 不考，选学内容。</b></p>
   <div class="card-foot"><span>TE/TM 模式</span><span>·</span><span>截止波长</span><span>·</span><span>TE₁₀ 主模</span><span>·</span><span>波导波长</span><span>·</span><span>圆波导</span></div>
 </a>
 
-<a class="card" href="ch04.html">
-  <div class="card-top"><span class="card-num">CHAPTER 04</span><span class="chip chip--accent">220 min</span></div>
+<a class="card card--optional" href="ch04.html">
+  <div class="card-top"><span class="card-num">CHAPTER 04</span><span class="chip chip--optional">选学 · 220 min</span></div>
   <h3>微波传输线</h3>
-  <p>把"场"与"路"接起来：同轴线的 TEM 场与 $Z_0$、三个最佳 $b/a$ 值；带状线与微带线的准 TEM 分析、有效介电常数与特性阻抗设计公式；耦合微带线的奇偶模；介质波导与光纤。</p>
+  <p>把"场"与"路"接起来：同轴线的 TEM 场与 $Z_0$、三个最佳 $b/a$ 值；带状线与微带线的准 TEM 分析、有效介电常数与特性阻抗设计公式；耦合微带线的奇偶模；介质波导与光纤。<br><b>EE5425 不考，选学内容。</b></p>
   <div class="card-foot"><span>同轴线</span><span>·</span><span>带状线</span><span>·</span><span>微带线</span><span>·</span><span>耦合线</span><span>·</span><span>光纤</span></div>
 </a>
 
@@ -85,18 +85,39 @@ minutes: 15
   <div class="card-foot"><span>匹配负载</span><span>·</span><span>衰减器</span><span>·</span><span>螺钉调配器</span><span>·</span><span>E-T / H-T</span><span>·</span><span>魔 T</span></div>
 </a>
 
-<a class="card" href="ch07.html">
-  <div class="card-top"><span class="card-num">APPENDIX 07</span><span class="chip chip--good">专题推导</span></div>
+<a class="card card--optional" href="ch07.html">
+  <div class="card-top"><span class="card-num">APPENDIX 07</span><span class="chip chip--optional">选学 · 专题推导</span></div>
   <h3>专题一：无耗网络 $[Z]$ 矩阵的性质</h3>
-  <p>从"无耗网络平均功率为零"出发，分对角项与交叉项两步，严格证明 $[Z]^+=-[Z]$（反厄米矩阵）；并说明互易时 $[Z]$ 退化为纯虚对称矩阵。附带 $[Z]$、$[Y]$、$[A]$、$[S]$ 四种参数下无耗性的横向对照。</p>
+  <p>从"无耗网络平均功率为零"出发，分对角项与交叉项两步，严格证明 $[Z]^+=-[Z]$（反厄米矩阵）；并说明互易时 $[Z]$ 退化为纯虚对称矩阵。附带 $[Z]$、$[Y]$、$[A]$、$[S]$ 四种参数下无耗性的横向对照。<br><b>EE5425 不考，选学内容。</b></p>
   <div class="card-foot"><span>反厄米矩阵</span><span>·</span><span>纯虚矩阵</span><span>·</span><span>证明题训练</span></div>
 </a>
 
-<a class="card" href="ch08.html">
-  <div class="card-top"><span class="card-num">APPENDIX 08</span><span class="chip chip--good">专题推导</span></div>
+<a class="card card--optional" href="ch08.html">
+  <div class="card-top"><span class="card-num">APPENDIX 08</span><span class="chip chip--optional">选学 · 专题推导</span></div>
   <h3>专题二：网络对称性与 $[S]$ 矩阵</h3>
-  <p>把 $[S]=([z]+[E])^{-1}([z]-[E])$ 在 $2\times2$ 情形下完整展开，得到四个 $S$ 元素的解析表达式，再代入对称条件 $z_{11}=z_{22}$，证明 $S_{11}=S_{22}$；并厘清"互易"与"对称"这对最容易混淆的概念。</p>
+  <p>把 $[S]=([z]+[E])^{-1}([z]-[E])$ 在 $2\times2$ 情形下完整展开，得到四个 $S$ 元素的解析表达式，再代入对称条件 $z_{11}=z_{22}$，证明 $S_{11}=S_{22}$；并厘清"互易"与"对称"这对最容易混淆的概念。<br><b>EE5425 不考，选学内容。</b></p>
   <div class="card-foot"><span>矩阵求逆</span><span>·</span><span>S₁₁ = S₂₂</span><span>·</span><span>互易 vs 对称</span></div>
+</a>
+
+<a class="card" href="ch09.html">
+  <div class="card-top"><span class="card-num">CHAPTER 09</span><span class="chip chip--warn">核心 · 300 min</span></div>
+  <h3>射频放大器设计</h3>
+  <p>EE5425 Module 5。三种功率增益 $G_p$、$G_A$、$G_T$ 的定义与推导；单向化假设下的增益分解 $G_{TU}=G_S\cdot G_0\cdot G_L$；同时共轭匹配；恒定增益圆图解法；噪声系数与噪声—增益折中；偏置网络设计。</p>
+  <div class="card-foot"><span>功率增益</span><span>·</span><span>单向化</span><span>·</span><span>共轭匹配</span><span>·</span><span>增益圆</span><span>·</span><span>偏置网络</span></div>
+</a>
+
+<a class="card" href="ch10.html">
+  <div class="card-top"><span class="card-num">CHAPTER 10</span><span class="chip chip--warn">核心 · 260 min</span></div>
+  <h3>稳定性与振荡器设计</h3>
+  <p>EE5425 Module 6。从有源双端口谈起，推导输入/输出稳定圆；$K$-$\Delta$ 判据与 $\mu$ 因子；有条件稳定管子的电阻加载与负反馈稳定化方法；负阻法振荡器设计与起振条件。</p>
+  <div class="card-foot"><span>稳定圆</span><span>·</span><span>K-Δ 判据</span><span>·</span><span>μ 因子</span><span>·</span><span>负阻振荡器</span></div>
+</a>
+
+<a class="card" href="ch11.html">
+  <div class="card-top"><span class="card-num">CHAPTER 11</span><span class="chip chip--warn">核心 · 220 min</span></div>
+  <h3>射频测量技术</h3>
+  <p>EE5425 Module 7。矢量网络分析仪（VNA）原理与定向耦合器；系统误差三要素建模；SOL/SOLT/TRL 校准方法；驻波比与回波损耗的工程测量；噪声系数 Y 因子测量法；功率计原理。</p>
+  <div class="card-foot"><span>VNA 原理</span><span>·</span><span>SOL 校准</span><span>·</span><span>Y 因子法</span><span>·</span><span>功率测量</span></div>
 </a>
 
 </div>
@@ -145,7 +166,7 @@ minutes: 15
 <a class="card" href="resources.html">
   <div class="card-top"><span class="card-num">MEDIA</span><span class="chip chip--brand">资源</span></div>
   <h3>课件与视频资源</h3>
-  <p>课程附带的两个专题视频（高锟与光纤、同轴线）在线播放，以及六章课件 PDF 与两个专题推导 PDF 的内容对照索引。</p>
+  <p>课程附带的两个专题视频（高锟与光纤、同轴线）在线播放，以及各章课件 PDF 与两个专题推导 PDF 的内容对照索引。</p>
   <div class="card-foot"><span>视频演示</span><span>·</span><span>课件对照</span></div>
 </a>
 
@@ -199,4 +220,4 @@ minutes: 15
 ---
 
 > **【小结】**
-> 微波技术的主线只有一条：**频率升高使波长与结构尺寸可比拟，于是"集中参数"退化为"分布参数"、"电路"退化为"场"、"元件"退化为"网络"**。第 2 章给你分布参数的语言，第 3 章给你场的严格解，第 5 章给你网络的黑箱工具，第 4、6 章则把三者落到真实器件上。抓住这条主线，各章的公式就不再是零散的公式表，而是同一套逻辑在不同层次上的表达。
+> 微波技术的主线只有一条：**频率升高使波长与结构尺寸可比拟，于是"集中参数"退化为"分布参数"、"电路"退化为"场"、"元件"退化为"网络"**。第 2 章给你分布参数的语言，第 3 章给你场的严格解，第 5 章给你网络的黑箱工具，第 4、6 章则把三者落到真实器件上；第 9～11 章在此基础上进一步落到 EE5425 大纲要求的放大器、振荡器与测量这些工程设计与测试问题上。抓住这条主线，各章的公式就不再是零散的公式表，而是同一套逻辑在不同层次上的表达。
