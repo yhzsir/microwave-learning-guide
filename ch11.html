@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>射频测量技术 · 微波技术基础学习指南</title>
+<meta name="description" content="矢量网络分析仪原理、误差模型与校准方法、S参数与功率/噪声的工程测量">
+<meta name="author" content="微波技术基础学习指南">
+<meta property="og:type" content="website">
+<meta property="og:title" content="射频测量技术 · 微波技术基础学习指南">
+<meta property="og:description" content="矢量网络分析仪原理、误差模型与校准方法、S参数与功率/噪声的工程测量">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6fdb'/%3E%3Cpath d='M4 21c3-8 5-8 8 0s5 8 8 0 5-8 8 0' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+(function(){try{var s=localStorage.getItem('mwguide-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-btn" id="menuBtn" aria-label="打开目录">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+  </button>
+  <a class="brand" href="index.html">
+    <span class="brand-mark">μ</span>
+    <span class="brand-text">
+      <span class="brand-title">微波技术基础</span>
+      <span class="brand-sub">LEARNING GUIDE</span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="search-wrap">
+    <svg class="sicon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="search" type="search" placeholder="搜索知识点、公式、例题…  (Ctrl K)" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="切换主题">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <span>深色</span>
+  </button>
+</header><div class="backdrop" id="backdrop"></div><div class="shell"><aside class="sidebar" id="sidebar" aria-label="站点导航"><nav class="sidebar-nav" id="sidebarNav"><a class="nav-link" href="index.html"><span class="nav-num">00</span><span class="nav-label">首页 · 学习总览</span></a><a class="nav-link" href="roadmap.html"><span class="nav-num">01</span><span class="nav-label">学习路线图</span></a><a class="nav-link" href="formulas.html"><span class="nav-num">02</span><span class="nav-label">公式速查手册</span></a><a class="nav-link" href="exam.html"><span class="nav-num">03</span><span class="nav-label">考点总纲</span></a><a class="nav-link" href="smith.html"><span class="nav-num">04</span><span class="nav-label">史密斯圆图交互工具</span></a><a class="nav-link" href="quiz.html"><span class="nav-num">05</span><span class="nav-label">综合自测题</span></a><a class="nav-link" href="resources.html"><span class="nav-num">06</span><span class="nav-label">课件与视频资源</span></a><div class="nav-group"><div class="nav-heading">章节目录</div><a class="nav-link" href="ch01.html"><span class="nav-num">1</span><span class="nav-label">绪论</span></a><a class="nav-link" href="ch02.html"><span class="nav-num">2</span><span class="nav-label">传输线理论</span></a><a class="nav-link" href="ch03.html"><span class="nav-num">3</span><span class="nav-label">金属波导</span></a><a class="nav-link" href="ch04.html"><span class="nav-num">4</span><span class="nav-label">传输线类型</span></a><a class="nav-link" href="ch05.html"><span class="nav-num">5</span><span class="nav-label">微波网络</span></a><a class="nav-link" href="ch06.html"><span class="nav-num">6</span><span class="nav-label">无源器件</span></a><a class="nav-link" href="ch07.html"><span class="nav-num">7</span><span class="nav-label">专题·Z 矩阵</span></a><a class="nav-link" href="ch08.html"><span class="nav-num">8</span><span class="nav-label">专题·S 矩阵</span></a><a class="nav-link" href="ch09.html"><span class="nav-num">9</span><span class="nav-label">放大器设计</span></a><a class="nav-link" href="ch10.html"><span class="nav-num">10</span><span class="nav-label">稳定性与振荡器</span></a><a class="nav-link active" href="ch11.html"><span class="nav-num">11</span><span class="nav-label">射频测量</span></a></div></nav></aside><main class="article loading" id="article"><div class="spinner" role="status" aria-label="加载中"></div><div id="chapterShell" hidden><div class="chapter-eyebrow" id="eyebrow">第 11 章</div><div class="md" id="md"></div><nav class="pager" id="pager" aria-label="章节导航"></nav></div></main><aside class="toc" id="toc"><div class="toc-heading">本页目录</div><div class="toc-list" id="tocList"></div></aside></div><footer class="footer">
+  <div>《微波技术基础》在线学习指南 · 共 9 章 + 2 个专题推导（含 EE5425 拓展模块）</div>
+  <div>
+    <a href="formulas.html">公式速查</a> ·
+    <a href="exam.html">考点总纲</a> ·
+    <a href="resources.html">课件资源</a>
+  </div>
+</footer>
+<script src="assets/js/search-index.js"></script>
+<script id="chapterCfg" type="application/json">{"n":11,"file":"ch11","src":"content/ch11.md","title":"射频测量技术"}</script>
+<script id="preContent" type="text/plain">---
+chapter: 11
+title: 射频测量技术
+short: 射频测量
+desc: 矢量网络分析仪原理、误差模型与校准方法、S参数与功率/噪声的工程测量
+minutes: 220
+---
+
+# 第十一章 射频测量技术
+
+> **【考点】**
+> 本章考点地图：
+> 1. 为什么微波频段必须测"波"而不是电压电流（★★，概念题）；
+> 2. VNA 的结构与定向耦合器的作用、方向性定义（★★★）；
+> 3. 单端口三项误差模型 $E_D$、$E_S$、$E_R$ 的物理来源与误差修正公式的推导（★★★★★，必考）；
+> 4. SOL 校准：联立三方程解出三个误差项（★★★★★，计算题常考）；
+> 5. SOLT、TRL 校准思路的差异（★★★，概念辨析）；
+> 6. 驻波比/回波损耗/插入损耗的测量方法对比（★★★）；
+> 7. 噪声系数 Y 因子法公式推导与误差来源（★★★★）；
+> 8. 功率计原理与 dBm 换算、平均/峰值功率的区别（★★）。
+
+---
+
+## 11.1 为什么微波频段要测"波"而不是电压电流
+
+### 11.1.1 低频测量方法失效的原因
+
+在低频电路中，我们习惯用万用表或示波器直接测量某一点的电压 $U$ 和电流 $I$，因为低频下导线上各点的电压、电流几乎同相、同大小——电路尺寸远小于波长 $\lambda$，可以用"集总参数"描述。
+
+> **【核心概念】**
+> 微波频段（如 $f=3\ \mathrm{GHz}$，自由空间波长 $\lambda=10\ \mathrm{cm}$）下，电路尺寸往往与 $\lambda$ 同量级甚至更大。此时传输线上**电压、电流是位置的函数**（由第二章传输线方程可知，$U(z)$、$I(z)$ 随 $z$ 按正弦规律变化），一根导线上不同点的电压幅值、相位都不同。这带来两个根本困难：
+> 1. **探针本身会扰动场**：把示波器探头或电压表接入微波传输线，探针的引线长度、寄生电感电容在微波频率下已经是不可忽略的"元件"，接入点本身就改变了被测电路的阻抗分布，测得的不是"原电路"的电压；
+> 2. **相位无法用示波器时基直接分辨**：微波周期在纳秒甚至皮秒量级（$3\ \mathrm{GHz}$ 的周期约 $0.33\ \mathrm{ns}$），普通示波器带宽与触发精度难以稳定捕捉相位。
+
+> **【易错点】**
+> 常见误解："高频示波器带宽已经做到几十 GHz，为什么还不能直接测电压？"——带宽足够只解决了**采样速率**问题，并未解决**探针接入扰动**与**阻抗失配引起的反射**问题。在微波测量中，"测量本身就是一个有输入输出端口的网络"，必须纳入被测系统一起分析，这是微波测量与低频测量最本质的区别。
+
+### 11.1.2 功率波（入射波与反射波）是微波测量的自然语言
+
+> **【核心概念】**
+> 微波测量不去追踪传输线上某一点的瞬时电压电流，而是在**参考面**（通常取测试端口的连接面）上，把行波分解为**入射波** $a$（incident wave，流向被测件 DUT, Device Under Test）与**反射波** $b$（reflected wave，从被测件流出）这两个"功率波"。二者满足
+>
+> $$b=\Gamma a\tag{11-1-1}$$
+>
+> 其中 $\Gamma$ 为该端口的反射系数。$a$、$b$ 可以用定向耦合器从传输线上"采样"出来，而**不需要在被测点插入任何探针**——耦合器接在主传输线的旁路上，几乎不扰动主通路的波（耦合度可以做到很小，如 $20\sim30\ \mathrm{dB}$）。
+>
+> **物理意义**：用波（而非电压电流）描述微波网络，是因为波在均匀传输线上传播时**模值不随位置衰减（无耗线）、相位按 $e^{\mp j\beta z}$ 规律变化**，是比电压电流更"干净"的物理量——只要知道参考面上的 $a$、$b$，就能用传输线方程推出线上任意点的电压电流，不需要再去"测"中间各点。
+
+### 11.1.3 矢量网络分析仪的总体结构
+
+> **【核心概念】**
+> **矢量网络分析仪**（VNA, Vector Network Analyzer）是微波测量的核心仪器，能同时测出 $S$ 参数的**模值与相位**（"矢量"即指同时测幅度和相位，区别于只测功率模值的标量网络分析仪）。其基本结构由四部分组成：
+>
+> 1. **信号源**（source）：产生扫频或定频的微波信号，激励被测件；
+> 2. **信号分离装置**（定向耦合器或定向桥，directional coupler / bridge）：把测试端口上的入射波 $a$ 与反射波 $b$ 分离出来，分别送往接收机；
+> 3. **接收机**（receiver）：对 $a$、$b$ 信号做下变频、滤波、相位比较，得到幅度比与相位差；
+> 4. **数字处理与显示**：完成误差修正（11.3、11.4 节）、格式转换（$S$ 参数、史密斯圆图、驻波比等），并显示结果。
+
+<figure class="fig">
+<svg viewBox="0 0 720 260" role="img" aria-label="矢量网络分析仪单端口测量的总体结构">
+  <defs>
+    <marker id="ar11a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <text x="360" y="22" text-anchor="middle" font-size="15" fill="var(--ink)">单端口 VNA 测量结构示意</text>
+
+  <rect x="30" y="90" width="90" height="46" rx="6" fill="none" stroke="var(--brand)" stroke-width="1.8"/>
+  <text x="75" y="118" text-anchor="middle" font-size="13" fill="var(--brand)">信号源</text>
+
+  <line x1="120" y1="113" x2="190" y2="113" stroke="var(--ink)" stroke-width="1.8" marker-end="url(#ar11a)"/>
+
+  <rect x="190" y="70" width="130" height="86" rx="6" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+  <text x="255" y="96" text-anchor="middle" font-size="13" fill="var(--accent)">定向耦合器</text>
+  <text x="255" y="116" text-anchor="middle" font-size="12" fill="var(--ink-2)">分离 a（入射）</text>
+  <text x="255" y="134" text-anchor="middle" font-size="12" fill="var(--ink-2)">与 b（反射）</text>
+
+  <line x1="320" y1="113" x2="420" y2="113" stroke="var(--ink)" stroke-width="1.8" marker-end="url(#ar11a)"/>
+  <text x="370" y="104" text-anchor="middle" font-size="12" fill="var(--ink-2)">测试端口</text>
+
+  <rect x="420" y="90" width="110" height="46" rx="6" fill="none" stroke="var(--warn)" stroke-width="1.8"/>
+  <text x="475" y="118" text-anchor="middle" font-size="13" fill="var(--warn)">被测件 DUT</text>
+
+  <line x1="255" y1="90" x2="255" y2="50" stroke="var(--ink-2)" stroke-width="1.6" marker-end="url(#ar11a)"/>
+  <text x="255" y="40" text-anchor="middle" font-size="12" fill="var(--ink-2)">a 耦合支路</text>
+
+  <line x1="285" y1="156" x2="285" y2="196" stroke="var(--ink-2)" stroke-width="1.6" marker-end="url(#ar11a)"/>
+  <text x="285" y="212" text-anchor="middle" font-size="12" fill="var(--ink-2)">b 耦合支路</text>
+
+  <rect x="200" y="196" width="170" height="40" rx="6" fill="none" stroke="var(--brand)" stroke-width="1.8"/>
+  <text x="285" y="221" text-anchor="middle" font-size="13" fill="var(--brand)">接收机（比幅比相）</text>
+
+  <line x1="370" y1="216" x2="460" y2="216" stroke="var(--ink)" stroke-width="1.8" marker-end="url(#ar11a)"/>
+  <rect x="460" y="196" width="150" height="40" rx="6" fill="none" stroke="var(--ink)" stroke-width="1.8"/>
+  <text x="535" y="221" text-anchor="middle" font-size="12.5" fill="var(--ink)">误差修正 + 显示</text>
+</svg>
+<figcaption>图 11-1　矢量网络分析仪单端口测量的总体结构：信号源 → 定向耦合器分离入射/反射波 → 接收机比幅比相 → 数字误差修正</figcaption>
+</figure>
+
+> **【小结】**
+> 本节要点：①微波频段必须用"入射波/反射波"而非电压电流来描述测量，因为探针会扰动场、相位难以直接测准；②VNA 由信号源、定向耦合器、接收机、数字处理四部分构成；③"矢量"二字指能同时测幅度与相位。
+> 考点：概念辨析题常问"为什么不能用示波器直接测微波电压"，答案要点是探针扰动与分布参数效应。
+
+---
+
+## 11.2 定向耦合器在 VNA 中的作用
+
+### 11.2.1 耦合度与方向性的定义
+
+> **【核心概念】**
+> **定向耦合器**（directional coupler）是一个四端口（或等效地可做成双端口取样用的三端口）器件，主线上传输的波几乎不受影响，而副线（耦合口）上能取出与主线某一方向行波成比例的信号。两个关键指标：
+>
+> **耦合度**（coupling）：
+>
+> $$C=10\lg\frac{P_{\text{入射}}}{P_{\text{耦合}}}\ \ (\mathrm{dB})\tag{11-2-1}$$
+>
+> 表示主线功率与耦合口取出功率之比，典型值 $10\sim30\ \mathrm{dB}$（耦合越弱，对主线的扰动越小）。
+>
+> **方向性**（directivity）：
+>
+> $$D=10\lg\frac{P_{\text{耦合，正向}}}{P_{\text{耦合，反向泄漏}}}\ \ (\mathrm{dB})\tag{11-2-2}$$
+>
+> 理想定向耦合器只耦合**单一方向**的行波；但实际器件的隔离度有限，反方向的波也会有少量泄漏到耦合口，这个泄漏量就是方向性误差的根源。
+
+### 11.2.2 方向性对测量精度的影响
+
+> **【核心概念】**
+> 在 VNA 中，耦合器用来从测试端口"偷看"入射波 $a$ 和反射波 $b$。理想情况下，取样 $b$ 的那一路耦合器应**只**对反射波敏感，对入射波完全不敏感。但由于方向性有限（例如 $D=35\ \mathrm{dB}$），入射波会有一小部分（约 $-35\ \mathrm{dB}$）泄漏进"测反射波"的通路，叠加在真实反射信号上，造成测量误差。
+>
+> **物理意义**：当被测件本身反射很小（$\Gamma$ 很小，接近匹配）时，这个固定的泄漏量（与被测件 $\Gamma$ 无关）就会和真实反射信号相当甚至更大，导致小反射系数测不准——这是误差模型中**方向性误差 $E_D$** 的物理来源（见 11.3 节）。
+
+> **【工程应用】**
+> 提高方向性的办法：使用**双定向耦合器**结构、精密加工、或在数字层面做误差修正（本章 11.3、11.4 节的内容，是现代 VNA 精度提升的主要手段——用数学修正弥补硬件方向性的不足，使有效方向性可达 $50\sim60\ \mathrm{dB}$ 以上）。
+
+> **【小结】**
+> 耦合度决定取样信号强弱、对主线的扰动大小；方向性决定取样信号的"纯净度"（是否混入另一方向的波）。方向性有限是 VNA 系统误差的根源之一，考试常考"方向性差会使什么样的被测件测量误差最大"——答案是**本身匹配良好、反射很小的器件**。
+
+---
+
+## 11.3 误差模型：系统误差的三要素
+
+### 11.3.1 系统误差为什么存在且可修正
+
+> **【核心概念】**
+> VNA 测量中的误差分两类：**随机误差**（噪声、温漂等，不可预测，只能靠平均次数、恒温等手段降低）与**系统误差**（systematic error，由仪器硬件本身的非理想特性引起，**可重复、可建模、可用校准数学修正**）。系统误差主要来自：
+> 1. 定向耦合器**方向性有限**（11.2 节已述）；
+> 2. 信号源与接收机**端口本身不是理想匹配**，波在仪器内部与测试端口之间会发生二次反射；
+> 3. 耦合器、电缆、连接器的**频率响应**不是理想平坦（增益/损耗、相位随频率变化）。
+>
+> 这三类系统误差在单端口反射测量中，可以用一个简洁的**信号流图模型**概括为三个误差项：方向性误差 $E_D$、源失配误差 $E_S$、反射跟踪误差 $E_R$（又称频率响应误差）。
+
+### 11.3.2 单端口三项误差模型
+
+> **【核心概念】**
+> 设被测件的**真实反射系数**为 $\Gamma_a$（actual），VNA 显示的（未修正的）**测量反射系数**为 $\Gamma_m$（measured）。单端口三项误差模型用一个等效双端口"误差网络" $E$ 插在理想测量参考面与真实被测件之间：
+>
+> - $E_D$（directivity error）：被测件完全匹配（$\Gamma_a=0$）时，VNA 仍然测到的非零读数——纯粹由耦合器方向性有限和内部反射泄漏引起，是一个**与被测件无关的固定偏置**；
+> - $E_S$（source match error）：由信号源端口到测试端口之间的失配引起。它使得被测件反射回来的波，又有一部分**从源端口反射回被测件**，形成二次反射，经多次反射叠加；
+> - $E_R$（reflection tracking error）：耦合器正向与反向两条通路（分别取样 $a$、$b$）的**频率响应不完全一致**（增益、相位不对等），造成一个与 $\Gamma_a$ 成正比的比例误差。
+
+> **【公式推导】**
+> 用信号流图分析（也可用多次反射求和法），$\Gamma_m$ 与 $\Gamma_a$ 的关系满足**双线性变换**（这是三项误差模型最重要的结论）：
+>
+> $$\Gamma_m=E_D+\frac{E_R\,\Gamma_a}{1-E_S\,\Gamma_a}\tag{11-3-1}$$
+>
+> **逐项物理解释**：
+> - 第一项 $E_D$ 是与 $\Gamma_a$ 无关的常数偏置；
+> - 分子 $E_R\Gamma_a$ 表示信号"去/回"两次经过误差网络、被 $E_R$ 整体缩放；
+> - 分母 $1-E_S\Gamma_a$ 描述了波在"源端口失配—被测件"之间来回反射、无穷次叠加后收敛成的几何级数因子（类比传输线上多次反射求和为等比级数）。
+>
+> **反解出真实反射系数**，把 (11-3-1) 移项：
+>
+> $$\Gamma_m-E_D=\frac{E_R\Gamma_a}{1-E_S\Gamma_a}\ \Longrightarrow\ (\Gamma_m-E_D)(1-E_S\Gamma_a)=E_R\Gamma_a$$
+>
+> $$(\Gamma_m-E_D)-E_S\Gamma_a(\Gamma_m-E_D)=E_R\Gamma_a$$
+>
+> $$(\Gamma_m-E_D)=\Gamma_a\left[E_R+E_S(\Gamma_m-E_D)\right]$$
+>
+> 故
+>
+> $$\boxed{\ \Gamma_a=\frac{\Gamma_m-E_D}{E_R+E_S\left(\Gamma_m-E_D\right)}\ }\tag{11-3-2}$$
+>
+> 这正是单端口误差修正的核心公式。**量纲与边界检验**：$E_D$、$E_S$、$E_R$、$\Gamma$ 均为无量纲复数；当误差网络理想（$E_D=0$、$E_S=0$、$E_R=1$）时，(11-3-2) 退化为 $\Gamma_a=\Gamma_m$，与预期一致 ✓。
+
+<figure class="fig">
+<svg viewBox="0 0 720 260" role="img" aria-label="单端口三项误差模型信号流图">
+  <defs>
+    <marker id="ar11b" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <text x="360" y="22" text-anchor="middle" font-size="15" fill="var(--ink)">单端口三项误差模型（信号流图）</text>
+
+  <circle cx="90" cy="150" r="5" fill="var(--brand)"/>
+  <text x="90" y="134" text-anchor="middle" font-size="12" fill="var(--brand)">源</text>
+
+  <line x1="95" y1="150" x2="230" y2="100" stroke="var(--ink)" stroke-width="1.6" marker-end="url(#ar11a)"/>
+  <text x="160" y="110" text-anchor="middle" font-size="12" fill="var(--ink-2)">E_R</text>
+
+  <circle cx="240" cy="95" r="5" fill="var(--ink)"/>
+  <text x="240" y="80" text-anchor="middle" font-size="12" fill="var(--ink)">a（入射，参考面）</text>
+
+  <line x1="95" y1="150" x2="230" y2="150" stroke="var(--warn)" stroke-width="1.6" marker-end="url(#ar11a)"/>
+  <text x="160" y="168" text-anchor="middle" font-size="12" fill="var(--warn)">E_D</text>
+
+  <line x1="240" y1="95" x2="470" y2="95" stroke="var(--ink)" stroke-width="1.6" marker-end="url(#ar11a)"/>
+  <text x="470" y="80" text-anchor="middle" font-size="12" fill="var(--ink-2)">到被测件 Γ_a</text>
+
+  <line x1="470" y1="150" x2="245" y2="150" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#ar11a)"/>
+  <text x="360" y="168" text-anchor="middle" font-size="12" fill="var(--accent)">1（反射波直接返回）</text>
+
+  <circle cx="240" cy="150" r="5" fill="var(--ink)"/>
+  <text x="240" y="134" text-anchor="middle" font-size="12" fill="var(--ink)">Γ_m（输出）</text>
+
+  <path d="M 240 95 C 300 60, 420 60, 470 95" fill="none" stroke="var(--brand)" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ar11a)"/>
+  <path d="M 470 95 C 420 190, 300 190, 240 150" fill="none" stroke="var(--brand)" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ar11a)"/>
+  <text x="360" y="208" text-anchor="middle" font-size="12" fill="var(--brand)">E_S：源失配引起的多次反射回路</text>
+
+  <text x="360" y="236" text-anchor="middle" font-size="13" fill="var(--ink)">Γ_m = E_D + E_R·Γ_a / (1 − E_S·Γ_a)</text>
+</svg>
+<figcaption>图 11-2　单端口三项误差模型信号流图：$E_D$ 为固定泄漏支路，$E_R$ 为正向跟踪增益，$E_S$ 为源失配形成的反馈回路</figcaption>
+</figure>
+
+> **【易错点】**
+> 容易把 (11-3-2) 的分母错记成 $E_R+E_S\Gamma_m$（漏掉 $E_D$ 的修正）。正确做法是**先把测量值减去方向性误差** $(\Gamma_m-E_D)$，再代入分母——方向性误差是"源头"，必须先扣除，否则源失配项的修正也会跟着出错。
+
+> **【例题 11-1】**
+> **题目**：已知某 VNA 单端口经校准得 $E_D=0.02\angle0^\circ$、$E_S=0.08\angle0^\circ$、$E_R=0.98\angle0^\circ$（为简化设相位均为零，幅值如上）。某被测件测得 $\Gamma_m=0.50\angle0^\circ$，求修正后的真实反射系数 $\Gamma_a$。
+>
+> **思路**：直接代入 (11-3-2)，逐步计算分子、分母。
+>
+> **详细步骤**：
+> 分子：$\Gamma_m-E_D=0.50-0.02=0.48$
+> 分母：$E_R+E_S(\Gamma_m-E_D)=0.98+0.08\times0.48=0.98+0.0384=1.0184$
+>
+> $$\Gamma_a=\frac{0.48}{1.0184}\approx0.4713$$
+>
+> **结果**：$\Gamma_a\approx0.471$，与未修正的 $\Gamma_m=0.50$ 相差约 $6\%$。
+>
+> **讨论**：若忽略误差修正直接使用 $\Gamma_m$，反射系数会偏大约 $0.03$，换算到回波损耗 $L_r=-20\lg|\Gamma|$ 上，$20\lg(0.50/0.471)\approx0.53\ \mathrm{dB}$ 的误差——对精密无源器件测试而言并不算小，说明校准修正是必要步骤，不能省略。
+
+> **【小结】**
+> 单端口系统误差可归结为三项：$E_D$（固定偏置）、$E_S$（多次反射的比例因子）、$E_R$（整体缩放）；三者组合成双线性变换 (11-3-1)，修正公式 (11-3-2) 是本节必须掌握并能默写的核心结果。
+
+---
+
+## 11.4 校准方法：SOL、SOLT 与 TRL
+
+### 11.4.1 SOL 单端口校准原理
+
+> **【核心概念】**
+> **SOL 校准**（Short-Open-Load）利用三个**已知**（或标称精确建模）的单端口标准器件——短路（Short, $\Gamma=-1$）、开路（Open, $\Gamma=+1$，实际常含边缘电容修正）、匹配负载（Load, $\Gamma=0$）——分别测量，得到三组 $(\Gamma_{a,i},\Gamma_{m,i})$ 数据，代入 (11-3-1) 建立**三个方程**，解出三个未知数 $E_D$、$E_S$、$E_R$。
+
+> **【公式推导】**
+> 对三个标准器件分别代入 (11-3-1)：
+>
+> 负载（$\Gamma_a=0$）：
+> $$\Gamma_{m,L}=E_D\tag{11-4-1}$$
+> 这一步最直接：**负载测量值直接就是方向性误差** $E_D$。
+>
+> 短路（$\Gamma_a=-1$）：
+> $$\Gamma_{m,S}=E_D+\frac{-E_R}{1+E_S}\tag{11-4-2}$$
+>
+> 开路（$\Gamma_a=+1$）：
+> $$\Gamma_{m,O}=E_D+\frac{E_R}{1-E_S}\tag{11-4-3}$$
+>
+> 由 (11-4-1) 先得 $E_D=\Gamma_{m,L}$。代入 (11-4-2)(11-4-3)，记 $\Delta_S=\Gamma_{m,S}-E_D$、$\Delta_O=\Gamma_{m,O}-E_D$，则
+>
+> $$\Delta_S(1+E_S)=-E_R,\qquad \Delta_O(1-E_S)=E_R$$
+>
+> 两式相加消去 $E_R$：
+>
+> $$\Delta_S+\Delta_S E_S+\Delta_O-\Delta_O E_S=0\ \Longrightarrow\ E_S=\frac{\Delta_S+\Delta_O}{\Delta_O-\Delta_S}\tag{11-4-4}$$
+>
+> 再代回任一式解出 $E_R$，例如由 $\Delta_O(1-E_S)=E_R$：
+>
+> $$E_R=\Delta_O\left(1-E_S\right)\tag{11-4-5}$$
+>
+> **物理意义**：三个标准器件提供三组"输入—输出"数据，恰好解出三个未知的误差网络参数——这是校准问题"用已知求未知"的典型代数结构，与第八章"用对称性+互易性+幺正性反解 $[S]$"的方法论一脉相承：**有多少个未知数，就需要多少个独立方程（标准件）**。
+
+> **【易错点】**
+> 开路标准器件在微波频段**并非理想的 $\Gamma=+1$**：开路面存在边缘电场、等效为一个随频率变化的小电容，实际校准件会给出"开路电容多项式模型"而非常数 $+1$；短路件也存在引线电感的修正。精密 SOL 校准必须使用**校准件厂商给出的精确模型**（随频率变化的 $\Gamma$），而不能简单代入理想值 $\pm1$，否则高频端误差会明显增大。
+
+### 11.4.2 SOLT 与 TRL 校准思路的差异
+
+> **【核心概念】**
+> 双端口测量除了需要做两个单端口的反射校准外，还要校正**传输路径**（$S_{21}$、$S_{12}$）的误差，常见方法：
+>
+> **SOLT**（Short-Open-Load-Thru）：在 SOL 单端口校准的基础上，再加一个"直通"（Thru）标准件校准传输测量。优点是直观、标准件便宜易得；**缺点**是要求 Thru 件的电长度、特性阻抗**精确已知**，在非同轴（如片上、波导）环境中精确的 Thru 标准件难以制作。
+>
+> **TRL**（Thru-Reflect-Line）：用一段直通（Thru）、一个任意已知类型但模型不必精确的反射标准（Reflect，如短路或开路，只需大致知道其反射系数接近 $\pm1$ 即可）、以及一段与 Thru 电长度不同的传输线（Line）三者组合校准。**TRL 最大的优点**：它不依赖标准件阻抗的精确数值模型，而是依赖 **Line 与 Thru 之间已知的传输线特性阻抗 $Z_0$ 和长度差**，通过这段已知特性阻抗的传输线，把测量参考阻抗直接"锁定"在该传输线的特性阻抗上。这对于**非同轴**环境（如微带线、波导、片上探针测试）特别有利，因为精密匹配负载在这些环境中很难制作，而制作一段均匀传输线相对容易。
+
+> **【工程应用】**
+> 对比表：
+
+| 方法 | 所需标准件 | 对标准件的要求 | 适用场景 |
+|---|---|---|---|
+| SOL（单端口） | 短路、开路、负载 | 三者的 $\Gamma$（或其频率模型）需精确已知 | 同轴单端口反射测量 |
+| SOLT（双端口） | SOL + 直通 Thru | 直通电长度、阻抗需精确已知 | 常规同轴/夹具双端口测量 |
+| TRL（双端口） | 直通、反射件、传输线 | 只需知道线的特性阻抗与长度差，反射件模型不必精确 | 微带、波导、片上测试等难以制作精密负载的场合 |
+
+> **【小结】**
+> SOL 用三个已知标准件解出单端口三项误差；SOLT 在此基础上加直通件校正传输误差，依赖标准件模型精确；TRL 换一种思路——用已知特性阻抗的传输线定义参考阻抗，适合非同轴场合。三者是"用不同的已知信息换取未知误差项"的同一方法论的不同实现。
+
+---
+
+## 11.5 驻波比、回波损耗与插入损耗的工程测量
+
+### 11.5.1 传统功率计法与 VNA 直接测量法对比
+
+> **【核心概念】**
+> 在 VNA 普及之前，驻波比/回波损耗的测量常用**功率计 + 定向耦合器**的传统方法：用定向耦合器从传输线上分别耦合出正向功率 $P_i$（入射）与反向功率 $P_r$（反射），分别用功率计（只测模值，不测相位）读出，再计算
+>
+> $$|\Gamma|=\sqrt{\frac{P_r}{P_i}},\qquad \rho=\frac{1+|\Gamma|}{1-|\Gamma|},\qquad L_r=10\lg\frac{P_i}{P_r}\ (\mathrm{dB})\tag{11-5-1}$$
+>
+> 这种方法**只能得到反射系数的模**，不能给出相位，且需要分别做方向性修正（因为普通定向耦合器方向性有限，见 11.2 节）。
+>
+> **VNA 直接测量法**：VNA 内部已经完成了对 $a$、$b$ 的矢量（幅度+相位）比较与误差修正，直接显示复数 $\Gamma=S_{11}$（或 $S_{22}$），再按定义换算驻波比、回波损耗、史密斯圆图等所有格式，不需要额外的功率计与人工计算，且精度远高于传统方法（因为系统误差已被 11.3、11.4 节的数学修正消除）。
+
+> **【工程应用】**
+> 功率计法的优点是设备简单、成本低，在只关心**驻波比模值**、不要求高精度的现场测试（如天线驻波巡检）中仍然常用；VNA 法则是实验室精密测量、器件研发的标准方法。
+
+### 11.5.2 插入损耗的测量
+
+> **【核心概念】**
+> **插入损耗**（insertion loss）$L_i$ 定义为被测件接入传输系统前后，输出端功率的比值：
+>
+> $$L_i=10\lg\frac{P_{\text{接入前}}}{P_{\text{接入后}}}\ (\mathrm{dB})=-20\lg|S_{21}|\tag{11-5-2}$$
+>
+> 用 VNA 测量插入损耗时，需先做**直通校准**（Thru，见 11.4.2 节）把参考面延伸到被测件的两个端口，再直接读取 $|S_{21}|$（或 $|S_{12}|$，互易网络二者相等）换算得到。传统方法则需要用信号源 + 功率计分别测"直通参考功率"与"接入被测件后的功率"，再相减（取 dB 差值），误差来源包括信号源输出功率的漂移与两次测量之间的连接重复性。
+
+> **【例题 11-2】**
+> **题目**：某微带滤波器插入损耗测量中，VNA 读出 $S_{21}=0.10\angle-60^\circ$。求该滤波器的插入损耗 $L_i$（dB）。
+>
+> **思路**：直接代入 (11-5-2)，只用到模值。
+>
+> **步骤**：$|S_{21}|=0.10$，
+>
+> $$L_i=-20\lg(0.10)=-20\times(-1)=20\ \mathrm{dB}$$
+>
+> **结果**：插入损耗为 $20\ \mathrm{dB}$。
+>
+> **讨论**：相位信息 $-60^\circ$ 在插入损耗计算中未被使用，但在滤波器群时延、相位线性度分析中是关键数据——这也说明 VNA 相比传统功率计方法的优势：同一次测量同时给出幅度与相位，一份数据可用于多种分析。
+
+> **【小结】**
+> 功率计法只测模值、需人工方向性修正；VNA 法直接给出矢量 $S$ 参数、精度更高、信息更全。插入损耗本质是 $-20\lg|S_{21}|$，测量时都需先做适当的校准（直通或系统误差修正）才能保证准确。
+
+---
+
+## 11.6 噪声系数的测量：Y 因子法
+
+### 11.6.1 超噪比与冷热噪声源
+
+> **【核心概念】**
+> **噪声系数**（noise figure）$F$ 衡量一个二端口网络（放大器、混频器等）引入的额外噪声，定义为输入信噪比与输出信噪比之比（本章只讨论其测量方法，不重复定义推导）。工程上最常用的测量方法是 **Y 因子法**（Y-factor method），需要一个**噪声源**（noise source），它能在"热态"（通电, ON）和"冷态"（断电, OFF）之间切换，输出两种不同的已知噪声功率。
+>
+> 噪声源的核心参数是**超噪比**（ENR, Excess Noise Ratio），定义为
+>
+> $$\mathrm{ENR}=10\lg\frac{T_h-T_0}{T_0}\ (\mathrm{dB})\tag{11-6-1}$$
+>
+> 其中 $T_h$ 为噪声源热态等效噪声温度，$T_0=290\ \mathrm{K}$ 为标准参考温度（室温）。ENR 是噪声源出厂标定的已知量。
+
+### 11.6.2 Y 因子与噪声系数公式推导
+
+> **【公式推导】**
+> 测量时，把噪声源分别置于热态与冷态，接到待测件（DUT）输入端，用功率计（或接在输出端的频谱分析仪/功率计）分别测得输出噪声功率 $P_h$（热态）与 $P_c$（冷态）。定义 **Y 因子**：
+>
+> $$Y=\frac{P_h}{P_c}\tag{11-6-2}$$
+>
+> **第一步，写出输出噪声功率的组成**。输出噪声由"噪声源贡献经 DUT 放大/传输后的部分"加上"DUT 自身引入的噪声"两部分组成。设 DUT 增益为 $G$，DUT 自身等效输入噪声温度为 $T_e$（equivalent noise temperature），则：
+>
+> $$P_h=kG B\left(T_h+T_e\right),\qquad P_c=kGB\left(T_0+T_e\right)\tag{11-6-3}$$
+>
+> 其中 $k$ 为玻尔兹曼常数，$B$ 为测量带宽。
+>
+> **第二步，代入 Y 的定义**：
+>
+> $$Y=\frac{T_h+T_e}{T_0+T_e}\tag{11-6-4}$$
+>
+> **第三步，解出 $T_e$**：
+>
+> $$Y(T_0+T_e)=T_h+T_e\ \Longrightarrow\ YT_0+YT_e-T_e=T_h\ \Longrightarrow\ T_e=\frac{T_h-YT_0}{Y-1}\tag{11-6-5}$$
+>
+> **第四步，噪声系数定义** $F=1+T_e/T_0$（标准定义），代入 (11-6-5)：
+>
+> $$F=1+\frac{T_h-YT_0}{T_0(Y-1)}=\frac{T_0(Y-1)+T_h-YT_0}{T_0(Y-1)}=\frac{T_h-T_0}{T_0(Y-1)}\tag{11-6-6}$$
+>
+> 与 (11-6-1) 比较，$\dfrac{T_h-T_0}{T_0}=10^{\mathrm{ENR}/10}$，故
+>
+> $$\boxed{\ F=\frac{10^{\mathrm{ENR}/10}}{Y-1}\ }\tag{11-6-7}$$
+>
+> 这就是工程上常写的"$F=\mathrm{ENR}/(Y-1)$"（此处 ENR 已换算为线性值，而非 dB 值，使用时需注意单位换算，这是最容易出错的一点）。**物理意义**：$Y$ 越接近 $1$（热态与冷态输出功率几乎相同），说明 DUT 自身噪声 $T_e$ 远大于噪声源提供的噪声差，噪声系数很大；$Y$ 越大，DUT 噪声越小，测量越准确。
+
+> **【易错点】**
+> 公式 (11-6-7) 中的 $\mathrm{ENR}$ **必须是线性值**（即 $10^{\mathrm{ENR(dB)}/10}$），而不是直接把 dB 数值代入。另外，噪声系数常以 dB 表示：$F(\mathrm{dB})=10\lg F$，不要把线性 $F$ 和 dB 形式的 $F$ 混用。
+
+<figure class="fig">
+<svg viewBox="0 0 720 240" role="img" aria-label="Y因子法噪声系数测量装置示意">
+  <defs>
+    <marker id="ar11c" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <text x="360" y="22" text-anchor="middle" font-size="15" fill="var(--ink)">Y 因子法测量噪声系数的装置示意</text>
+
+  <rect x="30" y="90" width="130" height="60" rx="6" fill="none" stroke="var(--brand)" stroke-width="1.8"/>
+  <text x="95" y="114" text-anchor="middle" font-size="13" fill="var(--brand)">噪声源</text>
+  <text x="95" y="134" text-anchor="middle" font-size="12" fill="var(--ink-2)">热态 T_h / 冷态 T_0</text>
+
+  <line x1="160" y1="120" x2="260" y2="120" stroke="var(--ink)" stroke-width="1.8" marker-end="url(#ar11a)"/>
+
+  <rect x="260" y="90" width="150" height="60" rx="6" fill="none" stroke="var(--warn)" stroke-width="1.8"/>
+  <text x="335" y="114" text-anchor="middle" font-size="13" fill="var(--warn)">DUT（放大器）</text>
+  <text x="335" y="134" text-anchor="middle" font-size="12" fill="var(--ink-2)">增益 G，噪声温度 T_e</text>
+
+  <line x1="410" y1="120" x2="510" y2="120" stroke="var(--ink)" stroke-width="1.8" marker-end="url(#ar11a)"/>
+
+  <rect x="510" y="90" width="150" height="60" rx="6" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+  <text x="585" y="114" text-anchor="middle" font-size="13" fill="var(--accent)">功率计/接收机</text>
+  <text x="585" y="134" text-anchor="middle" font-size="12" fill="var(--ink-2)">读出 P_h、P_c</text>
+
+  <text x="360" y="190" text-anchor="middle" font-size="13" fill="var(--ink)">Y = P_h / P_c　　F = 10^(ENR/10) / (Y − 1)</text>
+  <text x="360" y="212" text-anchor="middle" font-size="12" fill="var(--ink-2)">热/冷两态分别测量输出功率，联立求解 DUT 的等效噪声温度 T_e 与噪声系数 F</text>
+</svg>
+<figcaption>图 11-3　Y 因子法测量噪声系数的装置示意：噪声源在热态/冷态之间切换，经 DUT 后由功率计分别读出 $P_h$、$P_c$</figcaption>
+</figure>
+
+### 11.6.3 测量误差来源
+
+> **【考点】**
+> Y 因子法的主要误差来源（常考简答）：
+> 1. **噪声源 ENR 标定误差**：ENR 本身是厂商标定值，带有不确定度，直接传递到 $F$ 的测量结果中；
+> 2. **接收机/功率计的非线性与噪声基底**：若测量设备自身噪声系数不够低或存在非线性，会叠加误差，通常需要**级联噪声系数公式**（Friis 公式）对测量链路做修正，扣除后级（接收机）噪声的影响；
+> 3. **失配误差**：噪声源与 DUT 之间、DUT 与接收机之间的阻抗失配会导致噪声功率传输偏离理想计算，需要用失配修正因子修正；
+> 4. **带宽 $B$ 的测量与校准误差**：若测量带宽不等于计算假设的带宽，会直接引入比例误差。
+
+> **【小结】**
+> Y 因子法用冷热两态噪声功率之比 $Y$，结合已知的 ENR，推出噪声系数 $F=10^{\mathrm{ENR}/10}/(Y-1)$。测量精度受 ENR 标定、接收机噪声与非线性、阻抗失配等因素影响，实际测量常需级联噪声系数修正与失配修正。
+
+---
+
+## 11.7 功率测量基础
+
+### 11.7.1 三种功率计探头原理简述
+
+> **【核心概念】**
+> 微波功率计（power meter）常见探头原理有三种：
+>
+> 1. **热敏电阻功率计**（bolometer / thermistor）：利用微波功率加热一个电阻元件（热敏电阻），其阻值随温度变化，通过电桥测出阻值变化换算成被吸收的功率。优点是测量**平均功率**精度高、可作为绝对功率基准；缺点是响应慢、动态范围有限。
+> 2. **热电偶功率计**（thermocouple）：利用微波功率加热热电偶结点产生温差电动势，电动势与吸收功率近似成正比。优点是动态范围比热敏电阻大、响应较快，是通用实验室功率计的主流技术。
+> 3. **二极管功率计**（diode detector）：利用二极管的平方律检波特性，在小信号区域输出电压与输入功率成正比。优点是**灵敏度最高、响应最快**，可用于峰值功率、脉冲包络测量；缺点是在大信号区域偏离平方律，需要线性化修正，且频率响应平坦度不如前两种。
+
+> **【工程应用】**
+> 对比表：
+
+| 探头类型 | 响应速度 | 动态范围 | 典型用途 |
+|---|---|---|---|
+| 热敏电阻 | 慢 | 较窄 | 高精度平均功率基准、计量实验室 |
+| 热电偶 | 中等 | 较宽 | 通用实验室平均功率测量 |
+| 二极管检波 | 快 | 宽（经线性化） | 峰值/包络功率、脉冲调制信号测量 |
+
+### 11.7.2 dBm 与瓦特换算
+
+> **【核心概念】**
+> 微波功率常用 **dBm**（以 $1\ \mathrm{mW}$ 为基准的分贝值）表示：
+>
+> $$P(\mathrm{dBm})=10\lg\frac{P(\mathrm{mW})}{1\ \mathrm{mW}}\tag{11-7-1}$$
+>
+> 常用对照：$0\ \mathrm{dBm}=1\ \mathrm{mW}$，$10\ \mathrm{dBm}=10\ \mathrm{mW}$，$30\ \mathrm{dBm}=1\ \mathrm{W}$，$-30\ \mathrm{dBm}=1\ \mu\mathrm{W}$。使用 dBm 的好处是级联系统中增益/损耗（dB）可以直接**相加减**，而不必对瓦特值做乘除。
+
+### 11.7.3 平均功率与峰值功率
+
+> **【核心概念】**
+> **平均功率**（average power）是信号功率在一个（或多个）周期上的时间平均值；**峰值功率**（peak power）是信号包络的瞬时最大功率。对连续波（CW）信号二者相等；但对**脉冲调制**或**已调制**信号（如脉冲雷达、数字调制通信信号），峰值功率可以远大于平均功率，二者之比常用**峰均比**（PAPR, Peak-to-Average Power Ratio）描述：
+>
+> $$\mathrm{PAPR}=10\lg\frac{P_{\text{峰值}}}{P_{\text{平均}}}\ (\mathrm{dB})\tag{11-7-2}$$
+>
+> **物理意义**：热敏电阻、热电偶功率计由于响应慢，测到的本质上是平均功率；要测峰值功率（如脉冲雷达的发射峰值功率），需要响应快的二极管检波器配合示波器或专用峰值功率计，捕捉瞬时包络的最大值。
+
+> **【易错点】**
+> 用平均功率型探头（热电偶）测量高峰均比的脉冲信号时，若直接读数当作峰值功率使用会严重低估发射机实际峰值应力，必须按占空比换算：对理想矩形脉冲，峰值功率 $\approx$ 平均功率 $/$ 占空比。
+
+> **【小结】**
+> 三种功率计探头各有优劣：热敏电阻精度高但慢，热电偶是通用折中，二极管检波快但需线性化。dBm 便于级联系统加减运算。平均功率与峰值功率在连续波下相等，在调制/脉冲信号下差别很大，用峰均比描述，测量时须按探头响应特性选择合适的仪器。
+
+---
+
+## 本章小结
+
+1. 微波频段必须用定向耦合器分离的**入射波 $a$、反射波 $b$**来描述测量，而不能直接测电压电流，因为探针会扰动场、相位难以直接读取。
+2. **VNA** 由信号源、定向耦合器、接收机、数字处理四部分组成，核心是"矢量"（同时测幅度相位）能力。
+3. 定向耦合器的**耦合度**决定取样强弱，**方向性**决定取样纯净度；方向性有限是 VNA 系统误差中方向性误差 $E_D$ 的物理来源。
+4. 单端口系统误差可归结为三项：$E_D$（固定偏置）、$E_S$（源失配，决定多次反射因子）、$E_R$（反射跟踪，整体缩放），组合为双线性变换 $\Gamma_m=E_D+\dfrac{E_R\Gamma_a}{1-E_S\Gamma_a}$，修正公式为 $\Gamma_a=\dfrac{\Gamma_m-E_D}{E_R+E_S(\Gamma_m-E_D)}$。
+5. **SOL** 校准用短路、开路、负载三个已知标准件联立三方程解出 $E_D$、$E_S$、$E_R$；**SOLT** 在此基础上加直通件校正传输参数，依赖标准件精确模型；**TRL** 改用已知特性阻抗的传输线定义参考面，适合非同轴场合。
+6. 驻波比/回波损耗可用传统"功率计+定向耦合器"法（只测模值）或 VNA 直接矢量测量（精度更高、信息更全）；插入损耗本质是 $-20\lg|S_{21}|$。
+7. 噪声系数的 **Y 因子法**：用冷热态噪声功率比 $Y$ 结合已知 ENR，得 $F=10^{\mathrm{ENR}/10}/(Y-1)$；误差主要来自 ENR 标定、接收机噪声非线性与阻抗失配。
+8. 功率测量常用热敏电阻、热电偶、二极管三种探头，分别对应高精度慢速、通用中速、高速宽动态范围的应用场景；dBm 便于级联运算；平均功率与峰值功率在调制/脉冲信号下有明显差异，用 PAPR 描述。
+
+从"无法直接测电压"到"用波来描述、用误差模型修正系统误差、用已知标准件校准"，这条主线贯穿了射频测量技术的核心方法论：**先承认仪器不完美，再用数学模型把不完美的部分精确量化并扣除**，这也是本课程从"理论分析"走向"工程实测"的关键一步。
+
+---
+
+## 自测题
+
+**一、选择/填空题**
+
+1. 微波频段不能直接用电压表测电压，最主要的原因是（　　）
+   A. 电压表精度不够　B. 探针接入会扰动场且分布参数效应显著　C. 电压表无法显示负值　D. 微波信号没有电压
+2. 定向耦合器的"方向性"主要影响（　　）
+   A. 耦合度的大小　B. 对小反射系数被测件的测量精度　C. 信号源的输出功率　D. 噪声系数
+3. 单端口三项误差模型中，与被测件反射系数无关的固定偏置项是 ______。
+4. TRL 校准相比 SOLT 的主要优势是不依赖标准件精确的 ______ 模型，而依赖已知 ______ 的传输线。
+5. 热电偶功率计测量脉冲调制信号时，读出的是（　　）
+   A. 峰值功率　B. 平均功率　C. 瞬时功率　D. 无法测量
+
+**二、计算题**
+
+6. 某 VNA 单端口校准得 $E_D=0.01$、$E_S=0.05$、$E_R=0.95$（设相位均为 $0$），测得某被测件 $\Gamma_m=0.30$，求修正后的真实反射系数 $\Gamma_a$，并计算修正前后回波损耗的差异（dB）。
+
+7. 某噪声源 $\mathrm{ENR}=15\ \mathrm{dB}$，测得 Y 因子 $Y=4$，求被测放大器的噪声系数 $F$（线性值与 dB 值）。
+
+---
+
+**参考答案与解析**
+
+1. B。探针引入的寄生参数在微波频率下不可忽略，且会改变被测电路本身的场分布。
+2. B。方向性有限会在反射测量中引入与被测件无关的泄漏信号，对本身反射很小的器件影响最大，对应误差模型中的 $E_D$。
+3. 方向性误差 $E_D$。
+4. 标准件（Short/Open/Load）；特性阻抗（$Z_0$）与长度差。
+5. B。热电偶响应慢，无法跟踪脉冲包络的瞬时变化，读出的是时间平均值。
+
+6. 分子：$\Gamma_m-E_D=0.30-0.01=0.29$；分母：$E_R+E_S(\Gamma_m-E_D)=0.95+0.05\times0.29=0.95+0.0145=0.9645$；
+   $$\Gamma_a=\frac{0.29}{0.9645}\approx0.3007$$
+   修正前回波损耗：$L_{r,m}=-20\lg(0.30)\approx10.46\ \mathrm{dB}$；修正后：$L_{r,a}=-20\lg(0.3007)\approx10.44\ \mathrm{dB}$。本例中由于 $\Gamma_m$ 本身不算很小、误差项也不大，修正前后差异约 $0.02\ \mathrm{dB}$，量级很小；但若被测件接近匹配（$\Gamma_m$ 很小），同样的 $E_D=0.01$ 会造成显著相对误差，说明误差修正对"小反射"测量更关键。
+
+7. $\mathrm{ENR}$ 线性值 $=10^{15/10}\approx31.62$。
+   $$F=\frac{31.62}{4-1}=\frac{31.62}{3}\approx10.54$$
+   换算为 dB：$F(\mathrm{dB})=10\lg(10.54)\approx10.23\ \mathrm{dB}$。
+</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

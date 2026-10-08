@@ -31,7 +31,10 @@ $CHAPTERS = @(
   @{ n = 5; file = 'ch05'; title = '微波网络基础';           short = '微波网络';      minutes = 240 },
   @{ n = 6; file = 'ch06'; title = '微波无源器件';           short = '无源器件';      minutes = 200 },
   @{ n = 7; file = 'ch07'; title = '专题推导一：无耗网络 [Z] 矩阵'; short = '专题·Z 矩阵'; minutes = 90 },
-  @{ n = 8; file = 'ch08'; title = '专题推导二：网络对称性与 [S] 矩阵'; short = '专题·S 矩阵'; minutes = 90 }
+  @{ n = 8; file = 'ch08'; title = '专题推导二：网络对称性与 [S] 矩阵'; short = '专题·S 矩阵'; minutes = 90 },
+  @{ n = 9; file = 'ch09'; title = '射频放大器设计'; short = '放大器设计'; minutes = 300 },
+  @{ n = 10; file = 'ch10'; title = '稳定性与振荡器设计'; short = '稳定性与振荡器'; minutes = 260 },
+  @{ n = 11; file = 'ch11'; title = '射频测量技术'; short = '射频测量'; minutes = 220 }
 )
 
 $TOOLS = @(
@@ -155,7 +158,7 @@ function New-Footer([string]$rel) {
   $r = if ($rel) { $rel.TrimEnd('/') + '/' } else { '' }
   @"
 <footer class="footer">
-  <div>《微波技术基础》在线学习指南 · 共 6 章 + 2 个专题推导</div>
+  <div>《微波技术基础》在线学习指南 · 共 9 章 + 2 个专题推导（含 EE5425 拓展模块）</div>
   <div>
     <a href="${r}formulas.html">公式速查</a> ·
     <a href="${r}exam.html">考点总纲</a> ·

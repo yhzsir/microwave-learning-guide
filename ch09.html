@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>射频放大器设计 · 微波技术基础学习指南</title>
+<meta name="description" content="用S参数描述放大器增益、单向化假设、功率增益圆、噪声匹配与偏置网络设计">
+<meta name="author" content="微波技术基础学习指南">
+<meta property="og:type" content="website">
+<meta property="og:title" content="射频放大器设计 · 微波技术基础学习指南">
+<meta property="og:description" content="用S参数描述放大器增益、单向化假设、功率增益圆、噪声匹配与偏置网络设计">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f6fdb'/%3E%3Cpath d='M4 21c3-8 5-8 8 0s5 8 8 0 5-8 8 0' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+(function(){try{var s=localStorage.getItem('mwguide-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s||(d?'dark':'light'));}catch(e){}})();
+</script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <button class="iconbtn menu-btn" id="menuBtn" aria-label="打开目录">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+  </button>
+  <a class="brand" href="index.html">
+    <span class="brand-mark">μ</span>
+    <span class="brand-text">
+      <span class="brand-title">微波技术基础</span>
+      <span class="brand-sub">LEARNING GUIDE</span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="search-wrap">
+    <svg class="sicon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input id="search" type="search" placeholder="搜索知识点、公式、例题…  (Ctrl K)" autocomplete="off" spellcheck="false">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="切换主题">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    <span>深色</span>
+  </button>
+</header><div class="backdrop" id="backdrop"></div><div class="shell"><aside class="sidebar" id="sidebar" aria-label="站点导航"><nav class="sidebar-nav" id="sidebarNav"><a class="nav-link" href="index.html"><span class="nav-num">00</span><span class="nav-label">首页 · 学习总览</span></a><a class="nav-link" href="roadmap.html"><span class="nav-num">01</span><span class="nav-label">学习路线图</span></a><a class="nav-link" href="formulas.html"><span class="nav-num">02</span><span class="nav-label">公式速查手册</span></a><a class="nav-link" href="exam.html"><span class="nav-num">03</span><span class="nav-label">考点总纲</span></a><a class="nav-link" href="smith.html"><span class="nav-num">04</span><span class="nav-label">史密斯圆图交互工具</span></a><a class="nav-link" href="quiz.html"><span class="nav-num">05</span><span class="nav-label">综合自测题</span></a><a class="nav-link" href="resources.html"><span class="nav-num">06</span><span class="nav-label">课件与视频资源</span></a><div class="nav-group"><div class="nav-heading">章节目录</div><a class="nav-link" href="ch01.html"><span class="nav-num">1</span><span class="nav-label">绪论</span></a><a class="nav-link" href="ch02.html"><span class="nav-num">2</span><span class="nav-label">传输线理论</span></a><a class="nav-link" href="ch03.html"><span class="nav-num">3</span><span class="nav-label">金属波导</span></a><a class="nav-link" href="ch04.html"><span class="nav-num">4</span><span class="nav-label">传输线类型</span></a><a class="nav-link" href="ch05.html"><span class="nav-num">5</span><span class="nav-label">微波网络</span></a><a class="nav-link" href="ch06.html"><span class="nav-num">6</span><span class="nav-label">无源器件</span></a><a class="nav-link" href="ch07.html"><span class="nav-num">7</span><span class="nav-label">专题·Z 矩阵</span></a><a class="nav-link" href="ch08.html"><span class="nav-num">8</span><span class="nav-label">专题·S 矩阵</span></a><a class="nav-link active" href="ch09.html"><span class="nav-num">9</span><span class="nav-label">放大器设计</span></a><a class="nav-link" href="ch10.html"><span class="nav-num">10</span><span class="nav-label">稳定性与振荡器</span></a><a class="nav-link" href="ch11.html"><span class="nav-num">11</span><span class="nav-label">射频测量</span></a></div></nav></aside><main class="article loading" id="article"><div class="spinner" role="status" aria-label="加载中"></div><div id="chapterShell" hidden><div class="chapter-eyebrow" id="eyebrow">第 9 章</div><div class="md" id="md"></div><nav class="pager" id="pager" aria-label="章节导航"></nav></div></main><aside class="toc" id="toc"><div class="toc-heading">本页目录</div><div class="toc-list" id="tocList"></div></aside></div><footer class="footer">
+  <div>《微波技术基础》在线学习指南 · 共 9 章 + 2 个专题推导（含 EE5425 拓展模块）</div>
+  <div>
+    <a href="formulas.html">公式速查</a> ·
+    <a href="exam.html">考点总纲</a> ·
+    <a href="resources.html">课件资源</a>
+  </div>
+</footer>
+<script src="assets/js/search-index.js"></script>
+<script id="chapterCfg" type="application/json">{"n":9,"file":"ch09","src":"content/ch09.md","title":"射频放大器设计"}</script>
+<script id="preContent" type="text/plain">---
+chapter: 9
+title: 射频放大器设计
+short: 放大器设计
+desc: 用S参数描述放大器增益、单向化假设、功率增益圆、噪声匹配与偏置网络设计
+minutes: 300
+---
+
+# 第九章 射频放大器设计
+
+> **【考点】**
+> 本章考点地图：
+> 1. 三种功率增益（工作功率增益 $G_p$、资用功率增益 $G_A$、转换功率增益 $G_T$）的定义与推导（★★★★★，必考大题）；
+> 2. 单向化假设下 $G_{TU}=G_S\cdot G_0\cdot G_L$ 的分解计算（★★★★，常见计算题）；
+> 3. 同时共轭匹配 $\Gamma_{MS}$、$\Gamma_{ML}$ 的存在条件与求解（★★★★，与稳定性章节联动）；
+> 4. 恒定增益圆的圆心半径公式与图解设计法（★★★★★，压轴设计题）；
+> 5. 噪声系数 $F$ 与恒定噪声系数圆、噪声—增益折中（★★★★）；
+> 6. 偏置网络（$\lambda/4$ 高阻线、RF 扼流圈）的直流/射频隔离原理（★★★）。
+> **最大的概念陷阱**：把"输出匹配使负载吸收最大功率"与"放大器整体增益最大"混为一谈——真正要最大化的是转换功率增益 $G_T$，它同时依赖信号源与负载的失配，而非单独让某一侧共轭匹配就一定最优。
+
+---
+
+## 9.1 放大器设计总体框图与匹配的意义
+
+一个单级射频放大器（RF amplifier）由信号源、输入匹配网络（input matching network）、晶体管（用 [S] 参数描述的双端口有源器件）、输出匹配网络（output matching network）与负载四部分级联而成。
+
+<figure class="fig">
+<svg viewBox="0 0 720 220" role="img" aria-label="放大器设计总体框图">
+  <defs>
+    <marker id="ar9a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="var(--ink-2)"/>
+    </marker>
+  </defs>
+  <text x="360" y="22" text-anchor="middle" font-size="14" fill="var(--ink)">单级放大器总体框图</text>
+  <circle cx="55" cy="120" r="22" fill="none" stroke="var(--brand)" stroke-width="1.8"/>
+  <text x="55" y="124" text-anchor="middle" font-size="12" fill="var(--brand)">源</text>
+  <text x="55" y="158" text-anchor="middle" font-size="12" fill="var(--ink-2)">Γ_S</text>
+  <line x1="77" y1="120" x2="140" y2="120" stroke="var(--ink)" stroke-width="1.8" marker-end="url(#ar9a)"/>
+  <rect x="140" y="92" width="120" height="56" rx="6" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+  <text x="200" y="124" text-anchor="middle" font-size="12.5" fill="var(--accent)">输入匹配网络</text>
+  <line x1="260" y1="120" x2="310" y2="120" stroke="var(--ink)" stroke-width="1.8" marker-end="url(#ar9a)"/>
+  <text x="285" y="112" text-anchor="middle" font-size="11" fill="var(--ink-2)">Γ_in</text>
+  <rect x="310" y="92" width="120" height="56" rx="6" fill="none" stroke="var(--warn)" stroke-width="1.8"/>
+  <text x="370" y="118" text-anchor="middle" font-size="12.5" fill="var(--warn)">晶体管</text>
+  <text x="370" y="135" text-anchor="middle" font-size="11.5" fill="var(--warn)">[S]</text>
+  <line x1="430" y1="120" x2="480" y2="120" stroke="var(--ink)" stroke-width="1.8" marker-end="url(#ar9a)"/>
+  <text x="455" y="112" text-anchor="middle" font-size="11" fill="var(--ink-2)">Γ_out</text>
+  <rect x="480" y="92" width="120" height="56" rx="6" fill="none" stroke="var(--accent)" stroke-width="1.8"/>
+  <text x="540" y="124" text-anchor="middle" font-size="12.5" fill="var(--accent)">输出匹配网络</text>
+  <line x1="600" y1="120" x2="645" y2="120" stroke="var(--ink)" stroke-width="1.8" marker-end="url(#ar9a)"/>
+  <circle cx="667" cy="120" r="22" fill="none" stroke="var(--brand)" stroke-width="1.8"/>
+  <text x="667" y="124" text-anchor="middle" font-size="12" fill="var(--brand)">负载</text>
+  <text x="667" y="158" text-anchor="middle" font-size="12" fill="var(--ink-2)">Γ_L</text>
+  <text x="200" y="200" text-anchor="middle" font-size="12" fill="var(--ink-2)">使 Γ_S 经网络变换后与 Γ_in* 匹配</text>
+  <text x="540" y="200" text-anchor="middle" font-size="12" fill="var(--ink-2)">使 Γ_L 经网络变换后与 Γ_out* 匹配</text>
+</svg>
+<figcaption>图 9-1　放大器设计总体框图：信号源 $\Gamma_S$ — 输入匹配网络 — 晶体管 $[S]$ — 输出匹配网络 — 负载 $\Gamma_L$</figcaption>
+</figure>
+
+> **【核心概念】**
+> **为什么一定要做匹配网络**：晶体管本身的输入阻抗 $Z_{\mathrm{in}}$、输出阻抗 $Z_{\mathrm{out}}$ 一般不等于系统特性阻抗 $Z_0=50\ \Omega$，若信号源、负载直接接到晶体管端口，将产生失配反射，带来三方面损失：
+> 1. **功率传输损失**：失配使入射功率的一部分被反射，不能全部进入晶体管或负载；
+> 2. **增益损失**：转换功率增益 $G_T$ 随 $\Gamma_S$、$\Gamma_L$ 偏离最优点而下降；
+> 3. **噪声恶化**：对低噪声放大器（LNA），输入端的最优反射系数 $\Gamma_{\mathrm{opt}}$（噪声最优点）一般**不等于**共轭匹配点 $S_{11}^*$，必须专门设计。
+>
+> **三种设计目标的矛盾**：
+> - **最大功率传输**要求 $\Gamma_S=\Gamma_{\mathrm{in}}^*$、$\Gamma_L=\Gamma_{\mathrm{out}}^*$（同时共轭匹配）；
+> - **最低噪声**要求 $\Gamma_S=\Gamma_{\mathrm{opt}}$（噪声最优反射系数，由器件噪声参数决定，一般 $\Gamma_{\mathrm{opt}}\ne S_{11}^*$）；
+> - **最高增益**（在稳定前提下）同样要求同时共轭匹配，但若器件潜在不稳定，则必须退而求其次，接受低于最大可用增益的某个增益圆上的工作点。
+> 这正是本章要用增益圆、噪声圆做图解折中设计的根本原因。
+
+> **【小结】**
+> 9.1 节要点：放大器设计的本质是在信号源反射系数 $\Gamma_S$ 与负载反射系数 $\Gamma_L$ 这两个自由度上做选择，使增益、噪声、稳定性三者达到工程可接受的折中；这一折中必须借助后面几节建立的增益圆、噪声圆在 Smith 圆图上统一求解。
+
+---
+
+## 9.2 三种功率增益的定义与推导
+
+设双端口晶体管的散射矩阵为 $[S]$，信号源反射系数为 $\Gamma_S$，负载反射系数为 $\Gamma_L$，输入、输出端的实际反射系数分别记为
+
+$$
+\Gamma_{\mathrm{in}}=S_{11}+\frac{S_{12}S_{21}\Gamma_L}{1-S_{22}\Gamma_L},\qquad
+\Gamma_{\mathrm{out}}=S_{22}+\frac{S_{12}S_{21}\Gamma_S}{1-S_{11}\Gamma_S}
+\tag{9-2-1}$$
+
+这两个公式是把负载（或信号源）折合进晶体管后"看进去"的等效反射系数，来自双端口信号流图的梅森公式（Mason's rule），本章直接引用。
+
+> **【核心概念】**
+> 三种功率增益的物理定义：
+> - **工作功率增益** $G_p$（operating power gain）：$G_p=\dfrac{P_L}{P_{\mathrm{in}}}$，即**负载吸收功率**与**实际送入晶体管输入端的功率**之比。**只依赖 $\Gamma_L$ 和 $[S]$，与 $\Gamma_S$ 无关**（因为分母 $P_{\mathrm{in}}$ 已经是"实际送入"的功率，不管源怎么失配）。
+> - **资用功率增益** $G_A$（available power gain）：$G_A=\dfrac{P_{\mathrm{avn}}}{P_{\mathrm{avs}}}$，即**晶体管输出端资用功率**（假设输出端接共轭匹配负载时能给出的最大功率）与**信号源资用功率**之比。**只依赖 $\Gamma_S$，与 $\Gamma_L$ 无关**。
+> - **转换功率增益** $G_T$（transducer power gain）：$G_T=\dfrac{P_L}{P_{\mathrm{avs}}}$，即**负载实际吸收功率**与**信号源资用功率**之比。**同时依赖 $\Gamma_S$ 与 $\Gamma_L$**，是工程中最常用、最贴近实际的增益定义。
+
+**$G_T$ 的推导**：入射到晶体管输入端的波 $a_1$ 由信号源经失配产生，
+
+$$
+P_{\mathrm{avs}}=\frac{|b_S|^2}{2}\cdot\frac{1}{1-|\Gamma_S|^2}
+$$
+
+其中 $b_S$ 为信号源的等效出射波幅值。入射到晶体管的功率波 $a_1$ 满足 $a_1=\dfrac{b_S\left(1-|\Gamma_S|^2\right)^{1/2}}{1-\Gamma_{\mathrm{in}}\Gamma_S}\cdot(\cdots)$——完整推导涉及多重反射求和，结果为（略去繁复的信号流图展开，直接给出工程中最常用的闭式）：
+
+$$
+\boxed{\ G_T=\frac{1-|\Gamma_S|^2}{\left|1-\Gamma_{\mathrm{in}}\Gamma_S\right|^2}\,|S_{21}|^2\,\frac{1-|\Gamma_L|^2}{\left|1-S_{22}\Gamma_L\right|^2}\ }
+\tag{9-2-2}$$
+
+> **【公式推导】**
+> 式 (9-2-2) 的结构可以拆成三个因子，逐一解释物理意义：
+> - 第一个因子 $\dfrac{1-|\Gamma_S|^2}{|1-\Gamma_{\mathrm{in}}\Gamma_S|^2}$：描述**信号源与晶体管输入端之间的失配损失**，当 $\Gamma_S=\Gamma_{\mathrm{in}}^*$ 时该因子取最大值 $\dfrac{1}{1-|\Gamma_S|^2}$；
+> - 中间因子 $|S_{21}|^2$：晶体管本身固有的**正向传输增益**，与匹配状态无关，是器件给定后的"出厂增益"；
+> - 第三个因子 $\dfrac{1-|\Gamma_L|^2}{|1-S_{22}\Gamma_L|^2}$：描述**晶体管输出端与负载之间的失配损失**（此处用 $S_{22}$ 而不是 $\Gamma_{\mathrm{out}}$，是因为本因子只看"晶体管原始 $S_{22}$ 与负载"的直接失配，交叉耦合已经被归入 $\Gamma_{\mathrm{in}}$ 中体现）。
+
+**$G_p$、$G_A$ 的闭式表达式**（同样由信号流图给出，供对照记忆）：
+
+$$
+G_p=\frac{1}{1-|\Gamma_{\mathrm{in}}|^2}\,|S_{21}|^2\,\frac{1-|\Gamma_L|^2}{\left|1-S_{22}\Gamma_L\right|^2}
+\tag{9-2-3}$$
+
+$$
+G_A=\frac{1-|\Gamma_S|^2}{\left|1-S_{11}\Gamma_S\right|^2}\,|S_{21}|^2\,\frac{1}{1-|\Gamma_{\mathrm{out}}|^2}
+\tag{9-2-4}$$
+
+| 增益 | 定义 | 依赖变量 | 物理含义 |
+|---|---|---|---|
+| $G_p$ 工作功率增益 | $P_L/P_{\mathrm{in}}$ | 仅 $\Gamma_L$ | 已知输入功率后，负载获得的放大倍数 |
+| $G_A$ 资用功率增益 | $P_{\mathrm{avn}}/P_{\mathrm{avs}}$ | 仅 $\Gamma_S$ | 晶体管对信号源资用功率的最大利用能力 |
+| $G_T$ 转换功率增益 | $P_L/P_{\mathrm{avs}}$ | $\Gamma_S$、$\Gamma_L$ 均依赖 | 工程设计的核心指标，综合两端失配 |
+
+> **【易错点】**
+> 常见错误是用 $|S_{21}|^2$ 本身当作放大器增益。$|S_{21}|^2$ 只是晶体管在 $\Gamma_S=\Gamma_L=0$（即两端均严格接 $Z_0$）时的转换增益（这正是下节 $G_0$ 的定义），一旦两端做了匹配网络，实际增益会偏离 $|S_{21}|^2$，可能更高也可能更低。
+
+> **【例题 9-1】**
+> **题目**：某晶体管在 $2\ \mathrm{GHz}$ 下 $S_{11}=0.3\angle150^\circ$，$S_{21}=3.0\angle60^\circ$，$S_{12}=0.05\angle-10^\circ$，$S_{22}=0.4\angle-60^\circ$。若两端均接 $Z_0$（即 $\Gamma_S=\Gamma_L=0$），求转换功率增益 $G_T$（用 dB 表示）。
+>
+> **思路**：当 $\Gamma_S=\Gamma_L=0$ 时，(9-2-1) 给出 $\Gamma_{\mathrm{in}}=S_{11}$，代入 (9-2-2) 大幅简化。
+>
+> **详细步骤**：
+> 第一个因子：$\Gamma_S=0\Rightarrow\dfrac{1-0}{|1-0|^2}=1$；
+> 第三个因子：$\Gamma_L=0\Rightarrow\dfrac{1-0}{|1-0|^2}=1$；
+> 故 $G_T=|S_{21}|^2=3.0^2=9$。
+>
+> **结果**：$G_T=9=9.54\ \mathrm{dB}$（$10\lg 9\approx9.54$）。
+>
+> **讨论**：这一特殊情形正是下一节"单向化增益分解"中的 $G_0=|S_{21}|^2$，它是转换增益的"基准值"，匹配网络的作用就是在此基础上再乘上输入、输出两个失配因子以提升总增益。
+
+---
+
+## 9.3 单向化假设与增益分解 $G_{TU}=G_S\cdot G_0\cdot G_L$
+
+晶体管的反向传输系数 $S_{12}$ 通常远小于 $S_{21}$（典型 $|S_{12}|\sim0.01$–$0.1$），工程上常作**单向化假设**（unilateral assumption）：$S_{12}\approx0$。此时 (9-2-1) 简化为 $\Gamma_{\mathrm{in}}=S_{11}$、$\Gamma_{\mathrm{out}}=S_{22}$，输入、输出两端**彼此解耦**，互不影响。
+
+> **【核心概念】**
+> 单向化假设的意义在于：输入匹配网络的设计**只需看 $S_{11}$**，输出匹配网络的设计**只需看 $S_{22}$**，二者可以**独立优化**，不再需要联立求解。这大大简化了设计流程，是实际工程中最常用的近似。
+
+将 $\Gamma_{\mathrm{in}}=S_{11}$、$\Gamma_{\mathrm{out}}=S_{22}$ 代入 (9-2-2)，得到单向化转换增益：
+
+$$
+\boxed{\ G_{TU}=\underbrace{\frac{1-|\Gamma_S|^2}{\left|1-S_{11}\Gamma_S\right|^2}}_{G_S}\ \underbrace{|S_{21}|^2}_{G_0}\ \underbrace{\frac{1-|\Gamma_L|^2}{\left|1-S_{22}\Gamma_L\right|^2}}_{G_L}\ }
+\tag{9-3-1}$$
+
+> **【公式推导】**
+> 三个因子的物理角色：
+> - $G_S$：输入匹配网络带来的增益，最大值在 $\Gamma_S=S_{11}^*$ 处取得，$G_{S,\max}=\dfrac{1}{1-|S_{11}|^2}$；
+> - $G_0$：晶体管本征增益，固定值 $|S_{21}|^2$，与匹配无关；
+> - $G_L$：输出匹配网络带来的增益，最大值在 $\Gamma_L=S_{22}^*$ 处取得，$G_{L,\max}=\dfrac{1}{1-|S_{22}|^2}$。
+> 三者相乘、各自独立最大化，即得**单向化最大转换增益**：
+>
+> $$
+> G_{TU,\max}=\frac{1}{1-|S_{11}|^2}\,|S_{21}|^2\,\frac{1}{1-|S_{22}|^2}
+> \tag{9-3-2}$$
+
+**单向化误差的估计（U 因子）**：忽略 $S_{12}$ 会带来多大误差，用 Unilateral figure of merit 衡量：
+
+$$
+U=\frac{|S_{11}||S_{22}||S_{12}||S_{21}|}{\left(1-|S_{11}|^2\right)\left(1-|S_{22}|^2\right)}
+\tag{9-3-3}$$
+
+真实转换增益 $G_T$ 与单向化增益 $G_{TU}$ 的比值被限制在
+
+$$
+\frac{1}{(1+U)^2}<\frac{G_T}{G_{TU}}<\frac{1}{(1-U)^2}
+\tag{9-3-4}$$
+
+> **【工程应用】**
+> 工程判据：若 $U<0.1$（即误差上下界约在 $\pm1\ \mathrm{dB}$ 以内），可以放心使用单向化设计流程；否则必须用完整的双向 $S$ 参数（含 $S_{12}$）重新核算增益与稳定性。多数高增益小信号晶体管在中低频段满足该判据，但毫米波或高功率器件常常不满足，需特别留意。
+
+> **【易错点】**
+> $U$ 因子只衡量**增益**预测的误差范围，不能用来判断稳定性是否受单向化假设影响。即使 $U$ 很小，稳定性分析（下一节的同时共轭匹配是否存在解）仍必须用完整 $[S]$ 矩阵计算稳定性圆，不能偷懒用单向化模型。
+
+> **【小结】**
+> 9.3 节要点：单向化假设把增益分解为输入、器件本征、输出三个独立因子的乘积，设计流程因此解耦为"分别优化两端匹配网络"；其有效性由 $U$ 因子定量把关，$U$ 偏大时必须回到完整双向模型。
+
+---
+
+## 9.4 同时共轭匹配
+
+当晶体管**无条件稳定**（关于稳定性判据见后续稳定性专题，这里直接引用结论：$K>1$ 且 $|\Delta|<1$）时，存在唯一一组 $(\Gamma_{MS},\Gamma_{ML})$ 使输入、输出**同时**达到共轭匹配，从而获得全局最大转换增益 $G_{T,\max}$。
+
+> **【核心概念】**
+> **同时共轭匹配条件**（simultaneous conjugate match）：
+>
+> $$
+> \Gamma_{MS}=\Gamma_{\mathrm{in}}^*,\qquad \Gamma_{ML}=\Gamma_{\mathrm{out}}^*
+> \tag{9-4-1}$$
+> 即信号源看到的输入阻抗与晶体管输入端互为共轭、负载看到的输出阻抗与晶体管输出端互为共轭。这是一对**耦合方程**（因为 $\Gamma_{\mathrm{in}}$ 依赖 $\Gamma_L$、$\Gamma_{\mathrm{out}}$ 依赖 $\Gamma_S$），需联立求解。
+
+引入辅助量：
+
+$$
+B_1=1+|S_{11}|^2-|S_{22}|^2-|\Delta|^2,\qquad
+B_2=1+|S_{22}|^2-|S_{11}|^2-|\Delta|^2
+\tag{9-4-2}$$
+
+$$
+C_1=S_{11}-\Delta S_{22}^*,\qquad C_2=S_{22}-\Delta S_{11}^*,\qquad \Delta=S_{11}S_{22}-S_{12}S_{21}
+\tag{9-4-3}$$
+
+联立求解耦合方程后得到：
+
+$$
+\boxed{\ \Gamma_{MS}=\frac{B_1\pm\sqrt{B_1^2-4|C_1|^2}}{2C_1},\qquad
+\Gamma_{ML}=\frac{B_2\pm\sqrt{B_2^2-4|C_2|^2}}{2C_2}\ }
+\tag{9-4-4}$$
+
+其中根号前符号取法为：当 $B_1>0$ 取负号，$B_1<0$ 取正号（保证 $|\Gamma_{MS}|<1$，物理可实现），$\Gamma_{ML}$ 同理。
+
+> **【公式推导】**
+> 为什么要用 $\pm$ 判别：$\Gamma_{MS}$ 是二次方程的根，数学上有两个解，但只有一个落在单位圆内（$|\Gamma|<1$，代表无源可实现的反射系数），另一个落在单位圆外（物理上不可实现，对应"负电阻"意义下的另一个数学解）。判别法则本质上就是挑选模值小于 1 的那个根。
+
+> **【核心概念】**
+> **解是否存在，与稳定性直接相关**：当 $B_1^2-4|C_1|^2<0$ 时，根号下为负，$\Gamma_{MS}$ 无实数（意义上的）解，说明晶体管**潜在不稳定**（potentially unstable），不存在能同时让两端都稳定共轭匹配的被动网络；此时只能退而求其次，在稳定区域内选取增益圆上的工作点（见 9.5 节），牺牲一部分增益换取稳定工作。这正是稳定性分析必须先于增益设计完成的原因。
+
+> **【例题 9-2】**
+> **题目**：已知晶体管 $S_{11}=0.2\angle0^\circ$、$S_{22}=0.3\angle0^\circ$、$S_{12}S_{21}=0$（近似单向化），求 $B_1$、$C_1$ 并判断 $\Gamma_{MS}$ 是否有物理解。
+>
+> **思路**：单向化时 $\Delta\approx S_{11}S_{22}$，代入定义式直接计算。
+>
+> **步骤**：$\Delta=0.2\times0.3=0.06$（实数）。
+> $B_1=1+0.04-0.09-0.0036=0.9464$。
+> $C_1=S_{11}-\Delta S_{22}=0.2-0.06\times0.3=0.2-0.018=0.182$。
+> 判别式：$B_1^2-4|C_1|^2=0.8957-4\times0.0331=0.8957-0.1326=0.7631>0$，有实数解。
+> $\Gamma_{MS}=\dfrac{0.9464-\sqrt{0.7631}}{2\times0.182}=\dfrac{0.9464-0.8736}{0.364}\approx0.200$（与 $S_{11}^*=0.2$ 高度吻合，印证单向化下 $\Gamma_{MS}\approx S_{11}^*$）。
+>
+> **讨论**：单向化假设下同时共轭匹配退化为 $\Gamma_{MS}=S_{11}^*$、$\Gamma_{ML}=S_{22}^*$，与 9.3 节 $G_S$、$G_L$ 各自最大化的结论完全一致，说明两节推导自洽。
+
+---
+
+## 9.5 恒定增益圆与设计流程
+
+在单向化假设下，若晶体管**不能**或**不需要**工作在最大增益点（例如为了兼顾噪声或稳定裕量），可以用**恒定增益圆**（constant gain circle）在 Smith 圆图上图解出满足某一目标增益的所有 $\Gamma_S$（或 $\Gamma_L$）轨迹。
+
+定义归一化增益因子
+
+$$
+g_S=\frac{G_S}{G_{S,\max}}=G_S\left(1-|S_{11}|^2\right),\qquad 0\le g_S\le1
+\tag{9-5-1}$$
+
+> **【公式推导】**
+> 将 (9-3-1) 中 $G_S=\dfrac{1-|\Gamma_S|^2}{|1-S_{11}\Gamma_S|^2}$ 代入 $g_S$ 定义并整理（把 $\Gamma_S$ 当作复变量，分离实部虚部），可证明 $g_S$ 为常数时 $\Gamma_S$ 的轨迹是一个圆，圆心与半径为：
+>
+> $$
+> \boxed{\ C_{g_S}=\frac{g_S S_{11}^*}{1-\left(1-g_S\right)|S_{11}|^2},\qquad
+> R_{g_S}=\frac{\sqrt{1-g_S}\left(1-|S_{11}|^2\right)}{1-\left(1-g_S\right)|S_{11}|^2}\ }
+> \tag{9-5-2}$$
+> 输出端 $g_L$ 圆的圆心半径公式形式完全相同，只需把 $S_{11}\to S_{22}$。
+>
+> **物理意义**：
+> - 当 $g_S=1$（最大增益）时，$R_{g_S}=0$，圆退化为一点 $C_{g_S}=S_{11}^*$，即同时共轭匹配点；
+> - 当 $g_S=0$ 时，$C_{g_S}=0$、$R_{g_S}=1$，圆退化为整个单位圆边界，对应"完全失配，零额外增益贡献"的所有 $\Gamma_S$；
+> - $g_S$ 越小，圆越大，意味着可选择的 $\Gamma_S$ 范围越宽，设计自由度越大——这正是增益圆用于**折中设计**（兼顾稳定性、噪声）的原因：主动放弃一点增益，换取更大的 $\Gamma_S$ 选择空间。
+
+<figure class="fig">
+<svg viewBox="0 0 560 320" role="img" aria-label="恒定增益圆设计流程示意">
+  <circle cx="280" cy="160" r="130" fill="none" stroke="var(--line)" stroke-width="1.5"/>
+  <text x="280" y="20" text-anchor="middle" font-size="13" fill="var(--ink)">Smith 圆图上的恒定增益圆族（输入端）</text>
+  <circle cx="370" cy="160" r="6" fill="var(--brand)"/>
+  <text x="385" y="150" font-size="12" fill="var(--brand)">S₁₁*（g_S=1）</text>
+  <circle cx="330" cy="150" r="45" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+  <text x="330" y="100" text-anchor="middle" font-size="11" fill="var(--accent)">g_S = 0.9</text>
+  <circle cx="300" cy="140" r="85" fill="none" stroke="var(--warn)" stroke-width="1.6"/>
+  <text x="300" y="50" text-anchor="middle" font-size="11" fill="var(--warn)">g_S = 0.7</text>
+  <circle cx="280" cy="160" r="2.5" fill="var(--ink-2)"/>
+  <text x="280" y="310" text-anchor="middle" font-size="12" fill="var(--ink-2)">圆心沿 S₁₁* 方向收缩，半径随 g_S 增大而减小</text>
+</svg>
+<figcaption>图 9-2　恒定增益圆族：不同目标增益 $g_S$ 对应 Smith 圆图上以 $S_{11}^*$ 方向为轴的一族圆，$g_S=1$ 时收缩为一点</figcaption>
+</figure>
+
+> **【工程应用】**
+> **图解设计流程**：
+> 1. 分别画出输入端 $g_S$ 圆族与输出端 $g_L$ 圆族；
+> 2. 叠加稳定性圆（无条件稳定区域），排除不稳定区；
+> 3. 在稳定区内，按目标总增益 $G_T=G_S\cdot G_0\cdot G_L$（dB 相加）选取合适的 $g_S$、$g_L$ 圆组合；
+> 4. 在圆上选一点作为 $\Gamma_S$（或 $\Gamma_L$），用 Smith 圆图反推出匹配网络的元件参数。
+> 该流程把"增益—稳定性—实现难度"的多目标折中转化为几何作图问题，是射频放大器设计手算/CAD 辅助设计的标准方法。
+
+> **【小结】**
+> 9.5 节要点：恒定增益圆把单向化增益 $G_S$（或 $G_L$）为常数的约束转化为 Smith 圆图上的一族圆，圆心沿 $S_{11}^*$（或 $S_{22}^*$）方向、半径随目标增益降低而增大，为增益与稳定性/噪声折中设计提供了直观的图解工具。
+
+---
+
+## 9.6 噪声系数基础与噪声—增益折中
+
+实际低噪声放大器设计中，输入端反射系数的选择不能只看增益，还要兼顾噪声系数（noise figure）$F$。
+
+> **【核心概念】**
+> 晶体管的噪声性能由四个**噪声参数**完全刻画：最小噪声系数 $F_{\min}$、噪声最优反射系数 $\Gamma_{\mathrm{opt}}$（使噪声最小的源反射系数）、等效噪声电阻 $R_n$。噪声系数随 $\Gamma_S$ 偏离 $\Gamma_{\mathrm{opt}}$ 而上升，满足
+
+$$
+\boxed{\ F=F_{\min}+\frac{4R_n}{Z_0}\cdot\frac{\left|\Gamma_S-\Gamma_{\mathrm{opt}}\right|^2}{\left(1-|\Gamma_S|^2\right)\left|1+\Gamma_{\mathrm{opt}}\right|^2}\ }
+\tag{9-6-1}$$
+
+> **【公式推导】**
+> 各项物理意义与边界条件：
+> - $F_{\min}$：$\Gamma_S=\Gamma_{\mathrm{opt}}$ 时取得的下限，由器件本身（沟道热噪声、栅极感应噪声等）决定，是数据手册给出的固有参数；
+> - $R_n/Z_0$：**噪声灵敏度系数**，描述反射系数偏离最优点后噪声系数上升的快慢，$R_n$ 越大，对失配越敏感，匹配网络的加工容差要求越严；
+> - 分母 $\left(1-|\Gamma_S|^2\right)$：源端失配越严重（$|\Gamma_S|\to1$）该项越小，使 $F$ 急剧上升，物理上对应源阻抗接近开路/短路时噪声功率谱密度的发散趋势；
+> - 量纲检验：$R_n$ 为电阻（$\Omega$），$R_n/Z_0$ 无量纲，$|\Gamma_S-\Gamma_{\mathrm{opt}}|^2$、$1-|\Gamma_S|^2$、$|1+\Gamma_{\mathrm{opt}}|^2$ 均无量纲，故 $F$ 无量纲（通常再转换为 $\mathrm{dB}$：$F_{\mathrm{dB}}=10\lg F$）。
+
+**恒定噪声系数圆**：令 (9-6-1) 中 $F$ 取定值 $F_i$，定义噪声系数参量
+
+$$
+N_i=\frac{F_i-F_{\min}}{4R_n/Z_0}\left|1+\Gamma_{\mathrm{opt}}\right|^2
+\tag{9-6-2}$$
+
+则 $\Gamma_S$ 的轨迹是一个圆，圆心与半径为
+
+$$
+\boxed{\ C_{F_i}=\frac{\Gamma_{\mathrm{opt}}}{N_i+1},\qquad
+R_{F_i}=\frac{\sqrt{N_i\left(N_i+1-|\Gamma_{\mathrm{opt}}|^2\right)}}{N_i+1}\ }
+\tag{9-6-3}$$
+
+> **【核心概念】**
+> 当 $N_i=0$（即 $F_i=F_{\min}$）时，$C_{F_i}=\Gamma_{\mathrm{opt}}$、$R_{F_i}=0$，圆退化为噪声最优点本身；$N_i$ 越大（允许的噪声系数越宽松），圆越大且圆心逐渐偏离 $\Gamma_{\mathrm{opt}}$，向原点方向移动。
+
+> **【工程应用】**
+> **噪声—增益折中设计**：把噪声圆与增益圆同时画在同一张 Smith 圆图上，二者交集给出"增益损失在容许范围内、噪声系数也在容许范围内"的 $\Gamma_S$ 可行域。实际 LNA 设计中，通常不会选在纯粹的 $\Gamma_{\mathrm{opt}}$ 点（因为那里增益可能不是最大），而是在噪声圆与增益圆的交集区域内折中选取，使总体噪声系数比 $F_{\min}$ 略高一点（如 $0.1$–$0.3\ \mathrm{dB}$），换取明显更高的增益与更好的输入驻波比。
+
+> **【易错点】**
+> 容易误以为"只要信号源共轭匹配到 $S_{11}^*$，噪声自然最小"。事实上噪声最优点 $\Gamma_{\mathrm{opt}}$ 与共轭匹配点 $S_{11}^*$ 是**两个一般不重合的点**，必须用专门测得的噪声参数（$F_{\min}$、$\Gamma_{\mathrm{opt}}$、$R_n$）而非 $S$ 参数来定位，这是低噪声放大器设计与功率放大器设计在方法论上的本质差异之一。
+
+---
+
+## 9.7 偏置网络设计
+
+晶体管要正常放大，必须在直流上建立合适的静态工作点（bias point），同时要保证直流偏置电路**不破坏**射频通路的匹配与增益。
+
+> **【核心概念】**
+> **偏置网络设计的核心矛盾**：偏置电路需要给晶体管馈送直流电流/电压，但又不能让射频信号"看到"偏置电路（否则会引入额外损耗、失配甚至寄生振荡）。解决办法是利用**频率选择性元件**，使同一条支路对直流呈现"通路"，对射频呈现"开路"（或反之，视具体连接方式而定）。
+
+**常用方法一：$\lambda/4$ 高阻线 + 旁路电容**。在晶体管的直流馈电点串接一段电长度为 $\lambda/4$、特性阻抗很高的传输线（高阻线，thin high-impedance line），线的另一端通过一个旁路电容（bypass capacitor）接地。
+
+$$
+Z_{\mathrm{in}}(\lambda/4)=\frac{Z_{0,\mathrm{line}}^2}{Z_L}
+\tag{9-7-1}$$
+
+> **【公式推导】**
+> 旁路电容在射频下近似短路（$Z_L\approx0$），代入 (9-7-1) 得 $Z_{\mathrm{in}}\to\infty$（高阻线输入端呈现开路），因此从射频信号通路看去，这条偏置支路**几乎不分流**任何射频功率，相当于被"隔离"掉；而对直流而言，高阻线是一段理想导线（直流电阻极小），旁路电容呈开路，直流偏置电流/电压可以畅通地送到晶体管管脚。这就是"同一条物理支路，直流导通、射频隔离"的巧妙之处。
+
+**常用方法二：RF 扼流电感（RF choke）**。在偏置支路中串联一个大电感 $L_{\mathrm{choke}}$，其射频阻抗
+
+$$
+Z_L=j\omega L_{\mathrm{choke}}
+\tag{9-7-2}$$
+
+当 $\omega L_{\mathrm{choke}}\gg Z_0$ 时，对射频信号呈现近似开路（高阻抗），而对直流（$\omega=0$）呈现短路（理想电感直流电阻为零），恰好与高阻线方法的原理互补——都是利用阻抗随频率的强烈差异实现直流与射频的隔离。
+
+<figure class="fig">
+<svg viewBox="0 0 640 220" role="img" aria-label="偏置网络示意：λ/4高阻线旁路电容与RF扼流电感">
+  <text x="320" y="20" text-anchor="middle" font-size="13" fill="var(--ink)">两种常见偏置网络</text>
+  <line x1="40" y1="90" x2="140" y2="90" stroke="var(--ink)" stroke-width="1.8"/>
+  <text x="90" y="80" text-anchor="middle" font-size="11" fill="var(--ink-2)">直流电源 V_DD</text>
+  <rect x="140" y="75" width="90" height="30" fill="none" stroke="var(--brand)" stroke-width="1.8"/>
+  <text x="185" y="95" text-anchor="middle" font-size="11" fill="var(--brand)">λ/4 高阻线</text>
+  <line x1="230" y1="90" x2="300" y2="90" stroke="var(--ink)" stroke-width="1.8"/>
+  <text x="265" y="75" text-anchor="middle" font-size="11" fill="var(--ink-2)">至晶体管</text>
+  <line x1="185" y1="105" x2="185" y2="150" stroke="var(--ink)" stroke-width="1.5"/>
+  <line x1="165" y1="150" x2="205" y2="150" stroke="var(--accent)" stroke-width="2"/>
+  <line x1="170" y1="158" x2="200" y2="158" stroke="var(--accent)" stroke-width="2"/>
+  <text x="185" y="176" text-anchor="middle" font-size="11" fill="var(--accent)">旁路电容</text>
+  <line x1="185" y1="158" x2="185" y2="190" stroke="var(--ink)" stroke-width="1.5"/>
+  <text x="185" y="205" text-anchor="middle" font-size="10.5" fill="var(--ink-2)">接地（射频短路点）</text>
+
+  <line x1="400" y1="90" x2="460" y2="90" stroke="var(--ink)" stroke-width="1.8"/>
+  <text x="430" y="75" text-anchor="middle" font-size="11" fill="var(--ink-2)">V_DD</text>
+  <path d="M460,90 q10,-18 20,0 q10,-18 20,0 q10,-18 20,0 q10,-18 20,0" fill="none" stroke="var(--warn)" stroke-width="1.8"/>
+  <text x="520" y="65" text-anchor="middle" font-size="11" fill="var(--warn)">RF choke L</text>
+  <line x1="560" y1="90" x2="610" y2="90" stroke="var(--ink)" stroke-width="1.8"/>
+  <text x="585" y="75" text-anchor="middle" font-size="11" fill="var(--ink-2)">至晶体管</text>
+  <text x="520" y="150" text-anchor="middle" font-size="12" fill="var(--ink-2)">ωL_choke ≫ Z₀ ⇒ 射频近似开路</text>
+  <text x="520" y="172" text-anchor="middle" font-size="12" fill="var(--ink-2)">直流电阻 ≈ 0 ⇒ 直流畅通</text>
+</svg>
+<figcaption>图 9-3　两种常见偏置网络：$\lambda/4$ 高阻线 + 旁路电容（左）与 RF 扼流电感（右），均利用阻抗的频率选择性实现直流/射频隔离</figcaption>
+</figure>
+
+> **【记忆技巧】**
+> 一句话记两种方法的本质：**"高阻线法"用传输线的阻抗变换性质（$1/4$ 波长把短路变开路）；"扼流圈法"直接用电感本身随频率增大而增大的阻抗**。前者更适合高频（线长可实现、尺寸合理），后者更适合低频到中频（此时 $1/4$ 波长线太长，不如用一个电感直接实现）。
+
+> **【考点】**
+> 常见设问：
+> 1. 说明旁路电容为何必须接在高阻线的"远端"而不是晶体管管脚处（★★★，答案：接在远端才能让 $\lambda/4$ 变换把近端的"射频短路"转换为"射频开路"）；
+> 2. 给定频率与所需隔离度，估算所需 RF choke 电感值的数量级（★★，由 $\omega L\gg Z_0$ 估算）；
+> 3. 分析偏置网络的自谐振频率（self-resonant frequency）对高频工作的限制（★★★★，涉及电感寄生电容）。
+
+> **【小结】**
+> 9.7 节要点：偏置网络设计的核心是用频率选择性元件（$\lambda/4$ 高阻线+旁路电容，或 RF 扼流电感）实现"直流导通、射频隔离"，从而让静态工作点的建立不干扰射频通路上精心设计的匹配网络与增益性能。
+
+---
+
+## 本章小结
+
+1. 放大器设计围绕信号源反射系数 $\Gamma_S$ 与负载反射系数 $\Gamma_L$ 两个自由度展开，三者（增益、噪声、稳定性）往往不能同时最优，需要图解折中。
+2. 三种功率增益 $G_p$（仅依赖 $\Gamma_L$）、$G_A$（仅依赖 $\Gamma_S$）、$G_T$（同时依赖两者）从不同角度描述放大器性能，$G_T$ 是工程设计的核心指标。
+3. 单向化假设（$S_{12}\approx0$）把增益分解为 $G_S\cdot G_0\cdot G_L$ 三个独立因子，大幅简化设计，其有效性由 $U$ 因子定量把关。
+4. 同时共轭匹配 $(\Gamma_{MS},\Gamma_{ML})$ 给出全局最大转换增益的工作点，但解的存在性与晶体管稳定性直接相关：潜在不稳定器件不存在这样的被动网络解。
+5. 恒定增益圆将"目标增益为常数"的约束转化为 Smith 圆图上的一族圆，为在稳定区域内选取折中工作点提供了几何工具。
+6. 噪声系数 $F$ 由 $F_{\min}$、$\Gamma_{\mathrm{opt}}$、$R_n$ 四个噪声参数决定，恒定噪声系数圆与增益圆的交集给出噪声—增益折中设计的可行域。
+7. 偏置网络利用阻抗的频率选择性（$\lambda/4$ 高阻线+旁路电容，或 RF 扼流电感）实现直流偏置与射频信号通路的相互隔离。
+
+这些工具共同构成了射频放大器从"晶体管 $S$ 参数 + 噪声参数"到"完整匹配网络 + 偏置电路"的完整设计链条，是后续功率放大器、低噪声放大器、振荡器等电路设计的共同基础。
+
+---
+
+## 自测题
+
+**一、选择/填空题**
+
+1. 工作功率增益 $G_p$ 只依赖于（　）。
+   A. $\Gamma_S$　B. $\Gamma_L$　C. $\Gamma_S$ 与 $\Gamma_L$　D. 都不依赖
+2. 单向化假设的数学条件是（　）。
+   A. $S_{11}\approx0$　B. $S_{21}\approx0$　C. $S_{12}\approx0$　D. $S_{22}\approx0$
+3. 恒定增益圆在 $g_S=1$ 时退化为（　）。
+   A. 单位圆　B. 一个点 $S_{11}^*$　C. 原点　D. 半径为 $0.5$ 的圆
+4. 噪声系数最小时对应的信号源反射系数是（　），不一定等于 $S_{11}^*$。
+5. $\lambda/4$ 高阻线末端接旁路电容后，从输入端看该支路对射频信号呈现______（填"开路"或"短路"）。
+
+**二、计算题**
+
+6. 某晶体管单向化假设下 $S_{11}=0.5\angle180^\circ$、$S_{21}=4\angle90^\circ$、$S_{22}=0.4\angle90^\circ$，求 $G_{S,\max}$、$G_0$、$G_{L,\max}$ 及 $G_{TU,\max}$（dB）。
+7. 已知某器件噪声参数 $F_{\min}=1.5\ \mathrm{dB}$、$\Gamma_{\mathrm{opt}}=0.5\angle0^\circ$、$R_n=10\ \Omega$，$Z_0=50\ \Omega$。求 $F_i=2.0\ \mathrm{dB}$ 对应的恒定噪声系数圆的圆心与半径。
+
+---
+
+### 参考答案与解析
+
+1. **B**。$G_p=P_L/P_{\mathrm{in}}$，分子分母都只与输出端失配及输入功率本身有关，不显含 $\Gamma_S$。
+2. **C**。单向化即忽略反向传输 $S_{12}$。
+3. **B**。由 (9-5-2)，$g_S=1$ 时 $R_{g_S}=0$、$C_{g_S}=S_{11}^*$。
+4. $\Gamma_{\mathrm{opt}}$（噪声最优反射系数），一般与 $S_{11}^*$ 不同，须由专门的噪声参数测量给出。
+5. **开路**。由 (9-7-1)，旁路电容使末端近似短路，经 $\lambda/4$ 变换后输入端呈现近似开路，故该支路对射频信号基本不分流。
+
+6. **解**：$G_{S,\max}=\dfrac{1}{1-|S_{11}|^2}=\dfrac{1}{1-0.25}=1.333=1.25\ \mathrm{dB}$；
+   $G_0=|S_{21}|^2=16=12.04\ \mathrm{dB}$；
+   $G_{L,\max}=\dfrac{1}{1-|S_{22}|^2}=\dfrac{1}{1-0.16}=1.190=0.76\ \mathrm{dB}$；
+   $G_{TU,\max}=G_{S,\max}\cdot G_0\cdot G_{L,\max}=1.333\times16\times1.190\approx25.38=1.25+12.04+0.76=14.05\ \mathrm{dB}$（三项 dB 相加核对一致）。
+
+7. **解**：先把 $\mathrm{dB}$ 转线性：$F_{\min}=10^{1.5/10}=1.4125$，$F_i=10^{2.0/10}=1.5849$。
+   $|1+\Gamma_{\mathrm{opt}}|^2=|1.5|^2=2.25$。
+   由 (9-6-2)：$N_i=\dfrac{F_i-F_{\min}}{4R_n/Z_0}\times2.25=\dfrac{1.5849-1.4125}{4\times10/50}\times2.25=\dfrac{0.1724}{0.8}\times2.25\approx0.4849$。
+   圆心：$C_{F_i}=\dfrac{\Gamma_{\mathrm{opt}}}{N_i+1}=\dfrac{0.5}{1.4849}\approx0.337\angle0^\circ$。
+   半径：$R_{F_i}=\dfrac{\sqrt{N_i\left(N_i+1-|\Gamma_{\mathrm{opt}}|^2\right)}}{N_i+1}=\dfrac{\sqrt{0.4849\times(1.4849-0.25)}}{1.4849}=\dfrac{\sqrt{0.4849\times1.2349}}{1.4849}=\dfrac{\sqrt{0.5989}}{1.4849}\approx\dfrac{0.7739}{1.4849}\approx0.521$。
+   即该噪声圆圆心约在 $0.337$（实轴上），半径约 $0.521$。
+</script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
