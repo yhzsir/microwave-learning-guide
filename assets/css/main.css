@@ -270,6 +270,15 @@ html[data-theme="dark"] .nav-link.active { color: var(--brand-400); }
 .nav-link.active .nav-num { background: var(--brand); color: #fff; }
 .nav-label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+/* 选学（非考试范围）标记：边框虚线 + 醒目徽章 */
+.nav-link--optional { border-left: 2px dashed var(--warn); }
+.nav-link--optional:not(.active) { color: var(--ink-2); }
+.nav-badge-optional {
+  flex: none; font-size: 10px; font-weight: 700; letter-spacing: .02em;
+  padding: 1px 6px; border-radius: 999px;
+  border: 1px solid var(--warn-200); background: var(--warn-050); color: var(--warn);
+}
+
 /* ---------- 6. 正文排版 ---------- */
 .article {
   min-width: 0;
@@ -316,6 +325,18 @@ html[data-theme="dark"] .nav-link.active { color: var(--brand-400); }
 }
 html[data-theme="dark"] .md h4 { color: var(--brand-400); }
 .md h5, .md h6 { font-size: var(--fs-2); margin: var(--s4) 0 var(--s2); font-weight: 650; color: var(--ink-2); }
+
+/* 选学（EE5425 不考）标题徽章：边框醒目标注 */
+.md h2.is-optional, .md h3.is-optional, .md h4.is-optional {
+  padding: var(--s3) var(--s4); border: 1px dashed var(--warn-200);
+  border-radius: var(--r); background: var(--warn-050);
+}
+.md h2.is-optional { border-top: 1px dashed var(--warn-200); }
+.h-badge-optional {
+  display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .01em;
+  padding: 2px 9px; border-radius: 999px; vertical-align: middle;
+  border: 1px solid var(--warn-200); background: var(--surface); color: var(--warn);
+}
 
 .md p { margin: 0 0 var(--s4); word-break: keep-all; overflow-wrap: break-word; }
 .md strong { font-weight: 680; color: var(--ink); }
@@ -492,6 +513,13 @@ math-fallback { display: block; font-family: var(--font-mono); font-size: var(--
 .toc-link.active { color: var(--brand); border-left-color: var(--brand); font-weight: 640; }
 .toc-link.lvl-3 { padding-left: 22px; font-size: 12.5px; }
 .toc-link.lvl-4 { padding-left: 33px; font-size: 12px; color: var(--ink-3); }
+.toc-link--optional { border-left-style: dashed; border-left-color: var(--warn-200); }
+.toc-link--optional.active { border-left-color: var(--warn); color: var(--warn); }
+.toc-badge-optional {
+  display: inline-block; margin-left: 6px; font-size: 9px; font-weight: 700;
+  padding: 0 5px; border-radius: 999px; vertical-align: 1px;
+  border: 1px solid var(--warn-200); background: var(--warn-050); color: var(--warn);
+}
 
 /* ---------- 10. 首页组件 ---------- */
 .hero {

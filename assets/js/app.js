@@ -19,12 +19,15 @@
   var CHAPTERS = [
     { n: 1, file: 'ch01', title: '绪论——微波与微波技术', short: '绪论', minutes: 60 },
     { n: 2, file: 'ch02', title: '均匀传输线理论', short: '传输线理论', minutes: 300 },
-    { n: 3, file: 'ch03', title: '规则金属波导', short: '金属波导', minutes: 300 },
+    { n: 3, file: 'ch03', title: '规则金属波导', short: '金属波导', minutes: 300, optional: true },
     { n: 4, file: 'ch04', title: '微波传输线', short: '传输线类型', minutes: 220 },
     { n: 5, file: 'ch05', title: '微波网络基础', short: '微波网络', minutes: 240 },
     { n: 6, file: 'ch06', title: '微波无源器件', short: '无源器件', minutes: 200 },
     { n: 7, file: 'ch07', title: '专题推导一：无耗网络 [Z] 矩阵', short: '专题·Z 矩阵', minutes: 90 },
-    { n: 8, file: 'ch08', title: '专题推导二：网络对称性与 [S] 矩阵', short: '专题·S 矩阵', minutes: 90 }
+    { n: 8, file: 'ch08', title: '专题推导二：网络对称性与 [S] 矩阵', short: '专题·S 矩阵', minutes: 90 },
+    { n: 9, file: 'ch09', title: '射频放大器设计', short: '放大器设计', minutes: 300 },
+    { n: 10, file: 'ch10', title: '稳定性与振荡器设计', short: '稳定性与振荡器', minutes: 260 },
+    { n: 11, file: 'ch11', title: '射频测量技术', short: '射频测量', minutes: 220 }
   ];
 
   var CALLOUTS = {
@@ -414,13 +417,19 @@
     // 隐藏首个 h1（front matter 已给标题）
     html = html.replace(/<h1[^>]*>[\s\S]*?<\/h1>/, '');
 
-    // 锚点：为 h2/h3/h4 生成 id
+    // 锚点：为 h2/h3/h4 生成 id；标注"（选学）"为醒目徽章
     var seen = {};
+    var HEAD_OPTIONAL_RE = /[（(]\s*选学[^）)]*[）)]\s*$/;
     html = html.replace(/<h([234])>([\s\S]*?)<\/h\1>/g, function (m, lv, inner) {
       var plain = inner.replace(/<[^>]+>/g, '');
-      var id = slug(plain);
+      var id = slug(plain.replace(HEAD_OPTIONAL_RE, '').trim());
       if (seen[id]) { seen[id]++; id = id + '-' + seen[id]; } else seen[id] = 1;
-      return '<h' + lv + ' id="' + id + '">' + inner + '</h' + lv + '>';
+      var cls = '';
+      if (HEAD_OPTIONAL_RE.test(plain)) {
+        inner = inner.replace(HEAD_OPTIONAL_RE, '').trim() + ' <span class="h-badge-optional">选学 · EE5425不考</span>';
+        cls = ' class="is-optional"';
+      }
+      return '<h' + lv + ' id="' + id + '"' + cls + '>' + inner + '</h' + lv + '>';
     });
 
     return html;
@@ -485,8 +494,10 @@
     CHAPTERS.forEach(function (c) {
       var f = 'content/' + c.file + '.html';
       var cls = active === f ? 'nav-link active' : 'nav-link';
+      if (c.optional) cls += ' nav-link--optional';
+      var badge = c.optional ? '<span class="nav-badge-optional" title="EE5425 不考，选学内容">选学</span>' : '';
       html += '<a class="' + cls + '" href="' + c.file + '.html"><span class="nav-num">' + c.n +
-        '</span><span class="nav-label">' + c.short + '</span></a>';
+        '</span><span class="nav-label">' + c.short + '</span>' + badge + '</a>';
     });
     html += '</div>';
 
@@ -531,9 +542,14 @@
     var html = '';
     Array.prototype.forEach.call(heads, function (h) {
       var lv = h.tagName[1];
-      var txt = h.textContent.trim();
-      if (!h.id) h.id = slug(txt);
-      html += '<a class="toc-link lvl-' + lv + '" href="#' + h.id + '">' + FallbackMD.esc(txt) + '</a>';
+      var isOptional = h.classList.contains('is-optional');
+      var mainTxt = (isOptional ? h.querySelector('.h-badge-optional') : null)
+        ? h.textContent.replace(h.querySelector('.h-badge-optional').textContent, '').trim()
+        : h.textContent.trim();
+      if (!h.id) h.id = slug(mainTxt);
+      var cls = 'toc-link lvl-' + lv + (isOptional ? ' toc-link--optional' : '');
+      var badge = isOptional ? '<span class="toc-badge-optional">选学</span>' : '';
+      html += '<a class="' + cls + '" href="#' + h.id + '">' + FallbackMD.esc(mainTxt) + badge + '</a>';
     });
     host.innerHTML = html;
 

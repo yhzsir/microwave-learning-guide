@@ -26,7 +26,7 @@ Write-Host "根目录: $Root"
 $CHAPTERS = @(
   @{ n = 1; file = 'ch01'; title = '绪论——微波与微波技术'; short = '绪论';          minutes = 60  },
   @{ n = 2; file = 'ch02'; title = '均匀传输线理论';         short = '传输线理论';    minutes = 300 },
-  @{ n = 3; file = 'ch03'; title = '规则金属波导';           short = '金属波导';      minutes = 300 },
+  @{ n = 3; file = 'ch03'; title = '规则金属波导';           short = '金属波导';      minutes = 300; optional = $true },
   @{ n = 4; file = 'ch04'; title = '微波传输线';             short = '传输线类型';    minutes = 220 },
   @{ n = 5; file = 'ch05'; title = '微波网络基础';           short = '微波网络';      minutes = 240 },
   @{ n = 6; file = 'ch06'; title = '微波无源器件';           short = '无源器件';      minutes = 200 },
@@ -148,7 +148,9 @@ function New-Sidebar([string]$active) {
   foreach ($c in $CHAPTERS) {
     $f = "content/$($c.file).html"
     $cls = if ($active -eq $f) { 'nav-link active' } else { 'nav-link' }
-    [void]$sb.Append("<a class=""$cls"" href=""$($c.file).html""><span class=""nav-num"">$($c.n)</span><span class=""nav-label"">$(HtmlEsc $c.short)</span></a>")
+    if ($c.optional) { $cls += ' nav-link--optional' }
+    $badge = if ($c.optional) { '<span class="nav-badge-optional" title="EE5425 不考，选学内容">选学</span>' } else { '' }
+    [void]$sb.Append("<a class=""$cls"" href=""$($c.file).html""><span class=""nav-num"">$($c.n)</span><span class=""nav-label"">$(HtmlEsc $c.short)</span>$badge</a>")
   }
   [void]$sb.Append('</div></nav></aside>')
   return $sb.ToString()
